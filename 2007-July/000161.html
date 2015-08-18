@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] PhatRangeKnob
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRangeKnob&In-Reply-To=%3C20070717103824.GA7463%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000157.html">
+   <LINK REL="Next"  HREF="000162.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] PhatRangeKnob</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRangeKnob&In-Reply-To=%3C20070717103824.GA7463%40mobilat%3E"
+       TITLE="[Phat-dev] PhatRangeKnob">torbenh at gmx.de
+       </A><BR>
+    <I>Tue Jul 17 12:38:24 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000157.html">[Phat-dev] PhatRangeKnob
+</A></li>
+        <LI>Next message: <A HREF="000162.html">[Phat-dev] PhatRangeKnob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#161">[ date ]</a>
+              <a href="thread.html#161">[ thread ]</a>
+              <a href="subject.html#161">[ subject ]</a>
+              <a href="author.html#161">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Jul 16, 2007 at 01:48:41PM +0100, pete shorthose wrote:
+&gt;<i> On Sat, 2007-07-14 at 15:26 +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; On Sat, 2007-07-14 at 16:26 +0300, Nedko Arnaudov wrote:
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> writes:
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; however there were some problems, i chose to not tackle yet...
+</I>&gt;<i> &gt; &gt; &gt; namely the private adjustment and log-mode
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; this needs some discussion... and i am too tired to make correct
+</I>&gt;<i> &gt; &gt; &gt; decisions now. 
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; i dont really like the idea of having a private adjustment. Although
+</I>&gt;<i> &gt; &gt; &gt; this seems quite elegant for logmode...
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I also dislike private adjustments. As for logarithmic mode, I think we
+</I>&gt;<i> &gt; &gt; should have something more flexible. In particular I think it is only
+</I>&gt;<i> &gt; &gt; useful for ranges starting from 0. I remember wanting to use it for
+</I>&gt;<i> &gt; &gt; balance widgets (-1..1) in jack_mixer and after inspection of code I
+</I>&gt;<i> &gt; &gt; gave up to make quick fix for that.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; What you think about having separate object attachable to our
+</I>&gt;<i> &gt; &gt; knob/slider/meter widgets that maps values? This will separate mapping
+</I>&gt;<i> &gt; &gt; implementation from visualization.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; either an adjustment or something like it does seem to be necessary.
+</I>&gt;<i> &gt; i hadn't thought of it like this before. every time i tried to avoid
+</I>&gt;<i> &gt; using
+</I>&gt;<i> &gt; a second adjustment, i found that i practically had to replicate it to
+</I>&gt;<i> &gt; do the job anyway so i too postponed dealing with it.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; but if we actively extend /change it to cover more use cases
+</I>&gt;<i> &gt; and remove any unnecessary elements then it suddenly becomes
+</I>&gt;<i> &gt; worthwhile.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; the question is, does this make deriving from GtkRange less
+</I>&gt;<i> &gt; useful? the range handles the adjustment stuff now.
+</I>&gt;<i> 
+</I>&gt;<i> i think there's a case for a PhatRange here. not only can we strip
+</I>&gt;<i> out the stuff in GtkRange that we don't need, but we can also
+</I>&gt;<i> put in the mapping object handling in at the base so all
+</I>&gt;<i> derived objects get it for free. basically, we maintain editorial
+</I>&gt;<i> control over all the significant widgets in phat.
+</I>
+had some internet problems...
+i almost came to the same conclusion :)
+now i am conviced.
+
+who is gonna do it ?
+
+
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000157.html">[Phat-dev] PhatRangeKnob
+</A></li>
+	<LI>Next message: <A HREF="000162.html">[Phat-dev] PhatRangeKnob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#161">[ date ]</a>
+              <a href="thread.html#161">[ thread ]</a>
+              <a href="subject.html#161">[ subject ]</a>
+              <a href="author.html#161">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

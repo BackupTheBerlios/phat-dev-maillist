@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Phat cairo based knob
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3Cec9314860706220052g44cab956y42437169be583f39%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000012.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Phat cairo based knob</H1>
+    <B>Loki Davison</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3Cec9314860706220052g44cab956y42437169be583f39%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] Phat cairo based knob">loki.davison at gmail.com
+       </A><BR>
+    <I>Fri Jun 22 09:52:38 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000022.html">[Phat-dev] Phat cairo based knob
+</A></li>
+        <LI>Next message: <A HREF="000012.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 6/22/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> 1. name the base knob class PhatKnob and collide with (break) the old
+</I>&gt;<i> api.	
+</I>&gt;<i>
+</I>
+Works for me. Bugger all uses current one.
+
+
+&gt;<i> 2. enjoy our inconsistent naming policy every day and in every way by
+</I>&gt;<i> adding a post fix. something like PhatKnobBase or PhatKnobCommon. which
+</I>&gt;<i> gives us the following:
+</I>&gt;<i>
+</I>&gt;<i> base class              | example instantiatable class
+</I>&gt;<i> ---------------------------------------------------------------------
+</I>&gt;<i> PhatFanSlider          |     PhatVFanSlider
+</I>&gt;<i> PhatKnobCommon   |    PhatKnob
+</I>&gt;<i>
+</I>&gt;<i> yummy.
+</I>&gt;<i>
+</I>&gt;<i> 3. call the base class something else. like PhatDial or something.
+</I>&gt;<i> PhatPot anyone? :D
+</I>&gt;<i>
+</I>&gt;<i> does anyone have a better idea, or a prefered choice?
+</I>&gt;<i>
+</I>
+I do like the sound of PhatPot though... ;) What about Thorwil's other
+widgets that fit in the same size space? Should Phat1d (or 1d
+float/int) thing be the parent? That covers the fan sliders too to
+inherit from... It's a little freaky sounding though.
+
+&gt;<i> also, what's the best way to name the pixel and vector knobs to
+</I>&gt;<i> illustrate their uses and differentiate them?
+</I>&gt;<i>
+</I>&gt;<i> if nobody cares i'll just choose 3 and go with PhatDial.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Log mode:
+</I>&gt;<i> ----------
+</I>&gt;<i>
+</I>&gt;<i> i haven't done this yet but i can use loki's code so thats no problem.
+</I>&gt;<i> in much the same way, where the phat knob has additional features,
+</I>&gt;<i> i'll add them in to the cairo knob along the way.
+</I>&gt;<i>
+</I>&gt;<i> (i noticed that phat knob has an internal and an external adjustment.
+</I>&gt;<i> what's that for?)
+</I>&gt;<i>
+</I>
+(i think, long time since i looked) This is for log mode. The internal
+adjustment is always between 0-1 and the external adjustment is scaled
+depending on the log mode flag and the range. Otherwise things freak
+out when you change the log mode switch at runtime. This might be an
+ugly way of doing things though, i really can't remember much about
+how i decided it.
+
+
+&gt;<i> i want to add a pan style option. i also want to figure out the proper
+</I>&gt;<i> name for the pan style option :P
+</I>&gt;<i>
+</I>&gt;<i> currently all the drawing is repeated on every expose. i've added
+</I>&gt;<i> support for backing store (which i use and is very nice) which
+</I>&gt;<i> cuts down incidental expose events to almost zero but i'm going to
+</I>&gt;<i> try and implement some sort of layered cache. probably a static
+</I>&gt;<i> background and a static foreground with the active middle layer
+</I>&gt;<i> drawn on every expose (this should reduce much of the drawing to
+</I>&gt;<i> an acceptable level but i'll profile it to be sure it's actually
+</I>&gt;<i> faster as i'd still need to render the top layer onto the bottom,
+</I>&gt;<i> with alpha)
+</I>&gt;<i>
+</I>&gt;<i> interestingly, this opens up the possibility of loading static
+</I>&gt;<i> svg files as either a fg or bg. (these can even be gtk theme specified
+</I>&gt;<i> although that probably won't be used much in the long run)
+</I>&gt;<i>
+</I>
+Sounds great ;)
+
+
+&gt;<i> it might be worth implementing an api so that the drawing operation
+</I>&gt;<i> could be handled by a callback (perhaps even a plugin) that way, people
+</I>&gt;<i> could
+</I>&gt;<i> use the same knob but use custom drawing code. not sure about the worth
+</I>&gt;<i> of that either though.
+</I>&gt;<i>
+</I>
+Can all this goodness also be worked into the fansliders? I coded a
+pixmap based fanslider a long time ago but the code is pretty
+horrible. It was used in the smack gui.
+<A HREF="http://developer.berlios.de/dbimage.php?id=1266">http://developer.berlios.de/dbimage.php?id=1266</A> Current ones are gtk
+drawing based. I.e pre cairo and svg and other good stuff.
+
+&gt;<i> uhm..
+</I>&gt;<i>
+</I>&gt;<i> that
+</I>&gt;<i> wraps
+</I>&gt;<i> it
+</I>&gt;<i> up.
+</I>&gt;<i> :)
+</I>&gt;<i>
+</I>&gt;<i> cheers
+</I>&gt;<i> pete.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000022.html">[Phat-dev] Phat cairo based knob
+</A></li>
+	<LI>Next message: <A HREF="000012.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

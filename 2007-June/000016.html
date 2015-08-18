@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] my current concerns
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20my%20current%20concerns&In-Reply-To=%3Cec9314860706230222o976a68anccd6f73513af991%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000003.html">
+   <LINK REL="Next"  HREF="000004.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] my current concerns</H1>
+    <B>Loki Davison</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20my%20current%20concerns&In-Reply-To=%3Cec9314860706230222o976a68anccd6f73513af991%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] my current concerns">loki.davison at gmail.com
+       </A><BR>
+    <I>Sat Jun 23 11:22:23 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000003.html">[Phat-dev] my current concerns
+</A></li>
+        <LI>Next message: <A HREF="000004.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 6/22/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+&gt;<i> On Fri, 2007-06-22 at 12:53 +1000, Loki Davison wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; minor bugger up with setting it up though.. Just fixed the reply to
+</I>&gt;<i> &gt; stuff... Dodgy defaults... ;)
+</I>&gt;<i>
+</I>&gt;<i> you and me both. i signed up with a forwarding address like a muppet
+</I>&gt;<i> and then wondered why i couldn't post to the list.
+</I>&gt;<i> embarrassingly enough, it's about the fourth time i've done that in
+</I>&gt;<i> recent years. bits of my brain not connected obviously.
+</I>&gt;<i>
+</I>&gt;<i> &gt; All the ideas in this sound pretty good to me. The configurable
+</I>&gt;<i> &gt; mapping between input events and control-update functions should
+</I>&gt;<i> &gt; probably been most of the other widgets too. At least I can see it
+</I>&gt;<i> &gt; being useful for the 2d pad to implement a hockey puck style physics
+</I>&gt;<i> &gt; thing. Always though that was cool since i saw it in Lemur.
+</I>&gt;<i> &gt; <A HREF="http://www.jazzmutant.com/lemur_overview.php">http://www.jazzmutant.com/lemur_overview.php</A>
+</I>&gt;<i>
+</I>&gt;<i> Aye. the less duplication the better.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Metering is still the thing that I'd like to have in phat. Porting all
+</I>&gt;<i> &gt; the meterbridge widgets to phat would really improve all the crappy
+</I>&gt;<i> &gt; vu's everyone is using in there apps now.
+</I>&gt;<i>
+</I>&gt;<i> hmm, threads and SDL. i wouldn't be surprised to discover that
+</I>&gt;<i> steve chose not to implement those in gtk for a reason.
+</I>&gt;<i> still, i'll take a look. i'll have a peek at what ardour does there too.
+</I>&gt;<i>
+</I>I  chatted to Steve about this on #lad a while ago. IIRC he said it
+was just the state of gtk etc at the time. SDL was just a little
+easier for pretty stuff. I think with cairo etc it's probably
+different now.
+
+
+
+&gt;<i> &gt;  Also an adsr widget would be
+</I>&gt;<i> &gt; nice and pretty easy.
+</I>&gt;<i>
+</I>&gt;<i> seconded.
+</I>&gt;<i>
+</I>&gt;<i> &gt; There are a bunch of other ones we already have
+</I>&gt;<i> &gt; a few designs for which would be nice too, like the oscillator
+</I>&gt;<i> &gt; selector (pie menu) widget.
+</I>&gt;<i>
+</I>&gt;<i> it's a bit specialised. how about as the default presentation for a
+</I>&gt;<i> general waveform selector. the options (popup list, no popup or
+</I>&gt;<i> pie chart) being gobject properties?
+</I>&gt;<i>
+</I>
+Yeah, using the animation store idea you mentioned in the other idea.
+The app can request a list with a saw, square, sine, etc by a string
+name. There can be a standard set that we ship and the app can provide
+others if it wants. This could be related to the gtk iconFactory thing
+but i haven't really looked at it. Generic waveform selector with a
+range of styles sounds good though.
+
+&gt;<i> &gt;   Do we want to make a todo / wishlist on a
+</I>&gt;<i> &gt; wiki?
+</I>&gt;<i>
+</I>&gt;<i> great idea. it'd be nice if we could have a section per proposed (or
+</I>&gt;<i> existing) widget with suggestions. eg: should it be a linear adsr only?
+</I>&gt;<i> or part of a dynamic envelope widget.
+</I>&gt;<i> if we do set up a wiki, i'd still encourage people to post to the list
+</I>&gt;<i> when they make significant edits.
+</I>&gt;<i>
+</I>
+
+I've set up the basic wishlist/todo wiki. I'd prefer if discussion was
+on the list though.
+<A HREF="http://openfacts.berlios.de/index-en.phtml?title=Phat_Todo">http://openfacts.berlios.de/index-en.phtml?title=Phat_Todo</A>
+
+Loki
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000003.html">[Phat-dev] my current concerns
+</A></li>
+	<LI>Next message: <A HREF="000004.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

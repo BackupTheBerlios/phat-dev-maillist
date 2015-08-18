@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Initial thoughts on phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C20070709184831.GA26822%40zhevny.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000088.html">
+   <LINK REL="Next"  HREF="000069.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Initial thoughts on phat</H1>
+    <B>Eric Dantan Rzewnicki</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C20070709184831.GA26822%40zhevny.com%3E"
+       TITLE="[Phat-dev] Initial thoughts on phat">eric at zhevny.com
+       </A><BR>
+    <I>Mon Jul  9 20:48:34 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000088.html">[Phat-dev] knob-keyboard functionality
+</A></li>
+        <LI>Next message: <A HREF="000069.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Jun 27, 2007 at 10:23:36PM +1000, Loki Davison wrote:
+&gt;<i> On 6/27/07, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A>&gt; wrote:
+</I>&gt;<i> &gt; On Wed, Jun 27, 2007 at 11:00:27AM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; &gt; On Wed, 2007-06-27 at 06:28 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; &gt; &gt; On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; I've just tried some of the demos and here's some initial thoughts:
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;  o PhatFanSlider flickers horribly and isn't that easy to use.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;    (The demo is a bit odd as well since the range bar is so long
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;    you don't really need a fan slider for it.)
+</I>&gt;<i> &gt; &gt; &gt; &gt; iirc, this is a problem with shaped X windows and not phat.
+</I>&gt;<i> &gt; &gt; &gt; &gt; i don't think that there is a comprehensive solution atm.
+</I>&gt;<i> &gt; &gt; &gt; it still is a problem of phat, because there is only the fanslider in
+</I>&gt;<i> &gt; &gt; &gt; it. I dont like it either.
+</I>&gt;<i> &gt; &gt; before i reply fully,  can i ask you if you are open to using (or even
+</I>&gt;<i> &gt; &gt; working on) phat if it meets your needs?
+</I>&gt;<i> &gt; &gt; not that your input isn't valuable even if not but i could do with
+</I>&gt;<i> &gt; &gt; knowing that from the outset.
+</I>&gt;<i> &gt; &gt; also, are you working towards a competing library or just re
+</I>&gt;<i> &gt; &gt; working galan's interface?
+</I>&gt;<i> &gt; i dont like competing libraries. (i only dont like the fanslider)
+</I>&gt;<i> &gt; but with some small efforts it would just be a config option to have a
+</I>&gt;<i> &gt; normal slider in place.
+</I>&gt;<i> &gt; we just need a common SliderBaseClass and some sort of factory....
+</I>&gt;<i> &gt; phat is THE gtk+ audio widgets library.
+</I>&gt;<i> Thorsten's sliders that are used in ardour should also be in phat.
+</I>&gt;<i> That's on the todo list. As is fixing the fansliders. The code is
+</I>&gt;<i> pretty hairy though. Goto's and fun stuff. Also i don't know much
+</I>&gt;<i> about xshape etc. We could do it with the xcomposite extension though.
+</I>&gt;<i> Would solve the flickering problem. Also, i've got another work around
+</I>&gt;<i> for the flickering prob that i'll try sometime soon. Have the xshape
+</I>&gt;<i> be the size of the whole screen and just change the mask so the actual
+</I>&gt;<i> size of the window doesn't change. Should work i think. Need some of
+</I>&gt;<i> your graphics smarts on this stuff though guys.
+</I>
+Just chiming in again with another &quot;me too&quot; regarding fixing the
+ugliness of the fansliders. If we can't get it to look pretty I'm almost
+inclined to not use them in specimen anymore. I like the concept, but it
+just doesn't look good right now.
+
+Also, I've had a number of people suggest that it would be good to have
+them translucent so they don't obscure the gui bits over which they fan
+out. Functionally it doesn't matter, but I think it sort of makes users
+uncomfortable having this jagged opaque thing cover up other things.
+
+-Eric Rz.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000088.html">[Phat-dev] knob-keyboard functionality
+</A></li>
+	<LI>Next message: <A HREF="000069.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

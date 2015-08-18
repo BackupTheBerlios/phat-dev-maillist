@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] pyphat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20pyphat&In-Reply-To=%3C1184512172.6101.28.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000150.html">
+   <LINK REL="Next"  HREF="000151.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] pyphat</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20pyphat&In-Reply-To=%3C1184512172.6101.28.camel%40majesterium%3E"
+       TITLE="[Phat-dev] pyphat">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Sun Jul 15 17:09:32 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000150.html">[Phat-dev] pyphat
+</A></li>
+        <LI>Next message: <A HREF="000151.html">[Phat-dev] jack_mixer widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 2007-07-14 at 19:46 +0300, Nedko Arnaudov wrote:
+&gt;<i> What you think about having pyphat as subdir of phat and adding
+</I>&gt;<i> en/disable-pyphat to configure script? I see no need of having two
+</I>&gt;<i> complete autotoolized dirs.
+</I>
+there are benefits to having independent packages:
+
+the build system for each is simple,
+
+it's obvious to package maintainers that these are
+independent projects with separate dependencies
+
+releases can be independent too. (eg, fixing an important bug
+in pyphat wouldn't require a new phat release.)
+
+it's also more obvious when a package has failed to build.
+
+an incorporated setup is easier for end users to
+download and build but that's about it. on the down
+side, we risk package maintainers just making one
+package with all the dependencies thrown in. this
+might even cause phat not to be included in distros
+at all if the dependencies are too far out or unstable.
+(this is only a factor if vanilla phat is used anywhere
+without the extra packages. if practically all client
+software requires say, the lv2 lib, then it nothing
+was gained in that by separating it.)
+
+we might also get people bugging us on the lists saying
+&quot;i built phat.. now where the hell are the python bindings!?!&quot;
+because they missed the message saying that they
+weren't built for what ever reason. this wouldn't
+happen with separate packages as each would only
+built if it's requisite dependencies were met.
+
+if there are other reasons for an incorporated setup,
+please bring them up. i only prefer independent packages
+because after thinking about it, they seem to give
+us the most flexibility. 
+
+
+&gt;<i> Do you know if there are projects other than khagan, jack_mixer
+</I>&gt;<i> and zynjacku that are using pyphat?
+</I>
+no clue sorry. google got nothin tho.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000150.html">[Phat-dev] pyphat
+</A></li>
+	<LI>Next message: <A HREF="000151.html">[Phat-dev] jack_mixer widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

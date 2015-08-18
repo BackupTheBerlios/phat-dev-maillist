@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] PhatRange is in svn (well, it is now)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRange%20is%20in%20svn%20%28well%2C%20it%20is%20now%29&In-Reply-To=%3C1185177976.5995.5.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000174.html">
+   <LINK REL="Next"  HREF="000179.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] PhatRange is in svn (well, it is now)</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRange%20is%20in%20svn%20%28well%2C%20it%20is%20now%29&In-Reply-To=%3C1185177976.5995.5.camel%40majesterium%3E"
+       TITLE="[Phat-dev] PhatRange is in svn (well, it is now)">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Mon Jul 23 10:06:16 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000174.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+        <LI>Next message: <A HREF="000179.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2007-07-23 at 11:43 +1000, Loki Davison wrote:
+&gt;<i> On 7/23/07, pete &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; On Sun, 2007-07-22 at 19:48 +0200, Marc-Olivier Barre wrote:
+</I>&gt;<i> &gt; &gt; On 7/22/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>
+&gt;<i> &gt; &gt; ../phat/.libs/libphat.so: undefined reference to
+</I>&gt;<i> &gt; &gt; `_gtk_boolean_handled_accumulator'
+</I>&gt;<i> &gt; &gt; collect2: ld returned 1 exit status
+</I>&gt;<i> &gt; &gt; make[1]: *** [phatfanslider] Error 1
+</I>&gt;<i> &gt; &gt; make[1]: Leaving directory `/media/data/src/svn/phat/phat/demos'
+</I>&gt;<i> &gt; &gt; make: *** [all-recursive] Error 1
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Or is it just me ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; hmm probably both me and thee. i pulled gtkrange.{c,h} from a recent
+</I>&gt;<i> &gt; gtk. perhaps that's a new function and being at least 3 parts moron,
+</I>&gt;<i> &gt; i forgot to check for that kind of thing.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; can you run:
+</I>&gt;<i> &gt;  grep -r _gtk_boolean_handled_accumulator /usr/include/gtk-2.0/
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; and
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;  pkg-config --modversion gtk-2.0
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; and include the output of both?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; pete.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> I've got the same prob, can't look at versions now though, on GF's machine.
+</I>
+still not sure why it works here but not for you. i've changed
+_gtk_boolean_handled_accumulator for
+g_signal_accumulator_true_handled though. 
+see if that helps. 
+we aren't using phatrange for anything yet so if it doesn't, i'll
+remove it from the make files but leave it in svn until it's sorted.
+
+pete.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000174.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+	<LI>Next message: <A HREF="000179.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

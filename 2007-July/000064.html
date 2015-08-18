@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Port of meterbridge widgets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Port%20of%20meterbridge%20widgets&In-Reply-To=%3C1183946829.5808.10.camel%40one%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000055.html">
+   <LINK REL="Next"  HREF="000056.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Port of meterbridge widgets</H1>
+    <B>pete</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Port%20of%20meterbridge%20widgets&In-Reply-To=%3C1183946829.5808.10.camel%40one%3E"
+       TITLE="[Phat-dev] Port of meterbridge widgets">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Mon Jul  9 04:07:09 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000055.html">[Phat-dev] Port of meterbridge widgets
+</A></li>
+        <LI>Next message: <A HREF="000056.html">[Phat-dev] Port of meterbridge widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 2007-07-07 at 13:42 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+&gt;<i> On Fri, Jul 06, 2007 at 10:12:48PM +0100, Damon Chaplin wrote:
+</I>&gt;<i> &gt; On Fri, 2007-07-06 at 21:41 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; on the metering API i would say we should be deriving from GtkAdjustment again.
+</I>&gt;<i> &gt; &gt; a property for the pixmap would be nice.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I've been reading quite a lot about the different meter types. Wikipedia
+</I>&gt;<i> &gt; covers most of the issues:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;   <A HREF="http://en.wikipedia.org/wiki/Peak_programme_meter">http://en.wikipedia.org/wiki/Peak_programme_meter</A>
+</I>&gt;<i> &gt;   <A HREF="http://en.wikipedia.org/wiki/VU_meter">http://en.wikipedia.org/wiki/VU_meter</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The BBC has even released some LGPL code for a PPM meter:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;   <A HREF="http://www.bbc.co.uk/opensource/projects/baptools/">http://www.bbc.co.uk/opensource/projects/baptools/</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The attack and decay &quot;ballistics&quot; of the meters are quite complicated,
+</I>&gt;<i> &gt; so I think it would be nice to do this within the widgets, rather than
+</I>&gt;<i> &gt; force the developer to handle it. We can probably use the code from
+</I>&gt;<i> &gt; meterbridge or from the BBC to do it.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; So we'd have something like a process_samples() function, which can be
+</I>&gt;<i> &gt; called with each bunch of samples received from JACK or wherever, and an
+</I>&gt;<i> &gt; update_display() which is only called every 1/10 of a second or so.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; If we do that I don't think we need a GtkAdjustment as well. It might
+</I>&gt;<i> &gt; over-complicate things.
+</I>&gt;<i> 
+</I>&gt;<i> yes. 
+</I>&gt;<i> but i would rather have the DSP part of the meter inside a LADSPA | LV2
+</I>&gt;<i> plugin. Consider metering an audio stream on a remote host.
+</I>&gt;<i> dsp code should run on the remote too. then send OSC or sumthing to the
+</I>&gt;<i> local machine, which displays the meter...
+</I>
+i think we can do both. either create separate meter and meter logic
+objects that can work together (much like the phatknob and gtkadjustment
+do), or  make one meter widget capable of operating in passive mode
+(values and timing are externally supplied) or active mode (where the
+widget polls some sample value) 
+
+pete
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000055.html">[Phat-dev] Port of meterbridge widgets
+</A></li>
+	<LI>Next message: <A HREF="000056.html">[Phat-dev] Port of meterbridge widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] configure.ac patch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20configure.ac%20patch&In-Reply-To=%3C3c808a150801040238v35f55093l329e89640fe88fac%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000232.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] configure.ac patch</H1>
+    <B>Marc-Olivier Barre</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20configure.ac%20patch&In-Reply-To=%3C3c808a150801040238v35f55093l329e89640fe88fac%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] configure.ac patch">mobarre at gmail.com
+       </A><BR>
+    <I>Fri Jan  4 11:38:31 CET 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000232.html">[Phat-dev] configure.ac patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#231">[ date ]</a>
+              <a href="thread.html#231">[ thread ]</a>
+              <a href="subject.html#231">[ subject ]</a>
+              <a href="author.html#231">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It seems the configure script munges CFLAGS, this gives unwanted
+results with glib and gcc 4.2.2 here :
+
+ gcc -DHAVE_CONFIG_H -I. -g -O2 -O3 -I/usr/include/gtk-2.0
+-I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo
+-I/usr/include/pango-1.0 -I/usr/include/glib-2.0
+-I/usr/lib/glib-2.0/include -I/usr/include/freetype2
+-I/usr/include/libpng12 -I/usr/include/libgnomecanvas-2.0
+-I/usr/include/pango-1.0 -I/usr/include/freetype2
+-I/usr/include/gail-1.0 -I/usr/include/libart-2.0
+-I/usr/include/gtk-2.0 -I/usr/include/glib-2.0
+-I/usr/lib/glib-2.0/include -I/usr/include/atk-1.0
+-I/usr/lib/gtk-2.0/include -I/usr/include/cairo
+-I/usr/include/libpng12 -Wall -Werror -std=c99 -I..
+-DINSTALL_DIR=\&quot;/usr/local/share\&quot;
+-DSITE_PKGLIB_DIR=\&quot;/usr/local/lib/phat\&quot;
+-DSITE_PKGDATA_DIR=\&quot;/usr/local/share/phat\&quot; -g -O2 -O3
+-I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include
+-I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0
+-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-I/usr/include/freetype2 -I/usr/include/libpng12
+-I/usr/include/libgnomecanvas-2.0 -I/usr/include/pango-1.0
+-I/usr/include/freetype2 -I/usr/include/gail-1.0
+-I/usr/include/libart-2.0 -I/usr/include/gtk-2.0
+-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo
+-I/usr/include/libpng12 -Wall -Werror -MT
+libphat_la-phatmarshallers.lo -MD -MP -MF
+.deps/libphat_la-phatmarshallers.Tpo -c phatmarshallers.c  -fPIC -DPIC
+-o .libs/libphat_la-phatmarshallers.o
+cc1: warnings being treated as errors
+In file included from /usr/include/glib-2.0/glib/gthread.h:32,
+                 from /usr/include/glib-2.0/glib/gasyncqueue.h:30,
+                 from /usr/include/glib-2.0/glib.h:32,
+                 from /usr/include/glib-2.0/gobject/gtype.h:26,
+                 from /usr/include/glib-2.0/gobject/gboxed.h:26,
+                 from /usr/include/glib-2.0/glib-object.h:25,
+                 from phatmarshallers.c:2:
+/usr/include/glib-2.0/glib/gutils.h:316: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:316: warning: to disable this
+warning use -fgnu89-inline or the gnu_inline function attribute
+/usr/include/glib-2.0/glib/gutils.h:330: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:343: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:362: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:370: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:387: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:396: warning: C99 inline functions
+are not supported; using GNU89
+In file included from /usr/include/glib-2.0/glib/gasyncqueue.h:30,
+                 from /usr/include/glib-2.0/glib.h:32,
+                 from /usr/include/glib-2.0/gobject/gtype.h:26,
+                 from /usr/include/glib-2.0/gobject/gboxed.h:26,
+                 from /usr/include/glib-2.0/glib-object.h:25,
+                 from phatmarshallers.c:2:
+/usr/include/glib-2.0/glib/gthread.h:334: warning: C99 inline
+functions are not supported; using GNU89
+make[2]: *** [libphat_la-phatmarshallers.lo] Erreur 1
+make[2]: quittant le r&#233;pertoire &#171; /usr/src/phat/phat/phat &#187;
+make[1]: *** [all] Erreur 2
+make[1]: quittant le r&#233;pertoire &#171; /usr/src/phat/phat/phat &#187;
+make: *** [all-recursive] Erreur 1
+
+Here is my suggestion :
+Index: configure.ac
+===================================================================
+--- configure.ac        (r&#233;vision 117)
++++ configure.ac        (copie de travail)
+@@ -20,10 +20,10 @@
+     [if test x$enable_debug = xyes; then with_debug=yes ; fi])
+
+ if test x$with_debug = xno; then
+-    CFLAGS=&quot;-O3&quot;
++    CFLAGS=&quot;$CFLAGS -O3&quot;
+     AC_DEFINE(DEBUG, 0, [[whether to display debugging output or not]])
+ else
+-    CFLAGS=&quot;-g&quot;
++    CFLAGS=&quot;$CFLAGS -g&quot;
+     AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+ fi
+
+What do you think ? Is there a better way ?
+__________________
+Marc-Olivier Barre,
+MarcO'Chapeau.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000232.html">[Phat-dev] configure.ac patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#231">[ date ]</a>
+              <a href="thread.html#231">[ thread ]</a>
+              <a href="subject.html#231">[ subject ]</a>
+              <a href="author.html#231">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

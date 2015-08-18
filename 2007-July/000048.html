@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Knob requirements
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Knob%20requirements&In-Reply-To=%3Cec9314860707010153x5ae1df67y2c098fd5ce47779f%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000049.html">
+   <LINK REL="Next"  HREF="000050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Knob requirements</H1>
+    <B>Loki Davison</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Knob%20requirements&In-Reply-To=%3Cec9314860707010153x5ae1df67y2c098fd5ce47779f%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] Knob requirements">loki.davison at gmail.com
+       </A><BR>
+    <I>Sun Jul  1 10:53:37 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000049.html">[Phat-dev] basic glade support
+</A></li>
+        <LI>Next message: <A HREF="000050.html">[Phat-dev] Knob requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 6/30/07, Damon Chaplin &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">damon at karuna.eclipse.co.uk</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I've just been looking over Reason and a few other apps to get an idea
+</I>&gt;<i> of the requirements for knobs. Not all of these are essential, but I
+</I>&gt;<i> think most of them are. Anyway, I hope it's useful:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Use Cases
+</I>&gt;<i>   o Continuous knob - selection of a value from a range of values.
+</I>&gt;<i>     e.g. Volume, Treble, Bass, Panning, Pitch, Attack.
+</I>&gt;<i>   o Discrete knob - selection of one particular value from several.
+</I>&gt;<i>     e.g. Resolution - 1/2, 1/4. 1/8, 1/16, 1/32, 1/64.
+</I>&gt;<i>     (I've seen one knob with 9 discrete positions. That is probably
+</I>&gt;<i>     about the most needed.)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Display
+</I>&gt;<i>   o Various styles, colors and sizes of knobs.
+</I>&gt;<i>   o Label underneath knob to describe it, e.g. &quot;Treble&quot;.
+</I>&gt;<i>     Sometimes this is placed beside the knob, e.g. when a column of
+</I>&gt;<i>     vertical knobs is used, or when knobs are crammed together in the
+</I>&gt;<i>     mixer. Also occasionally it has a box around it.
+</I>&gt;<i>   o Labels for ends of range for continuous knobs, e.g. &quot;-&quot; and &quot;+&quot;.
+</I>&gt;<i>   o Labels for each discrete position, e.g. &quot;1/2&quot;, &quot;1/4&quot;, &quot;1/8&quot;.
+</I>&gt;<i>     This also has a line pointing to the position on the knob.
+</I>&gt;<i>   o Some knobs have an LED at the top to indicate that they are set
+</I>&gt;<i>     to something other than the central position.
+</I>&gt;<i>   o Some knobs are highlighted with a colored rectangle to indicate
+</I>&gt;<i>     that they are controlled by automation.
+</I>&gt;<i>   o Knobs should also indicate if they have the keyboard focus.
+</I>&gt;<i>   o Tooltips optionally show the value of the knob when the mouse
+</I>&gt;<i>     is over the knob and as the value is changed.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Interaction
+</I>&gt;<i>   o Linear or radial option for moving knob.
+</I>&gt;<i>   o For the linear style there could be a mouse range option, and
+</I>&gt;<i>     modifier keys could be pressed to allow more sensitive control.
+</I>&gt;<i>   o For continuous knobs there may be a detent in the middle.
+</I>&gt;<i>     (Has anyone seen a continuous knob with several detents?)
+</I>&gt;<i>   o For discrete knobs the labels could highlight when the mouse
+</I>&gt;<i>     moves over them and be clicked to select them.
+</I>&gt;<i>   o Keyboard control - should take keyboard focus and allow the knob
+</I>&gt;<i>     value to be changed by the keyboard, e.g. Up, Down, Page Up,
+</I>&gt;<i>     Page Down, Shift+Up, Shift+Down (for finer control).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Accessibility
+</I>&gt;<i>   o The normal ATK accessibility functions should be used to describe
+</I>&gt;<i>     the knobs, and also possibly to describe the discrete positions.
+</I>&gt;<i>   o Although using different colors &amp; styles for knobs is nice, it
+</I>&gt;<i>     should be possible to switch all knobs to support the user's
+</I>&gt;<i>     accessibility requirements (e.g. use the theme colors as much
+</I>&gt;<i>     as possible, or use low or high contrast knobs).
+</I>&gt;<i>   o The small fonts typically used in audio apps may be a problem
+</I>&gt;<i>     as well. It should probably be possible to support different fonts.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I'm willing to help out with this, or with some of the other widgets.
+</I>&gt;<i> (I wrote the original Glade GUI designer, so I know GTK+ fairly well!)
+</I>&gt;<i>
+</I>&gt;<i> Damon
+</I>&gt;<i>
+</I>
+This seems like an interesting collection of features. The labels for
+discrete positions sounds like a useful feature. Though i do wonder if
+a knob is the best widget for discrete stuff.
+
+My main issue with your feature ideas is how handy an super knob is
+compared to the other widgets we could use. I think the env / adsr
+widget is much more useful especially for apps like
+<A HREF="http://home.gna.org/zynjacku/">http://home.gna.org/zynjacku/</A>  and <A HREF="http://sysex.net/phasex/">http://sysex.net/phasex/</A> The
+screenshots say it all. Also metering widgets would be very nice.
+Porting all the meters from meterbridge to phat would allow all the
+apps that create dodgy dpm meters to either use one that's already
+coded or one of the very cool looking ppm meters. ;)
+
+Porting Thorsten's ardour slider to phat is also higher on the todo i
+think. If your more keen on working on the knobs than other widgets
+that's okay though too. If you want svn access get an account on
+berlios and i'll add you.
+
+Loki
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000049.html">[Phat-dev] basic glade support
+</A></li>
+	<LI>Next message: <A HREF="000050.html">[Phat-dev] Knob requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

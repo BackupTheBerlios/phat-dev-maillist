@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] basic glade support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20basic%20glade%20support&In-Reply-To=%3C1183309091.6063.13.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000047.html">
+   <LINK REL="Next"  HREF="000048.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] basic glade support</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20basic%20glade%20support&In-Reply-To=%3C1183309091.6063.13.camel%40majesterium%3E"
+       TITLE="[Phat-dev] basic glade support">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Sun Jul  1 18:58:11 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000047.html">[Phat-dev] basic glade support
+</A></li>
+        <LI>Next message: <A HREF="000048.html">[Phat-dev] Knob requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2007-07-01 at 18:17 +1000, Loki Davison wrote:
+&gt;<i> On 7/1/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; i've implemented skeleton glade support. 
+</I>
+&gt;<i> Looks good, minor spelling mistake in  the xml file for the keyboard.
+</I>
+keyoard? heh. ty.
+
+&gt;<i> Other than that it's good. Feel free to commit to trunk. What the
+</I>&gt;<i> issues you mention with not all widgets working with glade? Not
+</I>&gt;<i> providing stuff as properties?
+</I>
+i had problems with GTypes not being resolved so some widgets
+weren't loaded, that was fixed by running ldconfig. i'm not sure
+i understand that behaviour but the phat lib is linked in place as
+it's not yet installed at the time the glade plugin is built. 
+
+other than that, some widgets have no properties, others 
+crash glade when you interact with them and the keyboard 
+widget sometimes goes schizo if you change it's orientation.
+(both vertical and horizontal stay visible and usable).
+
+i'll commit them as i fix them.
+
+
+cheers,
+pete.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000047.html">[Phat-dev] basic glade support
+</A></li>
+	<LI>Next message: <A HREF="000048.html">[Phat-dev] Knob requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

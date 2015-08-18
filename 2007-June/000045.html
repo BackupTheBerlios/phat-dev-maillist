@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Knob requirements
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Knob%20requirements&In-Reply-To=%3C1183200434.3162.48.camel%40localhost.localdomain%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000031.html">
+   <LINK REL="Next"  HREF="000046.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Knob requirements</H1>
+    <B>Damon Chaplin</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Knob%20requirements&In-Reply-To=%3C1183200434.3162.48.camel%40localhost.localdomain%3E"
+       TITLE="[Phat-dev] Knob requirements">damon at karuna.eclipse.co.uk
+       </A><BR>
+    <I>Sat Jun 30 12:47:14 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000031.html">[Phat-dev] PhatPad (Was: Initial thoughts on phat)
+</A></li>
+        <LI>Next message: <A HREF="000046.html">[Phat-dev] basic glade support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi,
+
+I've just been looking over Reason and a few other apps to get an idea
+of the requirements for knobs. Not all of these are essential, but I
+think most of them are. Anyway, I hope it's useful:
+
+
+Use Cases
+  o Continuous knob - selection of a value from a range of values.
+    e.g. Volume, Treble, Bass, Panning, Pitch, Attack. 
+  o Discrete knob - selection of one particular value from several.
+    e.g. Resolution - 1/2, 1/4. 1/8, 1/16, 1/32, 1/64.
+    (I've seen one knob with 9 discrete positions. That is probably
+    about the most needed.)
+
+
+Display
+  o Various styles, colors and sizes of knobs.
+  o Label underneath knob to describe it, e.g. &quot;Treble&quot;.
+    Sometimes this is placed beside the knob, e.g. when a column of
+    vertical knobs is used, or when knobs are crammed together in the
+    mixer. Also occasionally it has a box around it.
+  o Labels for ends of range for continuous knobs, e.g. &quot;-&quot; and &quot;+&quot;.
+  o Labels for each discrete position, e.g. &quot;1/2&quot;, &quot;1/4&quot;, &quot;1/8&quot;.
+    This also has a line pointing to the position on the knob.
+  o Some knobs have an LED at the top to indicate that they are set
+    to something other than the central position.
+  o Some knobs are highlighted with a colored rectangle to indicate
+    that they are controlled by automation.
+  o Knobs should also indicate if they have the keyboard focus.
+  o Tooltips optionally show the value of the knob when the mouse
+    is over the knob and as the value is changed.
+
+
+Interaction
+  o Linear or radial option for moving knob.
+  o For the linear style there could be a mouse range option, and
+    modifier keys could be pressed to allow more sensitive control.
+  o For continuous knobs there may be a detent in the middle.
+    (Has anyone seen a continuous knob with several detents?)
+  o For discrete knobs the labels could highlight when the mouse
+    moves over them and be clicked to select them.
+  o Keyboard control - should take keyboard focus and allow the knob
+    value to be changed by the keyboard, e.g. Up, Down, Page Up,
+    Page Down, Shift+Up, Shift+Down (for finer control).
+
+
+Accessibility
+  o The normal ATK accessibility functions should be used to describe
+    the knobs, and also possibly to describe the discrete positions.
+  o Although using different colors &amp; styles for knobs is nice, it
+    should be possible to switch all knobs to support the user's
+    accessibility requirements (e.g. use the theme colors as much
+    as possible, or use low or high contrast knobs).
+  o The small fonts typically used in audio apps may be a problem
+    as well. It should probably be possible to support different fonts.
+
+
+
+I'm willing to help out with this, or with some of the other widgets.
+(I wrote the original Glade GUI designer, so I know GTK+ fairly well!)
+
+Damon
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000031.html">[Phat-dev] PhatPad (Was: Initial thoughts on phat)
+</A></li>
+	<LI>Next message: <A HREF="000046.html">[Phat-dev] basic glade support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

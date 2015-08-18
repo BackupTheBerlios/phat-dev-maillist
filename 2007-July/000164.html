@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] midi mapping and thoughts...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20midi%20mapping%20and%20thoughts...&In-Reply-To=%3C20070719090220.GA29729%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000180.html">
+   <LINK REL="Next"  HREF="000175.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] midi mapping and thoughts...</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20midi%20mapping%20and%20thoughts...&In-Reply-To=%3C20070719090220.GA29729%40mobilat%3E"
+       TITLE="[Phat-dev] midi mapping and thoughts...">torbenh at gmx.de
+       </A><BR>
+    <I>Thu Jul 19 11:02:20 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000180.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+        <LI>Next message: <A HREF="000175.html">[Phat-dev] x composite fan sliders.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#164">[ date ]</a>
+              <a href="thread.html#164">[ thread ]</a>
+              <a href="subject.html#164">[ subject ]</a>
+              <a href="author.html#164">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+hi...
+
+just to write up some thoughts here...
+
+what do we want to control anyways ? mostly a softsynth or other
+RT-processing beast. maybe a plugin ?
+
+for LADPSA this would boil down to an array of floats.
+with some ranges... mostly an attachment...
+
+We could arrange them into a tree in Form of a GtkTreeModel
+GtkTreeStore (the implementation) fits nicely here.
+
+I already started the PhatAdjustment...
+If we add some properties to it for MIDI CC and stuff
+we could add some midi-input interface to it.
+
+controlling floats from outside the RT thread is trivial.
+however the mapping needs to be accessible from inside the RT thread
+also (jack-midi) so we need to make sure there is a valid copy of
+the mapping list owned by the RT thread.
+
+we need a ringbuffer .... we should copy jacks ringbuffer.
+
+do we also want to have a timeline with automation ?
+or shall we depend on ardour to get this right in time ?
+
+well the timeline is not as important as proper midi learn.
+i am not sure how this all will fit together, but this is at least a
+start.
+
+
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000180.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+	<LI>Next message: <A HREF="000175.html">[Phat-dev] x composite fan sliders.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#164">[ date ]</a>
+              <a href="thread.html#164">[ thread ]</a>
+              <a href="subject.html#164">[ subject ]</a>
+              <a href="author.html#164">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

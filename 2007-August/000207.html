@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phatrange and range widgets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phatrange%20and%20range%20widgets&In-Reply-To=%3C87r6lrzmcp.fsf%40arnaudov.name%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000206.html">
+   <LINK REL="Next"  HREF="000201.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phatrange and range widgets</H1>
+    <B>Nedko Arnaudov</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phatrange%20and%20range%20widgets&In-Reply-To=%3C87r6lrzmcp.fsf%40arnaudov.name%3E"
+       TITLE="[Phat-dev] phatrange and range widgets">nedko at arnaudov.name
+       </A><BR>
+    <I>Sat Aug 25 17:04:54 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000206.html">[Phat-dev] phatrange and range widgets
+</A></li>
+        <LI>Next message: <A HREF="000201.html">[Phat-dev] fansliders
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#207">[ date ]</a>
+              <a href="thread.html#207">[ thread ]</a>
+              <a href="subject.html#207">[ subject ]</a>
+              <a href="author.html#207">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; writes:
+
+&gt;&gt;<i> i have major problem with lacking ui user use cases and specification
+</I>&gt;&gt;<i> how things (should) work.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Some code i saw in phatknob is obviously
+</I>&gt;&gt;<i> broken, 
+</I>&gt;<i>
+</I>&gt;<i> which parts?
+</I>
+alternative (linear?) adjsutment with mouse button 3
+I've not investigated further but it does not work here.
+
+&gt;&gt;<i>  i talked with thorwil about knobs
+</I>&gt;&gt;<i> in particular and i saw his try for this in his blog too and he said
+</I>&gt;&gt;<i> we have serious discrepancies about knobs ui user use. we should
+</I>&gt;&gt;<i> document them and take a plan to handle them. 
+</I>&gt;<i>
+</I>&gt;<i> i think this is already resolved (in as much as it can be)
+</I>&gt;<i> the configurable input mapping should allow people to choose 
+</I>&gt;<i> their preferred method. this is a deal breaker for me so 
+</I>&gt;<i> if it's not resolved then we have problems. if you have 
+</I>&gt;<i> more to add then we should run it past loki again.
+</I>
+allow people to choose - i agree (see below), but the point is that we
+need behaviours to choose from defined. Do you agree with definitions
+posted in thorwil blog? Or we have them documented elsewere?
+
+&gt;&gt;<i> Now how this interacts with phatrange? In my vision so far direct access
+</I>&gt;&gt;<i> methods should be implemented as proxy code to phatrange and not
+</I>&gt;&gt;<i> directly interacting with widget code and thus it may be possible to use
+</I>&gt;&gt;<i> some hairy macro to define them in all widgets. we need this because
+</I>&gt;&gt;<i> gobject model does not support method inheritance, or i am wrong?
+</I>&gt;<i>
+</I>&gt;<i> i'm not sure. we can chain up to access virtual parent
+</I>&gt;<i> functions?. (cast the object to it's parent type)
+</I>
+so this needs more investigation, i'm concerned for pyphat in particular
+
+&gt;&gt;<i> All gtkadjustment-less methods are implemented in phatrange by operating
+</I>&gt;&gt;<i> on gtkadjustment referenced in it.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> I'm still thinking about what is best way for interoperation between
+</I>&gt;&gt;<i> gtkadjustment and mapper object. in particular, mapper, at least one i
+</I>&gt;&gt;<i> have currently (monothonic linear spline), has valid range and is
+</I>&gt;&gt;<i> somewhat incompatible with change of it, caused by external
+</I>&gt;&gt;<i> gtkadjustment. Do you think we need to support external gtkadjustments
+</I>&gt;&gt;<i> when we have mapper? I'd say no. Logarithm also has input restritions
+</I>&gt;&gt;<i> too, thus rendering -50..0 gtkadjustment unusable. At least directly,
+</I>&gt;&gt;<i> but i think mapper should operate on real range not artificial one, like
+</I>&gt;&gt;<i> (0..1).
+</I>&gt;<i>
+</I>&gt;<i> are there any cases where we cannot detect and translate 
+</I>&gt;<i> problematic ranges? if there are or the detection and 
+</I>&gt;<i> translation is too expensive then we are a bit screwed.
+</I>
+We can detect but i doubt we can translate. So we can reject external
+adjustment if it does not apply, but then, why someone would want
+external adjustment at all?
+
+&gt;&gt;<i> After more inspection of phatknob and those concept discrepancies we
+</I>&gt;&gt;<i> have, i now beleive we should come with configuration system in next
+</I>&gt;&gt;<i> release. I propose (and have motivation to work on) class code
+</I>&gt;&gt;<i> interacting with gconf. In particular I want to start with radial/linear
+</I>&gt;&gt;<i> knob behaviour, always with left mouse button.
+</I>&gt;<i>
+</I>&gt;<i> this should be configurable. it's the only way we can accommodate 
+</I>&gt;<i> different user and developer preferences. (IOW, it's the only
+</I>&gt;<i> way we can prevent me and thorsten from killing each other :P )
+</I>&gt;<i>
+</I>&gt;<i> i'd like to see targets (linear control, absolute control, menu popup
+</I>&gt;<i> etc) be mappable to input combinations (buttons 1 - 5, and modifiers)
+</I>&gt;<i>
+</I>&gt;&gt;<i> More configuration
+</I>&gt;&gt;<i> candidates are welcome. Lets collect them in this thread, I'll put them
+</I>&gt;&gt;<i> on wiki once we have plan.
+</I>
+I think we should have manual value input configurable too:
+
+So far list of things that need to be configurable are:
+ * context menu popup
+ * linear control
+ * radial control
+ * absolute control
+ * manual input (edit box to entr value with keyboard)
+
+each mappable to mouse buttons 1-5 with modifiers (including double
+click as option). mappings are optional i.e. if not configured they
+are not available.
+
+Mappings should be overridable by program (developer) using the widget.
+
+I'm somewhat sceptical someone will want more than one method of mouse
+control active. So maybe it is better to have mouse drag mappable to
+button and have mouse drag behaviour as additional property.
+
+-- 
+Nedko Arnaudov &lt;GnuPG KeyID: DE1716B0&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/phat-dev/attachments/20070825/271a76d5/attachment.pgp">https://lists.berlios.de/pipermail/phat-dev/attachments/20070825/271a76d5/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000206.html">[Phat-dev] phatrange and range widgets
+</A></li>
+	<LI>Next message: <A HREF="000201.html">[Phat-dev] fansliders
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#207">[ date ]</a>
+              <a href="thread.html#207">[ thread ]</a>
+              <a href="subject.html#207">[ subject ]</a>
+              <a href="author.html#207">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] some additional ideas for phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20additional%20ideas%20for%20phat&In-Reply-To=%3C1184070624.23642.72.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000089.html">
+   <LINK REL="Next"  HREF="000097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] some additional ideas for phat</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20additional%20ideas%20for%20phat&In-Reply-To=%3C1184070624.23642.72.camel%40majesterium%3E"
+       TITLE="[Phat-dev] some additional ideas for phat">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Tue Jul 10 14:30:24 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000089.html">[Phat-dev] some additional ideas for phat
+</A></li>
+        <LI>Next message: <A HREF="000097.html">[Phat-dev] some additional ideas for phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2007-07-10 at 14:25 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+&gt;<i> On Tue, Jul 10, 2007 at 12:25:44PM +0100, pete shorthose wrote:
+</I>
+&gt;<i> &gt; to make use of it you are required to enable backing store
+</I>&gt;<i> &gt; (and that means editing your X conf) and trades
+</I>&gt;<i> &gt; increased memory usage for a lighter CPU load.
+</I>&gt;<i> &gt; is anyone interested in seeing this available in phat?
+</I>&gt;<i> 
+</I>&gt;<i> i am not sure. i think the problem can be avoided if you add some
+</I>&gt;<i> GtkEventBox into your widget tree.
+</I>&gt;<i> 
+</I>&gt;<i> GtkEventBox has its own XWindow so the expose events can be done inside
+</I>&gt;<i> the X server. i am not sure how this all relates to backing store.
+</I>&gt;<i> i thought it was on by default...
+</I>
+all i know of the event box is that it's a surrogate window used to trap
+events for widgets that don't have windows, i'm not aware of
+any other special properties but then i'm no expert on gtk or X windows.
+
+Damon, any idea about this?
+
+as for backing store generally, i have it enabled and all the widgets
+i've tested still receive incidental expose events until i explicitly
+enable 
+backing store on the widget window. at which point, events are only
+automatically generated when mapping or resizing a window. 
+
+pete.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000089.html">[Phat-dev] some additional ideas for phat
+</A></li>
+	<LI>Next message: <A HREF="000097.html">[Phat-dev] some additional ideas for phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

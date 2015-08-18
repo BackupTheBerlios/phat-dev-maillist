@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] the pixmap knob and abstracting animations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20the%20pixmap%20knob%20and%20abstracting%20animations&In-Reply-To=%3C1182501455.6848.153.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000009.html">
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] the pixmap knob and abstracting animations</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20the%20pixmap%20knob%20and%20abstracting%20animations&In-Reply-To=%3C1182501455.6848.153.camel%40majesterium%3E"
+       TITLE="[Phat-dev] the pixmap knob and abstracting animations">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Fri Jun 22 10:37:35 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000009.html">[Phat-dev] the pixmap knob and abstracting animations
+</A></li>
+        <LI>Next message: <A HREF="000017.html">[Phat-dev] Tiny docs patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2007-06-22 at 18:03 +1000, Loki Davison wrote:
+&gt;<i> On 6/22/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; me again :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; i'd like to propose that we replace the static pixbuf animations in the
+</I>&gt;<i> &gt; phat
+</I>&gt;<i> &gt; pixmap knob with dynamically assigned animation gobjects.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; gobject refcounting takes a care of cleanup so sharing animations
+</I>&gt;<i> &gt; between widgets is trivial. also, by adding some animation
+</I>&gt;<i> &gt; specific information (number of frames being the most important)
+</I>&gt;<i> &gt; to the gobject, it serves as a generic animation suitable for use in
+</I>&gt;<i> &gt; different widgets. (mod wheels,  waveform selectors as well as
+</I>&gt;<i> &gt; knobs for example).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; i could also implement a kind of animation store where by you
+</I>&gt;<i> &gt; load animations into the library with a string tag. then you
+</I>&gt;<i> &gt; can access them via that tag later. (no need to maintain pointers
+</I>&gt;<i> &gt; to animations in your application)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if an animation is selected that does not exist, a default would be
+</I>&gt;<i> &gt; returned to prevent exploding apps or the requirement of tedious error
+</I>&gt;<i> &gt; checking and handling.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; the default would only be loaded on demand so as not to waste
+</I>&gt;<i> &gt; memory.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; the object could also be used to trigger animation changes.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; you'd trigger a &quot;change-animation&quot; signal on the object
+</I>&gt;<i> &gt; and any widget connected to that signal would deref it
+</I>&gt;<i> &gt; and load the new one (specified in the signal closure)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; this avoids the need to iterate over lists of widgets if you
+</I>&gt;<i> &gt; ever want to change animations en masse.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; any thoughts?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; cheers,
+</I>&gt;<i> &gt; pete.
+</I>&gt;<i> 
+</I>&gt;<i> This stuff sounds good, i'm wondering about a use case for some of it
+</I>&gt;<i> though. Is it only for the knobs or for Oscillator selectors and stuff
+</I>&gt;<i> like that? Would animation changes only be from changing a &quot;theme&quot; or
+</I>&gt;<i> something else?
+</I>
+the animation object would be useful in anything that needs an
+animation.
+
+rendered widgets: sliders, knobs, leds, mod wheels, possibly even
+keyboards, waveform selectors, all would have a common source. by
+subclassing gdkpixbuf, you
+still have access to all the lower level functions by casting it to a
+gdkpixbuf.
+
+(that's all it is really. a gdkpixbuf with some additional variables and
+available functions)
+
+the widget knows what it wants to do with that sequence of frames so you
+don't
+need any widget specific information in the object itself. 
+
+changing the animation would be done on a per application basis not
+globally.
+i don't envisage any themes shipping phat animations any time soon so
+there's
+no point. you have two situations. firstly, you could write an app that
+is skinnable
+and have an easy way to change the skin, secondly, you have a mostly
+native
+application with pixmap phat knobs. if the app author provides for it,
+the user
+could select their preferred animation (or say a high visibility
+animation if they are
+visually impaired).
+
+it wouldn't take much code to implement the &quot;change-animation&quot; signal
+and you
+can ignore completely it if you don't use it.
+
+pete.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000009.html">[Phat-dev] the pixmap knob and abstracting animations
+</A></li>
+	<LI>Next message: <A HREF="000017.html">[Phat-dev] Tiny docs patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

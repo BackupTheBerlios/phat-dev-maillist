@@ -1,0 +1,189 @@
+From loki.davison at gmail.com  Thu Dec  6 13:06:27 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Thu, 6 Dec 2007 19:06:27 +0700
+Subject: [Phat-dev] phat project still going?
+In-Reply-To: <47556BBA.2000801@foltman.com>
+References: <200711121351.lACDpbgn021319@unicorn.berlios.de>
+	<ec9314860711122320n78759bbeh18e400d686904560@mail.gmail.com>
+	<ec9314860711122321id3500d9s774e414ba3dd6446@mail.gmail.com>
+	<47556BBA.2000801@foltman.com>
+Message-ID: <ec9314860712060406r1848d40fv4a0670aae8867465@mail.gmail.com>
+
+On 12/4/07, Krzysztof Foltman <wdev at foltman.com> wrote:
+> Loki Davison wrote:
+>
+> > btw, knob code has changed a lot in svn, much improved, i'm at net
+> > cafe, expensive here in siberia so can't write much, sorry!
+>
+> Just for your information: my audio plugin pack project
+> (http://calf.sf.net/) uses Phat's knobs. Unfortunately, this causes a
+> dependency on SVN version of it, which is not very practical.
+>
+> To help the less experienced users, I'm planning to use "normal" GTK
+> scales when Phat is not available. Either that, or bundle some SVN
+> snapshot of Phat and use it when it's not installed system-wide (Calf is
+> LGPL-ed).
+>
+> Hope the project (or its maintainer) doesn't freeze to death in Siberia :)
+>
+> Krzysztof
+>
+
+If you email the mailing list we can probably get a release worked
+out. It's just i don't actually have a net connection at the moment at
+home and the net cafes here in siberia are.... terrible. ;) So yeah,
+things are moving slowly. I've got some more code i wrote in the last
+few months on my machine but can't sync it to svn. Might have to email
+it to the list too... I'm not frozen yet!
+
+Loki
+
+
+From nedko at arnaudov.name  Mon Dec 10 14:46:22 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Mon, 10 Dec 2007 15:46:22 +0200
+Subject: [Phat-dev] phat project still going?
+In-Reply-To: <ec9314860712060406r1848d40fv4a0670aae8867465@mail.gmail.com>
+	(Loki Davison's message of "Thu, 6 Dec 2007 19:06:27 +0700")
+References: <200711121351.lACDpbgn021319@unicorn.berlios.de>
+	<ec9314860711122320n78759bbeh18e400d686904560@mail.gmail.com>
+	<ec9314860711122321id3500d9s774e414ba3dd6446@mail.gmail.com>
+	<47556BBA.2000801@foltman.com>
+	<ec9314860712060406r1848d40fv4a0670aae8867465@mail.gmail.com>
+Message-ID: <87d4teslw1.fsf@arnaudov.name>
+
+"Loki Davison" <loki.davison at gmail.com> writes:
+
+> On 12/4/07, Krzysztof Foltman <wdev at foltman.com> wrote:
+>> Loki Davison wrote:
+>>
+>> > btw, knob code has changed a lot in svn, much improved, i'm at net
+>> > cafe, expensive here in siberia so can't write much, sorry!
+>>
+>> Just for your information: my audio plugin pack project
+>> (http://calf.sf.net/) uses Phat's knobs. Unfortunately, this causes a
+>> dependency on SVN version of it, which is not very practical.
+>>
+>> To help the less experienced users, I'm planning to use "normal" GTK
+>> scales when Phat is not available. Either that, or bundle some SVN
+>> snapshot of Phat and use it when it's not installed system-wide (Calf is
+>> LGPL-ed).
+>>
+>> Hope the project (or its maintainer) doesn't freeze to death in Siberia :)
+>>
+>> Krzysztof
+>>
+>
+> If you email the mailing list we can probably get a release worked
+> out. It's just i don't actually have a net connection at the moment at
+> home and the net cafes here in siberia are.... terrible. ;) So yeah,
+> things are moving slowly. I've got some more code i wrote in the last
+> few months on my machine but can't sync it to svn. Might have to email
+> it to the list too... I'm not frozen yet!
+
+Having new PHAT release us good thing. But without new fansliders! They
+should be moved to separate branch and improved there. Then merged when
+they are ready. What do you think?
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20071210/10ff570a/attachment.pgp>
+
+From nedko at arnaudov.name  Mon Dec 10 15:40:47 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Mon, 10 Dec 2007 16:40:47 +0200
+Subject: [Phat-dev] phat project still going?
+In-Reply-To: <475D4561.40905@foltman.com> (Krzysztof Foltman's message of "Mon,
+	10 Dec 2007 13:55:45 +0000")
+References: <200711121351.lACDpbgn021319@unicorn.berlios.de>
+	<ec9314860711122320n78759bbeh18e400d686904560@mail.gmail.com>
+	<ec9314860711122321id3500d9s774e414ba3dd6446@mail.gmail.com>
+	<47556BBA.2000801@foltman.com>
+	<ec9314860712060406r1848d40fv4a0670aae8867465@mail.gmail.com>
+	<87d4teslw1.fsf@arnaudov.name> <475D4561.40905@foltman.com>
+Message-ID: <878x42sjdc.fsf@arnaudov.name>
+
+Krzysztof Foltman <wdev at foltman.com> writes:
+
+> By the way - *please* don't make the waveform preview widget dependent
+> on any file loading library. All it *needs* is a data buffer (either
+> "real" or "virtual" one).
+
+I agree with that. In particular, zynadd generates waveforms so they are
+not on disk anyway. OTOH i think there are two waveform modes, one for
+big zoom (view samples/several waveform "periods") and one for small
+zoom (view whole sample). From my experience two modes are drawn using
+different algorithms (fill vs draw lines).
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20071210/335ba251/attachment.pgp>
+
+From wdev at foltman.com  Mon Dec 10 15:41:04 2007
+From: wdev at foltman.com (Krzysztof Foltman)
+Date: Mon, 10 Dec 2007 14:41:04 +0000
+Subject: [Phat-dev] phat project still going?
+In-Reply-To: <878x42sjdc.fsf@arnaudov.name>
+References: <200711121351.lACDpbgn021319@unicorn.berlios.de>	<ec9314860711122320n78759bbeh18e400d686904560@mail.gmail.com>	<ec9314860711122321id3500d9s774e414ba3dd6446@mail.gmail.com>	<47556BBA.2000801@foltman.com>	<ec9314860712060406r1848d40fv4a0670aae8867465@mail.gmail.com>	<87d4teslw1.fsf@arnaudov.name>
+	<475D4561.40905@foltman.com> <878x42sjdc.fsf@arnaudov.name>
+Message-ID: <475D5000.7090309@foltman.com>
+
+Nedko Arnaudov wrote:
+
+>> By the way - *please* don't make the waveform preview widget dependent
+>> on any file loading library. All it *needs* is a data buffer (either
+>> "real" or "virtual" one).
+> I agree with that. In particular, zynadd generates waveforms so they are
+> not on disk anyway. OTOH i think there are two waveform modes, one for
+> big zoom (view samples/several waveform "periods") and one for small
+> zoom (view whole sample). From my experience two modes are drawn using
+> different algorithms (fill vs draw lines).
+
+Yes, and possibly different input data (single samples vs some sort of
+peak cache).
+
+Krzysztof
+
+
+
+From loki.davison at gmail.com  Sun Dec 23 15:49:06 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Sun, 23 Dec 2007 21:49:06 +0700
+Subject: [Phat-dev] Resizing phat?
+In-Reply-To: <476A50B5.7010403@freenet.de>
+References: <476A50B5.7010403@freenet.de>
+Message-ID: <ec9314860712230649w5c03d364s721bb3623d04879b@mail.gmail.com>
+
+On 12/20/07, Christian <krampenschiesser at freenet.de> wrote:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+>
+> Hi loki,
+> is it possible to resize the controllers, in special the knob-ctrl,
+> so that it gets smaller than its actual size?
+> And is there a possibility to use phat with gtkmm?
+> Thanks for your efforts!
+> Christian L?hner
+
+Yes, it is. Just look in the demos they knob demo does this. About
+gtkmm i don't know of any bindings but you could look at the python or
+perl binding and write something from that. I've never used gtkmm
+though. The python bindings where really easy to write and work well.
+I haven't tried the perl bindings. Not sure if knob resizing was in
+last release, but i think it probably was. In svn it works fine.
+
+Loki
+
+

@@ -1,0 +1,52 @@
+From nedko at arnaudov.name  Thu Dec  4 18:54:26 2008
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Thu, 04 Dec 2008 19:54:26 +0200
+Subject: [Phat-dev] pyphat build problems
+In-Reply-To: <ec9314860811232018w8c2f0bbi4e35a032be887788@mail.gmail.com>
+	(Loki Davison's message of "Mon\, 24 Nov 2008 15\:18\:27 +1100")
+References: <20081122023045.5299249B6BD@ws1-3a.us4.outblaze.com>
+	<ec9314860811232018w8c2f0bbi4e35a032be887788@mail.gmail.com>
+Message-ID: <87y6yvsu5p.fsf@usbix.spacelabs.org>
+
+"Loki Davison" <loki.davison at gmail.com> writes:
+
+> On Sat, Nov 22, 2008 at 1:30 PM, shane richards <shanerich at email.com> wrote:
+>> Hi,
+>>
+>> I'm trying to build/install latest svn of phat/pyphat (rev. 118), and I'm getting an undefined symbol when working with pyphat:
+>>
+>> 'phat_knob_set_range'
+>>
+>> is the culprit.
+>>
+>>
+>> Trying to build zynjacku results in it not being able to find the python modules during ./configure
+>>
+>> I've had terrible trouble with all the releases, is there a known "working" svn revision that's compatible with zynjacku?
+>>
+>>
+>> regards
+>> - shane
+>>
+>>
+>
+> mmm, sorry about the slow response on this, i haven't had a look at
+> phat for a while. I'm pretty certain zynjacku requires a svn version
+> of phat. That error suggests the header that pyphat is built against
+> is too old. Have you done make install on phat before building pyphat?
+>  I'll have a look when i get near my machine. I've forward this on to
+> the list in case anyone can fix your prob faster.
+
+No, in fact I discourage use of phat svn because of broken (at least for
+me) fansliders.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20081204/06137dc1/attachment.pgp>
+

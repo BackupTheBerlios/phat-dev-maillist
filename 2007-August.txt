@@ -1,0 +1,1117 @@
+From loki.davison at gmail.com  Thu Aug  2 17:33:50 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 3 Aug 2007 01:33:50 +1000
+Subject: [Phat-dev] fan slider updates and lv2 questions? Is it ugly or okay?
+Message-ID: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+
+Hi all,
+got a new martin guitar so not much coding going on! ;) Just had to
+brag a bit.... What are everyones thoughts on the new fan slider look?
+I'll fix the glass effect to be a better 3d effect soon. How is other
+code progressing? Torben, what are you doing with lv2 stuff? Get it
+into svn one way or another. We could also use some example code for
+the midi/osc/etc control stuff you mentioned. We seem to be getting
+quite a collection of new features so maybe we should put out a
+release soon. Probaby when the lv2 and meter stuff is finalised? What
+else is required?
+
+Loki
+
+
+From zenadsl6252 at zen.co.uk  Fri Aug  3 05:41:47 2007
+From: zenadsl6252 at zen.co.uk (pete)
+Date: Fri, 3 Aug 2007 04:41:47 +0100
+Subject: [Phat-dev] fan slider updates and lv2 questions? Is it ugly or
+ okay?
+In-Reply-To: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+References: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+Message-ID: <20070803044147.35923d48.zenadsl6252@zen.co.uk>
+
+On Fri, 3 Aug 2007 01:33:50 +1000
+"Loki Davison" <loki.davison at gmail.com> wrote:
+
+> Hi all,
+> got a new martin guitar so not much coding
+> going on! ;) Just had to brag a bit.... What
+> are everyones thoughts on the new fan slider
+> look? 
+
+i like the gist of the design although some
+aspects (glass effect, curve proportions) could
+do with changing (imho). the thing is, i'm not
+sure it's ideal as a fixed native default as it
+won't sit well with the majority of themes.
+(as it's 2D and features large curves)
+
+having said that, i'm unlikely to use the
+fanslider so i'm not going to bitch about what it
+looks like (any more :).
+
+more importantly for me, the the fan is unusably
+slow on both my systems. hopefully i can catch
+you on irc at some point and we can compare and
+contrast X configurations.
+
+there's also no fallback for non composite
+systems. (or where composite is enabled but
+there's no composite manager running) we
+need that i think.
+
+> I'll fix the glass effect to be a better
+> 3d effect soon. How is other code progressing?
+> Torben, what are you doing with lv2 stuff? Get
+> it into svn one way or another. We could also
+> use some example code for the midi/osc/etc
+> control stuff you mentioned. We seem to be
+> getting quite a collection of new features so
+> maybe we should put out a release soon. Probaby
+> when the lv2 and meter stuff is finalised? What
+> else is required?
+
+i'm in no rush for a release. i don't know how far
+along the lv2 stuff or meters are but we are
+halfway though reorganising the range widgets.
+it's coming together but it's still a mess at the 
+moment. if you want to release reasonably soon
+then i'll postpone any more ambitious changes and
+concentrate on sorting out what we have so far.
+
+:)
+
+pete.
+
+
+From loki.davison at gmail.com  Fri Aug  3 06:02:01 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 3 Aug 2007 14:02:01 +1000
+Subject: [Phat-dev] fan slider updates and lv2 questions? Is it ugly or
+	okay?
+In-Reply-To: <20070803044147.35923d48.zenadsl6252@zen.co.uk>
+References: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+	<20070803044147.35923d48.zenadsl6252@zen.co.uk>
+Message-ID: <ec9314860708022102q356e0dd2h4ad0b6982ac33a7c@mail.gmail.com>
+
+On 8/3/07, pete <zenadsl6252 at zen.co.uk> wrote:
+> On Fri, 3 Aug 2007 01:33:50 +1000
+> "Loki Davison" <loki.davison at gmail.com> wrote:
+>
+> > Hi all,
+> > got a new martin guitar so not much coding
+> > going on! ;) Just had to brag a bit.... What
+> > are everyones thoughts on the new fan slider
+> > look?
+>
+> i like the gist of the design although some
+> aspects (glass effect, curve proportions) could
+> do with changing (imho). the thing is, i'm not
+> sure it's ideal as a fixed native default as it
+> won't sit well with the majority of themes.
+> (as it's 2D and features large curves)
+>
+> having said that, i'm unlikely to use the
+> fanslider so i'm not going to bitch about what it
+> looks like (any more :).
+>
+> more importantly for me, the the fan is unusably
+> slow on both my systems. hopefully i can catch
+> you on irc at some point and we can compare and
+> contrast X configurations.
+>
+> there's also no fallback for non composite
+> systems. (or where composite is enabled but
+> there's no composite manager running) we
+> need that i think.
+>
+> > I'll fix the glass effect to be a better
+> > 3d effect soon. How is other code progressing?
+> > Torben, what are you doing with lv2 stuff? Get
+> > it into svn one way or another. We could also
+> > use some example code for the midi/osc/etc
+> > control stuff you mentioned. We seem to be
+> > getting quite a collection of new features so
+> > maybe we should put out a release soon. Probaby
+> > when the lv2 and meter stuff is finalised? What
+> > else is required?
+>
+> i'm in no rush for a release. i don't know how far
+> along the lv2 stuff or meters are but we are
+> halfway though reorganising the range widgets.
+> it's coming together but it's still a mess at the
+> moment. if you want to release reasonably soon
+> then i'll postpone any more ambitious changes and
+> concentrate on sorting out what we have so far.
+>
+> :)
+>
+> pete.
+> _______________________________________________
+
+No pressing hurry go for the ambitious changes! ;) What is the general
+plan with the range widgets? Got the mapping stuff worked out?
+
+Loki
+
+
+From zenadsl6252 at zen.co.uk  Fri Aug  3 08:12:24 2007
+From: zenadsl6252 at zen.co.uk (pete)
+Date: Fri, 3 Aug 2007 07:12:24 +0100
+Subject: [Phat-dev] fan slider updates and lv2 questions? Is it ugly or
+ okay?
+In-Reply-To: <ec9314860708022102q356e0dd2h4ad0b6982ac33a7c@mail.gmail.com>
+References: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+	<20070803044147.35923d48.zenadsl6252@zen.co.uk>
+	<ec9314860708022102q356e0dd2h4ad0b6982ac33a7c@mail.gmail.com>
+Message-ID: <20070803071224.2545ca0b.zenadsl6252@zen.co.uk>
+
+On Fri, 3 Aug 2007 14:02:01 +1000
+"Loki Davison" <loki.davison at gmail.com> wrote:
+
+> On 8/3/07, pete <zenadsl6252 at zen.co.uk> wrote:
+> > On Fri, 3 Aug 2007 01:33:50 +1000
+> > "Loki Davison" <loki.davison at gmail.com> wrote:
+
+> > _______________________________________________
+> 
+> No pressing hurry go for the ambitious
+> changes! ;) What is the general plan with the
+> range widgets? Got the mapping stuff worked out?
+
+i'll start a new thread :)
+
+pete.
+
+
+From zenadsl6252 at zen.co.uk  Fri Aug  3 09:56:02 2007
+From: zenadsl6252 at zen.co.uk (pete)
+Date: Fri, 3 Aug 2007 08:56:02 +0100
+Subject: [Phat-dev] phatrange and range widgets
+Message-ID: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk>
+
+we decided to incorporate the useful parts of
+gtkrange as phatrange in order to use that as the
+base class for our range widgets.
+to that end, i've just committed the stripped down
+phatrange and some tweaks to phatknob.
+
+in the end i practically gutted phatrange. this
+included removing some features that were
+ostensibly useful. this is because non of our
+widgets would use those features even though the
+related properties were inherited. i hope to
+put some or all of them back, but rewritten to
+better suit our needs, then i'll update the rest
+of the range widgets to use them.
+
+these include:
+
+the update policy
+	perhaps not so useful for audio but
+	probably nice to have anyway
+
+inverted mode
+	could this go in the mapper? do we care
+	about inverted mode at all?
+
+input handling (scrolling, keys etc)
+	this needs some careful thought. we
+	either need to leverage gtk features
+	to store input configurations or come
+	up with our own config system. 
+	i don't imagine this will go back in the
+	range widget directly either.
+
+so, phatrange now contains little more than the
+following:
+
+adjustment handling
+a placeholder for the value mapper
+some cases to deal with using the parent window
+for drawing and a dedicated event window.
+
+unless anyone has any objections, i'll start
+moving all range widgets over to phatrange.
+this will involve removing log mode until the
+mapper is finished.
+
+pete.
+
+
+From nedko at arnaudov.name  Fri Aug  3 10:33:39 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Fri, 03 Aug 2007 11:33:39 +0300
+Subject: [Phat-dev] phatrange and range widgets
+In-Reply-To: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk> (pete's message
+	of "Fri, 3 Aug 2007 08:56:02 +0100")
+References: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk>
+Message-ID: <87y7gtdnks.fsf@arnaudov.name>
+
+pete <zenadsl6252 at zen.co.uk> writes:
+
+> inverted mode
+> 	could this go in the mapper? do we care
+> 	about inverted mode at all?
+
+It can pf course, if we care. I personally dont care for my apps so
+far.
+
+> input handling (scrolling, keys etc)
+> 	this needs some careful thought. we
+> 	either need to leverage gtk features
+> 	to store input configurations or come
+> 	up with our own config system. 
+> 	i don't imagine this will go back in the
+> 	range widget directly either.
+
+IMHO phat config system would be good thing. But I'd postpone this for
+release following next one. Loki?
+
+> so, phatrange now contains little more than the
+> following:
+>
+> adjustment handling
+> a placeholder for the value mapper
+> some cases to deal with using the parent window
+> for drawing and a dedicated event window.
+
+I'll check the code in my first time window :) ... and try to do
+something about these mapper objects
+
+> unless anyone has any objections, i'll start
+> moving all range widgets over to phatrange.
+> this will involve removing log mode until the
+> mapper is finished.
+
+no objections for phatranging :D
+
+i dont use log mode in my apps, do we know any app using it?
+If so we better include log mode as mapper object in next release, so we
+dont have less features in newer release.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070803/1b77606c/attachment.pgp>
+
+From damon at karuna.eclipse.co.uk  Fri Aug  3 10:55:34 2007
+From: damon at karuna.eclipse.co.uk (Damon Chaplin)
+Date: Fri, 03 Aug 2007 09:55:34 +0100
+Subject: [Phat-dev] fan slider updates and lv2 questions? Is it ugly
+	or	okay?
+In-Reply-To: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+References: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+Message-ID: <1186131334.3253.2.camel@localhost.localdomain>
+
+On Fri, 2007-08-03 at 01:33 +1000, Loki Davison wrote:
+> Hi all,
+> got a new martin guitar so not much coding going on! ;) Just had to
+> brag a bit.... What are everyones thoughts on the new fan slider look?
+> I'll fix the glass effect to be a better 3d effect soon. How is other
+> code progressing? Torben, what are you doing with lv2 stuff? Get it
+> into svn one way or another. We could also use some example code for
+> the midi/osc/etc control stuff you mentioned. We seem to be getting
+> quite a collection of new features so maybe we should put out a
+> release soon. Probaby when the lv2 and meter stuff is finalised? What
+> else is required?
+
+Unfortunately I've moved onto other things, so I won't be doing any more
+work on the meter widgets.
+
+I do have some newer code is faster and helps interface with JACK, if
+someone wants that. Though I'm not entirely sure it is correct.
+
+Damon
+
+
+
+
+From zenadsl6252 at zen.co.uk  Fri Aug  3 11:13:31 2007
+From: zenadsl6252 at zen.co.uk (pete)
+Date: Fri, 3 Aug 2007 10:13:31 +0100
+Subject: [Phat-dev] phatrange and range widgets
+In-Reply-To: <87y7gtdnks.fsf@arnaudov.name>
+References: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk>
+	<87y7gtdnks.fsf@arnaudov.name>
+Message-ID: <20070803101331.dccf1de6.zenadsl6252@zen.co.uk>
+
+On Fri, 03 Aug 2007 11:33:39 +0300
+Nedko Arnaudov <nedko at arnaudov.name> wrote:
+
+> pete <zenadsl6252 at zen.co.uk> writes:
+> 
+> > inverted mode
+> > 	could this go in the mapper? do we
+> > care about inverted mode at all?
+> 
+> It can pf course, if we care. I personally dont
+> care for my apps so far.
+
+i'm not sure that it's legitimate to
+think that this feature might be useful while
+simultaneously being unable to think of a single
+use for it. unless someone speaks up in it's
+favour, i guess, forget it. :)
+
+> 
+> > input handling (scrolling, keys etc)
+> > 	this needs some careful thought. we
+> > 	either need to leverage gtk features
+> > 	to store input configurations or come
+> > 	up with our own config system. 
+> > 	i don't imagine this will go back in
+> > the range widget directly either.
+> 
+> IMHO phat config system would be good thing.
+> But I'd postpone this for release following
+> next one. Loki?
+
+yeah, we lose nothing by doing so as those
+widgets that already have extended input support,
+do so in their own classes.
+
+> 
+> > so, phatrange now contains little more than
+> > the following:
+> >
+> > adjustment handling
+> > a placeholder for the value mapper
+> > some cases to deal with using the parent
+> > window for drawing and a dedicated event
+> > window.
+> 
+> I'll check the code in my first time
+> window :) ... and try to do something about
+> these mapper objects
+
+feel free to change phatrange to suit. i just
+threw the placeholder in whilst i was there.
+ 
+> > unless anyone has any objections, i'll start
+> > moving all range widgets over to phatrange.
+> > this will involve removing log mode until the
+> > mapper is finished.
+> 
+> no objections for phatranging :D
+> 
+> i dont use log mode in my apps, do we know any
+> app using it? If so we better include log mode
+> as mapper object in next release, so we dont
+> have less features in newer release.
+
+pete.
+
+
+From zenadsl6252 at zen.co.uk  Fri Aug  3 14:31:03 2007
+From: zenadsl6252 at zen.co.uk (pete)
+Date: Fri, 3 Aug 2007 13:31:03 +0100
+Subject: [Phat-dev] fan slider updates and lv2 questions? Is it ugly or
+ okay?
+In-Reply-To: <1186131334.3253.2.camel@localhost.localdomain>
+References: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+	<1186131334.3253.2.camel@localhost.localdomain>
+Message-ID: <20070803133103.e74ff443.zenadsl6252@zen.co.uk>
+
+On Fri, 03 Aug 2007 09:55:34 +0100
+Damon Chaplin <damon at karuna.eclipse.co.uk> wrote:
+ 
+> Unfortunately I've moved onto other things, so
+> I won't be doing any more work on the meter
+> widgets.
+
+ah, sorry to hear that. well, thanks a lot for
+your help Damon. having the meters ported in, oh
+about 8 seconds was a huge boost for phat. :) 
+
+> I do have some newer code is faster and helps
+> interface with JACK, if someone wants that.
+> Though I'm not entirely sure it is correct.
+
+sure. send it over to loki (or me in fact). we
+will check it in or upload it somewhere in case
+we can make use of it.
+
+cheers,
+pete.
+
+
+From loki.davison at gmail.com  Fri Aug  3 14:36:52 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 3 Aug 2007 22:36:52 +1000
+Subject: [Phat-dev] fan slider updates and lv2 questions? Is it ugly or
+	okay?
+In-Reply-To: <20070803133103.e74ff443.zenadsl6252@zen.co.uk>
+References: <ec9314860708020833jd1a49d5v890bb287454ec4ce@mail.gmail.com>
+	<1186131334.3253.2.camel@localhost.localdomain>
+	<20070803133103.e74ff443.zenadsl6252@zen.co.uk>
+Message-ID: <ec9314860708030536v25709356p2f7a33b722e24234@mail.gmail.com>
+
+On 8/3/07, pete <zenadsl6252 at zen.co.uk> wrote:
+> On Fri, 03 Aug 2007 09:55:34 +0100
+> Damon Chaplin <damon at karuna.eclipse.co.uk> wrote:
+>
+> > Unfortunately I've moved onto other things, so
+> > I won't be doing any more work on the meter
+> > widgets.
+>
+> ah, sorry to hear that. well, thanks a lot for
+> your help Damon. having the meters ported in, oh
+> about 8 seconds was a huge boost for phat. :)
+>
+> > I do have some newer code is faster and helps
+> > interface with JACK, if someone wants that.
+> > Though I'm not entirely sure it is correct.
+>
+> sure. send it over to loki (or me in fact). we
+> will check it in or upload it somewhere in case
+> we can make use of it.
+>
+> cheers,
+> pete. _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+>
+
+
+Seconded on both ;) Send it over and thanks for the great porting help.
+
+Loki
+
+
+From nedko at arnaudov.name  Sun Aug  5 13:42:49 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Sun, 05 Aug 2007 14:42:49 +0300
+Subject: [Phat-dev] phatrange and range widgets
+In-Reply-To: <20070803101331.dccf1de6.zenadsl6252@zen.co.uk> (pete's message
+	of "Fri, 3 Aug 2007 10:13:31 +0100")
+References: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk>
+	<87y7gtdnks.fsf@arnaudov.name>
+	<20070803101331.dccf1de6.zenadsl6252@zen.co.uk>
+Message-ID: <87fy2yqkau.fsf@arnaudov.name>
+
+pete <zenadsl6252 at zen.co.uk> writes:
+
+>> > input handling (scrolling, keys etc)
+>> > 	this needs some careful thought. we
+>> > 	either need to leverage gtk features
+>> > 	to store input configurations or come
+>> > 	up with our own config system. 
+>> > 	i don't imagine this will go back in
+>> > the range widget directly either.
+>> 
+>> IMHO phat config system would be good thing.
+>> But I'd postpone this for release following
+>> next one. Loki?
+>
+> yeah, we lose nothing by doing so as those
+> widgets that already have extended input support,
+> do so in their own classes.
+
+>> > so, phatrange now contains little more than
+>> > the following:
+>> >
+>> > adjustment handling
+>> > a placeholder for the value mapper
+>> > some cases to deal with using the parent
+>> > window for drawing and a dedicated event
+>> > window.
+>> 
+>> I'll check the code in my first time
+>> window :) ... and try to do something about
+>> these mapper objects
+>
+> feel free to change phatrange to suit. i just
+> threw the placeholder in whilst i was there.
+>  
+>> > unless anyone has any objections, i'll start
+>> > moving all range widgets over to phatrange.
+>> > this will involve removing log mode until the
+>> > mapper is finished.
+
+
+i've commited some work on phatrange and phatknob. in particular i
+changed code in phatknob that directly used adjustment with code that
+deals with abstracted "adjustment" with 0..1 range. I'd be glad if
+someone reviews my changes before i make more, just to ensure i'm not
+out of touch.
+
+i have major problem with lacking ui user use cases and specification
+how things (should) work. Some code i saw in phatknob is obviously
+broken, some is commented out and i cannot fix things without knowledge
+how it should work. i know this is work in progress but we should at
+least document what are our goals. i think we should put this info in
+the wiki associated with phat project. i talked with thorwil about knobs
+in particular and i saw his try for this in his blog too and he said
+we have serious discrepancies about knobs ui user use. we should
+document them and take a plan to handle them. as for developer use of
+widgets we lack documentation too and this is serious obstacle when
+changing code (we dont want to strip existing phat-iazed projects,
+right?). we should have use cases (developer point of view) and list of
+projects using phat so they can be checked for compatibility issues
+until project gets stable and coherent enough for other/new projects to
+stay in line with.
+
+So let start the list, and move it to wiki later:
+ * zynjacku (through python bindings)
+ * specimen
+ * khagan (through python bindings)
+ * jack_mixer (through python bindings)
+ * demo programs budnled with phat
+
+I've made some analysis of developer use cases and come to some
+specification:
+ * simplest use, no gtkadjustments, through accessing widget methods
+   signals directly. i.e. knob_get_value(), connect to knob
+   value-changed signal.
+ * gtkadjustments for more advanced use with two subcases:
+  * supply existing external gtkadjustment
+  * expose our internal gtkadjustment for use somewhere else
+
+In past I fixed some bugs that were some features not working in all use
+cases. I beleive defining them will improve our code base in future and
+will help testing too.
+
+Now how this interacts with phatrange? In my vision so far direct access
+methods should be implemented as proxy code to phatrange and not
+directly interacting with widget code and thus it may be possible to use
+some hairy macro to define them in all widgets. we need this because
+gobject model does not support method inheritance, or i am wrong?
+
+All gtkadjustment-less methods are implemented in phatrange by operating
+on gtkadjustment referenced in it.
+
+I'm still thinking about what is best way for interoperation between
+gtkadjustment and mapper object. in particular, mapper, at least one i
+have currently (monothonic linear spline), has valid range and is
+somewhat incompatible with change of it, caused by external
+gtkadjustment. Do you think we need to support external gtkadjustments
+when we have mapper? I'd say no. Logarithm also has input restritions
+too, thus rendering -50..0 gtkadjustment unusable. At least directly,
+but i think mapper should operate on real range not artificial one, like
+(0..1).
+
+After more inspection of phatknob and those concept discrepancies we
+have, i now beleive we should come with configuration system in next
+release. I propose (and have motivation to work on) class code
+interacting with gconf. In particular I want to start with radial/linear
+knob behaviour, always with left mouse button. More configuration
+candidates are welcome. Lets collect them in this thread, I'll put them
+on wiki once we have plan.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070805/3b2f6380/attachment.pgp>
+
+From nedko at arnaudov.name  Sun Aug  5 13:47:12 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Sun, 05 Aug 2007 14:47:12 +0300
+Subject: [Phat-dev] fansliders
+Message-ID: <877ioaqk3j.fsf@arnaudov.name>
+
+Currently phatfansliders are unusable in by setup. At least they could
+not eat my cpu without even showing fans. Also round corners look really
+ugly in my gtk theme. I dont think "round corners" is public property of
+gtk themes so it looks like good cadidate for our configuration
+system. Also i think we should have not-round corners as default because
+i beleive more themes are "edgy" than round.
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070805/897d155e/attachment.pgp>
+
+From torbenh at gmx.de  Wed Aug  8 20:45:00 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Wed, 8 Aug 2007 20:45:00 +0200
+Subject: [Phat-dev] fansliders
+In-Reply-To: <877ioaqk3j.fsf@arnaudov.name>
+References: <877ioaqk3j.fsf@arnaudov.name>
+Message-ID: <20070808184500.GD6920@mobilat>
+
+On Sun, Aug 05, 2007 at 02:47:12PM +0300, Nedko Arnaudov wrote:
+> Currently phatfansliders are unusable in by setup. At least they could
+
+same here. no hardware acceleration.
+but the fans are not transparent. nor the rest of the window, which is
+white here.
+Do i need to load some module for Xcomposite ?
+need more input before i can look into this stuff ;)
+
+> not eat my cpu without even showing fans. Also round corners look really
+> ugly in my gtk theme. I dont think "round corners" is public property of
+> gtk themes so it looks like good cadidate for our configuration
+> system. Also i think we should have not-round corners as default because
+> i beleive more themes are "edgy" than round.
+> -- 
+> Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+
+
+
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From loki.davison at gmail.com  Thu Aug  9 13:11:32 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Thu, 9 Aug 2007 21:11:32 +1000
+Subject: [Phat-dev] fansliders
+In-Reply-To: <20070808184500.GD6920@mobilat>
+References: <877ioaqk3j.fsf@arnaudov.name> <20070808184500.GD6920@mobilat>
+Message-ID: <ec9314860708090411y2b75741fu74697e117d8bc977@mail.gmail.com>
+
+On 8/9/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> On Sun, Aug 05, 2007 at 02:47:12PM +0300, Nedko Arnaudov wrote:
+> > Currently phatfansliders are unusable in by setup. At least they could
+>
+> same here. no hardware acceleration.
+> but the fans are not transparent. nor the rest of the window, which is
+> white here.
+> Do i need to load some module for Xcomposite ?
+> need more input before i can look into this stuff ;)
+>
+
+
+http://gentoo-wiki.com/TIP_Xorg_X11_and_Tranparency
+
+I'll work on making them a bit faster if possible anyway. Though i
+think i'm keeping the roundness ;)
+
+Loki
+
+
+From nedko at arnaudov.name  Thu Aug  9 14:57:53 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Thu, 09 Aug 2007 15:57:53 +0300
+Subject: [Phat-dev] fansliders
+In-Reply-To: <ec9314860708090411y2b75741fu74697e117d8bc977@mail.gmail.com>
+	(Loki Davison's message of "Thu, 9 Aug 2007 21:11:32 +1000")
+References: <877ioaqk3j.fsf@arnaudov.name> <20070808184500.GD6920@mobilat>
+	<ec9314860708090411y2b75741fu74697e117d8bc977@mail.gmail.com>
+Message-ID: <87k5s4hnla.fsf@arnaudov.name>
+
+"Loki Davison" <loki.davison at gmail.com> writes:
+
+> On 8/9/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+>> On Sun, Aug 05, 2007 at 02:47:12PM +0300, Nedko Arnaudov wrote:
+>> > Currently phatfansliders are unusable in by setup. At least they could
+>>
+>> same here. no hardware acceleration.
+>> but the fans are not transparent. nor the rest of the window, which is
+>> white here.
+>> Do i need to load some module for Xcomposite ?
+>> need more input before i can look into this stuff ;)
+>>
+>
+>
+> http://gentoo-wiki.com/TIP_Xorg_X11_and_Tranparency
+
+That is fine, but fansliders should be useful without
+xcomposite. Otherwise we damn phat-enabled apps.
+
+> I'll work on making them a bit faster if possible anyway. Though i
+> think i'm keeping the roundness ;)
+
+Keeping it is ok, forcing it is not. Please make it optional! After all
+user has the power to choose style, no? Even MS operating systems are
+themable these days.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070809/81f09102/attachment.pgp>
+
+From zenadsl6252 at zen.co.uk  Thu Aug 16 08:52:39 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Thu, 16 Aug 2007 07:52:39 +0100
+Subject: [Phat-dev] phatrange and range widgets
+In-Reply-To: <87fy2yqkau.fsf@arnaudov.name>
+References: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk>
+	<87y7gtdnks.fsf@arnaudov.name>
+	<20070803101331.dccf1de6.zenadsl6252@zen.co.uk>
+	<87fy2yqkau.fsf@arnaudov.name>
+Message-ID: <1187247159.17595.248.camel@one>
+
+On Sun, 2007-08-05 at 14:42 +0300, Nedko Arnaudov wrote: 
+
+> i've commited some work on phatrange and phatknob. in particular i
+> changed code in phatknob that directly used adjustment with code that
+> deals with abstracted "adjustment" with 0..1 range. I'd be glad if
+> someone reviews my changes before i make more, just to ensure i'm not
+> out of touch.
+
+it makes sense to me. the widgets should only interact with the
+mapper or it's derived values. some widgets may need to 
+access the real value for display purposes but i don't see that
+being a problem. 
+
+> i have major problem with lacking ui user use cases and specification
+> how things (should) work.
+
+
+
+> Some code i saw in phatknob is obviously
+> broken, 
+
+which parts?
+
+> some is commented out and i cannot fix things without knowledge
+> how it should work. 
+
+can't help if we don't know which parts. the list is
+the best way to resolve these issues.
+
+> i know this is work in progress but we should at
+> least document what are our goals. i think we should put this info in
+> the wiki associated with phat project.
+
+this doesn't really work with our current modus operandi. 
+
+you can't document something until you have decided 
+what form it will take. if you need the goals before you
+write the code then you have to plan in advance. the 
+problem is, we haven't been doing that. 
+instead, what we do is closer to rapid prototyping. we
+propose solutions to problems as they arise, implement
+them, check the implementation for suitability and go
+from there.
+
+this piecemeal approach my appear chaotic and inelegant but
+it best suits the limited and intermittent resources we 
+have at our disposal.
+
+it allows us to move phat forward in short jumps and 
+starts rather than an inexorable and orchestrated advance.
+anything that demands an extended commitment is bound 
+to fail because phat is an ancillary project that competes
+for time with primary projects, not to mention all that
+tedious real life stuff.
+
+>  i talked with thorwil about knobs
+> in particular and i saw his try for this in his blog too and he said
+> we have serious discrepancies about knobs ui user use. we should
+> document them and take a plan to handle them. 
+
+i think this is already resolved (in as much as it can be)
+the configurable input mapping should allow people to choose 
+their preferred method. this is a deal breaker for me so 
+if it's not resolved then we have problems. if you have 
+more to add then we should run it past loki again.
+
+> as for developer use of
+> widgets we lack documentation too and this is serious obstacle when
+> changing code (we dont want to strip existing phat-iazed projects,
+> right?). we should have use cases (developer point of view) and list of
+> projects using phat so they can be checked for compatibility issues
+> until project gets stable and coherent enough for other/new projects to
+> stay in line with.
+> 
+> So let start the list, and move it to wiki later:
+>  * zynjacku (through python bindings)
+>  * specimen
+>  * khagan (through python bindings)
+>  * jack_mixer (through python bindings)
+>  * demo programs budnled with phat
+
+we pretty much decided to ignore this issue for now.
+
+as legacies go, we don't have one. the only client
+application that is not owned by a phat developer is
+specimen. to complete the roster, i offered to keep
+specimen in sync with changes to phat.
+
+i've been working under the assumption that we can do
+what the hell we like up until the next release. 
+at that point, the new features stand a good chance
+of attracting new users and building a genuinely
+unmanageable legacy.
+
+it's one of them there windows of opportunity.
+
+i don't envisage any changes that will damage the viability of
+phat as a solution for any of it's client applications.
+a knob will still be a knob, a slider a slider etc. it will
+just be a case of updating the client applications to
+suit any changes.
+
+
+> I've made some analysis of developer use cases and come to some
+> specification:
+>  * simplest use, no gtkadjustments, through accessing widget methods
+>    signals directly. i.e. knob_get_value(), connect to knob
+>    value-changed signal.
+>  * gtkadjustments for more advanced use with two subcases:
+>   * supply existing external gtkadjustment
+>   * expose our internal gtkadjustment for use somewhere else
+
+if you have the time and motivation to draw up use cases
+then all the better.
+
+> In past I fixed some bugs that were some features not working in all use
+> cases. I beleive defining them will improve our code base in future and
+> will help testing too.
+
+no complaints :)
+
+> Now how this interacts with phatrange? In my vision so far direct access
+> methods should be implemented as proxy code to phatrange and not
+> directly interacting with widget code and thus it may be possible to use
+> some hairy macro to define them in all widgets. we need this because
+> gobject model does not support method inheritance, or i am wrong?
+
+i'm not sure. we can chain up to access virtual parent
+functions?. (cast the object to it's parent type)
+
+> All gtkadjustment-less methods are implemented in phatrange by operating
+> on gtkadjustment referenced in it.
+> 
+> I'm still thinking about what is best way for interoperation between
+> gtkadjustment and mapper object. in particular, mapper, at least one i
+> have currently (monothonic linear spline), has valid range and is
+> somewhat incompatible with change of it, caused by external
+> gtkadjustment. Do you think we need to support external gtkadjustments
+> when we have mapper? I'd say no. Logarithm also has input restritions
+> too, thus rendering -50..0 gtkadjustment unusable. At least directly,
+> but i think mapper should operate on real range not artificial one, like
+> (0..1).
+
+are there any cases where we cannot detect and translate 
+problematic ranges? if there are or the detection and 
+translation is too expensive then we are a bit screwed.
+
+> After more inspection of phatknob and those concept discrepancies we
+> have, i now beleive we should come with configuration system in next
+> release. I propose (and have motivation to work on) class code
+> interacting with gconf. In particular I want to start with radial/linear
+> knob behaviour, always with left mouse button.
+
+this should be configurable. it's the only way we can accommodate 
+different user and developer preferences. (IOW, it's the only
+way we can prevent me and thorsten from killing each other :P )
+
+i'd like to see targets (linear control, absolute control, menu popup
+etc) be mappable to input combinations (buttons 1 - 5, and modifiers)
+
+> More configuration
+> candidates are welcome. Lets collect them in this thread, I'll put them
+> on wiki once we have plan.
+
+cool.
+
+
+sorry for the late reply. bit busy atm and every time i tried to 
+reply, i ended up writing war and peace.
+gotta work on my terseness
+:/
+
+cheers,
+pete.
+
+
+
+
+From nedko at arnaudov.name  Sat Aug 25 17:04:54 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Sat, 25 Aug 2007 18:04:54 +0300
+Subject: [Phat-dev] phatrange and range widgets
+In-Reply-To: <1187247159.17595.248.camel@one> (pete shorthose's message of
+	"Thu, 16 Aug 2007 07:52:39 +0100")
+References: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk>
+	<87y7gtdnks.fsf@arnaudov.name>
+	<20070803101331.dccf1de6.zenadsl6252@zen.co.uk>
+	<87fy2yqkau.fsf@arnaudov.name> <1187247159.17595.248.camel@one>
+Message-ID: <87r6lrzmcp.fsf@arnaudov.name>
+
+pete shorthose <zenadsl6252 at zen.co.uk> writes:
+
+>> i have major problem with lacking ui user use cases and specification
+>> how things (should) work.
+>
+>> Some code i saw in phatknob is obviously
+>> broken, 
+>
+> which parts?
+
+alternative (linear?) adjsutment with mouse button 3
+I've not investigated further but it does not work here.
+
+>>  i talked with thorwil about knobs
+>> in particular and i saw his try for this in his blog too and he said
+>> we have serious discrepancies about knobs ui user use. we should
+>> document them and take a plan to handle them. 
+>
+> i think this is already resolved (in as much as it can be)
+> the configurable input mapping should allow people to choose 
+> their preferred method. this is a deal breaker for me so 
+> if it's not resolved then we have problems. if you have 
+> more to add then we should run it past loki again.
+
+allow people to choose - i agree (see below), but the point is that we
+need behaviours to choose from defined. Do you agree with definitions
+posted in thorwil blog? Or we have them documented elsewere?
+
+>> Now how this interacts with phatrange? In my vision so far direct access
+>> methods should be implemented as proxy code to phatrange and not
+>> directly interacting with widget code and thus it may be possible to use
+>> some hairy macro to define them in all widgets. we need this because
+>> gobject model does not support method inheritance, or i am wrong?
+>
+> i'm not sure. we can chain up to access virtual parent
+> functions?. (cast the object to it's parent type)
+
+so this needs more investigation, i'm concerned for pyphat in particular
+
+>> All gtkadjustment-less methods are implemented in phatrange by operating
+>> on gtkadjustment referenced in it.
+>> 
+>> I'm still thinking about what is best way for interoperation between
+>> gtkadjustment and mapper object. in particular, mapper, at least one i
+>> have currently (monothonic linear spline), has valid range and is
+>> somewhat incompatible with change of it, caused by external
+>> gtkadjustment. Do you think we need to support external gtkadjustments
+>> when we have mapper? I'd say no. Logarithm also has input restritions
+>> too, thus rendering -50..0 gtkadjustment unusable. At least directly,
+>> but i think mapper should operate on real range not artificial one, like
+>> (0..1).
+>
+> are there any cases where we cannot detect and translate 
+> problematic ranges? if there are or the detection and 
+> translation is too expensive then we are a bit screwed.
+
+We can detect but i doubt we can translate. So we can reject external
+adjustment if it does not apply, but then, why someone would want
+external adjustment at all?
+
+>> After more inspection of phatknob and those concept discrepancies we
+>> have, i now beleive we should come with configuration system in next
+>> release. I propose (and have motivation to work on) class code
+>> interacting with gconf. In particular I want to start with radial/linear
+>> knob behaviour, always with left mouse button.
+>
+> this should be configurable. it's the only way we can accommodate 
+> different user and developer preferences. (IOW, it's the only
+> way we can prevent me and thorsten from killing each other :P )
+>
+> i'd like to see targets (linear control, absolute control, menu popup
+> etc) be mappable to input combinations (buttons 1 - 5, and modifiers)
+>
+>> More configuration
+>> candidates are welcome. Lets collect them in this thread, I'll put them
+>> on wiki once we have plan.
+
+I think we should have manual value input configurable too:
+
+So far list of things that need to be configurable are:
+ * context menu popup
+ * linear control
+ * radial control
+ * absolute control
+ * manual input (edit box to entr value with keyboard)
+
+each mappable to mouse buttons 1-5 with modifiers (including double
+click as option). mappings are optional i.e. if not configured they
+are not available.
+
+Mappings should be overridable by program (developer) using the widget.
+
+I'm somewhat sceptical someone will want more than one method of mouse
+control active. So maybe it is better to have mouse drag mappable to
+button and have mouse drag behaviour as additional property.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070825/271a76d5/attachment.pgp>
+
+From zenadsl6252 at zen.co.uk  Mon Aug 27 01:22:11 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Mon, 27 Aug 2007 00:22:11 +0100
+Subject: [Phat-dev] fwd: Slightly newer meterbridge code
+Message-ID: <1188170531.18185.12.camel@one>
+
+i asked damon to forward his last changes to the meters and here they
+are (much delayed by me, sorta forgot i'd received it)
+
+original email from damon follows:
+
+   Here's my slightly newer code, if you want to use some of it:
+            http://www.karuna.eclipse.co.uk/phat/myphat2.tgz
+        
+        I've changed the VU meter to use a cached surface for redrawing,
+        and to
+        only redraw the parts necessary. It is about 5 times faster. The
+        same
+        things could be done for the other meters.
+        
+        I also changed the VU meter's graphic, replacing the blotchy
+        background
+        with a single color. 
+        
+        Damon
+        
+        
+note: i've uploaded it to my webspace too, where it will stay until
+we've done something with it.
+
+http://www.zenadsl6252.zen.co.uk/damons-meter-updates/myphat2.tgz
+
+
+
+cheers,
+pete.
+
+
+
+From loki.davison at gmail.com  Wed Aug 29 15:21:00 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Wed, 29 Aug 2007 22:21:00 +0900
+Subject: [Phat-dev] fwd: Slightly newer meterbridge code
+In-Reply-To: <1188170531.18185.12.camel@one>
+References: <1188170531.18185.12.camel@one>
+Message-ID: <ec9314860708290621k43755addqedf4226b150622d@mail.gmail.com>
+
+On 8/27/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> i asked damon to forward his last changes to the meters and here they
+> are (much delayed by me, sorta forgot i'd received it)
+>
+>
+
+
+arrg, i actually have this email as well! ;) I'll get back to some
+coding probably next week when i have a computer and an apartment
+again... Though at least internet access isn't an issue when you move
+to south korea ;) Attack of the killer kim chi!!!
+
+Loki
+
+

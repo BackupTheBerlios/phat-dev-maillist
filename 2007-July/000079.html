@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] glade support committed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20glade%20support%20committed&In-Reply-To=%3C1184052692.6005.19.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000075.html">
+   <LINK REL="Next"  HREF="000087.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] glade support committed</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20glade%20support%20committed&In-Reply-To=%3C1184052692.6005.19.camel%40majesterium%3E"
+       TITLE="[Phat-dev] glade support committed">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Tue Jul 10 09:31:32 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000075.html">[Phat-dev] glade support committed
+</A></li>
+        <LI>Next message: <A HREF="000087.html">[Phat-dev] glade support committed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2007-07-09 at 23:37 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+&gt;<i> On Sun, Jul 08, 2007 at 01:42:34PM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; On Sun, 2007-07-08 at 13:04 +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; &gt; On Sun, 2007-07-08 at 13:00 +0200, Marc-Olivier Barre wrote:
+</I>&gt;<i> &gt; &gt; &gt; On 7/8/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>
+&gt;<i> &gt; it should be fine now. nothing glade related is done without
+</I>&gt;<i> &gt; --enable-glade-plugin and it builds and installs ok from a fresh trunk
+</I>&gt;<i> &gt; check out.
+</I>&gt;<i> 
+</I>&gt;<i> it does not install the glade icons for me.
+</I>&gt;<i> which automake, autoconf version are you guys using ?
+</I>
+meh, sorry this is my fault again. this worked initially and so the
+files 
+exist already and i didn't notice that subsequent changes caused
+&quot;make install&quot; to stop processing at the glade-plugin/ level.
+  
+looking at the Makefile.am in that dir, i added an explicit make rule to
+install only the libgladephat.so library (not the la and a files) and
+the catalog.
+perhaps this stops subdir processing.
+
+i'm not that familiar with automake and having tried several things to
+get it to
+work, i'll just revert to installing the libtool and static libs too.
+this won't 
+interfere with the icon subdir installation. 
+
+that is unless one of you guys knows the magic automake juju to get 
+both to work?
+
+pete.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000075.html">[Phat-dev] glade support committed
+</A></li>
+	<LI>Next message: <A HREF="000087.html">[Phat-dev] glade support committed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

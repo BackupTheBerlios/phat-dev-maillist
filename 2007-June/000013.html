@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Phat cairo based knob
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3Cec9314860706220239g142c7d9bk511123b67bc10e0e%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Phat cairo based knob</H1>
+    <B>Loki Davison</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3Cec9314860706220239g142c7d9bk511123b67bc10e0e%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] Phat cairo based knob">loki.davison at gmail.com
+       </A><BR>
+    <I>Fri Jun 22 11:39:26 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[Phat-dev] Phat cairo based knob
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 6/22/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+&gt;<i> On Fri, 2007-06-22 at 17:52 +1000, Loki Davison wrote:
+</I>&gt;<i> &gt; On 6/22/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 1. name the base knob class PhatKnob and collide with (break) the old
+</I>&gt;<i> &gt; &gt; api.	
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Works for me. Bugger all uses current one.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; 2. enjoy our inconsistent naming policy every day and in every way by
+</I>&gt;<i> &gt; &gt; adding a post fix. something like PhatKnobBase or PhatKnobCommon. which
+</I>&gt;<i> &gt; &gt; gives us the following:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; base class              | example instantiatable class
+</I>&gt;<i> &gt; &gt; ---------------------------------------------------------------------
+</I>&gt;<i> &gt; &gt; PhatFanSlider          |     PhatVFanSlider
+</I>&gt;<i> &gt; &gt; PhatKnobCommon   |    PhatKnob
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; yummy.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 3. call the base class something else. like PhatDial or something.
+</I>&gt;<i> &gt; &gt; PhatPot anyone? :D
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; does anyone have a better idea, or a prefered choice?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I do like the sound of PhatPot though... ;) What about Thorwil's other
+</I>&gt;<i> &gt; widgets that fit in the same size space? Should Phat1d (or 1d
+</I>&gt;<i> &gt; float/int) thing be the parent? That covers the fan sliders too to
+</I>&gt;<i> &gt; inherit from... It's a little freaky sounding though.
+</I>&gt;<i>
+</I>&gt;<i> i'm not sure what you mean by 1d or 2d. are you talking about the number
+</I>&gt;<i> of control axis?
+</I>&gt;<i>
+</I>
+Yeah, sorry for not being a little bit more clear. The basic parent
+classes we have, if you want to think about it in OO style language or
+the basic functions, are
+
+1d integer controls i.e the sliderbutton
+1d float things, the fan sliders and knobs,
+2d (float) things, the pad
+and other things... the keyboard ;)
+
+Loki
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[Phat-dev] Phat cairo based knob
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

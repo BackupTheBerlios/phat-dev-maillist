@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] some additional ideas for phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20additional%20ideas%20for%20phat&In-Reply-To=%3C1184078336.3246.16.camel%40localhost.localdomain%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000091.html">
+   <LINK REL="Next"  HREF="000098.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] some additional ideas for phat</H1>
+    <B>Damon Chaplin</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20additional%20ideas%20for%20phat&In-Reply-To=%3C1184078336.3246.16.camel%40localhost.localdomain%3E"
+       TITLE="[Phat-dev] some additional ideas for phat">damon at karuna.eclipse.co.uk
+       </A><BR>
+    <I>Tue Jul 10 16:38:56 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000091.html">[Phat-dev] some additional ideas for phat
+</A></li>
+        <LI>Next message: <A HREF="000098.html">[Phat-dev] some additional ideas for phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#97">[ date ]</a>
+              <a href="thread.html#97">[ thread ]</a>
+              <a href="subject.html#97">[ subject ]</a>
+              <a href="author.html#97">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2007-07-10 at 13:30 +0100, pete shorthose wrote:
+&gt;<i> On Tue, 2007-07-10 at 14:25 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; On Tue, Jul 10, 2007 at 12:25:44PM +0100, pete shorthose wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; to make use of it you are required to enable backing store
+</I>&gt;<i> &gt; &gt; (and that means editing your X conf) and trades
+</I>&gt;<i> &gt; &gt; increased memory usage for a lighter CPU load.
+</I>&gt;<i> &gt; &gt; is anyone interested in seeing this available in phat?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; i am not sure. i think the problem can be avoided if you add some
+</I>&gt;<i> &gt; GtkEventBox into your widget tree.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; GtkEventBox has its own XWindow so the expose events can be done inside
+</I>&gt;<i> &gt; the X server. i am not sure how this all relates to backing store.
+</I>&gt;<i> &gt; i thought it was on by default...
+</I>&gt;<i> 
+</I>&gt;<i> all i know of the event box is that it's a surrogate window used to trap
+</I>&gt;<i> events for widgets that don't have windows, i'm not aware of
+</I>&gt;<i> any other special properties but then i'm no expert on gtk or X windows.
+</I>&gt;<i> 
+</I>&gt;<i> Damon, any idea about this?
+</I>
+I've just tried using a GtkEventBox on each notebook page and it does
+help quite a bit. Since GtkEventBox has its own X window it makes X
+clear the entire notebook page background before starting the redraw so
+it looks a lot cleaner.
+
+I also noticed that the knob code is using a new GdkPixbuf for each
+knob. It should create one and share it for the whole class. That may
+help a little.
+
+Maybe with a bit more optimization it will be OK without resorting to
+unusual stuff like backing store. (I can't quite understand why it is so
+slow at present. Someone should try running it under sysprof to see what
+it is doing.)
+
+Damon
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000091.html">[Phat-dev] some additional ideas for phat
+</A></li>
+	<LI>Next message: <A HREF="000098.html">[Phat-dev] some additional ideas for phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#97">[ date ]</a>
+              <a href="thread.html#97">[ thread ]</a>
+              <a href="subject.html#97">[ subject ]</a>
+              <a href="author.html#97">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

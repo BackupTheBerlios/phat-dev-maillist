@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] LV2 tree store
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20LV2%20tree%20store&In-Reply-To=%3C20070712172042.GE23036%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000125.html">
+   <LINK REL="Next"  HREF="000131.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] LV2 tree store</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20LV2%20tree%20store&In-Reply-To=%3C20070712172042.GE23036%40mobilat%3E"
+       TITLE="[Phat-dev] LV2 tree store">torbenh at gmx.de
+       </A><BR>
+    <I>Thu Jul 12 19:20:42 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000125.html">[Phat-dev] LV2 tree store
+</A></li>
+        <LI>Next message: <A HREF="000131.html">[Phat-dev] LV2 tree store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Jul 13, 2007 at 01:33:42AM +1000, Loki Davison wrote:
+&gt;<i> On 7/13/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; On Thu, 2007-07-12 at 17:17 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; &gt; On Thu, Jul 12, 2007 at 10:01:51AM +1000, Loki Davison wrote:
+</I>&gt;<i> &gt; &gt; &gt; On 7/12/07, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; On Tue, Jul 10, 2007 at 11:08:21PM +1000, Loki Davison wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; On 7/10/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; On Tue, 2007-07-10 at 14:30 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt; i started to write a GtkTreeStore which fills itself with
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt; all LV2 plugin classes it finds.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt; this would add a dependency to libslv2 but i think this is the
+</I>&gt;<i> &gt; right
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt; direction. as the time of standalone jack-clients has nearly
+</I>&gt;<i> &gt; ended :P
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; &gt; comments ?
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; yikes. clearly we will need some bindings and convenience
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; stuff for things like lv2, but i think they should come in the
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; form of optional modules or broken out into convenience
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; libraries.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; (which could be maintained and distributed along side phat)
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; the dependency burdon is going to go batshit nuts if we
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; start adding in poorly distributed or rapidly developing
+</I>&gt;<i> &gt; libraries.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; and that causes problems for distro maintainers and may
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; limit uptake (and thus the viability of phat as a whole)
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; consider the glade plugin. it's not required. this means that
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; someone can use phat as a simple widget library and write
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; their own higher level stuff or what ever back end they need.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; we risk drastically reducing the appeal of phat as a general
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; widget library if we start welding it to a bunch of stuff that
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; some people either don't need or want to provide their own
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; solutions for.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt; pete.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; This sounds interesting. Have you looked at Dave's code in Ingen for
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; this stuff? Either way, sound very useful to have, as does an lv2
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; no. i looked at lv2_list... and some code from galan ;)
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; plugin selector.  However this should be in a optional subdirectory
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; same as the glade stuff. When building packages you should have
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; generated phat, pyphat, phat-glade and phat-lv2, and anything else
+</I>&gt;<i> &gt; we
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; work out! ;)
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; ok. i moved it into a separate directory.
+</I>&gt;<i> &gt; &gt; &gt; &gt; its in the tarball <A HREF="http://galan.sf.net/phat-0.4.2.tar.gz">http://galan.sf.net/phat-0.4.2.tar.gz</A>
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; well the lv2 plugin selector is implemented in the demos thing.
+</I>&gt;<i> &gt; &gt; &gt; &gt; however we can provide a dedicated dialog for this.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; how will the package generation be managed ?
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; i have also some problems with the directory hirarchy now.
+</I>&gt;<i> &gt; &gt; &gt; &gt; the lv2 demos should be in a subdir of phat-lv2 i think. to save some
+</I>&gt;<i> &gt; &gt; &gt; &gt; if s in Makefile.am ...
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Can't seem to see these in SVN, maybe there is a delay.... though i
+</I>&gt;<i> &gt; &gt; &gt; can see your new icons which is nice. :)
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; i did not want to commit these things after getting green light.
+</I>&gt;<i> &gt; &gt; i consider this green light now ;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; are we in agreement that the phat-lv2 stuff should effectively be a
+</I>&gt;<i> &gt; separate
+</I>&gt;<i> &gt; package (with it's own lib and includes)?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if we are then we need to decide whether it's best to keep it out of the
+</I>&gt;<i> &gt; tree
+</I>&gt;<i> &gt; as per the python bindings or to incorporate it.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if we go for separate packages then when building from source, the
+</I>&gt;<i> &gt; package
+</I>&gt;<i> &gt; build order is out of our control but there is clear delineation between
+</I>&gt;<i> &gt; phat
+</I>&gt;<i> &gt; and it's ancillary libs from a package maintainers perspective.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if we incorporate the other libraries directly into the phat tree then
+</I>&gt;<i> &gt; it's easier
+</I>&gt;<i> &gt; to build from source but we may need separate build and install targets
+</I>&gt;<i> &gt; and we need to make it clear to package maintainers that these are
+</I>&gt;<i> &gt; separate packages with different sets of dependencies. (else separating
+</I>&gt;<i> &gt; it out  was a waste of time)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; if we go for a unified approach then perhaps we should consider pulling
+</I>&gt;<i> &gt; pyphat in too?.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; pete.
+</I>&gt;<i> &gt;
+</I>
+i did not commit the lv2 thing.
+there was clearly no consensus. 
+
+As long as its only 100 lines of gob code this is
+not worth being a separate package though ;}
+
+but as long as there is no release of libslv2
+we can not have libslv2 dependencies in a release.
+
+but we should be ready, when there is a release.
+i would like to see lv2 in distros pretty fast.
+
+perhaps we should have some sort of experimental package/playground
+or something ?  where we can deposit code with &quot;unsatisfied depencies&quot;.
+
+
+
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> mmm, not sure which is easier, second seems to be better with pyphat
+</I>&gt;<i> being pulled in. I have no idea which is better for packagers though.
+</I>&gt;<i> 
+</I>&gt;<i> Loki
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000125.html">[Phat-dev] LV2 tree store
+</A></li>
+	<LI>Next message: <A HREF="000131.html">[Phat-dev] LV2 tree store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

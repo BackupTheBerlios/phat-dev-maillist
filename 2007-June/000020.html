@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Phat cairo based knob
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3C467F639A.4060705%40lumin.us%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000019.html">
+   <LINK REL="Next"  HREF="000023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Phat cairo based knob</H1>
+    <B>Mark Rivera</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3C467F639A.4060705%40lumin.us%3E"
+       TITLE="[Phat-dev] Phat cairo based knob">marr at lumin.us
+       </A><BR>
+    <I>Mon Jun 25 08:41:30 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000019.html">[Phat-dev] Phat cairo based knob
+</A></li>
+        <LI>Next message: <A HREF="000023.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mark Rivera wrote:
+&gt;<i> 
+</I>&gt;&gt;&gt;&gt;<i> i want to add a pan style option. i also want to figure out the proper
+</I>&gt;&gt;&gt;&gt;<i> name for the pan style option :P 
+</I>&gt;<i> 
+</I>&gt;<i> You mean 'pan style' like a mixer channel pan knob? That's called 
+</I>&gt;<i> center-detented.
+</I>&gt;<i> 
+</I>&gt;<i> Maybe you'd want a &quot;detents&quot; property for ALL knobs (at the base class)?
+</I>&gt;<i> 
+</I>&gt;<i> detents == 0 or null:      Smooth travel (like a regular potentiometer)
+</I>&gt;<i> 
+</I>&gt;<i> detents &gt; 0:               Would evenly divide the range of the knob
+</I>&gt;<i>                            into discrete steps. This would be great for
+</I>&gt;<i>                            OSC waveform selection etc.
+</I>&gt;<i> 
+</I>&gt;<i> That would mean that a pan style &quot;centered&quot; knob would have:
+</I>&gt;<i> detents == 1.
+</I>&gt;<i> 
+</I>&gt;<i> A second property, &quot;detent_zone&quot; could be a property which specified the 
+</I>&gt;<i> +/- degrees for which the knob position would &quot;snap&quot; into the detent. So 
+</I>&gt;<i> for the pan knob, you'd have smooth travel until you were within, say, 
+</I>&gt;<i> +/- 5 deg of the detent.
+</I>&gt;<i> 
+</I>&gt;<i> If this detent_zone value exceeded the degrees of the space between 
+</I>&gt;<i> detents, then you'd have a knob which ONLY snapped to detents (again, 
+</I>&gt;<i> like a waveform selector).
+</I>
+
+Er, actually, having a detent_zone that spanned more than one detent 
+could be a problem (i.e., which detent do you snap to on mouse 
+release?). So, perhaps there could be some validation - if the 
+detent_zone is too big and spans more than one detent, the validation 
+routine would automatically downsize the detent_zone degrees to an 
+appropriate value based on the value in 'detents' property and the range 
+of the knob.
+
+Mark
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000019.html">[Phat-dev] Phat cairo based knob
+</A></li>
+	<LI>Next message: <A HREF="000023.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

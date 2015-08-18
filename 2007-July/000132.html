@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phat knob changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C20070712232641.GI23036%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000129.html">
+   <LINK REL="Next"  HREF="000134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phat knob changes</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C20070712232641.GI23036%40mobilat%3E"
+       TITLE="[Phat-dev] phat knob changes">torbenh at gmx.de
+       </A><BR>
+    <I>Fri Jul 13 01:26:41 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000129.html">[Phat-dev] phat knob changes
+</A></li>
+        <LI>Next message: <A HREF="000134.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#132">[ date ]</a>
+              <a href="thread.html#132">[ thread ]</a>
+              <a href="subject.html#132">[ subject ]</a>
+              <a href="author.html#132">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jul 12, 2007 at 09:56:53PM +0100, pete shorthose wrote:
+&gt;<i> On Thu, 2007-07-12 at 19:29 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; On Fri, Jul 13, 2007 at 01:26:09AM +1000, Loki Davison wrote:
+</I>&gt;<i> &gt; &gt; On 7/13/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; &gt; looks like i didn't break the log code.
+</I>&gt;<i> &gt; &gt; &gt; which is nice.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; loki, in case i wasn't clear, i'm not going to
+</I>&gt;<i> &gt; &gt; &gt; commit until i hear from you whether you
+</I>&gt;<i> &gt; &gt; &gt; are ok with the bulk commit.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; either way, knobs will work properly in glade
+</I>&gt;<i> &gt; &gt; &gt; as soon as it's committed :)
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; pete.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Go for it. I'll need to fix the new slider to be in line with this as
+</I>&gt;<i> &gt; &gt; i based the gtk class stuff off the knob!! lol, thought it was the
+</I>&gt;<i> &gt; &gt; most recent/least dodgy.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; nice work pete.
+</I>&gt;<i> &gt; i will try to derive the knob from GtkRange, as soon as you commit.
+</I>&gt;<i> &gt; then the code for the adjustment handling would also fade away.
+</I>&gt;<i> 
+</I>&gt;<i> good idea. there's still some superfluous junk in there but you
+</I>&gt;<i> can't have everything and i think it's a better bet than GtkWidget on
+</I>&gt;<i> balance.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; however for the PhatKnob and PhatFanSliders we need to provide backwards compatibility.
+</I>&gt;<i> 
+</I>&gt;<i> we discussed this recently and the consensus seemed to be that 
+</I>&gt;<i> it'd be better to rip up the API and bump the library version.
+</I>&gt;<i> loki is the only known user of PhatKnob and i'll happily update anyone's
+</I>&gt;<i> code to suit a changed PhatFanSlider. (probably only specimen?)
+</I>&gt;<i> normally this kind of thing is a big taboo but you'll rarely get 
+</I>&gt;<i> a better set of mitigating circumstances than these.
+</I>
+i dont seem to catch you guys on irc... are you on #lad ?
+or is there a #phat channel ?
+
+
+&gt;<i> 
+</I>&gt;<i> &gt; but all other new widgets could be derived from GtkRange and we would
+</I>&gt;<i> &gt; have a common base class.
+</I>&gt;<i> 
+</I>&gt;<i> gets my vote. i think we could still do with additional abstract classes
+</I>&gt;<i> for code common to say, all sliders or all knobs. we can evolve that
+</I>&gt;<i> as we go though. it's pretty easy to change things around up until
+</I>&gt;<i> we the time we release.
+</I>
+k.
+
+&gt;<i> 
+</I>&gt;<i> &gt; it would also be nice to have the widget window removed from the knob
+</I>&gt;<i> &gt; and use the parents window. i would go for this...
+</I>&gt;<i> 
+</I>&gt;<i> what are the benefits / drawbacks of doing so?
+</I>&gt;<i> i assume we still need a window (event box?) for mouse updates, tooltips
+</I>&gt;<i> and the like
+</I>&gt;<i> and tricks like backing store would no longer be applicable..
+</I>
+but not on every single widget.
+i removed the window from my tech-knob, and now the transparency is
+working nicely.
+i think there is a problem with different windows.
+i will check... 
+
+
+i just started to use pycairo to render some lemur style knobs.
+thinking about how to incorporate this into a knob.
+but i will use the step of going through a pixmap and using the pixmap
+knobs for this first...
+
+any ideas where to commit this code ?
+its just a small python script which outputs a bunch of pngs.
+
+&gt;<i> 
+</I>&gt;<i> pete.
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000129.html">[Phat-dev] phat knob changes
+</A></li>
+	<LI>Next message: <A HREF="000134.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#132">[ date ]</a>
+              <a href="thread.html#132">[ thread ]</a>
+              <a href="subject.html#132">[ subject ]</a>
+              <a href="author.html#132">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

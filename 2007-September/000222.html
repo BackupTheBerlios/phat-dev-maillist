@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] some thoughts again...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20thoughts%20again...&In-Reply-To=%3C20070920132957.GB31375%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000221.html">
+   <LINK REL="Next"  HREF="000223.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] some thoughts again...</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20thoughts%20again...&In-Reply-To=%3C20070920132957.GB31375%40mobilat%3E"
+       TITLE="[Phat-dev] some thoughts again...">torbenh at gmx.de
+       </A><BR>
+    <I>Thu Sep 20 15:29:58 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000221.html">[Phat-dev] some thoughts again...
+</A></li>
+        <LI>Next message: <A HREF="000223.html">[Phat-dev] phat-0.4.1 configure issues,	phat 0.4.1 part of Gentoo now.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#222">[ date ]</a>
+              <a href="thread.html#222">[ thread ]</a>
+              <a href="subject.html#222">[ subject ]</a>
+              <a href="author.html#222">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Sep 18, 2007 at 03:59:57PM +0300, Nedko Arnaudov wrote:
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> writes:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; - midi learn and control automation.
+</I>&gt;<i> &gt;   create a map String -&gt; GtkAdjustment
+</I>&gt;<i> &gt;   midi or osc source is then translated to a string by the user, and fed
+</I>&gt;<i> &gt;   into this map. 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   phat_learn_map_feed( PhatLearnMap *map, char *controller_name, gdouble val )
+</I>&gt;<i> &gt;   val is between 0..1 scaling is done be the map code.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   phat_learn_map_learn( PhatLearnMap *map, GtkAdjustment *adj )
+</I>&gt;<i> &gt;   Go into learn mode. Next event received is associated with this
+</I>&gt;<i> &gt;   adjustment.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   the references owned by the learn map should be week refs, so that the
+</I>&gt;<i> &gt;   application programmer need not think about memory management here.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   mappings should be serializable... perhaps we need more info on how to
+</I>&gt;<i> &gt;   reobtain the adjustments then.
+</I>&gt;<i> 
+</I>&gt;<i> How this will interact with phatrange?
+</I>
+I dont see the necessity to have this interact with phatrange yet.
+it just takes a GtkAdjustment...
+
+but perhaps the learning trigger CTRL-MidClick could be handled by
+phatrange. And the reobtainment of the Adjustment on map reload could
+involve some interaction with the phat range.
+
+
+&gt;<i> 
+</I>&gt;<i> &gt; what happened to you guys ? everybody offline ? sad :(
+</I>&gt;<i> 
+</I>&gt;<i> I've been quite busy recently with the 5th International Short Film
+</I>&gt;<i> festival in Balchik. 
+</I>
+k. well i said that and stayed at my girlfriends place for a week :)
+
+
+&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> Nedko Arnaudov &lt;GnuPG KeyID: DE1716B0&gt;
+</I>
+
+
+&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>
+
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000221.html">[Phat-dev] some thoughts again...
+</A></li>
+	<LI>Next message: <A HREF="000223.html">[Phat-dev] phat-0.4.1 configure issues,	phat 0.4.1 part of Gentoo now.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#222">[ date ]</a>
+              <a href="thread.html#222">[ thread ]</a>
+              <a href="subject.html#222">[ subject ]</a>
+              <a href="author.html#222">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

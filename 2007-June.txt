@@ -1,0 +1,3494 @@
+From nedko at arnaudov.name  Thu Jun 21 12:00:18 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Thu, 21 Jun 2007 13:00:18 +0300
+Subject: [Phat-dev] phat dev list.
+In-Reply-To: <ec9314860706210039r1a49470bi6c5ea7c05d838c07@mail.gmail.com>
+	(Loki Davison's message of "Thu, 21 Jun 2007 17:39:41 +1000")
+References: <ec9314860706210039r1a49470bi6c5ea7c05d838c07@mail.gmail.com>
+Message-ID: <87odj9tyod.fsf@arnaudov.name>
+
+"Loki Davison" <loki.davison at gmail.com> writes:
+> Uli and Pete have joined the project too ;)
+
+Very good news :)
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070621/e911bd02/attachment.pgp>
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 04:25:08 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 03:25:08 +0100
+Subject: [Phat-dev] my current concerns
+Message-ID: <1182479108.6848.11.camel@majesterium>
+
+ok, here's a quick overview of my current concerns.
+
+i need more widgets than are available in either gtk or phat. i would
+also like some additional features added to existing widgets. 
+
+for starters, i'm currently looking at merging my cairo knob into phat.
+i'll put this into a branch for now (i'll make some noise when it's
+in). 
+as my knob is based on an abstract knob class i think it would be a good
+idea to break out the existing phat pixmap knob code to make both that
+and the new cairo knob inherit from the same abstract class. (both knobs
+are derived from torben hohn's galan knob so it shouldn't be too much
+hassle)
+
+Uli, i saw on the lad list that you have also done some work on a cairo
+knob so perhaps we (and indeed anyone else) can compare notes. i'll
+detail the cairo knob and any potential problems in a dedicated post.
+(hopefully in a few minutes time)
+
+i also want linear and absolute (radial) knob control modes to be
+available and i think it would be best to implement some kind of
+configurable mapping between input events and control-update functions
+via the gobject properties.
+
+lastly, i've already implemented glade-3 support locally for some things
+and as it's nice to test widgets, makes it easy for people to use phat
+and is generally easy to do, i'll be looking to add glade-3 support
+across phat. (optional and
+in it's own subtree) 
+
+if anyone has general issues or comments WRT any of this or if you have
+your own list of important changes you'd like to see (or intend to
+implement) then tack them on this thread.
+it'll help bring me up to speed if nothing else.
+
+thanks for setting up the list loki :)
+
+cheers,
+pete.
+
+
+
+From loki.davison at gmail.com  Fri Jun 22 04:53:31 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 22 Jun 2007 12:53:31 +1000
+Subject: [Phat-dev] my current concerns
+In-Reply-To: <1182479108.6848.11.camel@majesterium>
+References: <1182479108.6848.11.camel@majesterium>
+Message-ID: <ec9314860706211953p4379be25p96ac05a7593a855a@mail.gmail.com>
+
+On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> ok, here's a quick overview of my current concerns.
+>
+> i need more widgets than are available in either gtk or phat. i would
+> also like some additional features added to existing widgets.
+>
+> for starters, i'm currently looking at merging my cairo knob into phat.
+> i'll put this into a branch for now (i'll make some noise when it's
+> in).
+> as my knob is based on an abstract knob class i think it would be a good
+> idea to break out the existing phat pixmap knob code to make both that
+> and the new cairo knob inherit from the same abstract class. (both knobs
+> are derived from torben hohn's galan knob so it shouldn't be too much
+> hassle)
+>
+> Uli, i saw on the lad list that you have also done some work on a cairo
+> knob so perhaps we (and indeed anyone else) can compare notes. i'll
+> detail the cairo knob and any potential problems in a dedicated post.
+> (hopefully in a few minutes time)
+>
+> i also want linear and absolute (radial) knob control modes to be
+> available and i think it would be best to implement some kind of
+> configurable mapping between input events and control-update functions
+> via the gobject properties.
+>
+> lastly, i've already implemented glade-3 support locally for some things
+> and as it's nice to test widgets, makes it easy for people to use phat
+> and is generally easy to do, i'll be looking to add glade-3 support
+> across phat. (optional and
+> in it's own subtree)
+>
+> if anyone has general issues or comments WRT any of this or if you have
+> your own list of important changes you'd like to see (or intend to
+> implement) then tack them on this thread.
+> it'll help bring me up to speed if nothing else.
+>
+> thanks for setting up the list loki :)
+>
+> cheers,
+> pete.
+>
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+>
+
+minor bugger up with setting it up though.. Just fixed the reply to
+stuff... Dodgy defaults... ;)
+
+All the ideas in this sound pretty good to me. The configurable
+mapping between input events and control-update functions should
+probably been most of the other widgets too. At least I can see it
+being useful for the 2d pad to implement a hockey puck style physics
+thing. Always though that was cool since i saw it in Lemur.
+http://www.jazzmutant.com/lemur_overview.php
+
+Metering is still the thing that I'd like to have in phat. Porting all
+the meterbridge widgets to phat would really improve all the crappy
+vu's everyone is using in there apps now. Also an adsr widget would be
+nice and pretty easy. There are a bunch of other ones we already have
+a few designs for which would be nice too, like the oscillator
+selector (pie menu) widget.  Do we want to make a todo / wishlist on a
+wiki?
+
+Loki
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 05:57:10 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 04:57:10 +0100
+Subject: [Phat-dev] my current concerns
+In-Reply-To: <ec9314860706211953p4379be25p96ac05a7593a855a@mail.gmail.com>
+References: <1182479108.6848.11.camel@majesterium>
+	<ec9314860706211953p4379be25p96ac05a7593a855a@mail.gmail.com>
+Message-ID: <1182484631.6848.40.camel@majesterium>
+
+On Fri, 2007-06-22 at 12:53 +1000, Loki Davison wrote:
+
+> minor bugger up with setting it up though.. Just fixed the reply to
+> stuff... Dodgy defaults... ;)
+
+you and me both. i signed up with a forwarding address like a muppet
+and then wondered why i couldn't post to the list. 
+embarrassingly enough, it's about the fourth time i've done that in
+recent years. bits of my brain not connected obviously.
+
+> All the ideas in this sound pretty good to me. The configurable
+> mapping between input events and control-update functions should
+> probably been most of the other widgets too. At least I can see it
+> being useful for the 2d pad to implement a hockey puck style physics
+> thing. Always though that was cool since i saw it in Lemur.
+> http://www.jazzmutant.com/lemur_overview.php
+
+Aye. the less duplication the better. 
+
+> Metering is still the thing that I'd like to have in phat. Porting all
+> the meterbridge widgets to phat would really improve all the crappy
+> vu's everyone is using in there apps now.
+
+hmm, threads and SDL. i wouldn't be surprised to discover that 
+steve chose not to implement those in gtk for a reason. 
+still, i'll take a look. i'll have a peek at what ardour does there too.
+
+>  Also an adsr widget would be
+> nice and pretty easy. 
+
+seconded. 
+
+> There are a bunch of other ones we already have
+> a few designs for which would be nice too, like the oscillator
+> selector (pie menu) widget.
+
+it's a bit specialised. how about as the default presentation for a
+general waveform selector. the options (popup list, no popup or
+pie chart) being gobject properties?
+
+>   Do we want to make a todo / wishlist on a
+> wiki?
+
+great idea. it'd be nice if we could have a section per proposed (or
+existing) widget with suggestions. eg: should it be a linear adsr only?
+or part of a dynamic envelope widget.
+if we do set up a wiki, i'd still encourage people to post to the list 
+when they make significant edits. 
+
+cheers,
+pete.
+
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 08:57:33 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 07:57:33 +0100
+Subject: [Phat-dev] Phat cairo based knob
+Message-ID: <1182495453.6848.77.camel@majesterium>
+
+as i said in a previous post, i'll be adding a cairo knob to a branch in
+phat soon. 
+
+first up though..
+
+Naming policy problems:
+----------------------
+
+initially i intended to write my own widget library called liblaw and so
+the knob base class was called LawKnob and then i called the
+instantiatable classes LawKnobPixmap and LawKnobVector to keep them
+alphabetically aligned. 
+there are two problems with continuing that naming convention:
+
+1. it's ugly as hell and vector isn't exactly unambiguous
+
+2. phat has a pre-existing instantiatable class called PhatKnob and api
+   functions derive their prefix from that (phat_knob_new() for example)
+while conversely the phat slider abstract class is named PhatFanSlider
+with PhatVFanSlider and PhatHFanSlider being instantiatable.
+
+so as i see it we have 3 choices:
+
+1. name the base knob class PhatKnob and collide with (break) the old
+api.	 
+
+2. enjoy our inconsistent naming policy every day and in every way by
+adding a post fix. something like PhatKnobBase or PhatKnobCommon. which
+gives us the following:
+
+base class              | example instantiatable class
+---------------------------------------------------------------------
+PhatFanSlider          |     PhatVFanSlider
+PhatKnobCommon   |    PhatKnob
+
+yummy. 
+
+3. call the base class something else. like PhatDial or something.
+PhatPot anyone? :D
+
+does anyone have a better idea, or a prefered choice?
+
+also, what's the best way to name the pixel and vector knobs to
+illustrate their uses and differentiate them?
+
+if nobody cares i'll just choose 3 and go with PhatDial.
+
+
+Log mode:
+----------
+
+i haven't done this yet but i can use loki's code so thats no problem.
+in much the same way, where the phat knob has additional features,
+i'll add them in to the cairo knob along the way.
+
+
+Knob Design:
+-----------
+
+currently the knob derives most
+of it's colours from the gtk theme. but this leads to unsatisfactory
+results in many cases.	so in the purest sense, native appearance
+doesn't work too well. thus, i've not spent too much time on making
+it look pretty (which it ain't) design can come later via a reworked
+drawing algo or svg background or what ever monstrous hybrid we
+cook up :P
+
+obligatory shottage:
+http://www.zenadsl6252.zen.co.uk/cairo-knob-glade.png
+
+
+Knob Implementation:
+-------------------
+
+the knob uses a user definable GtkAdjustment, scales proportionally
+down to a point after which only the geometry scales (this is because
+thin cairo curves look skanky), has a definable indicator colour
+and you can set the number of gauge divisions (often called ticks)
+
+(i noticed that phat knob has an internal and an external adjustment.
+what's that for?)
+
+i want to add a pan style option. i also want to figure out the proper
+name for the pan style option :P 
+
+currently all the drawing is repeated on every expose. i've added
+support for backing store (which i use and is very nice) which
+cuts down incidental expose events to almost zero but i'm going to
+try and implement some sort of layered cache. probably a static
+background and a static foreground with the active middle layer
+drawn on every expose (this should reduce much of the drawing to
+an acceptable level but i'll profile it to be sure it's actually
+faster as i'd still need to render the top layer onto the bottom, 
+with alpha)
+
+interestingly, this opens up the possibility of loading static
+svg files as either a fg or bg. (these can even be gtk theme specified
+although that probably won't be used much in the long run)
+
+it might be worth implementing an api so that the drawing operation
+could be handled by a callback (perhaps even a plugin) that way, people
+could
+use the same knob but use custom drawing code. not sure about the worth
+of that either though.
+
+uhm..
+
+that
+wraps
+it
+up.
+:)
+
+cheers 
+pete.
+
+
+
+
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 09:21:16 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 08:21:16 +0100
+Subject: [Phat-dev] the pixmap knob and abstracting animations
+Message-ID: <1182496876.6848.99.camel@majesterium>
+
+me again :)
+
+i'd like to propose that we replace the static pixbuf animations in the
+phat
+pixmap knob with dynamically assigned animation gobjects.
+
+gobject refcounting takes a care of cleanup so sharing animations
+between widgets is trivial. also, by adding some animation 
+specific information (number of frames being the most important)
+to the gobject, it serves as a generic animation suitable for use in
+different widgets. (mod wheels,  waveform selectors as well as
+knobs for example).
+
+i could also implement a kind of animation store where by you
+load animations into the library with a string tag. then you 
+can access them via that tag later. (no need to maintain pointers
+to animations in your application)
+
+if an animation is selected that does not exist, a default would be
+returned to prevent exploding apps or the requirement of tedious error
+checking and handling. 
+
+the default would only be loaded on demand so as not to waste
+memory. 
+
+the object could also be used to trigger animation changes.
+
+you'd trigger a "change-animation" signal on the object
+and any widget connected to that signal would deref it 
+and load the new one (specified in the signal closure)
+
+this avoids the need to iterate over lists of widgets if you
+ever want to change animations en masse.
+
+any thoughts?
+
+cheers,
+pete.
+
+
+
+From t_w_ at freenet.de  Fri Jun 22 09:25:23 2007
+From: t_w_ at freenet.de (Thorsten Wilms)
+Date: Fri, 22 Jun 2007 09:25:23 +0200
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <1182495453.6848.77.camel@majesterium>
+References: <1182495453.6848.77.camel@majesterium>
+Message-ID: <20070622072523.GA4083@charly.SWORD>
+
+On Fri, Jun 22, 2007 at 07:57:33AM +0100, pete shorthose wrote:
+> 
+> 1. name the base knob class PhatKnob and collide with (break) the old
+> api.	 
+
+Who's using the current PhatKnob? Anything besides Khagan?
+
+> i want to add a pan style option. i also want to figure out the proper
+> name for the pan style option :P 
+
+I usually describe that as "centered". 
+
+
+-- 
+Thorsten Wilms
+
+Thorwil's Design for Free Software:
+http://thorwil.wordpress.com
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 09:48:15 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 08:48:15 +0100
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <20070622072523.GA4083@charly.SWORD>
+References: <1182495453.6848.77.camel@majesterium>
+	<20070622072523.GA4083@charly.SWORD>
+Message-ID: <1182498495.6848.113.camel@majesterium>
+
+On Fri, 2007-06-22 at 09:25 +0200, Thorsten Wilms wrote:
+> On Fri, Jun 22, 2007 at 07:57:33AM +0100, pete shorthose wrote:
+> > 
+> > 1. name the base knob class PhatKnob and collide with (break) the old
+> > api.	 
+> 
+> Who's using the current PhatKnob? Anything besides Khagan?
+
+practically impossible to tell for sure. i take your point though that
+the
+answer is likely to be not very many people at all.
+
+in that sense, now is as good a time as any to break the api. i would
+prefer that we did that as it's the cleanest solution from our
+perspective.
+if we do then we should take some time to see what else can be slotted
+in though.
+so we don't need to do it again in a hurry.
+
+the alternative name option is just the least invasive for all
+concerned.
+
+> 
+> > i want to add a pan style option. i also want to figure out the proper
+> > name for the pan style option :P 
+> 
+> I usually describe that as "centered". 
+
+
+i'm holding out for "deep-pan" then i can call the normal version
+"thin-base"
+
+...
+
+
+actually, centred is a better name than any i've though of. 
+does that mean that we have to call the normal version, uhm.. "normal"?
+
+what about left-to-right  or right-sweep?
+
+pete.
+
+
+
+From loki.davison at gmail.com  Fri Jun 22 09:52:38 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 22 Jun 2007 17:52:38 +1000
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <1182495453.6848.77.camel@majesterium>
+References: <1182495453.6848.77.camel@majesterium>
+Message-ID: <ec9314860706220052g44cab956y42437169be583f39@mail.gmail.com>
+
+On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+>
+> 1. name the base knob class PhatKnob and collide with (break) the old
+> api.	
+>
+
+Works for me. Bugger all uses current one.
+
+
+> 2. enjoy our inconsistent naming policy every day and in every way by
+> adding a post fix. something like PhatKnobBase or PhatKnobCommon. which
+> gives us the following:
+>
+> base class              | example instantiatable class
+> ---------------------------------------------------------------------
+> PhatFanSlider          |     PhatVFanSlider
+> PhatKnobCommon   |    PhatKnob
+>
+> yummy.
+>
+> 3. call the base class something else. like PhatDial or something.
+> PhatPot anyone? :D
+>
+> does anyone have a better idea, or a prefered choice?
+>
+
+I do like the sound of PhatPot though... ;) What about Thorwil's other
+widgets that fit in the same size space? Should Phat1d (or 1d
+float/int) thing be the parent? That covers the fan sliders too to
+inherit from... It's a little freaky sounding though.
+
+> also, what's the best way to name the pixel and vector knobs to
+> illustrate their uses and differentiate them?
+>
+> if nobody cares i'll just choose 3 and go with PhatDial.
+>
+>
+> Log mode:
+> ----------
+>
+> i haven't done this yet but i can use loki's code so thats no problem.
+> in much the same way, where the phat knob has additional features,
+> i'll add them in to the cairo knob along the way.
+>
+> (i noticed that phat knob has an internal and an external adjustment.
+> what's that for?)
+>
+
+(i think, long time since i looked) This is for log mode. The internal
+adjustment is always between 0-1 and the external adjustment is scaled
+depending on the log mode flag and the range. Otherwise things freak
+out when you change the log mode switch at runtime. This might be an
+ugly way of doing things though, i really can't remember much about
+how i decided it.
+
+
+> i want to add a pan style option. i also want to figure out the proper
+> name for the pan style option :P
+>
+> currently all the drawing is repeated on every expose. i've added
+> support for backing store (which i use and is very nice) which
+> cuts down incidental expose events to almost zero but i'm going to
+> try and implement some sort of layered cache. probably a static
+> background and a static foreground with the active middle layer
+> drawn on every expose (this should reduce much of the drawing to
+> an acceptable level but i'll profile it to be sure it's actually
+> faster as i'd still need to render the top layer onto the bottom,
+> with alpha)
+>
+> interestingly, this opens up the possibility of loading static
+> svg files as either a fg or bg. (these can even be gtk theme specified
+> although that probably won't be used much in the long run)
+>
+
+Sounds great ;)
+
+
+> it might be worth implementing an api so that the drawing operation
+> could be handled by a callback (perhaps even a plugin) that way, people
+> could
+> use the same knob but use custom drawing code. not sure about the worth
+> of that either though.
+>
+
+Can all this goodness also be worked into the fansliders? I coded a
+pixmap based fanslider a long time ago but the code is pretty
+horrible. It was used in the smack gui.
+http://developer.berlios.de/dbimage.php?id=1266 Current ones are gtk
+drawing based. I.e pre cairo and svg and other good stuff.
+
+> uhm..
+>
+> that
+> wraps
+> it
+> up.
+> :)
+>
+> cheers
+> pete.
+>
+>
+>
+>
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+>
+
+
+From loki.davison at gmail.com  Fri Jun 22 10:03:07 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 22 Jun 2007 18:03:07 +1000
+Subject: [Phat-dev] the pixmap knob and abstracting animations
+In-Reply-To: <1182496876.6848.99.camel@majesterium>
+References: <1182496876.6848.99.camel@majesterium>
+Message-ID: <ec9314860706220103y125b57efib9258b567fe1552@mail.gmail.com>
+
+On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> me again :)
+>
+> i'd like to propose that we replace the static pixbuf animations in the
+> phat
+> pixmap knob with dynamically assigned animation gobjects.
+>
+> gobject refcounting takes a care of cleanup so sharing animations
+> between widgets is trivial. also, by adding some animation
+> specific information (number of frames being the most important)
+> to the gobject, it serves as a generic animation suitable for use in
+> different widgets. (mod wheels,  waveform selectors as well as
+> knobs for example).
+>
+> i could also implement a kind of animation store where by you
+> load animations into the library with a string tag. then you
+> can access them via that tag later. (no need to maintain pointers
+> to animations in your application)
+>
+> if an animation is selected that does not exist, a default would be
+> returned to prevent exploding apps or the requirement of tedious error
+> checking and handling.
+>
+> the default would only be loaded on demand so as not to waste
+> memory.
+>
+> the object could also be used to trigger animation changes.
+>
+> you'd trigger a "change-animation" signal on the object
+> and any widget connected to that signal would deref it
+> and load the new one (specified in the signal closure)
+>
+> this avoids the need to iterate over lists of widgets if you
+> ever want to change animations en masse.
+>
+> any thoughts?
+>
+> cheers,
+> pete.
+
+This stuff sounds good, i'm wondering about a use case for some of it
+though. Is it only for the knobs or for Oscillator selectors and stuff
+like that? Would animation changes only be from changing a "theme" or
+something else?
+
+Loki
+
+
+From t_w_ at freenet.de  Fri Jun 22 10:23:41 2007
+From: t_w_ at freenet.de (Thorsten Wilms)
+Date: Fri, 22 Jun 2007 10:23:41 +0200
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <1182498495.6848.113.camel@majesterium>
+References: <1182495453.6848.77.camel@majesterium>
+	<20070622072523.GA4083@charly.SWORD>
+	<1182498495.6848.113.camel@majesterium>
+Message-ID: <20070622082340.GB4083@charly.SWORD>
+
+On Fri, Jun 22, 2007 at 08:48:15AM +0100, pete shorthose wrote:
+> 
+> actually, centred is a better name than any i've though of. 
+> does that mean that we have to call the normal version, uhm.. "normal"?
+> 
+> what about left-to-right  or right-sweep?
+
+Hmm, it's about whether the range is all positive (or unsigned?), 
+goes negative to positive ... and theoreticaly there could be 
+negative only. Or where zero (neutral) is: left, center, right.
+Centered is actually the common-but-special-case of the neutral 
+position being exactly in the middle. There could be an offset 8-0
+
+
+-- 
+Thorsten Wilms
+
+Thorwil's Design for Free Software:
+http://thorwil.wordpress.com
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 10:37:35 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 09:37:35 +0100
+Subject: [Phat-dev] the pixmap knob and abstracting animations
+In-Reply-To: <ec9314860706220103y125b57efib9258b567fe1552@mail.gmail.com>
+References: <1182496876.6848.99.camel@majesterium>
+	<ec9314860706220103y125b57efib9258b567fe1552@mail.gmail.com>
+Message-ID: <1182501455.6848.153.camel@majesterium>
+
+On Fri, 2007-06-22 at 18:03 +1000, Loki Davison wrote:
+> On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> > me again :)
+> >
+> > i'd like to propose that we replace the static pixbuf animations in the
+> > phat
+> > pixmap knob with dynamically assigned animation gobjects.
+> >
+> > gobject refcounting takes a care of cleanup so sharing animations
+> > between widgets is trivial. also, by adding some animation
+> > specific information (number of frames being the most important)
+> > to the gobject, it serves as a generic animation suitable for use in
+> > different widgets. (mod wheels,  waveform selectors as well as
+> > knobs for example).
+> >
+> > i could also implement a kind of animation store where by you
+> > load animations into the library with a string tag. then you
+> > can access them via that tag later. (no need to maintain pointers
+> > to animations in your application)
+> >
+> > if an animation is selected that does not exist, a default would be
+> > returned to prevent exploding apps or the requirement of tedious error
+> > checking and handling.
+> >
+> > the default would only be loaded on demand so as not to waste
+> > memory.
+> >
+> > the object could also be used to trigger animation changes.
+> >
+> > you'd trigger a "change-animation" signal on the object
+> > and any widget connected to that signal would deref it
+> > and load the new one (specified in the signal closure)
+> >
+> > this avoids the need to iterate over lists of widgets if you
+> > ever want to change animations en masse.
+> >
+> > any thoughts?
+> >
+> > cheers,
+> > pete.
+> 
+> This stuff sounds good, i'm wondering about a use case for some of it
+> though. Is it only for the knobs or for Oscillator selectors and stuff
+> like that? Would animation changes only be from changing a "theme" or
+> something else?
+
+the animation object would be useful in anything that needs an
+animation.
+
+rendered widgets: sliders, knobs, leds, mod wheels, possibly even
+keyboards, waveform selectors, all would have a common source. by
+subclassing gdkpixbuf, you
+still have access to all the lower level functions by casting it to a
+gdkpixbuf.
+
+(that's all it is really. a gdkpixbuf with some additional variables and
+available functions)
+
+the widget knows what it wants to do with that sequence of frames so you
+don't
+need any widget specific information in the object itself. 
+
+changing the animation would be done on a per application basis not
+globally.
+i don't envisage any themes shipping phat animations any time soon so
+there's
+no point. you have two situations. firstly, you could write an app that
+is skinnable
+and have an easy way to change the skin, secondly, you have a mostly
+native
+application with pixmap phat knobs. if the app author provides for it,
+the user
+could select their preferred animation (or say a high visibility
+animation if they are
+visually impaired).
+
+it wouldn't take much code to implement the "change-animation" signal
+and you
+can ignore completely it if you don't use it.
+
+pete.
+
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 11:12:29 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 10:12:29 +0100
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <ec9314860706220052g44cab956y42437169be583f39@mail.gmail.com>
+References: <1182495453.6848.77.camel@majesterium>
+	<ec9314860706220052g44cab956y42437169be583f39@mail.gmail.com>
+Message-ID: <1182503549.6848.181.camel@majesterium>
+
+On Fri, 2007-06-22 at 17:52 +1000, Loki Davison wrote:
+> On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> >
+> > 1. name the base knob class PhatKnob and collide with (break) the old
+> > api.	
+> >
+> 
+> Works for me. Bugger all uses current one.
+> 
+> 
+> > 2. enjoy our inconsistent naming policy every day and in every way by
+> > adding a post fix. something like PhatKnobBase or PhatKnobCommon. which
+> > gives us the following:
+> >
+> > base class              | example instantiatable class
+> > ---------------------------------------------------------------------
+> > PhatFanSlider          |     PhatVFanSlider
+> > PhatKnobCommon   |    PhatKnob
+> >
+> > yummy.
+> >
+> > 3. call the base class something else. like PhatDial or something.
+> > PhatPot anyone? :D
+> >
+> > does anyone have a better idea, or a prefered choice?
+> >
+> 
+> I do like the sound of PhatPot though... ;) What about Thorwil's other
+> widgets that fit in the same size space? Should Phat1d (or 1d
+> float/int) thing be the parent? That covers the fan sliders too to
+> inherit from... It's a little freaky sounding though.
+
+i'm not sure what you mean by 1d or 2d. are you talking about the number
+of control axis?
+
+> > it might be worth implementing an api so that the drawing operation
+> > could be handled by a callback (perhaps even a plugin) that way, people
+> > could
+> > use the same knob but use custom drawing code. not sure about the worth
+> > of that either though.
+> >
+> 
+> Can all this goodness also be worked into the fansliders? I coded a
+> pixmap based fanslider a long time ago but the code is pretty
+> horrible. It was used in the smack gui.
+> http://developer.berlios.de/dbimage.php?id=1266 Current ones are gtk
+> drawing based. I.e pre cairo and svg and other good stuff.
+
+yup.
+
+caveat: i have no background in comp sci or engineering or (anything
+else).
+this means i don't benefit from having been forewarned about common
+mistakes and misapprehensions. still, it seems like a good way to add
+some flexibility
+without having to try and design some kind of markup language with which
+to
+describe the appearance of a dynamic widget.
+
+pete.
+
+
+
+From loki.davison at gmail.com  Fri Jun 22 11:39:26 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 22 Jun 2007 19:39:26 +1000
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <1182503549.6848.181.camel@majesterium>
+References: <1182495453.6848.77.camel@majesterium>
+	<ec9314860706220052g44cab956y42437169be583f39@mail.gmail.com>
+	<1182503549.6848.181.camel@majesterium>
+Message-ID: <ec9314860706220239g142c7d9bk511123b67bc10e0e@mail.gmail.com>
+
+On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> On Fri, 2007-06-22 at 17:52 +1000, Loki Davison wrote:
+> > On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> > >
+> > > 1. name the base knob class PhatKnob and collide with (break) the old
+> > > api.	
+> > >
+> >
+> > Works for me. Bugger all uses current one.
+> >
+> >
+> > > 2. enjoy our inconsistent naming policy every day and in every way by
+> > > adding a post fix. something like PhatKnobBase or PhatKnobCommon. which
+> > > gives us the following:
+> > >
+> > > base class              | example instantiatable class
+> > > ---------------------------------------------------------------------
+> > > PhatFanSlider          |     PhatVFanSlider
+> > > PhatKnobCommon   |    PhatKnob
+> > >
+> > > yummy.
+> > >
+> > > 3. call the base class something else. like PhatDial or something.
+> > > PhatPot anyone? :D
+> > >
+> > > does anyone have a better idea, or a prefered choice?
+> > >
+> >
+> > I do like the sound of PhatPot though... ;) What about Thorwil's other
+> > widgets that fit in the same size space? Should Phat1d (or 1d
+> > float/int) thing be the parent? That covers the fan sliders too to
+> > inherit from... It's a little freaky sounding though.
+>
+> i'm not sure what you mean by 1d or 2d. are you talking about the number
+> of control axis?
+>
+
+Yeah, sorry for not being a little bit more clear. The basic parent
+classes we have, if you want to think about it in OO style language or
+the basic functions, are
+
+1d integer controls i.e the sliderbutton
+1d float things, the fan sliders and knobs,
+2d (float) things, the pad
+and other things... the keyboard ;)
+
+Loki
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 13:42:12 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 12:42:12 +0100
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <ec9314860706220239g142c7d9bk511123b67bc10e0e@mail.gmail.com>
+References: <1182495453.6848.77.camel@majesterium>
+	<ec9314860706220052g44cab956y42437169be583f39@mail.gmail.com>
+	<1182503549.6848.181.camel@majesterium>
+	<ec9314860706220239g142c7d9bk511123b67bc10e0e@mail.gmail.com>
+Message-ID: <1182512532.6848.211.camel@majesterium>
+
+On Fri, 2007-06-22 at 19:39 +1000, Loki Davison wrote:
+> On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> > On Fri, 2007-06-22 at 17:52 +1000, Loki Davison wrote:
+> > > On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+
+> >
+> > i'm not sure what you mean by 1d or 2d. are you talking about the number
+> > of control axis?
+> >
+> 
+> Yeah, sorry for not being a little bit more clear. The basic parent
+> classes we have, if you want to think about it in OO style language or
+> the basic functions, are
+> 
+> 1d integer controls i.e the sliderbutton
+> 1d float things, the fan sliders and knobs,
+> 2d (float) things, the pad
+> and other things... the keyboard ;)
+
+ok, got it, ta.
+
+postponing comment until emergency serotonin replacement procedures
+are completed. :)
+
+pete.
+
+
+
+
+From zenadsl6252 at zen.co.uk  Fri Jun 22 13:47:14 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Fri, 22 Jun 2007 12:47:14 +0100
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <20070622082340.GB4083@charly.SWORD>
+References: <1182495453.6848.77.camel@majesterium>
+	<20070622072523.GA4083@charly.SWORD>
+	<1182498495.6848.113.camel@majesterium>
+	<20070622082340.GB4083@charly.SWORD>
+Message-ID: <1182512835.6848.216.camel@majesterium>
+
+On Fri, 2007-06-22 at 10:23 +0200, Thorsten Wilms wrote:
+> On Fri, Jun 22, 2007 at 08:48:15AM +0100, pete shorthose wrote:
+> > 
+> > actually, centred is a better name than any i've though of. 
+> > does that mean that we have to call the normal version, uhm.. "normal"?
+> > 
+> > what about left-to-right  or right-sweep?
+> 
+> Hmm, it's about whether the range is all positive (or unsigned?), 
+> goes negative to positive ... and theoreticaly there could be 
+> negative only. Or where zero (neutral) is: left, center, right.
+> Centered is actually the common-but-special-case of the neutral 
+> position being exactly in the middle. There could be an offset 8-0
+
+ok then "hard-to-describe-option" it is!
+
+:D
+
+pete.
+
+
+
+From loki.davison at gmail.com  Sat Jun 23 11:22:23 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Sat, 23 Jun 2007 19:22:23 +1000
+Subject: [Phat-dev] my current concerns
+In-Reply-To: <1182484631.6848.40.camel@majesterium>
+References: <1182479108.6848.11.camel@majesterium>
+	<ec9314860706211953p4379be25p96ac05a7593a855a@mail.gmail.com>
+	<1182484631.6848.40.camel@majesterium>
+Message-ID: <ec9314860706230222o976a68anccd6f73513af991@mail.gmail.com>
+
+On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> On Fri, 2007-06-22 at 12:53 +1000, Loki Davison wrote:
+>
+> > minor bugger up with setting it up though.. Just fixed the reply to
+> > stuff... Dodgy defaults... ;)
+>
+> you and me both. i signed up with a forwarding address like a muppet
+> and then wondered why i couldn't post to the list.
+> embarrassingly enough, it's about the fourth time i've done that in
+> recent years. bits of my brain not connected obviously.
+>
+> > All the ideas in this sound pretty good to me. The configurable
+> > mapping between input events and control-update functions should
+> > probably been most of the other widgets too. At least I can see it
+> > being useful for the 2d pad to implement a hockey puck style physics
+> > thing. Always though that was cool since i saw it in Lemur.
+> > http://www.jazzmutant.com/lemur_overview.php
+>
+> Aye. the less duplication the better.
+>
+> > Metering is still the thing that I'd like to have in phat. Porting all
+> > the meterbridge widgets to phat would really improve all the crappy
+> > vu's everyone is using in there apps now.
+>
+> hmm, threads and SDL. i wouldn't be surprised to discover that
+> steve chose not to implement those in gtk for a reason.
+> still, i'll take a look. i'll have a peek at what ardour does there too.
+>
+I  chatted to Steve about this on #lad a while ago. IIRC he said it
+was just the state of gtk etc at the time. SDL was just a little
+easier for pretty stuff. I think with cairo etc it's probably
+different now.
+
+
+
+> >  Also an adsr widget would be
+> > nice and pretty easy.
+>
+> seconded.
+>
+> > There are a bunch of other ones we already have
+> > a few designs for which would be nice too, like the oscillator
+> > selector (pie menu) widget.
+>
+> it's a bit specialised. how about as the default presentation for a
+> general waveform selector. the options (popup list, no popup or
+> pie chart) being gobject properties?
+>
+
+Yeah, using the animation store idea you mentioned in the other idea.
+The app can request a list with a saw, square, sine, etc by a string
+name. There can be a standard set that we ship and the app can provide
+others if it wants. This could be related to the gtk iconFactory thing
+but i haven't really looked at it. Generic waveform selector with a
+range of styles sounds good though.
+
+> >   Do we want to make a todo / wishlist on a
+> > wiki?
+>
+> great idea. it'd be nice if we could have a section per proposed (or
+> existing) widget with suggestions. eg: should it be a linear adsr only?
+> or part of a dynamic envelope widget.
+> if we do set up a wiki, i'd still encourage people to post to the list
+> when they make significant edits.
+>
+
+
+I've set up the basic wishlist/todo wiki. I'd prefer if discussion was
+on the list though.
+http://openfacts.berlios.de/index-en.phtml?title=Phat_Todo
+
+Loki
+
+
+From damon at karuna.eclipse.co.uk  Sat Jun 23 12:46:38 2007
+From: damon at karuna.eclipse.co.uk (Damon Chaplin)
+Date: Sat, 23 Jun 2007 11:46:38 +0100
+Subject: [Phat-dev] Tiny docs patch
+Message-ID: <1182595598.3077.7.camel@localhost.localdomain>
+
+
+Here's a tiny patch to docs/Makefile.am so the docs build OK from the
+tarball.
+
+By the way it might be nice to add images of the widgets, just like the
+GTK+ docs have, e.g.
+  http://developer.gnome.org/doc/API/2.0/gtk/GtkSpinButton.html
+
+That helps people get a quick idea of what each widget looks like. (I
+can help set it up, if you want.)
+
+Damon
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: phat.patch
+Type: text/x-patch
+Size: 433 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070623/a09060ed/attachment.bin>
+
+From loki.davison at gmail.com  Sat Jun 23 13:45:27 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Sat, 23 Jun 2007 21:45:27 +1000
+Subject: [Phat-dev] Tiny docs patch
+In-Reply-To: <1182595598.3077.7.camel@localhost.localdomain>
+References: <1182595598.3077.7.camel@localhost.localdomain>
+Message-ID: <ec9314860706230445q6d1a999ar9477d7828834c295@mail.gmail.com>
+
+On 6/23/07, Damon Chaplin <damon at karuna.eclipse.co.uk> wrote:
+>
+> Here's a tiny patch to docs/Makefile.am so the docs build OK from the
+> tarball.
+>
+> By the way it might be nice to add images of the widgets, just like the
+> GTK+ docs have, e.g.
+>   http://developer.gnome.org/doc/API/2.0/gtk/GtkSpinButton.html
+>
+> That helps people get a quick idea of what each widget looks like. (I
+> can help set it up, if you want.)
+>
+> Damon
+>
+>
+
+I've added your patch to svn. The images in the docs idea sounds good.
+If you can send a patch for that too it would be cool. ;)
+
+Loki
+
+
+From marr at lumin.us  Mon Jun 25 08:29:12 2007
+From: marr at lumin.us (Mark Rivera)
+Date: Mon, 25 Jun 2007 01:29:12 -0500
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <1182498495.6848.113.camel@majesterium>
+References: <1182495453.6848.77.camel@majesterium>	<20070622072523.GA4083@charly.SWORD>
+	<1182498495.6848.113.camel@majesterium>
+Message-ID: <467F60B8.1000900@lumin.us>
+
+
+>>> i want to add a pan style option. i also want to figure out the proper
+>>> name for the pan style option :P 
+
+You mean 'pan style' like a mixer channel pan knob? That's called 
+center-detented.
+
+Maybe you'd want a "detents" property for ALL knobs (at the base class)?
+
+detents == 0 or null:      Smooth travel (like a regular potentiometer)
+
+detents > 0:               Would evenly divide the range of the knob
+                            into discrete steps. This would be great for
+                            OSC waveform selection etc.
+
+That would mean that a pan style "centered" knob would have:
+detents == 1.
+
+A second property, "detent_zone" could be a property which specified the 
++/- degrees for which the knob position would "snap" into the detent. So 
+for the pan knob, you'd have smooth travel until you were within, say, 
++/- 5 deg of the detent.
+
+If this detent_zone value exceeded the degrees of the space between 
+detents, then you'd have a knob which ONLY snapped to detents (again, 
+like a waveform selector).
+
+
+Mark
+
+
+
+From marr at lumin.us  Mon Jun 25 08:41:30 2007
+From: marr at lumin.us (Mark Rivera)
+Date: Mon, 25 Jun 2007 01:41:30 -0500
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <467F60B8.1000900@lumin.us>
+References: <1182495453.6848.77.camel@majesterium>	<20070622072523.GA4083@charly.SWORD>
+	<1182498495.6848.113.camel@majesterium> <467F60B8.1000900@lumin.us>
+Message-ID: <467F639A.4060705@lumin.us>
+
+Mark Rivera wrote:
+> 
+>>>> i want to add a pan style option. i also want to figure out the proper
+>>>> name for the pan style option :P 
+> 
+> You mean 'pan style' like a mixer channel pan knob? That's called 
+> center-detented.
+> 
+> Maybe you'd want a "detents" property for ALL knobs (at the base class)?
+> 
+> detents == 0 or null:      Smooth travel (like a regular potentiometer)
+> 
+> detents > 0:               Would evenly divide the range of the knob
+>                            into discrete steps. This would be great for
+>                            OSC waveform selection etc.
+> 
+> That would mean that a pan style "centered" knob would have:
+> detents == 1.
+> 
+> A second property, "detent_zone" could be a property which specified the 
+> +/- degrees for which the knob position would "snap" into the detent. So 
+> for the pan knob, you'd have smooth travel until you were within, say, 
+> +/- 5 deg of the detent.
+> 
+> If this detent_zone value exceeded the degrees of the space between 
+> detents, then you'd have a knob which ONLY snapped to detents (again, 
+> like a waveform selector).
+
+
+Er, actually, having a detent_zone that spanned more than one detent 
+could be a problem (i.e., which detent do you snap to on mouse 
+release?). So, perhaps there could be some validation - if the 
+detent_zone is too big and spans more than one detent, the validation 
+routine would automatically downsize the detent_zone degrees to an 
+appropriate value based on the value in 'detents' property and the range 
+of the knob.
+
+Mark
+
+
+From marr at lumin.us  Mon Jun 25 08:52:43 2007
+From: marr at lumin.us (Mark Rivera)
+Date: Mon, 25 Jun 2007 01:52:43 -0500
+Subject: [Phat-dev] knob-keyboard functionality
+Message-ID: <467F663B.3050701@lumin.us>
+
+
+Speaking of knobs, it'd be cool if after you clicked on a knob (i.e., it 
+had focus), it would be possible to use the arrow keys on the keyboard 
+to adjust the value. Up and Right would mean ++, and Down and Left would 
+mean --. Shift+arrow could mean some developer-specified value like +=10 
+or -=10. This would be great for end-users who don't want to fine-tune 
+knob values using the mouse, or in situations where the end-user is 
+setting up a synth patch or something by tabbing through all the knobs.
+
+I'm just suggesting this as someone who doesn't like the mouse as much 
+as I like the keyboard.
+
+
+Mark
+
+
+From zenadsl6252 at zen.co.uk  Mon Jun 25 11:06:54 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Mon, 25 Jun 2007 10:06:54 +0100
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <467F60B8.1000900@lumin.us>
+References: <1182495453.6848.77.camel@majesterium>
+	<20070622072523.GA4083@charly.SWORD>
+	<1182498495.6848.113.camel@majesterium>  <467F60B8.1000900@lumin.us>
+Message-ID: <1182762414.31395.93.camel@majesterium>
+
+On Mon, 2007-06-25 at 01:29 -0500, Mark Rivera wrote:
+> >>> i want to add a pan style option. i also want to figure out the proper
+> >>> name for the pan style option :P 
+> 
+> You mean 'pan style' like a mixer channel pan knob? That's called 
+
+kinda sorta. the knobs we are dealing with have a circular gauge
+around them. this normally starts on the left and tracks the knob
+clockwise around to the right.
+it can also start in the centre (0 degrees) and track left or right.
+because you either need a different animation or a different drawing
+algorithm to represent the second method you need to be able to
+select it somehow. because you can have detents in both methods,
+detents alone are not enough.
+
+you could try and derive the type from the adjustment values.
+say, if (upper + lower) == 0 then use pan style. but there may be
+some cases where this is inappropriate.
+
+> center-detented.
+> Maybe you'd want a "detents" property for ALL knobs (at the base class)?
+> 
+> detents == 0 or null:      Smooth travel (like a regular potentiometer)
+> 
+> detents > 0:               Would evenly divide the range of the knob
+>                             into discrete steps. This would be great for
+>                             OSC waveform selection etc.
+> 
+> That would mean that a pan style "centered" knob would have:
+> detents == 1.
+> 
+> A second property, "detent_zone" could be a property which specified the 
+> +/- degrees for which the knob position would "snap" into the detent. So 
+> for the pan knob, you'd have smooth travel until you were within, say, 
+> +/- 5 deg of the detent.
+
+there are any number of possible combinations of dentent count, 
+tick count and gauge start position. but in the interests of sanity
+i think we should equate detents with ticks then have options to:
+
+ set num ticks  (got this in the cairo knob already)
+
+ draw ticks       (whether to draw the ticks)
+
+ snap to ticks
+
+ set the snap tolerance (proportional to the tick interval)
+
+ toggle between proportional and balance views
+ (for knobs without a circular gauge, it's irrelevant)
+
+
+with sensible defaults, people can ignore what they don't need.
+
+> If this detent_zone value exceeded the degrees of the space between 
+> detents, then you'd have a knob which ONLY snapped to detents (again, 
+> like a waveform selector).
+
+ftr, you can do this now by setting the step_increment to (range /
+ticks)
+which is a cogent reminder that the knob and the adjustment could
+well end up in conflict. i'm not sure what to say about that.  
+
+well, except for..
+ AIEEEEEEEEEEEEEEEEEEEEEEEEeeeeeeeeEEEEEEEEEEEEEEEEE!!
+
+we could subclass GtkAdjustment and put the detents and tolerences in
+there and so
+resolve all the logic on one place. we'd have detents and tolerences for
+free in other
+adjustment based widgets then. if someone goes on to point out how
+stupid this idea
+is, i'll pretend it was an unresearched and off the cuff remark. 
+
+cheers,
+pete
+
+
+
+
+From zenadsl6252 at zen.co.uk  Mon Jun 25 11:10:22 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Mon, 25 Jun 2007 10:10:22 +0100
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <467F639A.4060705@lumin.us>
+References: <1182495453.6848.77.camel@majesterium>
+	<20070622072523.GA4083@charly.SWORD>
+	<1182498495.6848.113.camel@majesterium> <467F60B8.1000900@lumin.us>
+	<467F639A.4060705@lumin.us>
+Message-ID: <1182762622.31395.97.camel@majesterium>
+
+On Mon, 2007-06-25 at 01:41 -0500, Mark Rivera wrote:
+> Mark Rivera wrote:
+
+> Er, actually, having a detent_zone that spanned more than one detent 
+> could be a problem (i.e., which detent do you snap to on mouse 
+> release?). So, perhaps there could be some validation - if the 
+> detent_zone is too big and spans more than one detent, the validation 
+> routine would automatically downsize the detent_zone degrees to an 
+> appropriate value based on the value in 'detents' property and the range 
+> of the knob.
+
+aye. just define the tolerance as a percentage. the widget would then 
+take that percentage of the detent interval ie: (range / detents)
+
+pete.
+
+
+
+From zenadsl6252 at zen.co.uk  Mon Jun 25 11:13:47 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Mon, 25 Jun 2007 10:13:47 +0100
+Subject: [Phat-dev] Phat cairo based knob
+In-Reply-To: <1182512532.6848.211.camel@majesterium>
+References: <1182495453.6848.77.camel@majesterium>
+	<ec9314860706220052g44cab956y42437169be583f39@mail.gmail.com>
+	<1182503549.6848.181.camel@majesterium>
+	<ec9314860706220239g142c7d9bk511123b67bc10e0e@mail.gmail.com>
+	<1182512532.6848.211.camel@majesterium>
+Message-ID: <1182762827.31395.101.camel@majesterium>
+
+On Fri, 2007-06-22 at 12:42 +0100, pete shorthose wrote:
+> On Fri, 2007-06-22 at 19:39 +1000, Loki Davison wrote:
+> > On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> > > On Fri, 2007-06-22 at 17:52 +1000, Loki Davison wrote:
+> > > > On 6/22/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> 
+> > >
+> > > i'm not sure what you mean by 1d or 2d. are you talking about the number
+> > > of control axis?
+> > >
+> > 
+> > Yeah, sorry for not being a little bit more clear. The basic parent
+> > classes we have, if you want to think about it in OO style language or
+> > the basic functions, are
+> > 
+> > 1d integer controls i.e the sliderbutton
+> > 1d float things, the fan sliders and knobs,
+> > 2d (float) things, the pad
+> > and other things... the keyboard ;)
+
+is it worth it? it's a fine logical grouping but practically, the actual
+behaviour (code)
+common to each member of the group is minimal and there's a stack
+of boiler plate required in order to get it.
+
+pete.
+
+
+
+From zenadsl6252 at zen.co.uk  Mon Jun 25 11:50:38 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Mon, 25 Jun 2007 10:50:38 +0100
+Subject: [Phat-dev] knob-keyboard functionality
+In-Reply-To: <467F663B.3050701@lumin.us>
+References: <467F663B.3050701@lumin.us>
+Message-ID: <1182765038.31395.116.camel@majesterium>
+
+On Mon, 2007-06-25 at 01:52 -0500, Mark Rivera wrote:
+> Speaking of knobs, it'd be cool if after you clicked on a knob (i.e., it 
+> had focus), it would be possible to use the arrow keys on the keyboard 
+> to adjust the value. Up and Right would mean ++, and Down and Left would 
+> mean --. Shift+arrow could mean some developer-specified value like +=10 
+> or -=10. This would be great for end-users who don't want to fine-tune 
+> knob values using the mouse, or in situations where the end-user is 
+> setting up a synth patch or something by tabbing through all the knobs.
+
+yeah, good idea.
+
+we are hoping to provide some sort of customisable mapping between
+control methods and input events. if we provide sane defaults then
+there should be a measure of consistency as most developers or users
+wouldn't need to change them, but at the same time, they have
+flexibility
+to do so if they really want.
+
+it occurs to me that i don't think we outline or otherwise highlight the
+active knob though. i'll have to check that.
+
+pete.
+
+
+
+From damon at karuna.eclipse.co.uk  Mon Jun 25 13:04:31 2007
+From: damon at karuna.eclipse.co.uk (Damon Chaplin)
+Date: Mon, 25 Jun 2007 12:04:31 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+Message-ID: <1182769471.3170.31.camel@localhost.localdomain>
+
+
+I've just tried some of the demos and here's some initial thoughts:
+
+ o PhatFanSlider flickers horribly and isn't that easy to use.
+   (The demo is a bit odd as well since the range bar is so long
+   you don't really need a fan slider for it.)
+
+   When space is really tight I think I prefer the sliders in Cubase
+   that popup a large slider widget when you click on them.
+
+ o What is PhatPad supposed to be? I don't think it is working for me.
+   All I get is a black rectangle and a bunch of vertical lines.
+   Do you need a special input device to try it?
+
+ o Ideas for new widgets (from a quick look at Reason) -
+    o Small buttons for things like [M] [S] [>] [SELECT]
+      - toggle buttons or radio buttons.
+    o LED toggle buttons
+    o Level meters
+    o 2-way/3-way/n-way switches (horizontal or vertical)
+    o Pitch bend/modulation wheel 
+    o Maybe prettier spinbutton widgets that look like LCD displays.
+
+
+I think a reasonable goal for Phat would be to reproduce an interface
+like Reason. It wouldn't have to be pixel-perfect, but should have all
+the same elements in the same positions and look as nice.
+
+Damon
+
+
+
+
+From zenadsl6252 at zen.co.uk  Tue Jun 26 22:17:57 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Tue, 26 Jun 2007 21:17:57 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <1182769471.3170.31.camel@localhost.localdomain>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+Message-ID: <1182889078.17645.63.camel@majesterium>
+
+On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> I've just tried some of the demos and here's some initial thoughts:
+> 
+>  o PhatFanSlider flickers horribly and isn't that easy to use.
+>    (The demo is a bit odd as well since the range bar is so long
+>    you don't really need a fan slider for it.)
+
+iirc, this is a problem with shaped X windows and not phat. 
+i don't think that there is a comprehensive solution atm.
+
+>    When space is really tight I think I prefer the sliders in Cubase
+>    that popup a large slider widget when you click on them.
+
+when space is tight, i throw a few people out of the window so i can
+stretch out. i got an A in defenestration at school.
+
+>  o What is PhatPad supposed to be? I don't think it is working for me.
+>    All I get is a black rectangle and a bunch of vertical lines.
+>    Do you need a special input device to try it?
+
+where the knob controls one value via an adjustment, the pad 
+controls 5. these relate to:
+x pos
+y pos
+x tilt
+y tilt
+and pressure
+
+presumably this is intended for use with a stylus rather than a mouse.
+what you connect those adjustments to is up to you. great for live
+tweakage
+i reckon.
+
+i'm not sure about the lines (loki?) but if you check the terminal
+output
+you can see the x and y position values printed to stdout when you move
+the
+mouse over the pad.
+
+>  o Ideas for new widgets (from a quick look at Reason) -
+>     o Small buttons for things like [M] [S] [>] [SELECT]
+>       - toggle buttons or radio buttons.
+>     o LED toggle buttons
+>     o Level meters
+>     o 2-way/3-way/n-way switches (horizontal or vertical)
+>     o Pitch bend/modulation wheel 
+>     o Maybe prettier spinbutton widgets that look like LCD displays.
+
+there's some overlap there but yeah, most if not all of that is in line
+for possible implementation. I say possible because we need to
+agree on implementation details and then have the time to implement
+them. neither are guaranteed.
+
+> 
+> I think a reasonable goal for Phat would be to reproduce an interface
+> like Reason. It wouldn't have to be pixel-perfect, but should have all
+> the same elements in the same positions and look as nice.
+
+personally, i want it for fully pixmapped interfaces, which is roughly
+what you are describing i think. aside from generic defaults, phat isn't
+likely to ship with anything approaching skins though. you'll have to
+procure the gfx and use them with phat. i can envisage a convenience
+library and applications that wrap phat to provide say, a gui builder,
+xml markup based interfaces, maybe some kind of skin handling and
+bindings to things like osc, lv2 or dssi etc, but thats much more high
+level.
+if you shove all that into phat then many devs who could potentially
+use it, wouldn't. particularly if they only want the native widgets.
+
+thanks for checking out the demos and giving feedback. 
+it really helps.
+
+cheers,
+pete.
+
+
+
+From torbenh at gmx.de  Wed Jun 27 06:28:09 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Wed, 27 Jun 2007 06:28:09 +0200
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <1182889078.17645.63.camel@majesterium>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+Message-ID: <20070627042809.GA6562@mobilat>
+
+On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+> On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> > I've just tried some of the demos and here's some initial thoughts:
+> > 
+> >  o PhatFanSlider flickers horribly and isn't that easy to use.
+> >    (The demo is a bit odd as well since the range bar is so long
+> >    you don't really need a fan slider for it.)
+> 
+> iirc, this is a problem with shaped X windows and not phat. 
+> i don't think that there is a comprehensive solution atm.
+
+it still is a problem of phat, because there is only the fanslider in
+it. I dont like it either.
+
+> >  o What is PhatPad supposed to be? I don't think it is working for me.
+> >    All I get is a black rectangle and a bunch of vertical lines.
+> >    Do you need a special input device to try it?
+> 
+> where the knob controls one value via an adjustment, the pad 
+> controls 5. these relate to:
+> x pos
+> y pos
+> x tilt
+> y tilt
+> and pressure
+> 
+> presumably this is intended for use with a stylus rather than a mouse.
+> what you connect those adjustments to is up to you. great for live
+> tweakage
+> i reckon.
+> 
+> i'm not sure about the lines (loki?) but if you check the terminal
+> output
+> you can see the x and y position values printed to stdout when you move
+> the
+> mouse over the pad.
+> 
+> >  o Ideas for new widgets (from a quick look at Reason) -
+> >     o Small buttons for things like [M] [S] [>] [SELECT]
+> >       - toggle buttons or radio buttons.
+> >     o LED toggle buttons
+> >     o Level meters
+> >     o 2-way/3-way/n-way switches (horizontal or vertical)
+> >     o Pitch bend/modulation wheel 
+> >     o Maybe prettier spinbutton widgets that look like LCD displays.
+> 
+> there's some overlap there but yeah, most if not all of that is in line
+> for possible implementation. I say possible because we need to
+> agree on implementation details and then have the time to implement
+> them. neither are guaranteed.
+
+to me these all look like derivatives from a GtkKnob.
+just some differnet ode for the behaviour. and different gfx.
+
+
+> 
+> > 
+> > I think a reasonable goal for Phat would be to reproduce an interface
+> > like Reason. It wouldn't have to be pixel-perfect, but should have all
+> > the same elements in the same positions and look as nice.
+> 
+> personally, i want it for fully pixmapped interfaces, which is roughly
+> what you are describing i think. aside from generic defaults, phat isn't
+> likely to ship with anything approaching skins though. you'll have to
+> procure the gfx and use them with phat. i can envisage a convenience
+> library and applications that wrap phat to provide say, a gui builder,
+> xml markup based interfaces, maybe some kind of skin handling and
+> bindings to things like osc, lv2 or dssi etc, but thats much more high
+> level.
+
+i am currently trying to break this stuff down to NOT being highlevel.
+(or rather being implemented already)
+
+gui-builder and xml markup should be done using (lib)glade.
+by encapsulating everything into gobject properties, most stuff should
+be accessible from glade.
+
+i am making (slow) progress on this. I started porting the GtkKnob from
+gAlan to gob. (it already compiles) need a test harness, to see whether
+the port works.
+
+i derived this thing from GtkRange, which I consider a mistake now.
+However this can be fixed quite easily now. 
+
+Most of the work was porting to gob:
+
+http://www.5z.com/jirka/gob.html
+gob just rocks.
+
+
+the thing i am trying to do now is finding the best model ( GtkTreeModel
+? ) which can represent a synth.
+For a first try a GtkTreeModel filled with GtkAdjustments could do.
+But i think there should be a single BaseClass for enums and string and
+whatnot...
+
+well enough for now...
+
+
+
+> if you shove all that into phat then many devs who could potentially
+> use it, wouldn't. particularly if they only want the native widgets.
+> 
+> thanks for checking out the demos and giving feedback. 
+> it really helps.
+> 
+> cheers,
+> pete.
+> 
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From damon at karuna.eclipse.co.uk  Wed Jun 27 11:20:17 2007
+From: damon at karuna.eclipse.co.uk (Damon Chaplin)
+Date: Wed, 27 Jun 2007 10:20:17 +0100
+Subject: [Phat-dev] PhatPad (Was: Initial thoughts on phat)
+In-Reply-To: <1182889078.17645.63.camel@majesterium>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+Message-ID: <1182936017.3066.2.camel@localhost.localdomain>
+
+On Tue, 2007-06-26 at 21:17 +0100, pete shorthose wrote:
+> On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+
+> >  o What is PhatPad supposed to be? I don't think it is working for me.
+> >    All I get is a black rectangle and a bunch of vertical lines.
+> >    Do you need a special input device to try it?
+> 
+> where the knob controls one value via an adjustment, the pad 
+> controls 5. these relate to:
+> x pos
+> y pos
+> x tilt
+> y tilt
+> and pressure
+> 
+> presumably this is intended for use with a stylus rather than a mouse.
+> what you connect those adjustments to is up to you. great for live
+> tweakage
+> i reckon.
+> 
+> i'm not sure about the lines (loki?) but if you check the terminal
+> output
+> you can see the x and y position values printed to stdout when you move
+> the
+> mouse over the pad.
+
+I've attached a screenshot of what I see here.
+
+Is that what it is supposed to look like?
+
+Damon
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Screenshot-PhatPad-Demo.png
+Type: image/png
+Size: 6358 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070627/1f8babfd/attachment.png>
+
+From zenadsl6252 at zen.co.uk  Wed Jun 27 11:31:20 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Wed, 27 Jun 2007 10:31:20 +0100
+Subject: [Phat-dev] PhatPad (Was: Initial thoughts on phat)
+In-Reply-To: <1182936017.3066.2.camel@localhost.localdomain>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<1182936017.3066.2.camel@localhost.localdomain>
+Message-ID: <1182936681.7455.55.camel@majesterium>
+
+On Wed, 2007-06-27 at 10:20 +0100, Damon Chaplin wrote:
+> On Tue, 2007-06-26 at 21:17 +0100, pete shorthose wrote:
+> > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> 
+> > >  o What is PhatPad supposed to be? I don't think it is working for me.
+> > >    All I get is a black rectangle and a bunch of vertical lines.
+<snip>
+>  
+> > i'm not sure about the lines (loki?) but if you check the terminal
+> > output
+> > you can see the x and y position values printed to stdout when you move
+> > the
+> > mouse over the pad.
+>
+> I've attached a screenshot of what I see here.
+> 
+> Is that what it is supposed to look like?
+
+
+ta. i'm not sure myself having just joined the phat team. i've never
+used the
+pad before (no stylus) but i can confirm that it looks like that here
+too.
+
+maybe loki or thorsten can chip in here.
+
+pete
+
+
+
+From t_w_ at freenet.de  Wed Jun 27 11:49:23 2007
+From: t_w_ at freenet.de (Thorsten Wilms)
+Date: Wed, 27 Jun 2007 11:49:23 +0200
+Subject: [Phat-dev] PhatPad (Was: Initial thoughts on phat)
+In-Reply-To: <1182936017.3066.2.camel@localhost.localdomain>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<1182936017.3066.2.camel@localhost.localdomain>
+Message-ID: <20070627094923.GA4147@charly.SWORD>
+
+On Wed, Jun 27, 2007 at 10:20:17AM +0100, Damon Chaplin wrote:
+> 
+> I've attached a screenshot of what I see here.
+> 
+> Is that what it is supposed to look like?
+
+
+Well, trying to use the pad to control frequency of an oscillator 
+(Khagan -> Om), I found linear mapping to be problematic. Think of 
+how each octave means double frequency. So Loki implemented a 
+logarithmic mode. The next problem was hitting note frequencies, 
+so he started implementing lines to indicate equal tempered notes.
+This last thing isn't finished / working right.
+
+BTW, there are 2 audio examples on http://khagan.berlios.de/, 
+using the pad widget to control Om (previous incarnation of Ingen).
+
+
+-- 
+Thorsten Wilms
+
+Thorwil's Design for Free Software:
+http://thorwil.wordpress.com
+
+
+From zenadsl6252 at zen.co.uk  Wed Jun 27 12:00:27 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Wed, 27 Jun 2007 11:00:27 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <20070627042809.GA6562@mobilat>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium> <20070627042809.GA6562@mobilat>
+Message-ID: <1182938427.7455.73.camel@majesterium>
+
+On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote:
+> On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+> > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> > > I've just tried some of the demos and here's some initial thoughts:
+> > > 
+> > >  o PhatFanSlider flickers horribly and isn't that easy to use.
+> > >    (The demo is a bit odd as well since the range bar is so long
+> > >    you don't really need a fan slider for it.)
+> > 
+> > iirc, this is a problem with shaped X windows and not phat. 
+> > i don't think that there is a comprehensive solution atm.
+> 
+> it still is a problem of phat, because there is only the fanslider in
+> it. I dont like it either.
+
+before i reply fully,  can i ask you if you are open to using (or even 
+working on) phat if it meets your needs?
+
+not that your input isn't valuable even if not but i could do with
+knowing that from the outset.
+
+also, are you working towards a competing library or just re
+working galan's interface? 
+
+cheers,
+pete.
+
+
+
+From loki.davison at gmail.com  Wed Jun 27 12:01:27 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Wed, 27 Jun 2007 20:01:27 +1000
+Subject: [Phat-dev] PhatPad (Was: Initial thoughts on phat)
+In-Reply-To: <1182936681.7455.55.camel@majesterium>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<1182936017.3066.2.camel@localhost.localdomain>
+	<1182936681.7455.55.camel@majesterium>
+Message-ID: <ec9314860706270301q6a440854g940c7dbc611b3b8c@mail.gmail.com>
+
+On 6/27/07, pete shorthose <zenadsl6252 at zen.co.uk> wrote:
+> On Wed, 2007-06-27 at 10:20 +0100, Damon Chaplin wrote:
+> > On Tue, 2007-06-26 at 21:17 +0100, pete shorthose wrote:
+> > > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> >
+> > > >  o What is PhatPad supposed to be? I don't think it is working for me.
+> > > >    All I get is a black rectangle and a bunch of vertical lines.
+> <snip>
+> >
+> > > i'm not sure about the lines (loki?) but if you check the terminal
+> > > output
+> > > you can see the x and y position values printed to stdout when you move
+> > > the
+> > > mouse over the pad.
+> >
+> > I've attached a screenshot of what I see here.
+> >
+> > Is that what it is supposed to look like?
+>
+>
+> ta. i'm not sure myself having just joined the phat team. i've never
+> used the
+> pad before (no stylus) but i can confirm that it looks like that here
+> too.
+>
+> maybe loki or thorsten can chip in here.
+>
+> pete
+>
+
+They are a little random looking if you have it pretty small. ;) They
+are "fret markings" i.e where the notes are. So you don't just have to
+use your ears. :) Some more sane highlighting for root/3th/5th or what
+ever might be useful.
+
+Loki
+
+
+From torbenh at gmx.de  Wed Jun 27 13:44:34 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Wed, 27 Jun 2007 13:44:34 +0200
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <1182938427.7455.73.camel@majesterium>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<20070627042809.GA6562@mobilat>
+	<1182938427.7455.73.camel@majesterium>
+Message-ID: <20070627114434.GC6562@mobilat>
+
+On Wed, Jun 27, 2007 at 11:00:27AM +0100, pete shorthose wrote:
+> On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote:
+> > On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+> > > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> > > > I've just tried some of the demos and here's some initial thoughts:
+> > > > 
+> > > >  o PhatFanSlider flickers horribly and isn't that easy to use.
+> > > >    (The demo is a bit odd as well since the range bar is so long
+> > > >    you don't really need a fan slider for it.)
+> > > 
+> > > iirc, this is a problem with shaped X windows and not phat. 
+> > > i don't think that there is a comprehensive solution atm.
+> > 
+> > it still is a problem of phat, because there is only the fanslider in
+> > it. I dont like it either.
+> 
+> before i reply fully,  can i ask you if you are open to using (or even 
+> working on) phat if it meets your needs?
+> 
+> not that your input isn't valuable even if not but i could do with
+> knowing that from the outset.
+> 
+> also, are you working towards a competing library or just re
+> working galan's interface? 
+
+i dont like competing libraries. (i only dont like the fanslider)
+but with some small efforts it would just be a config option to have a
+normal slider in place.
+
+we just need a common SliderBaseClass and some sort of factory....
+
+phat is THE gtk+ audio widgets library.
+
+> 
+> cheers,
+> pete.
+> 
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From loki.davison at gmail.com  Wed Jun 27 14:23:36 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Wed, 27 Jun 2007 22:23:36 +1000
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <20070627114434.GC6562@mobilat>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<20070627042809.GA6562@mobilat> <1182938427.7455.73.camel@majesterium>
+	<20070627114434.GC6562@mobilat>
+Message-ID: <ec9314860706270523x75db7fe5p37afc0b0120c1720@mail.gmail.com>
+
+On 6/27/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> On Wed, Jun 27, 2007 at 11:00:27AM +0100, pete shorthose wrote:
+> > On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote:
+> > > On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+> > > > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> > > > > I've just tried some of the demos and here's some initial thoughts:
+> > > > >
+> > > > >  o PhatFanSlider flickers horribly and isn't that easy to use.
+> > > > >    (The demo is a bit odd as well since the range bar is so long
+> > > > >    you don't really need a fan slider for it.)
+> > > >
+> > > > iirc, this is a problem with shaped X windows and not phat.
+> > > > i don't think that there is a comprehensive solution atm.
+> > >
+> > > it still is a problem of phat, because there is only the fanslider in
+> > > it. I dont like it either.
+> >
+> > before i reply fully,  can i ask you if you are open to using (or even
+> > working on) phat if it meets your needs?
+> >
+> > not that your input isn't valuable even if not but i could do with
+> > knowing that from the outset.
+> >
+> > also, are you working towards a competing library or just re
+> > working galan's interface?
+>
+> i dont like competing libraries. (i only dont like the fanslider)
+> but with some small efforts it would just be a config option to have a
+> normal slider in place.
+>
+> we just need a common SliderBaseClass and some sort of factory....
+>
+> phat is THE gtk+ audio widgets library.
+>
+
+Thorsten's sliders that are used in ardour should also be in phat.
+That's on the todo list. As is fixing the fansliders. The code is
+pretty hairy though. Goto's and fun stuff. Also i don't know much
+about xshape etc. We could do it with the xcomposite extension though.
+Would solve the flickering problem. Also, i've got another work around
+for the flickering prob that i'll try sometime soon. Have the xshape
+be the size of the whole screen and just change the mask so the actual
+size of the window doesn't change. Should work i think. Need some of
+your graphics smarts on this stuff though guys.
+
+Loki
+
+
+From torbenh at gmx.de  Wed Jun 27 15:46:27 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Wed, 27 Jun 2007 15:46:27 +0200
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <ec9314860706270523x75db7fe5p37afc0b0120c1720@mail.gmail.com>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<20070627042809.GA6562@mobilat>
+	<1182938427.7455.73.camel@majesterium>
+	<20070627114434.GC6562@mobilat>
+	<ec9314860706270523x75db7fe5p37afc0b0120c1720@mail.gmail.com>
+Message-ID: <20070627134627.GD6562@mobilat>
+
+On Wed, Jun 27, 2007 at 10:23:36PM +1000, Loki Davison wrote:
+> On 6/27/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > On Wed, Jun 27, 2007 at 11:00:27AM +0100, pete shorthose wrote:
+> > > On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote:
+> > > > On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+> > > > > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> > > > > > I've just tried some of the demos and here's some initial thoughts:
+> > > > > >
+> > > > > >  o PhatFanSlider flickers horribly and isn't that easy to use.
+> > > > > >    (The demo is a bit odd as well since the range bar is so long
+> > > > > >    you don't really need a fan slider for it.)
+> > > > >
+> > > > > iirc, this is a problem with shaped X windows and not phat.
+> > > > > i don't think that there is a comprehensive solution atm.
+> > > >
+> > > > it still is a problem of phat, because there is only the fanslider in
+> > > > it. I dont like it either.
+> > >
+> > > before i reply fully,  can i ask you if you are open to using (or even
+> > > working on) phat if it meets your needs?
+> > >
+> > > not that your input isn't valuable even if not but i could do with
+> > > knowing that from the outset.
+> > >
+> > > also, are you working towards a competing library or just re
+> > > working galan's interface?
+> >
+> > i dont like competing libraries. (i only dont like the fanslider)
+> > but with some small efforts it would just be a config option to have a
+> > normal slider in place.
+> >
+> > we just need a common SliderBaseClass and some sort of factory....
+> >
+> > phat is THE gtk+ audio widgets library.
+> >
+> 
+> Thorsten's sliders that are used in ardour should also be in phat.
+> That's on the todo list. As is fixing the fansliders. The code is
+> pretty hairy though. Goto's and fun stuff. Also i don't know much
+> about xshape etc. We could do it with the xcomposite extension though.
+> Would solve the flickering problem. Also, i've got another work around
+> for the flickering prob that i'll try sometime soon. Have the xshape
+> be the size of the whole screen and just change the mask so the actual
+> size of the window doesn't change. Should work i think. Need some of
+> your graphics smarts on this stuff though guys.
+
+nice to see you in good heatth again.
+
+so the flickering is window resizing... :)
+that should be fixable...
+
+can i hear some opinions on gob ?
+i fell in love with this stuff, and i would like to continue using it.
+
+however if you guys dont like it, then it would not make much sense...
+
+> 
+> Loki
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From zenadsl6252 at zen.co.uk  Wed Jun 27 18:36:44 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Wed, 27 Jun 2007 17:36:44 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <20070627134627.GD6562@mobilat>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium> <20070627042809.GA6562@mobilat>
+	<1182938427.7455.73.camel@majesterium> <20070627114434.GC6562@mobilat>
+	<ec9314860706270523x75db7fe5p37afc0b0120c1720@mail.gmail.com>
+	<20070627134627.GD6562@mobilat>
+Message-ID: <1182962204.12015.25.camel@majesterium>
+
+On Wed, 2007-06-27 at 15:46 +0200, torbenh at gmx.de wrote:
+
+> can i hear some opinions on gob ?
+> i fell in love with this stuff, and i would like to continue using it.
+
+i suppose it would slow down development in the short term but speed it
+up in the long term. you would raise the bar for outside involvement though.
+we might see fewer patches and or developers coming in to the project.
+
+yup, i'm definitely undecided. looks like you are the decider loki :P
+
+pete. 
+
+
+
+From zenadsl6252 at zen.co.uk  Wed Jun 27 19:00:45 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Wed, 27 Jun 2007 18:00:45 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <20070627042809.GA6562@mobilat>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium> <20070627042809.GA6562@mobilat>
+Message-ID: <1182963645.12015.36.camel@majesterium>
+
+On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote: 
+> On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+> > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+
+> > >  o Ideas for new widgets (from a quick look at Reason) -
+> > >     o Small buttons for things like [M] [S] [>] [SELECT]
+> > >       - toggle buttons or radio buttons.
+> > >     o LED toggle buttons
+> > >     o Level meters
+> > >     o 2-way/3-way/n-way switches (horizontal or vertical)
+> > >     o Pitch bend/modulation wheel 
+> > >     o Maybe prettier spinbutton widgets that look like LCD displays.
+> > 
+> > there's some overlap there but yeah, most if not all of that is in line
+> > for possible implementation. I say possible because we need to
+> > agree on implementation details and then have the time to implement
+> > them. neither are guaranteed.
+> 
+> to me these all look like derivatives from a GtkKnob.
+> just some differnet ode for the behaviour. and different gfx.
+
+they are all widgets that could use an animation at least.
+
+the thing is though, in most cases we want a native and a pixmap version
+of widgets. this changes the optimal inheritance path imho.
+
+> > > I think a reasonable goal for Phat would be to reproduce an interface
+> > > like Reason. It wouldn't have to be pixel-perfect, but should have all
+> > > the same elements in the same positions and look as nice.
+> > 
+> > personally, i want it for fully pixmapped interfaces, which is roughly
+> > what you are describing i think. aside from generic defaults, phat isn't
+> > likely to ship with anything approaching skins though. you'll have to
+> > procure the gfx and use them with phat. i can envisage a convenience
+> > library and applications that wrap phat to provide say, a gui builder,
+> > xml markup based interfaces, maybe some kind of skin handling and
+> > bindings to things like osc, lv2 or dssi etc, but thats much more high
+> > level.
+> 
+> i am currently trying to break this stuff down to NOT being highlevel.
+> (or rather being implemented already)
+
+this needs a dedicated thread really. just what is the scope of phat.
+
+> gui-builder and xml markup should be done using (lib)glade.
+> by encapsulating everything into gobject properties, most stuff should
+> be accessible from glade.
+
+i'd already done this for the erstwhile liblaw and loki gave me the go ahead
+to add glade 3 support to phat now that i've ditched liblaw to work on phat. 
+i'm not as convinced as you seem to be that this is the optimum way to
+construct pixmapped interfaces but people will have the option to do so.
+i like glade and would cheerfully be proven wrong. 
+
+> i am making (slow) progress on this. I started porting the GtkKnob from
+> gAlan to gob. (it already compiles) need a test harness, to see whether
+> the port works.
+
+i used glade 3 for this. the knob widget doesn't really need support code
+(or not much of it) so it was just a matter of writing a catalog file and dropping
+the lib with the knob in it into the glade 3 modules dir.  
+it's not galan specific though.
+
+
+pete
+
+
+
+From torbenh at gmx.de  Wed Jun 27 19:32:45 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Wed, 27 Jun 2007 19:32:45 +0200
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <1182962204.12015.25.camel@majesterium>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<20070627042809.GA6562@mobilat>
+	<1182938427.7455.73.camel@majesterium>
+	<20070627114434.GC6562@mobilat>
+	<ec9314860706270523x75db7fe5p37afc0b0120c1720@mail.gmail.com>
+	<20070627134627.GD6562@mobilat>
+	<1182962204.12015.25.camel@majesterium>
+Message-ID: <20070627173245.GC20874@mobilat>
+
+On Wed, Jun 27, 2007 at 05:36:44PM +0100, pete shorthose wrote:
+> On Wed, 2007-06-27 at 15:46 +0200, torbenh at gmx.de wrote:
+> 
+> > can i hear some opinions on gob ?
+> > i fell in love with this stuff, and i would like to continue using it.
+> 
+> i suppose it would slow down development in the short term but speed it
+> up in the long term. you would raise the bar for outside involvement though.
+> we might see fewer patches and or developers coming in to the project.
+> 
+> yup, i'm definitely undecided. looks like you are the decider loki :P
+
+well... note that its just a preprocessor.
+there will always be .c and .h files.
+
+and they are not THAT bad if you use gob2 --no-lines
+
+however deriving GObjects and implementing properties is a PITA in C.
+and learning to handle the boiler plate code needed is harder than
+learning gob IMO.
+
+but given the fact, that all these proposed pixmap widgets are just
+derivatives of a single base class.
+with button_down_event button_up_event and motion_notify event
+implemented differently... subclassing should be the way to go.
+
+patches to the .c and .h files can be backported quite fast.
+
+well... i could of course use gob to generate .c .h files...
+which could be beautified and then maintained as C code...
+
+
+
+> 
+> pete. 
+> 
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From torbenh at gmx.de  Wed Jun 27 19:49:02 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Wed, 27 Jun 2007 19:49:02 +0200
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <1182963645.12015.36.camel@majesterium>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<20070627042809.GA6562@mobilat>
+	<1182963645.12015.36.camel@majesterium>
+Message-ID: <20070627174902.GD20874@mobilat>
+
+On Wed, Jun 27, 2007 at 06:00:45PM +0100, pete shorthose wrote:
+> On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote: 
+> > On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+> > > On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+> 
+> > > >  o Ideas for new widgets (from a quick look at Reason) -
+> > > >     o Small buttons for things like [M] [S] [>] [SELECT]
+> > > >       - toggle buttons or radio buttons.
+> > > >     o LED toggle buttons
+> > > >     o Level meters
+> > > >     o 2-way/3-way/n-way switches (horizontal or vertical)
+> > > >     o Pitch bend/modulation wheel 
+> > > >     o Maybe prettier spinbutton widgets that look like LCD displays.
+> > > 
+> > > there's some overlap there but yeah, most if not all of that is in line
+> > > for possible implementation. I say possible because we need to
+> > > agree on implementation details and then have the time to implement
+> > > them. neither are guaranteed.
+> > 
+> > to me these all look like derivatives from a GtkKnob.
+> > just some differnet ode for the behaviour. and different gfx.
+> 
+> they are all widgets that could use an animation at least.
+> 
+> the thing is though, in most cases we want a native and a pixmap version
+> of widgets. this changes the optimal inheritance path imho.
+
+interfaces :) uhoh... no interfaces in gob :(
+
+> 
+> > > > I think a reasonable goal for Phat would be to reproduce an interface
+> > > > like Reason. It wouldn't have to be pixel-perfect, but should have all
+> > > > the same elements in the same positions and look as nice.
+> > > 
+> > > personally, i want it for fully pixmapped interfaces, which is roughly
+> > > what you are describing i think. aside from generic defaults, phat isn't
+> > > likely to ship with anything approaching skins though. you'll have to
+> > > procure the gfx and use them with phat. i can envisage a convenience
+> > > library and applications that wrap phat to provide say, a gui builder,
+> > > xml markup based interfaces, maybe some kind of skin handling and
+> > > bindings to things like osc, lv2 or dssi etc, but thats much more high
+> > > level.
+> > 
+> > i am currently trying to break this stuff down to NOT being highlevel.
+> > (or rather being implemented already)
+> 
+> this needs a dedicated thread really. just what is the scope of phat.
+
+yup.
+
+
+> 
+> > gui-builder and xml markup should be done using (lib)glade.
+> > by encapsulating everything into gobject properties, most stuff should
+> > be accessible from glade.
+> 
+> i'd already done this for the erstwhile liblaw and loki gave me the go ahead
+> to add glade 3 support to phat now that i've ditched liblaw to work on phat. 
+> i'm not as convinced as you seem to be that this is the optimum way to
+> construct pixmapped interfaces but people will have the option to do so.
+> i like glade and would cheerfully be proven wrong. 
+
+well... we need a Container (derived from GtkLayout) with some glade support. 
+
+
+> 
+> > i am making (slow) progress on this. I started porting the GtkKnob from
+> > gAlan to gob. (it already compiles) need a test harness, to see whether
+> > the port works.
+> 
+> i used glade 3 for this. the knob widget doesn't really need support code
+> (or not much of it) so it was just a matter of writing a catalog file and dropping
+> the lib with the knob in it into the glade 3 modules dir.  
+
+could you point me to that code please ?
+or merely the Makefile ;)
+
+thats why i want the animation_filename to be a property...
+
+
+> it's not galan specific though.
+
+thats why i discuss this stuff here. 
+i would like to have the GUI specific code isolated from gAlan and in a
+shared code base. 
+
+i also belive that its possible to make the gAlan controlpanel a
+Container. 
+
+> 
+> 
+> pete
+> 
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From zenadsl6252 at zen.co.uk  Wed Jun 27 21:00:58 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Wed, 27 Jun 2007 20:00:58 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <20070627174902.GD20874@mobilat>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium> <20070627042809.GA6562@mobilat>
+	<1182963645.12015.36.camel@majesterium>
+	<20070627174902.GD20874@mobilat>
+Message-ID: <1182970858.12015.83.camel@majesterium>
+
+On Wed, 2007-06-27 at 19:49 +0200, torbenh at gmx.de wrote:
+> On Wed, Jun 27, 2007 at 06:00:45PM +0100, pete shorthose wrote:
+> > On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote: 
+
+> > > gui-builder and xml markup should be done using (lib)glade.
+> > > by encapsulating everything into gobject properties, most stuff should
+> > > be accessible from glade.
+> > 
+> > i'd already done this for the erstwhile liblaw and loki gave me the go ahead
+> > to add glade 3 support to phat now that i've ditched liblaw to work on phat. 
+> > i'm not as convinced as you seem to be that this is the optimum way to
+> > construct pixmapped interfaces but people will have the option to do so.
+> > i like glade and would cheerfully be proven wrong. 
+> 
+> well... we need a Container (derived from GtkLayout) with some glade support. 
+
+i think i need to sit down and work out if what i need is the same as
+what
+"we" need. i'll shut up about it until then. :)
+
+> > > i am making (slow) progress on this. I started porting the GtkKnob from
+> > > gAlan to gob. (it already compiles) need a test harness, to see whether
+> > > the port works.
+> > 
+> > i used glade 3 for this. the knob widget doesn't really need support code
+> > (or not much of it) so it was just a matter of writing a catalog file and dropping
+> > the lib with the knob in it into the glade 3 modules dir.  
+> 
+> could you point me to that code please ?
+> or merely the Makefile ;)
+
+
+this was my law.xml catalog featuring the vector knob alone:
+
+(cut from here)
+
+<glade-catalog name="law" library="law">
+
+  <glade-widget-classes>
+
+    <glade-widget-class name="LawKnobVector"
+generic-name="lawknobvector"title="vectorknob"/>
+
+  </glade-widget-classes>
+  <glade-widget-group name="law-widgets" title="Law widgets">
+    
+    <glade-widget-class-ref name="LawKnobVector"/>
+
+  </glade-widget-group>
+</glade-catalog>
+
+(end)
+
+
+law.xml was copied to $prefix/share/glade3/catalogs/
+
+the widget icon filename is derived from "generic-name" so i copied
+existing window.png to lawknobvector.png in both 16x16/ and 22x22/
+subdirs of $prefix/share/glade3/pixmaps/
+(because i was too lazy to make my own icon at the time.)
+
+the library is only searched for in the module dir (subject to change in
+future)
+and the so name is derived from "library" above. so i renamed the lib
+liblaw.so
+and copied it into the $prefix/lib/glade3/modules/
+
+run glade3.. and it will EXPLODE!!! ..or not, hopefully :)
+
+this: http://glade.gnome.org/docs/index.html and google helped.
+also the guys in #glade3 on irc.gimp.net proved to be very friendly and 
+helpful when i had questions about minimal requirements for the module
+too.
+
+it should be noted that i won't be copying or linking the phat so
+directly in
+this way. i just did that for testing because it works and requires no
+changes to the lib what so ever. 
+at some point it will be necessary to add support code and this will go
+into the phat-glade so, be linked to phat and itself copied into the
+glade modules dir
+instead. this keeps them totally separate.
+
+> thats why i want the animation_filename to be a property...
+
+yeah, the above example is a native knob with no animation. still, we
+aim
+to provide a standard animation object, an animation store where
+animations are loaded then referenced by string name and defaults
+that can be referenced by string and are auto loaded on demand. 
+in this way you could either have a default animation string or specify
+a file name and the property handler would select it accordingly. 
+
+if we forbid G_DIR_SEPARATOR and "." from appearing in string names
+then the same functions can resolve whether an animation object name
+or filename is supplied and act accordingly.
+
+
+pete. 
+
+
+
+From torbenh at gmx.de  Thu Jun 28 07:25:10 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Thu, 28 Jun 2007 07:25:10 +0200
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <1182970858.12015.83.camel@majesterium>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium>
+	<20070627042809.GA6562@mobilat>
+	<1182963645.12015.36.camel@majesterium>
+	<20070627174902.GD20874@mobilat>
+	<1182970858.12015.83.camel@majesterium>
+Message-ID: <20070628052510.GA572@mobilat>
+
+On Wed, Jun 27, 2007 at 08:00:58PM +0100, pete shorthose wrote:
+> On Wed, 2007-06-27 at 19:49 +0200, torbenh at gmx.de wrote:
+> > On Wed, Jun 27, 2007 at 06:00:45PM +0100, pete shorthose wrote:
+> > > On Wed, 2007-06-27 at 06:28 +0200, torbenh at gmx.de wrote: 
+> 
+> > > > gui-builder and xml markup should be done using (lib)glade.
+> > > > by encapsulating everything into gobject properties, most stuff should
+> > > > be accessible from glade.
+> > > 
+> > > i'd already done this for the erstwhile liblaw and loki gave me the go ahead
+> > > to add glade 3 support to phat now that i've ditched liblaw to work on phat. 
+> > > i'm not as convinced as you seem to be that this is the optimum way to
+> > > construct pixmapped interfaces but people will have the option to do so.
+> > > i like glade and would cheerfully be proven wrong. 
+> > 
+> > well... we need a Container (derived from GtkLayout) with some glade support. 
+> 
+> i think i need to sit down and work out if what i need is the same as
+> what
+> "we" need. i'll shut up about it until then. :)
+> 
+> > > > i am making (slow) progress on this. I started porting the GtkKnob from
+> > > > gAlan to gob. (it already compiles) need a test harness, to see whether
+> > > > the port works.
+> > > 
+> > > i used glade 3 for this. the knob widget doesn't really need support code
+> > > (or not much of it) so it was just a matter of writing a catalog file and dropping
+> > > the lib with the knob in it into the glade 3 modules dir.  
+> > 
+> > could you point me to that code please ?
+> > or merely the Makefile ;)
+
+cool... i almost figured it out.
+
+http://galan.sf.net/glade-techknob02.png
+
+
+do you know, how to define a file request in glade for the property ?
+
+GtkImage has one.
+
+there is a diff against phat-svn attached.
+There is no install for the pixmaps yet...
+
+and you need to make a link in /usr/lib/glade3/modules/ to /usr/lib/libphat.so
+
+i will be back next wednesday... have fun with this..
+> 
+> 
+> this was my law.xml catalog featuring the vector knob alone:
+> 
+> (cut from here)
+> 
+> <glade-catalog name="law" library="law">
+> 
+>   <glade-widget-classes>
+> 
+>     <glade-widget-class name="LawKnobVector"
+> generic-name="lawknobvector"title="vectorknob"/>
+> 
+>   </glade-widget-classes>
+>   <glade-widget-group name="law-widgets" title="Law widgets">
+>     
+>     <glade-widget-class-ref name="LawKnobVector"/>
+> 
+>   </glade-widget-group>
+> </glade-catalog>
+> 
+> (end)
+> 
+> 
+> law.xml was copied to $prefix/share/glade3/catalogs/
+> 
+> the widget icon filename is derived from "generic-name" so i copied
+> existing window.png to lawknobvector.png in both 16x16/ and 22x22/
+> subdirs of $prefix/share/glade3/pixmaps/
+> (because i was too lazy to make my own icon at the time.)
+> 
+> the library is only searched for in the module dir (subject to change in
+> future)
+> and the so name is derived from "library" above. so i renamed the lib
+> liblaw.so
+> and copied it into the $prefix/lib/glade3/modules/
+> 
+> run glade3.. and it will EXPLODE!!! ..or not, hopefully :)
+> 
+> this: http://glade.gnome.org/docs/index.html and google helped.
+> also the guys in #glade3 on irc.gimp.net proved to be very friendly and 
+> helpful when i had questions about minimal requirements for the module
+> too.
+> 
+> it should be noted that i won't be copying or linking the phat so
+> directly in
+> this way. i just did that for testing because it works and requires no
+> changes to the lib what so ever. 
+> at some point it will be necessary to add support code and this will go
+> into the phat-glade so, be linked to phat and itself copied into the
+> glade modules dir
+> instead. this keeps them totally separate.
+> 
+> > thats why i want the animation_filename to be a property...
+> 
+> yeah, the above example is a native knob with no animation. still, we
+> aim
+> to provide a standard animation object, an animation store where
+> animations are loaded then referenced by string name and defaults
+> that can be referenced by string and are auto loaded on demand. 
+> in this way you could either have a default animation string or specify
+> a file name and the property handler would select it accordingly. 
+> 
+> if we forbid G_DIR_SEPARATOR and "." from appearing in string names
+> then the same functions can resolve whether an animation object name
+> or filename is supplied and act accordingly.
+> 
+> 
+> pete. 
+> 
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+-------------- next part --------------
+Index: phat/tech-knob.gob
+===================================================================
+--- phat/tech-knob.gob	(revision 0)
++++ phat/tech-knob.gob	(revision 0)
+@@ -0,0 +1,378 @@
++
++%headertop{
++#include <gdk/gdk.h>
++#include <gtk/gtk.h>
++
++#include <gdk-pixbuf/gdk-pixbuf.h>
++
++#include "config.h"
++#include "glib.h"
++
++#include "math.h"
++    
++#define PIXMAPDIRIFY(filename) \
++		(SITE_PKGDATA_DIR G_DIR_SEPARATOR_S "pixmaps" G_DIR_SEPARATOR_S filename)
++
++#define KNOB_SIZE 32
++#define SCROLL_DELAY_LENGTH	300
++%}
++
++enum TK_STATE {
++    IDLE,
++    PRESSED,
++    DRAGGING
++} Tech:Knob:State;
++
++class Tech:Knob from Gtk:Range {
++
++//    classwide GHashTable *pixbuf_cache = { g_hash_table_new_full( g_str_hash, g_str_equal, g_free, g_object_unref ) };
++    classwide GHashTable *pixbuf_cache;
++
++    class_init(class) {
++	class->pixbuf_cache = g_hash_table_new( g_str_hash, g_str_equal );
++    }
++
++    // XXX: During the port i use the old GList.
++    //      Then i will create tech-anim which derives from GdkPixbuf.
++    //private GdkPixbuf *curr_anim = { NULL }
++    //unrefwith g_object_unref;
++
++    private void unref_anim_list( GList *list (check null) ) {
++	g_list_foreach( list, (GFunc) g_object_unref, NULL );
++	g_list_free( list );
++    }
++
++    private GList *anim_list = { NULL };
++    //unrefwith self_unref_anim_list;
++    
++    private char *anim_name = { NULL }
++    destroywith g_free;
++
++    private gint saved_x;
++    private gint saved_y;
++    private TechKnobState state;
++    private gdouble old_value;
++    private guint timer;
++
++
++    public GtkWidget * new (void) {
++	GtkWidget *ret = (GtkWidget *) GET_NEW;
++	return GTK_WIDGET(ret);
++    }
++
++	
++
++    private GList *get_anim_list( char *name ) {
++
++	GError *err = NULL;
++	GdkPixbuf *animation; 
++	GList *retval = NULL;
++	int x, w;
++
++	
++	animation = gdk_pixbuf_new_from_file( name, &err );
++	if( animation ) {
++	    w = gdk_pixbuf_get_width( animation );
++
++	    for(x=0; x<w; x+=KNOB_SIZE ) {
++		GdkPixbuf *pixbuf = gdk_pixbuf_new_subpixbuf( animation, x, 0, KNOB_SIZE, KNOB_SIZE );
++		retval = g_list_append( retval, pixbuf );
++	    }
++	    return retval;
++	} else {
++	    // Create empty GdkPixBuf...
++	    g_warning( "Can not load anim %s", name );
++	    return NULL;
++	}
++    }
++
++    private void check_curr_anim( self ) {
++	//GdkPixbuf *anim = g_hash_table_lookup( SELF_CLASS( G_OBJECT(self)->klass )->pixbuf_cache, self->_priv->anim_name );
++	
++	GList *anim;
++
++	printf( "hi... called with%d \n", self->_priv->anim_name );
++	if( self->_priv->anim_name )
++	    anim = g_hash_table_lookup( SELF_CLASS( G_OBJECT_GET_CLASS(self) )->pixbuf_cache, self->_priv->anim_name );
++	else {
++	    
++	    return;
++	}
++
++	if( anim == NULL )
++	    //anim = self_load_anim( self );
++	    anim = self_get_anim_list( self->_priv->anim_name );
++
++	if( anim != self->_priv->anim_list ) {
++	    //g_object_unref( self->_priv->curr_anim );
++	    if( self->_priv->anim_list )
++		self_unref_anim_list( self->_priv->anim_list );
++	    self->_priv->anim_list = anim;
++	}
++
++	// TODO: self_expose( self );
++    }
++
++
++    // XXX: check for memory leak...
++    property STRING anim_name
++	(nick  = "anim_name",
++	 blurb = "Name of the animation to use",
++	 default_value = "new-knob02.png" )
++	set {
++	    self->_priv->anim_name = g_strdup( g_value_get_string(VAL) );
++	    self_check_curr_anim( self );
++	}
++	get {
++	    g_value_set_string(VAL, self->_priv->anim_name );
++	};
++
++
++
++
++    override (Gtk:Widget) void size_request( GtkWidget *widget, GtkRequisition *requisition ) {
++	requisition->width = KNOB_SIZE;
++	requisition->height = KNOB_SIZE;
++    }
++
++    override (Gtk:Widget) gint expose_event( GtkWidget *widget, GdkEventExpose *event) {
++
++	Self *self = SELF( widget );
++	//GtkWidget *widget = GTK_WIDGET( self );
++	GtkRange *range = GTK_RANGE( self );
++	gfloat dx, dy;
++
++	if (event->count > 0)
++	    return FALSE;
++
++	GtkAdjustment *adj = gtk_range_get_adjustment( range );
++	//gdk_window_clear_area(widget->window, 0, 0, widget->allocation.width, widget->allocation.height);
++
++	dx = adj->value - adj->lower;
++	dy = adj->upper - adj->lower;
++	GList *framelist = self->_priv->anim_list;
++
++	if (dy != 0) {
++	    GdkPixbuf *pixbuf;
++
++	    dx = MIN(MAX(dx / dy, 0), 1);
++	    //dx = (1-dx) * (g_list_length( framelist )-0.5) * 0.75 + 0.125 * g_list_length( framelist );
++	    dx = (dx) * (g_list_length( framelist ) - 1 );
++
++	    pixbuf = GDK_PIXBUF( g_list_nth_data( framelist, (int) dx) );
++
++	    gdk_pixbuf_render_to_drawable_alpha( pixbuf, widget->window,
++		    0, 0, widget->allocation.x, widget->allocation.y, gdk_pixbuf_get_width( pixbuf ), gdk_pixbuf_get_height( pixbuf ), GDK_PIXBUF_ALPHA_FULL, 0, 0,0,0 );
++	}
++	else
++	    g_warning( "dy=0\n" );
++
++	return FALSE;
++    }
++
++
++    override (Gtk:Widget) gint button_press_event( GtkWidget *widget, GdkEventButton *event) {
++
++	Self *self = SELF( widget );
++	//g_return_val_if_fail(widget != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(self), FALSE);
++	g_return_val_if_fail(event != NULL, FALSE);
++
++
++	switch (self->_priv->state) {
++	    case TK_STATE_IDLE:
++		switch (event->button) {
++		    case 1:
++		    case 3:
++			gtk_grab_add( GTK_WIDGET( self ));
++			self->_priv->state = TK_STATE_PRESSED;
++			self->_priv->saved_x = event->x + widget->allocation.x;
++			self->_priv->saved_y = event->y + widget->allocation.y;
++			printf( "saving %f, %f\n", (float) event->x, (float) event->y );
++			break;
++
++		    default:
++			break;
++		}
++		break;
++
++	    default:
++		break;
++	}
++
++	return FALSE;
++    }
++
++    override (Gtk:Widget) gint button_release_event(GtkWidget *widget, GdkEventButton *event) {
++
++	g_return_val_if_fail(widget != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(widget), FALSE);
++	g_return_val_if_fail(event != NULL, FALSE);
++	Self *self = SELF( widget );
++
++	
++
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++
++	switch (self->_priv->state) {
++	    case TK_STATE_PRESSED:
++		gtk_grab_remove( GTK_WIDGET( self ) );
++		self->_priv->state = TK_STATE_IDLE;
++
++		switch (event->button) {
++		    case 1:
++			adj->value -= adj->page_increment;
++			gtk_signal_emit_by_name(GTK_OBJECT(adj), "value_changed");
++			break;
++
++		    case 3:
++			adj->value += adj->page_increment;
++			gtk_signal_emit_by_name(GTK_OBJECT(adj), "value_changed");
++			break;
++
++		    default:
++			break;
++		}
++		break;
++
++	    case TK_STATE_DRAGGING:
++		gtk_grab_remove(GTK_WIDGET( self ));
++		self->_priv->state = TK_STATE_IDLE;
++
++		if (gtk_range_get_update_policy( GTK_RANGE( self ) ) != GTK_UPDATE_CONTINUOUS && self->_priv->old_value != adj->value)
++		    gtk_signal_emit_by_name(GTK_OBJECT(adj), "value_changed");
++
++		break;
++
++	    default:
++		break;
++	}
++
++	return FALSE;
++    }
++
++    override (Gtk:Widget) gint motion_notify_event(GtkWidget *widget, GdkEventMotion *event) {
++	GdkModifierType mods;
++	gint x, y;
++	Self *self = SELF( widget );
++	GtkWidget *widget = GTK_WIDGET(self);
++
++	g_return_val_if_fail(widget != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(widget), FALSE);
++	g_return_val_if_fail(event != NULL, FALSE);
++
++	//knob = GTK_KNOB(widget);
++
++	x = event->x;
++	y = event->y;
++
++	if (event->is_hint || (event->window != widget->window))
++	    gdk_window_get_pointer(widget->window, &x, &y, &mods);
++
++	switch (self->_priv->state) {
++	    case TK_STATE_PRESSED:
++		self->_priv->state = TK_STATE_DRAGGING;
++		/* fall through */
++
++	    case TK_STATE_DRAGGING:
++		if (mods & GDK_BUTTON1_MASK) {
++		    self_update_mouse(self, x, y);
++		    return TRUE;
++		} else if (mods & GDK_BUTTON3_MASK) {
++		    self_update_mouse_abs(self, x, y);
++		    return TRUE;
++		}
++		break;
++
++	    default:
++		break;
++	}
++
++	return FALSE;
++    }
++
++    private gint knob_timer(self) {
++	//g_return_val_if_fail(knob != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(knob), FALSE);
++
++	GtkUpdateType policy = gtk_range_get_update_policy( GTK_RANGE( self ) );
++	if (policy == GTK_UPDATE_DELAYED) {
++	    GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++	    gtk_signal_emit_by_name(GTK_OBJECT(adj), "value_changed");
++	}
++
++	return FALSE;	/* don't keep running this timer */
++    }
++
++    private void update_mouse_update(self) {
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++	if (gtk_range_get_update_policy( GTK_RANGE( self )) == GTK_UPDATE_CONTINUOUS)
++	    gtk_signal_emit_by_name(GTK_OBJECT(adj), "value_changed");
++	else {
++	    gtk_widget_draw(GTK_WIDGET(self), NULL);
++
++	    if (gtk_range_get_update_policy( GTK_RANGE( self )) == GTK_UPDATE_DELAYED) {
++		if (self->_priv->timer)
++		    gtk_timeout_remove(self->_priv->timer);
++
++		self->_priv->timer = gtk_timeout_add (SCROLL_DELAY_LENGTH, (GtkFunction) self_knob_timer,
++			(gpointer) self);
++	    }
++	}
++    }
++
++    private void update_mouse( self, gint x, gint y) {
++	gfloat old_value;
++	gfloat dv;
++
++	//g_return_if_fail(knob != NULL);
++	//g_return_if_fail(GTK_IS_KNOB(knob));
++	
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++
++	old_value = adj->value;
++
++	dv = (self->_priv->saved_y - y) * adj->step_increment;
++	printf( "wattn : old= %f, dv=%f, y = %d\n", old_value, dv, y );
++	self->_priv->saved_x = x;
++	self->_priv->saved_y = y;
++
++	adj->value += dv;
++
++	if (adj->value != old_value)
++	    self_update_mouse_update(self);
++    }
++
++    private void update_mouse_abs(self, gint x, gint y) {
++	gfloat old_value;
++	gdouble angle;
++
++	//g_return_if_fail(knob != NULL);
++	//g_return_if_fail(GTK_IS_KNOB(knob));
++
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++
++	old_value = adj->value;
++
++	x -= GTK_WIDGET(self)->allocation.x;
++	x -= KNOB_SIZE>>1;
++	y -= GTK_WIDGET(self)->allocation.y;
++	y -= KNOB_SIZE>>1;
++	y = -y;	/* inverted cartesian graphics coordinate system */
++
++	angle = atan2(y, x) / M_PI;
++	if (angle < -0.5)
++	    angle += 2;
++
++	angle = -(2.0/3.0) * (angle - 1.25);	/* map [1.25pi, -0.25pi] onto [0, 1] */
++	angle *= adj->upper - adj->lower;
++	angle += adj->lower;
++
++	adj->value = angle;
++
++	if (adj->value != old_value)
++	    self_update_mouse_update(self);
++    }
++    
++}
++
+Index: phat/phatknob.c
+===================================================================
+--- phat/phatknob.c	(revision 67)
++++ phat/phatknob.c	(working copy)
+@@ -548,6 +548,7 @@
+         switch (event->button) {
+         case 1:
+         case 2:
++        case 3:
+             gtk_grab_add(widget);
+             knob->state = STATE_PRESSED;
+             knob->saved_x = event->x;
+Index: phat/tech-layout.gob
+===================================================================
+--- phat/tech-layout.gob	(revision 0)
++++ phat/tech-layout.gob	(revision 0)
+@@ -0,0 +1,74 @@
++
++%headertop{
++#include <gdk/gdk.h>
++#include <gtk/gtk.h>
++
++#include <gdk-pixbuf/gdk-pixbuf.h>
++
++#include "config.h"
++#include "glib.h"
++
++#include "math.h"
++    
++#define PIXMAPDIRIFY(filename) \
++		(SITE_PKGDATA_DIR G_DIR_SEPARATOR_S "pixmaps" G_DIR_SEPARATOR_S filename)
++
++#define KNOB_SIZE 32
++#define SCROLL_DELAY_LENGTH	300
++
++#define DEFAULT_BG_FILE "/usr/share/galan/pixmaps/galan-bg-ref.png"
++%}
++
++class Tech:Layout from Gtk:Layout {
++
++
++    public GtkWidget * new (void) {
++	GtkWidget *ret = (GtkWidget *) GET_NEW;
++	return GTK_WIDGET(ret);
++    }
++
++
++
++
++
++    property STRING background_image
++	(nick  = "background_image",
++	 blurb = "Name of the background",
++	 default_value = DEFAULT_BG_FILE )
++	
++	set {
++	    self->_priv->bg_name = g_strdup( g_value_get_string(VAL) );
++	    printf( "set bg = %s\n", self->_priv->bg_name );
++	}
++
++    get {
++	g_value_set_string(VAL, self->_priv->bg_name );
++    };
++
++
++
++    private char *bg_name;
++
++    override (Gtk:Widget) gint expose_event( GtkWidget *widget, GdkEventExpose *event) {
++
++	GError *err = NULL;
++	Self *self = SELF( widget );
++	GdkPixbuf *bg_pixbuf;
++
++	bg_pixbuf=gdk_pixbuf_new_from_file( self->_priv->bg_name, &err );
++	
++	if( bg_pixbuf ) {
++	    
++	    gdk_pixbuf_render_to_drawable_alpha( bg_pixbuf, widget->window,
++		    0, 0, widget->allocation.x, widget->allocation.y, gdk_pixbuf_get_width( bg_pixbuf ), gdk_pixbuf_get_height( bg_pixbuf ), GDK_PIXBUF_ALPHA_FULL, 0, 0,0,0 );
++	}
++	else 
++	    g_warning( "bg invalid" );
++
++	PARENT_HANDLER( widget, event );
++	return FALSE;
++	    
++    }
++
++}
++
+Index: phat/phatfanslider.c
+===================================================================
+--- phat/phatfanslider.c	(revision 67)
++++ phat/phatfanslider.c	(working copy)
+@@ -1748,7 +1748,7 @@
+             width = x - w;
+             width = CLAMP (width, 0, slider->fan_max_thickness);
+           
+-            gtk_window_resize (GTK_WINDOW (slider->fan_window), width, fan_max_height);
++            gtk_window_resize (GTK_WINDOW (slider->fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = slider->xclick_root + (w - slider->xclick);
+ 
+@@ -1774,7 +1774,7 @@
+             width = -x;
+             width = CLAMP (width, 0, slider->fan_max_thickness);
+ 
+-            gtk_window_resize (GTK_WINDOW (slider->fan_window), width, fan_max_height);
++            gtk_window_resize (GTK_WINDOW (slider->fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = slider->xclick_root - slider->xclick
+                 - slider->fan_window->allocation.width;
+@@ -1810,7 +1810,7 @@
+             height = y - h;
+             height = CLAMP (height, 0, slider->fan_max_thickness);
+           
+-            gtk_window_resize (GTK_WINDOW (slider->fan_window), fan_max_width, height);
++            gtk_window_resize (GTK_WINDOW (slider->fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = (slider->xclick_root - slider->xclick)
+                 - ((fan_max_width - w) / 2);
+@@ -1835,7 +1835,7 @@
+             height = -y;
+             height = CLAMP (height, 0, slider->fan_max_thickness);
+ 
+-            gtk_window_resize (GTK_WINDOW (slider->fan_window), fan_max_width, height);
++            gtk_window_resize (GTK_WINDOW (slider->fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = (slider->xclick_root - slider->xclick)
+                 - ((fan_max_width - w) / 2);
+Index: phat/Makefile.am
+===================================================================
+--- phat/Makefile.am	(revision 67)
++++ phat/Makefile.am	(working copy)
+@@ -4,12 +4,20 @@
+ phatvfanslider.h phathfanslider.c phathfanslider.h phatprivate.h	\
+ phatprivate.c phatsliderbutton.c phatsliderbutton.h phatkeyboard.c	\
+ phatkeyboard.h phatvkeyboard.c phatvkeyboard.h phathkeyboard.c		\
+-phathkeyboard.h phatpad.c phatpad.h phatknob.c phatknob.h
++phathkeyboard.h phatpad.c phatpad.h phatknob.c phatknob.h tech-knob.c	\
++tech-knob.h tech-layout.c tech-layout.h
+ 
++libphat_la_BUILT_SOURCES = tech-knob.c tech-knob.h tech-layout.c tech-layout.h
++
+ libphat_la_CFLAGS = $(CFLAGS) -I.. -DINSTALL_DIR=\"$(datadir)\"
+ 
+ libphatincludedir = $(includedir)/phat
+ 
+ libphatinclude_HEADERS = phat.h phatfanslider.h phatvfanslider.h	\
+ phathfanslider.h phatsliderbutton.h phatkeyboard.h phatvkeyboard.h	\
+-phathkeyboard.h phatpad.h phatknob.h
++phathkeyboard.h phatpad.h phatknob.h tech-knob.h tech-layout.h
++
++
++
++%.c %.h %-private.h: %.gob
++	@GOB2@ $<
+Index: glade3/Makefile.am
+===================================================================
+--- glade3/Makefile.am	(revision 0)
++++ glade3/Makefile.am	(revision 0)
+@@ -0,0 +1,3 @@
++glade3_DATA = phat.xml
++EXTRA_DIST = $(glade3_DATA)
++glade3dir = "/usr/share/glade3/catalogs"
+Index: glade3/phat.xml
+===================================================================
+--- glade3/phat.xml	(revision 0)
++++ glade3/phat.xml	(revision 0)
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<glade-catalog name="phat" library="gladephat" domain="glade3" book="phat">
++  <glade-widget-classes>
++
++
++
++
++    <glade-widget-class name="TechKnob"  generic-name="techknob" title="techKnoB">
++      <properties>
++		      <property id="anim_name" name="File Name"></property>
++      </properties>
++    </glade-widget-class>
++
++    <glade-widget-class name="TechLayout"  generic-name="techlayout" title="techlayout">
++    </glade-widget-class>
++
++
++
++
++  </glade-widget-classes>
++  <glade-widget-group name="Phat" title="yay Phat">
++    <glade-widget-class-ref name="TechKnob"/>
++    <glade-widget-class-ref name="TechLayout"/>
++  </glade-widget-group>
++</glade-catalog>
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 67)
++++ configure.ac	(working copy)
+@@ -45,11 +45,13 @@
+ 
+ GTK_DOC_CHECK(1.0)
+ 
++GOB2_CHECK([2.0.0])
++
+ # misc checks
+ PKG_CHECK_MODULES(MISC, libgnomecanvas-2.0)
+ 
+ # set compilation flags
+-CFLAGS="$CFLAGS $GTK_CFLAGS $MISC_CFLAGS -Wall -Werror"
++CFLAGS="$CFLAGS $GTK_CFLAGS $MISC_CFLAGS -Wall"
+ LIBS="$LIBS $GTK_LIBS $MISC_LIBS"
+ 
+ # print build summary
+@@ -81,6 +83,6 @@
+ echo
+ ])
+ 
+-AC_CONFIG_FILES([Makefile phat/Makefile demos/Makefile docs/Makefile pixmaps/Makefile phat.pc phat.spec])
++AC_CONFIG_FILES([Makefile phat/Makefile demos/Makefile docs/Makefile pixmaps/Makefile glade3/Makefile phat.pc phat.spec])
+ AM_CONFIG_HEADER([phat/config.h])
+ AC_OUTPUT
+Index: demos/knob.c
+===================================================================
+--- demos/knob.c	(revision 67)
++++ demos/knob.c	(working copy)
+@@ -1,6 +1,8 @@
+ #include <gtk/gtk.h>
+ #include <phat/phat.h>
+ 
++#include <phat/tech-knob.h>
++
+ enum
+ {
+     SPACING = 0,
+@@ -8,7 +10,8 @@
+ 
+ void motion_cb(PhatKnob* knob)
+ {
+-    printf("knob value %f \n", phat_knob_get_value(knob));
++    //printf("knob value %f \n", phat_knob_get_value(knob));
++    printf( "motio\n" );
+ }  
+ 
+ int main (int argc, char* argv[])
+@@ -16,6 +19,7 @@
+     GtkWidget* window;
+     GtkWidget* knob;
+     GtkWidget* knob2;
++    GtkWidget* knob3;
+     GtkWidget* vbox;
+     gtk_init (&argc, &argv);
+ 
+@@ -49,6 +53,22 @@
+     g_signal_connect (G_OBJECT (knob2), "value-changed",
+                       G_CALLBACK (motion_cb), NULL);
+ 
++    /*  knob */
++
++    GtkWidget *eb = gtk_event_box_new();
++    knob3 = tech_knob_new ();
++
++    //gtk_container_add( GTK_CONTAINER( eb ), knob3 );
++    //gtk_box_pack_start (GTK_BOX (vbox), eb, TRUE, FALSE, 0);
++    //gtk_widget_show (eb);
++
++    gtk_box_pack_start (GTK_BOX (vbox), knob3, TRUE, FALSE, 0);
++
++    gtk_widget_show (knob3);
++    g_signal_connect (G_OBJECT (knob3), "value-changed",
++                      G_CALLBACK (motion_cb), NULL);
++    gtk_range_set_adjustment( GTK_RANGE( knob3 ), (GtkAdjustment *)gtk_adjustment_new( 0.0, -10, +10, 0.1, 0.1, 0 ) ); 
++    g_object_set( (gpointer) knob3, "anim_name", "/usr/local/share/galan/pixmaps/new-knob02.png", NULL );
+     gtk_widget_show (window);
+ 
+     /* look if it breaks */
+Index: Makefile.am
+===================================================================
+--- Makefile.am	(revision 67)
++++ Makefile.am	(working copy)
+@@ -1,4 +1,4 @@
+-SUBDIRS = phat demos docs pixmaps
++SUBDIRS = phat demos docs pixmaps glade3
+ 
+ EXTRA_DIST = bootstrap BUGS phat.pc.in phat.spec.in
+ 
+
+From damon at karuna.eclipse.co.uk  Thu Jun 28 10:21:32 2007
+From: damon at karuna.eclipse.co.uk (Damon Chaplin)
+Date: Thu, 28 Jun 2007 09:21:32 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <20070627173245.GC20874@mobilat>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium> <20070627042809.GA6562@mobilat>
+	<1182938427.7455.73.camel@majesterium> <20070627114434.GC6562@mobilat>
+	<ec9314860706270523x75db7fe5p37afc0b0120c1720@mail.gmail.com>
+	<20070627134627.GD6562@mobilat> <1182962204.12015.25.camel@majesterium>
+	<20070627173245.GC20874@mobilat>
+Message-ID: <1183018892.3247.0.camel@localhost.localdomain>
+
+On Wed, 2007-06-27 at 19:32 +0200, torbenh at gmx.de wrote:
+
+> well... i could of course use gob to generate .c .h files...
+> which could be beautified and then maintained as C code...
+
+I prefer this option, as gob isn't really used much among GTK+/GNOME
+developers.
+
+Damon
+
+
+
+
+From zenadsl6252 at zen.co.uk  Thu Jun 28 19:13:38 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Thu, 28 Jun 2007 18:13:38 +0100
+Subject: [Phat-dev] Initial thoughts on phat
+In-Reply-To: <20070628052510.GA572@mobilat>
+References: <1182769471.3170.31.camel@localhost.localdomain>
+	<1182889078.17645.63.camel@majesterium> <20070627042809.GA6562@mobilat>
+	<1182963645.12015.36.camel@majesterium>
+	<20070627174902.GD20874@mobilat>
+	<1182970858.12015.83.camel@majesterium> <20070628052510.GA572@mobilat>
+Message-ID: <1183050819.23270.25.camel@majesterium>
+
+On Thu, 2007-06-28 at 07:25 +0200, torbenh at gmx.de wrote:
+> On Wed, Jun 27, 2007 at 08:00:58PM +0100, pete shorthose wrote:
+> > On Wed, 2007-06-27 at 19:49 +0200, torbenh at gmx.de wrote:
+> > > On Wed, Jun 27, 2007 at 06:00:45PM +0100, pete shorthose wrote:
+
+> > > > i used glade 3 for this. the knob widget doesn't really need support code
+> > > > (or not much of it) so it was just a matter of writing a catalog file and dropping
+> > > > the lib with the knob in it into the glade 3 modules dir.  
+> > > 
+> > > could you point me to that code please ?
+> > > or merely the Makefile ;)
+> 
+> cool... i almost figured it out.
+> 
+> http://galan.sf.net/glade-techknob02.png
+> 
+> 
+> do you know, how to define a file request in glade for the property ?
+> 
+> GtkImage has one.
+
+GtkImage uses a GdkPixbuf property not a string. glade automatically
+wraps the former by the looks of it.
+
+the property name is overridden in the gtk catalog from "pixbuf" to
+"File Name" and while there is some support code for the GtkImage,
+non of it directly relates to the file request that i can see.
+
+i haven't checked if you can override the default behaviour for string
+properties yet.
+
+> there is a diff against phat-svn attached.
+
+i'll take a look, ty.
+
+
+pete.
+
+
+
+From damon at karuna.eclipse.co.uk  Sat Jun 30 12:47:14 2007
+From: damon at karuna.eclipse.co.uk (Damon Chaplin)
+Date: Sat, 30 Jun 2007 11:47:14 +0100
+Subject: [Phat-dev] Knob requirements
+Message-ID: <1183200434.3162.48.camel@localhost.localdomain>
+
+
+Hi,
+
+I've just been looking over Reason and a few other apps to get an idea
+of the requirements for knobs. Not all of these are essential, but I
+think most of them are. Anyway, I hope it's useful:
+
+
+Use Cases
+  o Continuous knob - selection of a value from a range of values.
+    e.g. Volume, Treble, Bass, Panning, Pitch, Attack. 
+  o Discrete knob - selection of one particular value from several.
+    e.g. Resolution - 1/2, 1/4. 1/8, 1/16, 1/32, 1/64.
+    (I've seen one knob with 9 discrete positions. That is probably
+    about the most needed.)
+
+
+Display
+  o Various styles, colors and sizes of knobs.
+  o Label underneath knob to describe it, e.g. "Treble".
+    Sometimes this is placed beside the knob, e.g. when a column of
+    vertical knobs is used, or when knobs are crammed together in the
+    mixer. Also occasionally it has a box around it.
+  o Labels for ends of range for continuous knobs, e.g. "-" and "+".
+  o Labels for each discrete position, e.g. "1/2", "1/4", "1/8".
+    This also has a line pointing to the position on the knob.
+  o Some knobs have an LED at the top to indicate that they are set
+    to something other than the central position.
+  o Some knobs are highlighted with a colored rectangle to indicate
+    that they are controlled by automation.
+  o Knobs should also indicate if they have the keyboard focus.
+  o Tooltips optionally show the value of the knob when the mouse
+    is over the knob and as the value is changed.
+
+
+Interaction
+  o Linear or radial option for moving knob.
+  o For the linear style there could be a mouse range option, and
+    modifier keys could be pressed to allow more sensitive control.
+  o For continuous knobs there may be a detent in the middle.
+    (Has anyone seen a continuous knob with several detents?)
+  o For discrete knobs the labels could highlight when the mouse
+    moves over them and be clicked to select them.
+  o Keyboard control - should take keyboard focus and allow the knob
+    value to be changed by the keyboard, e.g. Up, Down, Page Up,
+    Page Down, Shift+Up, Shift+Down (for finer control).
+
+
+Accessibility
+  o The normal ATK accessibility functions should be used to describe
+    the knobs, and also possibly to describe the discrete positions.
+  o Although using different colors & styles for knobs is nice, it
+    should be possible to switch all knobs to support the user's
+    accessibility requirements (e.g. use the theme colors as much
+    as possible, or use low or high contrast knobs).
+  o The small fonts typically used in audio apps may be a problem
+    as well. It should probably be possible to support different fonts.
+
+
+
+I'm willing to help out with this, or with some of the other widgets.
+(I wrote the original Glade GUI designer, so I know GTK+ fairly well!)
+
+Damon
+
+
+
+
+From zenadsl6252 at zen.co.uk  Sat Jun 30 20:46:45 2007
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Sat, 30 Jun 2007 19:46:45 +0100
+Subject: [Phat-dev] basic glade support
+Message-ID: <1183229205.6069.55.camel@majesterium>
+
+i've implemented skeleton glade support. the catalog
+covers all the existing widgets, icons are in place and
+installed but they are all copies of the gtkwindow
+pixmap. (this will make it easy to fix them, just grab
+one, edit it and commit the changes) 
+
+"./configure --enable-glade-plugin" will build it and it's
+disabled by default.
+
+i've setup a support code module 
+(phat/glade-plugin/glade-phat.{c,h}) that is built,
+installed and works to a degree, but literally has nothing
+in it yet. it just serves to hook in the phat lib for glade
+until we add some glade support code for any widgets
+that require it.
+
+the build options may need tweaking along the way 
+but otherwise, adding support code should be as simple
+as editing that module. (see the glade 3 source and api
+docs for examples)
+
+as expected, not all phat widgets work or work properly
+with glade yet and i / we will have to bring them inline
+with glade's expectations. 
+
+i'm doing this first rather than importing the cairo knob
+for two reasons. firstly, we'd do well to start from
+widgets that work properly in glade and secondly, because
+we now have 3 quite different pixmap knobs
+(phat's, mine and torben's) and a cairo knob that
+requires a base class that breaks both the phat knob
+and torben's knob. 
+
+so we need to decide what to put in and then all work from
+there. 
+
+in particular this means deciding on whether to use
+an abstract knob class and derive the vector
+and pixmap knobs from that, or have the vector knob
+as the bass class and derive the pixmap knob from that..
+etc etc to infinity and beyond.
+
+loki, unless you have any objections, i'll check in the
+changes to trunk. a patch is attached if you want to look
+over it first. (no pixmaps (binaries))
+
+cheers,
+pete.
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: phat-glade-001.diff
+Type: text/x-patch
+Size: 12234 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070630/ef988bf1/attachment.bin>
+

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Phat cairo based knob
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3C467F60B8.1000900%40lumin.us%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000020.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Phat cairo based knob</H1>
+    <B>Mark Rivera</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Phat%20cairo%20based%20knob&In-Reply-To=%3C467F60B8.1000900%40lumin.us%3E"
+       TITLE="[Phat-dev] Phat cairo based knob">marr at lumin.us
+       </A><BR>
+    <I>Mon Jun 25 08:29:12 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[Phat-dev] Phat cairo based knob
+</A></li>
+        <LI>Next message: <A HREF="000020.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;&gt;&gt;<i> i want to add a pan style option. i also want to figure out the proper
+</I>&gt;&gt;&gt;<i> name for the pan style option :P 
+</I>
+You mean 'pan style' like a mixer channel pan knob? That's called 
+center-detented.
+
+Maybe you'd want a &quot;detents&quot; property for ALL knobs (at the base class)?
+
+detents == 0 or null:      Smooth travel (like a regular potentiometer)
+
+detents &gt; 0:               Would evenly divide the range of the knob
+                            into discrete steps. This would be great for
+                            OSC waveform selection etc.
+
+That would mean that a pan style &quot;centered&quot; knob would have:
+detents == 1.
+
+A second property, &quot;detent_zone&quot; could be a property which specified the 
++/- degrees for which the knob position would &quot;snap&quot; into the detent. So 
+for the pan knob, you'd have smooth travel until you were within, say, 
++/- 5 deg of the detent.
+
+If this detent_zone value exceeded the degrees of the space between 
+detents, then you'd have a knob which ONLY snapped to detents (again, 
+like a waveform selector).
+
+
+Mark
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[Phat-dev] Phat cairo based knob
+</A></li>
+	<LI>Next message: <A HREF="000020.html">[Phat-dev] Phat cairo based knob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

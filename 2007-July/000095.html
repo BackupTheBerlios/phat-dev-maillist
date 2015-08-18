@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] some additional ideas for phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20additional%20ideas%20for%20phat&In-Reply-To=%3Cec9314860707100611g47074c7bn5bb0a336cdf4519%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000103.html">
+   <LINK REL="Next"  HREF="000090.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] some additional ideas for phat</H1>
+    <B>Loki Davison</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20some%20additional%20ideas%20for%20phat&In-Reply-To=%3Cec9314860707100611g47074c7bn5bb0a336cdf4519%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] some additional ideas for phat">loki.davison at gmail.com
+       </A><BR>
+    <I>Tue Jul 10 15:11:04 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000103.html">[Phat-dev] some additional ideas for phat
+</A></li>
+        <LI>Next message: <A HREF="000090.html">[Phat-dev] LV2 tree store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 7/10/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+&gt;<i> backing store:
+</I>&gt;<i>
+</I>&gt;<i> i've just been working on a patch to phasex that
+</I>&gt;<i> enables backing store. this limits expose events
+</I>&gt;<i> to those triggered by resizing or application directed
+</I>&gt;<i> updates. (well, nearly)
+</I>&gt;<i>
+</I>&gt;<i> phasex has almost 100 knob widgets and hundreds
+</I>&gt;<i> of native gtk widgets optionally spread over two
+</I>&gt;<i> pages. as a result, the time it takes to redraw occluded
+</I>&gt;<i> areas or when maximising from a minimised state
+</I>&gt;<i> can be significant. apart from the cost of redrawing
+</I>&gt;<i> everything, it looks damned ugly as all the widgets
+</I>&gt;<i> slowly reassemble themselves on screen. bar some
+</I>&gt;<i> kind of 2D acceleration, this seems to be the only
+</I>&gt;<i> way to mitigate the problem.
+</I>&gt;<i>
+</I>&gt;<i> to make use of it you are required to enable backing store
+</I>&gt;<i> (and that means editing your X conf) and trades
+</I>&gt;<i> increased memory usage for a lighter CPU load.
+</I>&gt;<i> is anyone interested in seeing this available in phat?
+</I>&gt;<i>
+</I>&gt;<i> charset animation:
+</I>&gt;<i>
+</I>&gt;<i> i just thought of another use for the animation object.
+</I>&gt;<i> rendered text characters could be stored in an animation
+</I>&gt;<i> with frames representing letters of the alphabet and
+</I>&gt;<i> other characters.
+</I>&gt;<i>
+</I>&gt;<i> pre rendered text is almost certainly faster than pango
+</I>&gt;<i> antialiased text, avoids the alignment problems
+</I>&gt;<i> associated with static pixmap interfaces and dynamic
+</I>&gt;<i> text, opens the way for some degree of internationalised
+</I>&gt;<i> eye candy and looks better. all we'd need is a text
+</I>&gt;<i> widget to render strings based on a given animation
+</I>&gt;<i> object.
+</I>&gt;<i>
+</I>&gt;<i> pete.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>&gt;<i>
+</I>
+This sounds handy too, though i'd be really unsure about the text
+stuff, simply because i know bugger all about it.
+
+Loki
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000103.html">[Phat-dev] some additional ideas for phat
+</A></li>
+	<LI>Next message: <A HREF="000090.html">[Phat-dev] LV2 tree store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

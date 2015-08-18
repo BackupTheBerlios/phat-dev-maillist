@@ -1,0 +1,856 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Initial thoughts on phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C20070628052510.GA572%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000041.html">
+   <LINK REL="Next"  HREF="000044.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Initial thoughts on phat</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C20070628052510.GA572%40mobilat%3E"
+       TITLE="[Phat-dev] Initial thoughts on phat">torbenh at gmx.de
+       </A><BR>
+    <I>Thu Jun 28 07:25:10 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000041.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+        <LI>Next message: <A HREF="000044.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Jun 27, 2007 at 08:00:58PM +0100, pete shorthose wrote:
+&gt;<i> On Wed, 2007-06-27 at 19:49 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; On Wed, Jun 27, 2007 at 06:00:45PM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; &gt; On Wed, 2007-06-27 at 06:28 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote: 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; &gt; gui-builder and xml markup should be done using (lib)glade.
+</I>&gt;<i> &gt; &gt; &gt; by encapsulating everything into gobject properties, most stuff should
+</I>&gt;<i> &gt; &gt; &gt; be accessible from glade.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; i'd already done this for the erstwhile liblaw and loki gave me the go ahead
+</I>&gt;<i> &gt; &gt; to add glade 3 support to phat now that i've ditched liblaw to work on phat. 
+</I>&gt;<i> &gt; &gt; i'm not as convinced as you seem to be that this is the optimum way to
+</I>&gt;<i> &gt; &gt; construct pixmapped interfaces but people will have the option to do so.
+</I>&gt;<i> &gt; &gt; i like glade and would cheerfully be proven wrong. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; well... we need a Container (derived from GtkLayout) with some glade support. 
+</I>&gt;<i> 
+</I>&gt;<i> i think i need to sit down and work out if what i need is the same as
+</I>&gt;<i> what
+</I>&gt;<i> &quot;we&quot; need. i'll shut up about it until then. :)
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; &gt; i am making (slow) progress on this. I started porting the GtkKnob from
+</I>&gt;<i> &gt; &gt; &gt; gAlan to gob. (it already compiles) need a test harness, to see whether
+</I>&gt;<i> &gt; &gt; &gt; the port works.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; i used glade 3 for this. the knob widget doesn't really need support code
+</I>&gt;<i> &gt; &gt; (or not much of it) so it was just a matter of writing a catalog file and dropping
+</I>&gt;<i> &gt; &gt; the lib with the knob in it into the glade 3 modules dir.  
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; could you point me to that code please ?
+</I>&gt;<i> &gt; or merely the Makefile ;)
+</I>
+cool... i almost figured it out.
+
+<A HREF="http://galan.sf.net/glade-techknob02.png">http://galan.sf.net/glade-techknob02.png</A>
+
+
+do you know, how to define a file request in glade for the property ?
+
+GtkImage has one.
+
+there is a diff against phat-svn attached.
+There is no install for the pixmaps yet...
+
+and you need to make a link in /usr/lib/glade3/modules/ to /usr/lib/libphat.so
+
+i will be back next wednesday... have fun with this..
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> this was my law.xml catalog featuring the vector knob alone:
+</I>&gt;<i> 
+</I>&gt;<i> (cut from here)
+</I>&gt;<i> 
+</I>&gt;<i> &lt;glade-catalog name=&quot;law&quot; library=&quot;law&quot;&gt;
+</I>&gt;<i> 
+</I>&gt;<i>   &lt;glade-widget-classes&gt;
+</I>&gt;<i> 
+</I>&gt;<i>     &lt;glade-widget-class name=&quot;LawKnobVector&quot;
+</I>&gt;<i> generic-name=&quot;lawknobvector&quot;title=&quot;vectorknob&quot;/&gt;
+</I>&gt;<i> 
+</I>&gt;<i>   &lt;/glade-widget-classes&gt;
+</I>&gt;<i>   &lt;glade-widget-group name=&quot;law-widgets&quot; title=&quot;Law widgets&quot;&gt;
+</I>&gt;<i>     
+</I>&gt;<i>     &lt;glade-widget-class-ref name=&quot;LawKnobVector&quot;/&gt;
+</I>&gt;<i> 
+</I>&gt;<i>   &lt;/glade-widget-group&gt;
+</I>&gt;<i> &lt;/glade-catalog&gt;
+</I>&gt;<i> 
+</I>&gt;<i> (end)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> law.xml was copied to $prefix/share/glade3/catalogs/
+</I>&gt;<i> 
+</I>&gt;<i> the widget icon filename is derived from &quot;generic-name&quot; so i copied
+</I>&gt;<i> existing window.png to lawknobvector.png in both 16x16/ and 22x22/
+</I>&gt;<i> subdirs of $prefix/share/glade3/pixmaps/
+</I>&gt;<i> (because i was too lazy to make my own icon at the time.)
+</I>&gt;<i> 
+</I>&gt;<i> the library is only searched for in the module dir (subject to change in
+</I>&gt;<i> future)
+</I>&gt;<i> and the so name is derived from &quot;library&quot; above. so i renamed the lib
+</I>&gt;<i> liblaw.so
+</I>&gt;<i> and copied it into the $prefix/lib/glade3/modules/
+</I>&gt;<i> 
+</I>&gt;<i> run glade3.. and it will EXPLODE!!! ..or not, hopefully :)
+</I>&gt;<i> 
+</I>&gt;<i> this: <A HREF="http://glade.gnome.org/docs/index.html">http://glade.gnome.org/docs/index.html</A> and google helped.
+</I>&gt;<i> also the guys in #glade3 on irc.gimp.net proved to be very friendly and 
+</I>&gt;<i> helpful when i had questions about minimal requirements for the module
+</I>&gt;<i> too.
+</I>&gt;<i> 
+</I>&gt;<i> it should be noted that i won't be copying or linking the phat so
+</I>&gt;<i> directly in
+</I>&gt;<i> this way. i just did that for testing because it works and requires no
+</I>&gt;<i> changes to the lib what so ever. 
+</I>&gt;<i> at some point it will be necessary to add support code and this will go
+</I>&gt;<i> into the phat-glade so, be linked to phat and itself copied into the
+</I>&gt;<i> glade modules dir
+</I>&gt;<i> instead. this keeps them totally separate.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; thats why i want the animation_filename to be a property...
+</I>&gt;<i> 
+</I>&gt;<i> yeah, the above example is a native knob with no animation. still, we
+</I>&gt;<i> aim
+</I>&gt;<i> to provide a standard animation object, an animation store where
+</I>&gt;<i> animations are loaded then referenced by string name and defaults
+</I>&gt;<i> that can be referenced by string and are auto loaded on demand. 
+</I>&gt;<i> in this way you could either have a default animation string or specify
+</I>&gt;<i> a file name and the property handler would select it accordingly. 
+</I>&gt;<i> 
+</I>&gt;<i> if we forbid G_DIR_SEPARATOR and &quot;.&quot; from appearing in string names
+</I>&gt;<i> then the same functions can resolve whether an animation object name
+</I>&gt;<i> or filename is supplied and act accordingly.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> pete. 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+-------------- next part --------------
+Index: phat/tech-knob.gob
+===================================================================
+--- phat/tech-knob.gob	(revision 0)
++++ phat/tech-knob.gob	(revision 0)
+@@ -0,0 +1,378 @@
++
++%headertop{
++#include &lt;gdk/gdk.h&gt;
++#include &lt;gtk/gtk.h&gt;
++
++#include &lt;gdk-pixbuf/gdk-pixbuf.h&gt;
++
++#include &quot;config.h&quot;
++#include &quot;glib.h&quot;
++
++#include &quot;math.h&quot;
++    
++#define PIXMAPDIRIFY(filename) \
++		(SITE_PKGDATA_DIR G_DIR_SEPARATOR_S &quot;pixmaps&quot; G_DIR_SEPARATOR_S filename)
++
++#define KNOB_SIZE 32
++#define SCROLL_DELAY_LENGTH	300
++%}
++
++enum TK_STATE {
++    IDLE,
++    PRESSED,
++    DRAGGING
++} Tech:Knob:State;
++
++class Tech:Knob from Gtk:Range {
++
++//    classwide GHashTable *pixbuf_cache = { g_hash_table_new_full( g_str_hash, g_str_equal, g_free, g_object_unref ) };
++    classwide GHashTable *pixbuf_cache;
++
++    class_init(class) {
++	class-&gt;pixbuf_cache = g_hash_table_new( g_str_hash, g_str_equal );
++    }
++
++    // XXX: During the port i use the old GList.
++    //      Then i will create tech-anim which derives from GdkPixbuf.
++    //private GdkPixbuf *curr_anim = { NULL }
++    //unrefwith g_object_unref;
++
++    private void unref_anim_list( GList *list (check null) ) {
++	g_list_foreach( list, (GFunc) g_object_unref, NULL );
++	g_list_free( list );
++    }
++
++    private GList *anim_list = { NULL };
++    //unrefwith self_unref_anim_list;
++    
++    private char *anim_name = { NULL }
++    destroywith g_free;
++
++    private gint saved_x;
++    private gint saved_y;
++    private TechKnobState state;
++    private gdouble old_value;
++    private guint timer;
++
++
++    public GtkWidget * new (void) {
++	GtkWidget *ret = (GtkWidget *) GET_NEW;
++	return GTK_WIDGET(ret);
++    }
++
++	
++
++    private GList *get_anim_list( char *name ) {
++
++	GError *err = NULL;
++	GdkPixbuf *animation; 
++	GList *retval = NULL;
++	int x, w;
++
++	
++	animation = gdk_pixbuf_new_from_file( name, &amp;err );
++	if( animation ) {
++	    w = gdk_pixbuf_get_width( animation );
++
++	    for(x=0; x&lt;w; x+=KNOB_SIZE ) {
++		GdkPixbuf *pixbuf = gdk_pixbuf_new_subpixbuf( animation, x, 0, KNOB_SIZE, KNOB_SIZE );
++		retval = g_list_append( retval, pixbuf );
++	    }
++	    return retval;
++	} else {
++	    // Create empty GdkPixBuf...
++	    g_warning( &quot;Can not load anim %s&quot;, name );
++	    return NULL;
++	}
++    }
++
++    private void check_curr_anim( self ) {
++	//GdkPixbuf *anim = g_hash_table_lookup( SELF_CLASS( G_OBJECT(self)-&gt;klass )-&gt;pixbuf_cache, self-&gt;_priv-&gt;anim_name );
++	
++	GList *anim;
++
++	printf( &quot;hi... called with%d \n&quot;, self-&gt;_priv-&gt;anim_name );
++	if( self-&gt;_priv-&gt;anim_name )
++	    anim = g_hash_table_lookup( SELF_CLASS( G_OBJECT_GET_CLASS(self) )-&gt;pixbuf_cache, self-&gt;_priv-&gt;anim_name );
++	else {
++	    
++	    return;
++	}
++
++	if( anim == NULL )
++	    //anim = self_load_anim( self );
++	    anim = self_get_anim_list( self-&gt;_priv-&gt;anim_name );
++
++	if( anim != self-&gt;_priv-&gt;anim_list ) {
++	    //g_object_unref( self-&gt;_priv-&gt;curr_anim );
++	    if( self-&gt;_priv-&gt;anim_list )
++		self_unref_anim_list( self-&gt;_priv-&gt;anim_list );
++	    self-&gt;_priv-&gt;anim_list = anim;
++	}
++
++	// TODO: self_expose( self );
++    }
++
++
++    // XXX: check for memory leak...
++    property STRING anim_name
++	(nick  = &quot;anim_name&quot;,
++	 blurb = &quot;Name of the animation to use&quot;,
++	 default_value = &quot;new-knob02.png&quot; )
++	set {
++	    self-&gt;_priv-&gt;anim_name = g_strdup( g_value_get_string(VAL) );
++	    self_check_curr_anim( self );
++	}
++	get {
++	    g_value_set_string(VAL, self-&gt;_priv-&gt;anim_name );
++	};
++
++
++
++
++    override (Gtk:Widget) void size_request( GtkWidget *widget, GtkRequisition *requisition ) {
++	requisition-&gt;width = KNOB_SIZE;
++	requisition-&gt;height = KNOB_SIZE;
++    }
++
++    override (Gtk:Widget) gint expose_event( GtkWidget *widget, GdkEventExpose *event) {
++
++	Self *self = SELF( widget );
++	//GtkWidget *widget = GTK_WIDGET( self );
++	GtkRange *range = GTK_RANGE( self );
++	gfloat dx, dy;
++
++	if (event-&gt;count &gt; 0)
++	    return FALSE;
++
++	GtkAdjustment *adj = gtk_range_get_adjustment( range );
++	//gdk_window_clear_area(widget-&gt;window, 0, 0, widget-&gt;allocation.width, widget-&gt;allocation.height);
++
++	dx = adj-&gt;value - adj-&gt;lower;
++	dy = adj-&gt;upper - adj-&gt;lower;
++	GList *framelist = self-&gt;_priv-&gt;anim_list;
++
++	if (dy != 0) {
++	    GdkPixbuf *pixbuf;
++
++	    dx = MIN(MAX(dx / dy, 0), 1);
++	    //dx = (1-dx) * (g_list_length( framelist )-0.5) * 0.75 + 0.125 * g_list_length( framelist );
++	    dx = (dx) * (g_list_length( framelist ) - 1 );
++
++	    pixbuf = GDK_PIXBUF( g_list_nth_data( framelist, (int) dx) );
++
++	    gdk_pixbuf_render_to_drawable_alpha( pixbuf, widget-&gt;window,
++		    0, 0, widget-&gt;allocation.x, widget-&gt;allocation.y, gdk_pixbuf_get_width( pixbuf ), gdk_pixbuf_get_height( pixbuf ), GDK_PIXBUF_ALPHA_FULL, 0, 0,0,0 );
++	}
++	else
++	    g_warning( &quot;dy=0\n&quot; );
++
++	return FALSE;
++    }
++
++
++    override (Gtk:Widget) gint button_press_event( GtkWidget *widget, GdkEventButton *event) {
++
++	Self *self = SELF( widget );
++	//g_return_val_if_fail(widget != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(self), FALSE);
++	g_return_val_if_fail(event != NULL, FALSE);
++
++
++	switch (self-&gt;_priv-&gt;state) {
++	    case TK_STATE_IDLE:
++		switch (event-&gt;button) {
++		    case 1:
++		    case 3:
++			gtk_grab_add( GTK_WIDGET( self ));
++			self-&gt;_priv-&gt;state = TK_STATE_PRESSED;
++			self-&gt;_priv-&gt;saved_x = event-&gt;x + widget-&gt;allocation.x;
++			self-&gt;_priv-&gt;saved_y = event-&gt;y + widget-&gt;allocation.y;
++			printf( &quot;saving %f, %f\n&quot;, (float) event-&gt;x, (float) event-&gt;y );
++			break;
++
++		    default:
++			break;
++		}
++		break;
++
++	    default:
++		break;
++	}
++
++	return FALSE;
++    }
++
++    override (Gtk:Widget) gint button_release_event(GtkWidget *widget, GdkEventButton *event) {
++
++	g_return_val_if_fail(widget != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(widget), FALSE);
++	g_return_val_if_fail(event != NULL, FALSE);
++	Self *self = SELF( widget );
++
++	
++
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++
++	switch (self-&gt;_priv-&gt;state) {
++	    case TK_STATE_PRESSED:
++		gtk_grab_remove( GTK_WIDGET( self ) );
++		self-&gt;_priv-&gt;state = TK_STATE_IDLE;
++
++		switch (event-&gt;button) {
++		    case 1:
++			adj-&gt;value -= adj-&gt;page_increment;
++			gtk_signal_emit_by_name(GTK_OBJECT(adj), &quot;value_changed&quot;);
++			break;
++
++		    case 3:
++			adj-&gt;value += adj-&gt;page_increment;
++			gtk_signal_emit_by_name(GTK_OBJECT(adj), &quot;value_changed&quot;);
++			break;
++
++		    default:
++			break;
++		}
++		break;
++
++	    case TK_STATE_DRAGGING:
++		gtk_grab_remove(GTK_WIDGET( self ));
++		self-&gt;_priv-&gt;state = TK_STATE_IDLE;
++
++		if (gtk_range_get_update_policy( GTK_RANGE( self ) ) != GTK_UPDATE_CONTINUOUS &amp;&amp; self-&gt;_priv-&gt;old_value != adj-&gt;value)
++		    gtk_signal_emit_by_name(GTK_OBJECT(adj), &quot;value_changed&quot;);
++
++		break;
++
++	    default:
++		break;
++	}
++
++	return FALSE;
++    }
++
++    override (Gtk:Widget) gint motion_notify_event(GtkWidget *widget, GdkEventMotion *event) {
++	GdkModifierType mods;
++	gint x, y;
++	Self *self = SELF( widget );
++	GtkWidget *widget = GTK_WIDGET(self);
++
++	g_return_val_if_fail(widget != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(widget), FALSE);
++	g_return_val_if_fail(event != NULL, FALSE);
++
++	//knob = GTK_KNOB(widget);
++
++	x = event-&gt;x;
++	y = event-&gt;y;
++
++	if (event-&gt;is_hint || (event-&gt;window != widget-&gt;window))
++	    gdk_window_get_pointer(widget-&gt;window, &amp;x, &amp;y, &amp;mods);
++
++	switch (self-&gt;_priv-&gt;state) {
++	    case TK_STATE_PRESSED:
++		self-&gt;_priv-&gt;state = TK_STATE_DRAGGING;
++		/* fall through */
++
++	    case TK_STATE_DRAGGING:
++		if (mods &amp; GDK_BUTTON1_MASK) {
++		    self_update_mouse(self, x, y);
++		    return TRUE;
++		} else if (mods &amp; GDK_BUTTON3_MASK) {
++		    self_update_mouse_abs(self, x, y);
++		    return TRUE;
++		}
++		break;
++
++	    default:
++		break;
++	}
++
++	return FALSE;
++    }
++
++    private gint knob_timer(self) {
++	//g_return_val_if_fail(knob != NULL, FALSE);
++	//g_return_val_if_fail(GTK_IS_KNOB(knob), FALSE);
++
++	GtkUpdateType policy = gtk_range_get_update_policy( GTK_RANGE( self ) );
++	if (policy == GTK_UPDATE_DELAYED) {
++	    GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++	    gtk_signal_emit_by_name(GTK_OBJECT(adj), &quot;value_changed&quot;);
++	}
++
++	return FALSE;	/* don't keep running this timer */
++    }
++
++    private void update_mouse_update(self) {
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++	if (gtk_range_get_update_policy( GTK_RANGE( self )) == GTK_UPDATE_CONTINUOUS)
++	    gtk_signal_emit_by_name(GTK_OBJECT(adj), &quot;value_changed&quot;);
++	else {
++	    gtk_widget_draw(GTK_WIDGET(self), NULL);
++
++	    if (gtk_range_get_update_policy( GTK_RANGE( self )) == GTK_UPDATE_DELAYED) {
++		if (self-&gt;_priv-&gt;timer)
++		    gtk_timeout_remove(self-&gt;_priv-&gt;timer);
++
++		self-&gt;_priv-&gt;timer = gtk_timeout_add (SCROLL_DELAY_LENGTH, (GtkFunction) self_knob_timer,
++			(gpointer) self);
++	    }
++	}
++    }
++
++    private void update_mouse( self, gint x, gint y) {
++	gfloat old_value;
++	gfloat dv;
++
++	//g_return_if_fail(knob != NULL);
++	//g_return_if_fail(GTK_IS_KNOB(knob));
++	
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++
++	old_value = adj-&gt;value;
++
++	dv = (self-&gt;_priv-&gt;saved_y - y) * adj-&gt;step_increment;
++	printf( &quot;wattn : old= %f, dv=%f, y = %d\n&quot;, old_value, dv, y );
++	self-&gt;_priv-&gt;saved_x = x;
++	self-&gt;_priv-&gt;saved_y = y;
++
++	adj-&gt;value += dv;
++
++	if (adj-&gt;value != old_value)
++	    self_update_mouse_update(self);
++    }
++
++    private void update_mouse_abs(self, gint x, gint y) {
++	gfloat old_value;
++	gdouble angle;
++
++	//g_return_if_fail(knob != NULL);
++	//g_return_if_fail(GTK_IS_KNOB(knob));
++
++	GtkAdjustment *adj = gtk_range_get_adjustment( GTK_RANGE( self ) );
++
++	old_value = adj-&gt;value;
++
++	x -= GTK_WIDGET(self)-&gt;allocation.x;
++	x -= KNOB_SIZE&gt;&gt;1;
++	y -= GTK_WIDGET(self)-&gt;allocation.y;
++	y -= KNOB_SIZE&gt;&gt;1;
++	y = -y;	/* inverted cartesian graphics coordinate system */
++
++	angle = atan2(y, x) / M_PI;
++	if (angle &lt; -0.5)
++	    angle += 2;
++
++	angle = -(2.0/3.0) * (angle - 1.25);	/* map [1.25pi, -0.25pi] onto [0, 1] */
++	angle *= adj-&gt;upper - adj-&gt;lower;
++	angle += adj-&gt;lower;
++
++	adj-&gt;value = angle;
++
++	if (adj-&gt;value != old_value)
++	    self_update_mouse_update(self);
++    }
++    
++}
++
+Index: phat/phatknob.c
+===================================================================
+--- phat/phatknob.c	(revision 67)
++++ phat/phatknob.c	(working copy)
+@@ -548,6 +548,7 @@
+         switch (event-&gt;button) {
+         case 1:
+         case 2:
++        case 3:
+             gtk_grab_add(widget);
+             knob-&gt;state = STATE_PRESSED;
+             knob-&gt;saved_x = event-&gt;x;
+Index: phat/tech-layout.gob
+===================================================================
+--- phat/tech-layout.gob	(revision 0)
++++ phat/tech-layout.gob	(revision 0)
+@@ -0,0 +1,74 @@
++
++%headertop{
++#include &lt;gdk/gdk.h&gt;
++#include &lt;gtk/gtk.h&gt;
++
++#include &lt;gdk-pixbuf/gdk-pixbuf.h&gt;
++
++#include &quot;config.h&quot;
++#include &quot;glib.h&quot;
++
++#include &quot;math.h&quot;
++    
++#define PIXMAPDIRIFY(filename) \
++		(SITE_PKGDATA_DIR G_DIR_SEPARATOR_S &quot;pixmaps&quot; G_DIR_SEPARATOR_S filename)
++
++#define KNOB_SIZE 32
++#define SCROLL_DELAY_LENGTH	300
++
++#define DEFAULT_BG_FILE &quot;/usr/share/galan/pixmaps/galan-bg-ref.png&quot;
++%}
++
++class Tech:Layout from Gtk:Layout {
++
++
++    public GtkWidget * new (void) {
++	GtkWidget *ret = (GtkWidget *) GET_NEW;
++	return GTK_WIDGET(ret);
++    }
++
++
++
++
++
++    property STRING background_image
++	(nick  = &quot;background_image&quot;,
++	 blurb = &quot;Name of the background&quot;,
++	 default_value = DEFAULT_BG_FILE )
++	
++	set {
++	    self-&gt;_priv-&gt;bg_name = g_strdup( g_value_get_string(VAL) );
++	    printf( &quot;set bg = %s\n&quot;, self-&gt;_priv-&gt;bg_name );
++	}
++
++    get {
++	g_value_set_string(VAL, self-&gt;_priv-&gt;bg_name );
++    };
++
++
++
++    private char *bg_name;
++
++    override (Gtk:Widget) gint expose_event( GtkWidget *widget, GdkEventExpose *event) {
++
++	GError *err = NULL;
++	Self *self = SELF( widget );
++	GdkPixbuf *bg_pixbuf;
++
++	bg_pixbuf=gdk_pixbuf_new_from_file( self-&gt;_priv-&gt;bg_name, &amp;err );
++	
++	if( bg_pixbuf ) {
++	    
++	    gdk_pixbuf_render_to_drawable_alpha( bg_pixbuf, widget-&gt;window,
++		    0, 0, widget-&gt;allocation.x, widget-&gt;allocation.y, gdk_pixbuf_get_width( bg_pixbuf ), gdk_pixbuf_get_height( bg_pixbuf ), GDK_PIXBUF_ALPHA_FULL, 0, 0,0,0 );
++	}
++	else 
++	    g_warning( &quot;bg invalid&quot; );
++
++	PARENT_HANDLER( widget, event );
++	return FALSE;
++	    
++    }
++
++}
++
+Index: phat/phatfanslider.c
+===================================================================
+--- phat/phatfanslider.c	(revision 67)
++++ phat/phatfanslider.c	(working copy)
+@@ -1748,7 +1748,7 @@
+             width = x - w;
+             width = CLAMP (width, 0, slider-&gt;fan_max_thickness);
+           
+-            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), width, fan_max_height);
++            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = slider-&gt;xclick_root + (w - slider-&gt;xclick);
+ 
+@@ -1774,7 +1774,7 @@
+             width = -x;
+             width = CLAMP (width, 0, slider-&gt;fan_max_thickness);
+ 
+-            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), width, fan_max_height);
++            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = slider-&gt;xclick_root - slider-&gt;xclick
+                 - slider-&gt;fan_window-&gt;allocation.width;
+@@ -1810,7 +1810,7 @@
+             height = y - h;
+             height = CLAMP (height, 0, slider-&gt;fan_max_thickness);
+           
+-            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), fan_max_width, height);
++            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = (slider-&gt;xclick_root - slider-&gt;xclick)
+                 - ((fan_max_width - w) / 2);
+@@ -1835,7 +1835,7 @@
+             height = -y;
+             height = CLAMP (height, 0, slider-&gt;fan_max_thickness);
+ 
+-            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), fan_max_width, height);
++            gtk_window_resize (GTK_WINDOW (slider-&gt;fan_window), fan_max_width, fan_max_height);
+ 
+             fanx = (slider-&gt;xclick_root - slider-&gt;xclick)
+                 - ((fan_max_width - w) / 2);
+Index: phat/Makefile.am
+===================================================================
+--- phat/Makefile.am	(revision 67)
++++ phat/Makefile.am	(working copy)
+@@ -4,12 +4,20 @@
+ phatvfanslider.h phathfanslider.c phathfanslider.h phatprivate.h	\
+ phatprivate.c phatsliderbutton.c phatsliderbutton.h phatkeyboard.c	\
+ phatkeyboard.h phatvkeyboard.c phatvkeyboard.h phathkeyboard.c		\
+-phathkeyboard.h phatpad.c phatpad.h phatknob.c phatknob.h
++phathkeyboard.h phatpad.c phatpad.h phatknob.c phatknob.h tech-knob.c	\
++tech-knob.h tech-layout.c tech-layout.h
+ 
++libphat_la_BUILT_SOURCES = tech-knob.c tech-knob.h tech-layout.c tech-layout.h
++
+ libphat_la_CFLAGS = $(CFLAGS) -I.. -DINSTALL_DIR=\&quot;$(datadir)\&quot;
+ 
+ libphatincludedir = $(includedir)/phat
+ 
+ libphatinclude_HEADERS = phat.h phatfanslider.h phatvfanslider.h	\
+ phathfanslider.h phatsliderbutton.h phatkeyboard.h phatvkeyboard.h	\
+-phathkeyboard.h phatpad.h phatknob.h
++phathkeyboard.h phatpad.h phatknob.h tech-knob.h tech-layout.h
++
++
++
++%.c %.h %-private.h: %.gob
++	@GOB2@ $&lt;
+Index: glade3/Makefile.am
+===================================================================
+--- glade3/Makefile.am	(revision 0)
++++ glade3/Makefile.am	(revision 0)
+@@ -0,0 +1,3 @@
++glade3_DATA = phat.xml
++EXTRA_DIST = $(glade3_DATA)
++glade3dir = &quot;/usr/share/glade3/catalogs&quot;
+Index: glade3/phat.xml
+===================================================================
+--- glade3/phat.xml	(revision 0)
++++ glade3/phat.xml	(revision 0)
+@@ -0,0 +1,25 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;glade-catalog name=&quot;phat&quot; library=&quot;gladephat&quot; domain=&quot;glade3&quot; book=&quot;phat&quot;&gt;
++  &lt;glade-widget-classes&gt;
++
++
++
++
++    &lt;glade-widget-class name=&quot;TechKnob&quot;  generic-name=&quot;techknob&quot; title=&quot;techKnoB&quot;&gt;
++      &lt;properties&gt;
++		      &lt;property id=&quot;anim_name&quot; name=&quot;File Name&quot;&gt;&lt;/property&gt;
++      &lt;/properties&gt;
++    &lt;/glade-widget-class&gt;
++
++    &lt;glade-widget-class name=&quot;TechLayout&quot;  generic-name=&quot;techlayout&quot; title=&quot;techlayout&quot;&gt;
++    &lt;/glade-widget-class&gt;
++
++
++
++
++  &lt;/glade-widget-classes&gt;
++  &lt;glade-widget-group name=&quot;Phat&quot; title=&quot;yay Phat&quot;&gt;
++    &lt;glade-widget-class-ref name=&quot;TechKnob&quot;/&gt;
++    &lt;glade-widget-class-ref name=&quot;TechLayout&quot;/&gt;
++  &lt;/glade-widget-group&gt;
++&lt;/glade-catalog&gt;
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 67)
++++ configure.ac	(working copy)
+@@ -45,11 +45,13 @@
+ 
+ GTK_DOC_CHECK(1.0)
+ 
++GOB2_CHECK([2.0.0])
++
+ # misc checks
+ PKG_CHECK_MODULES(MISC, libgnomecanvas-2.0)
+ 
+ # set compilation flags
+-CFLAGS=&quot;$CFLAGS $GTK_CFLAGS $MISC_CFLAGS -Wall -Werror&quot;
++CFLAGS=&quot;$CFLAGS $GTK_CFLAGS $MISC_CFLAGS -Wall&quot;
+ LIBS=&quot;$LIBS $GTK_LIBS $MISC_LIBS&quot;
+ 
+ # print build summary
+@@ -81,6 +83,6 @@
+ echo
+ ])
+ 
+-AC_CONFIG_FILES([Makefile phat/Makefile demos/Makefile docs/Makefile pixmaps/Makefile phat.pc phat.spec])
++AC_CONFIG_FILES([Makefile phat/Makefile demos/Makefile docs/Makefile pixmaps/Makefile glade3/Makefile phat.pc phat.spec])
+ AM_CONFIG_HEADER([phat/config.h])
+ AC_OUTPUT
+Index: demos/knob.c
+===================================================================
+--- demos/knob.c	(revision 67)
++++ demos/knob.c	(working copy)
+@@ -1,6 +1,8 @@
+ #include &lt;gtk/gtk.h&gt;
+ #include &lt;phat/phat.h&gt;
+ 
++#include &lt;phat/tech-knob.h&gt;
++
+ enum
+ {
+     SPACING = 0,
+@@ -8,7 +10,8 @@
+ 
+ void motion_cb(PhatKnob* knob)
+ {
+-    printf(&quot;knob value %f \n&quot;, phat_knob_get_value(knob));
++    //printf(&quot;knob value %f \n&quot;, phat_knob_get_value(knob));
++    printf( &quot;motio\n&quot; );
+ }  
+ 
+ int main (int argc, char* argv[])
+@@ -16,6 +19,7 @@
+     GtkWidget* window;
+     GtkWidget* knob;
+     GtkWidget* knob2;
++    GtkWidget* knob3;
+     GtkWidget* vbox;
+     gtk_init (&amp;argc, &amp;argv);
+ 
+@@ -49,6 +53,22 @@
+     g_signal_connect (G_OBJECT (knob2), &quot;value-changed&quot;,
+                       G_CALLBACK (motion_cb), NULL);
+ 
++    /*  knob */
++
++    GtkWidget *eb = gtk_event_box_new();
++    knob3 = tech_knob_new ();
++
++    //gtk_container_add( GTK_CONTAINER( eb ), knob3 );
++    //gtk_box_pack_start (GTK_BOX (vbox), eb, TRUE, FALSE, 0);
++    //gtk_widget_show (eb);
++
++    gtk_box_pack_start (GTK_BOX (vbox), knob3, TRUE, FALSE, 0);
++
++    gtk_widget_show (knob3);
++    g_signal_connect (G_OBJECT (knob3), &quot;value-changed&quot;,
++                      G_CALLBACK (motion_cb), NULL);
++    gtk_range_set_adjustment( GTK_RANGE( knob3 ), (GtkAdjustment *)gtk_adjustment_new( 0.0, -10, +10, 0.1, 0.1, 0 ) ); 
++    g_object_set( (gpointer) knob3, &quot;anim_name&quot;, &quot;/usr/local/share/galan/pixmaps/new-knob02.png&quot;, NULL );
+     gtk_widget_show (window);
+ 
+     /* look if it breaks */
+Index: Makefile.am
+===================================================================
+--- Makefile.am	(revision 67)
++++ Makefile.am	(working copy)
+@@ -1,4 +1,4 @@
+-SUBDIRS = phat demos docs pixmaps
++SUBDIRS = phat demos docs pixmaps glade3
+ 
+ EXTRA_DIST = bootstrap BUGS phat.pc.in phat.spec.in
+ 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000041.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+	<LI>Next message: <A HREF="000044.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

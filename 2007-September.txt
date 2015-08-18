@@ -1,0 +1,1076 @@
+From torbenh at gmx.de  Thu Sep  6 16:36:53 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Thu, 6 Sep 2007 16:36:53 +0200
+Subject: [Phat-dev] sorry for absence....
+Message-ID: <20070906143653.GA29694@mobilat>
+
+
+hi guys.
+my internet connection was down.
+now i have my own connection which should be much more reliable than my
+old open WLAN connection.
+
+i am online again, and the PhatScrolloscope with the demo player is
+coming up.
+
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From loki.davison at gmail.com  Thu Sep  6 23:54:33 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Fri, 7 Sep 2007 06:54:33 +0900
+Subject: [Phat-dev] sorry for absence....
+In-Reply-To: <20070906143653.GA29694@mobilat>
+References: <20070906143653.GA29694@mobilat>
+Message-ID: <ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+
+On 9/6/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+>
+> hi guys.
+> my internet connection was down.
+> now i have my own connection which should be much more reliable than my
+> old open WLAN connection.
+>
+> i am online again, and the PhatScrolloscope with the demo player is
+> coming up.
+>
+>
+> --
+> torben Hohn
+> http://galan.sourceforge.net -- The graphical Audio language
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+>
+
+I don' t think anyone on the list can complain too much. I've just
+moved to korea and don't even have a computer here yet! Thinking of
+getting the pretty cheap quad core intel. 130 Euro for the chip...
+
+Loki
+
+
+From torbenh at gmx.de  Fri Sep  7 10:06:05 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Fri, 7 Sep 2007 10:06:05 +0200
+Subject: [Phat-dev] PhatAudiostream (was Re:  sorry for absence....)
+In-Reply-To: <ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+References: <20070906143653.GA29694@mobilat>
+	<ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+Message-ID: <20070907080605.GA7355@mobilat>
+
+On Fri, Sep 07, 2007 at 06:54:33AM +0900, Loki Davison wrote:
+> On 9/6/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> >
+> > hi guys.
+> > my internet connection was down.
+> > now i have my own connection which should be much more reliable than my
+> > old open WLAN connection.
+> >
+> > i am online again, and the PhatScrolloscope with the demo player is
+> > coming up.
+> >
+> >
+> > --
+> > torben Hohn
+> > http://galan.sourceforge.net -- The graphical Audio language
+> > _______________________________________________
+> > Phat-dev mailing list
+> > Phat-dev at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/phat-dev
+> >
+> 
+> I don' t think anyone on the list can complain too much. I've just
+> moved to korea and don't even have a computer here yet! Thinking of
+> getting the pretty cheap quad core intel. 130 Euro for the chip...
+
+:) wow. quad cores are coming....
+well, at least you know i am here again. 
+
+i wrote PhatScrolloscope which can display a PhatAudiostream.
+PhatAudiostream is not a real stream yet (loads whole file into mem)
+
+but it already uses libsamplerate and libsndfile.
+So the main question is:
+
+Add dependency to samplerate and sndfile ?
+refactoring these dependencies out of PhatAudiostream would make it
+virtual. 
+
+I would like to commit them, but first want an ok for the depend.
+IMO libsndfile and libsamplerate are fulfilled everywhere.
+
+> 
+> Loki
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From torbenh at gmx.de  Fri Sep  7 10:42:21 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Fri, 7 Sep 2007 10:42:21 +0200
+Subject: [Phat-dev] phatrange and range widgets
+In-Reply-To: <87r6lrzmcp.fsf@arnaudov.name>
+References: <20070803085602.d0b9c72a.zenadsl6252@zen.co.uk>
+	<87y7gtdnks.fsf@arnaudov.name>
+	<20070803101331.dccf1de6.zenadsl6252@zen.co.uk>
+	<87fy2yqkau.fsf@arnaudov.name> <1187247159.17595.248.camel@one>
+	<87r6lrzmcp.fsf@arnaudov.name>
+Message-ID: <20070907084221.GB7355@mobilat>
+
+On Sat, Aug 25, 2007 at 06:04:54PM +0300, Nedko Arnaudov wrote:
+> pete shorthose <zenadsl6252 at zen.co.uk> writes:
+> 
+> >> i have major problem with lacking ui user use cases and specification
+> >> how things (should) work.
+> >
+> >> Some code i saw in phatknob is obviously
+> >> broken, 
+> >
+> > which parts?
+> 
+> alternative (linear?) adjsutment with mouse button 3
+> I've not investigated further but it does not work here.
+
+it just calls mouse_update_mouse with a different flag, and i dont
+understand what it does really ;)
+
+lets try to break all this behaviour down to:
+
+gdouble get_new_value( gdouble button_press_x, gdouble button_press_y
+                       gdouble current_x,      gdouble current_y      );
+
+
+this function would return a value between 0.0 and 1.0 which is then
+scaled by the widget code and fed into the adjustment.
+
+we still need some extra parameters (like widget size and such)
+
+> 
+> >>  i talked with thorwil about knobs
+> >> in particular and i saw his try for this in his blog too and he said
+> >> we have serious discrepancies about knobs ui user use. we should
+> >> document them and take a plan to handle them. 
+> >
+> > i think this is already resolved (in as much as it can be)
+> > the configurable input mapping should allow people to choose 
+> > their preferred method. this is a deal breaker for me so 
+> > if it's not resolved then we have problems. if you have 
+> > more to add then we should run it past loki again.
+> 
+> allow people to choose - i agree (see below), but the point is that we
+> need behaviours to choose from defined. Do you agree with definitions
+> posted in thorwil blog? Or we have them documented elsewere?
+> 
+> >> Now how this interacts with phatrange? In my vision so far direct access
+> >> methods should be implemented as proxy code to phatrange and not
+> >> directly interacting with widget code and thus it may be possible to use
+> >> some hairy macro to define them in all widgets. we need this because
+> >> gobject model does not support method inheritance, or i am wrong?
+> >
+> > i'm not sure. we can chain up to access virtual parent
+> > functions?. (cast the object to it's parent type)
+
+yup. inheritance is possible with virtual methods. And chaining back to
+them.
+
+> 
+> so this needs more investigation, i'm concerned for pyphat in particular
+
+
+> 
+> >> All gtkadjustment-less methods are implemented in phatrange by operating
+> >> on gtkadjustment referenced in it.
+> >> 
+> >> I'm still thinking about what is best way for interoperation between
+> >> gtkadjustment and mapper object. in particular, mapper, at least one i
+> >> have currently (monothonic linear spline), has valid range and is
+> >> somewhat incompatible with change of it, caused by external
+> >> gtkadjustment. Do you think we need to support external gtkadjustments
+> >> when we have mapper? I'd say no. Logarithm also has input restritions
+> >> too, thus rendering -50..0 gtkadjustment unusable. At least directly,
+> >> but i think mapper should operate on real range not artificial one, like
+> >> (0..1).
+> >
+> > are there any cases where we cannot detect and translate 
+> > problematic ranges? if there are or the detection and 
+> > translation is too expensive then we are a bit screwed.
+> 
+> We can detect but i doubt we can translate. So we can reject external
+> adjustment if it does not apply, but then, why someone would want
+> external adjustment at all?
+> 
+> >> After more inspection of phatknob and those concept discrepancies we
+> >> have, i now beleive we should come with configuration system in next
+> >> release. I propose (and have motivation to work on) class code
+> >> interacting with gconf. In particular I want to start with radial/linear
+> >> knob behaviour, always with left mouse button.
+> >
+> > this should be configurable. it's the only way we can accommodate 
+> > different user and developer preferences. (IOW, it's the only
+> > way we can prevent me and thorsten from killing each other :P )
+> >
+> > i'd like to see targets (linear control, absolute control, menu popup
+> > etc) be mappable to input combinations (buttons 1 - 5, and modifiers)
+> >
+> >> More configuration
+> >> candidates are welcome. Lets collect them in this thread, I'll put them
+> >> on wiki once we have plan.
+> 
+> I think we should have manual value input configurable too:
+> 
+> So far list of things that need to be configurable are:
+>  * context menu popup
+>  * linear control
+>  * radial control
+>  * absolute control
+>  * manual input (edit box to entr value with keyboard)
+
+how about being able to set the step size ?
+like 10% per pixel on left and 1% per pixel on right ?
+
+i am not convinced that gconf is the right way.
+we should try to use the gtkrc system for this.
+it would give us per Widget control including wildcards:
+
+*.LFO.f step = 10
+*.LFO.* step = 20
+
+* step = 100
+
+(the syntax is not right but you get the idea... :)
+
+however i dont know whether the gtkrc system allows for modifiers to be
+configured. perhaps we would need to write our own parser or use xml.
+
+i already wrote a parser with GScanner and this is quite nice tool.
+
+> 
+> each mappable to mouse buttons 1-5 with modifiers (including double
+> click as option). mappings are optional i.e. if not configured they
+> are not available.
+> 
+> Mappings should be overridable by program (developer) using the widget.
+> 
+> I'm somewhat sceptical someone will want more than one method of mouse
+> control active. So maybe it is better to have mouse drag mappable to
+> button and have mouse drag behaviour as additional property.
+
+i use both linear and radial on left and right mouse button very
+much in galan. linear for fine tuning and radial for fast parameter
+changes.
+
+> 
+> -- 
+> Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+
+
+
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From torbenh at gmx.de  Fri Sep  7 11:59:42 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Fri, 7 Sep 2007 11:59:42 +0200
+Subject: [Phat-dev] fansliders
+In-Reply-To: <87k5s4hnla.fsf@arnaudov.name>
+References: <877ioaqk3j.fsf@arnaudov.name> <20070808184500.GD6920@mobilat>
+	<ec9314860708090411y2b75741fu74697e117d8bc977@mail.gmail.com>
+	<87k5s4hnla.fsf@arnaudov.name>
+Message-ID: <20070907095942.GC7355@mobilat>
+
+On Thu, Aug 09, 2007 at 03:57:53PM +0300, Nedko Arnaudov wrote:
+> "Loki Davison" <loki.davison at gmail.com> writes:
+> 
+> > On 8/9/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> >> On Sun, Aug 05, 2007 at 02:47:12PM +0300, Nedko Arnaudov wrote:
+> >> > Currently phatfansliders are unusable in by setup. At least they could
+> >>
+> >> same here. no hardware acceleration.
+> >> but the fans are not transparent. nor the rest of the window, which is
+> >> white here.
+> >> Do i need to load some module for Xcomposite ?
+> >> need more input before i can look into this stuff ;)
+> >>
+> >
+> >
+> > http://gentoo-wiki.com/TIP_Xorg_X11_and_Tranparency
+
+okay. My computer becomes unusable when i turn on xcompmgr.
+One screen update every 2 seconds :)
+
+This is NOT the way to go.
+Either you try to do the transparency rendering yourself or we find some
+smart way to detect this.
+
+Please Note that XComposite is only a way to get the contents of
+windows. If i understand this correctly the xcompmgr then renders a view
+of the visible windows. This is of course slow with software GL.
+
+So it should be possible to have fansliders without xcompmgr but with
+Composite.
+ie. on fanslider start grab screen and incrementally render the fan.
+this could also work without hardware GL. 
+but this is not real transparency anymore. you would not see window
+updates through the fan.
+
+i will get a new laptop soon, so i will be playing with openGL soon.
+But we can not assume it. so we need an alternative (the old)
+implamentation.
+
+> 
+> That is fine, but fansliders should be useful without
+> xcomposite. Otherwise we damn phat-enabled apps.
+> 
+> > I'll work on making them a bit faster if possible anyway. Though i
+> > think i'm keeping the roundness ;)
+> 
+> Keeping it is ok, forcing it is not. Please make it optional! After all
+> user has the power to choose style, no? Even MS operating systems are
+> themable these days.
+> 
+> -- 
+> Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+
+
+
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From torbenh at gmx.de  Fri Sep  7 13:59:40 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Fri, 7 Sep 2007 13:59:40 +0200
+Subject: [Phat-dev] PhatAudiostream (was Re:  sorry for absence....)
+In-Reply-To: <20070907080605.GA7355@mobilat>
+References: <20070906143653.GA29694@mobilat>
+	<ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+	<20070907080605.GA7355@mobilat>
+Message-ID: <20070907115940.GD23970@mobilat>
+
+On Fri, Sep 07, 2007 at 10:06:05AM +0200, torbenh at gmx.de wrote:
+> On Fri, Sep 07, 2007 at 06:54:33AM +0900, Loki Davison wrote:
+> > On 9/6/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > >
+> > > hi guys.
+> > > my internet connection was down.
+> > > now i have my own connection which should be much more reliable than my
+> > > old open WLAN connection.
+> > >
+> > > i am online again, and the PhatScrolloscope with the demo player is
+> > > coming up.
+> > >
+> > >
+> > > --
+> > > torben Hohn
+> > > http://galan.sourceforge.net -- The graphical Audio language
+> > > _______________________________________________
+> > > Phat-dev mailing list
+> > > Phat-dev at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/phat-dev
+> > >
+> > 
+> > I don' t think anyone on the list can complain too much. I've just
+> > moved to korea and don't even have a computer here yet! Thinking of
+> > getting the pretty cheap quad core intel. 130 Euro for the chip...
+> 
+> :) wow. quad cores are coming....
+> well, at least you know i am here again. 
+> 
+> i wrote PhatScrolloscope which can display a PhatAudiostream.
+> PhatAudiostream is not a real stream yet (loads whole file into mem)
+> 
+> but it already uses libsamplerate and libsndfile.
+> So the main question is:
+> 
+> Add dependency to samplerate and sndfile ?
+> refactoring these dependencies out of PhatAudiostream would make it
+> virtual. 
+> 
+> I would like to commit them, but first want an ok for the depend.
+> IMO libsndfile and libsamplerate are fulfilled everywhere.
+
+here is a screenshot:
+http://www.alice-dsl.net/torbenh/phatplaya.png
+
+2 scrolloscopes playing at different speeds.
+notice the scrolling while the screenshot was taken ;)
+
+did i mention that we need labels on the knobs ;P
+the upper knobs are the pitch controls and the lower ones are x/y zooms.
+
+this thing mimics the behaviour of mixxx.
+however i use a hardware dj mixer to mix so there will be no mixing
+controls in the demo :)
+
+
+> 
+> > 
+> > Loki
+> > _______________________________________________
+> > Phat-dev mailing list
+> > Phat-dev at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/phat-dev
+> 
+> -- 
+> torben Hohn
+> http://galan.sourceforge.net -- The graphical Audio language
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From torbenh at gmx.de  Fri Sep 14 13:08:58 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Fri, 14 Sep 2007 13:08:58 +0200
+Subject: [Phat-dev] PhatAudiostream
+In-Reply-To: <20070907080605.GA7355@mobilat>
+References: <20070906143653.GA29694@mobilat>
+	<ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+	<20070907080605.GA7355@mobilat>
+Message-ID: <20070914110858.GA7400@mobilat>
+
+On Fri, Sep 07, 2007 at 10:06:05AM +0200, torbenh at gmx.de wrote:
+> On Fri, Sep 07, 2007 at 06:54:33AM +0900, Loki Davison wrote:
+> > On 9/6/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > >
+> > > hi guys.
+> > > my internet connection was down.
+> > > now i have my own connection which should be much more reliable than my
+> > > old open WLAN connection.
+> > >
+> > > i am online again, and the PhatScrolloscope with the demo player is
+> > > coming up.
+> > >
+> > >
+> > > --
+> > > torben Hohn
+> > > http://galan.sourceforge.net -- The graphical Audio language
+> > > _______________________________________________
+> > > Phat-dev mailing list
+> > > Phat-dev at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/phat-dev
+> > >
+> > 
+> > I don' t think anyone on the list can complain too much. I've just
+> > moved to korea and don't even have a computer here yet! Thinking of
+> > getting the pretty cheap quad core intel. 130 Euro for the chip...
+> 
+> :) wow. quad cores are coming....
+> well, at least you know i am here again. 
+> 
+> i wrote PhatScrolloscope which can display a PhatAudiostream.
+> PhatAudiostream is not a real stream yet (loads whole file into mem)
+> 
+> but it already uses libsamplerate and libsndfile.
+> So the main question is:
+> 
+> Add dependency to samplerate and sndfile ?
+> refactoring these dependencies out of PhatAudiostream would make it
+> virtual. 
+> 
+> I would like to commit them, but first want an ok for the depend.
+> IMO libsndfile and libsamplerate are fulfilled everywhere.
+
+hmm... well nobody yelled... i commited.
+things missing: correct reffing, destruction, in demos/phatscrolloscope
+check for argc != 2
+
+Give phatscrolloscope a sndfile loadable file that fits into mem two
+times in floats...
+
+
+> 
+> > 
+> > Loki
+> > _______________________________________________
+> > Phat-dev mailing list
+> > Phat-dev at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/phat-dev
+> 
+> -- 
+> torben Hohn
+> http://galan.sourceforge.net -- The graphical Audio language
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From torbenh at gmx.de  Fri Sep 14 14:16:39 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Fri, 14 Sep 2007 14:16:39 +0200
+Subject: [Phat-dev] some thoughts again...
+Message-ID: <20070914121639.GA14509@mobilat>
+
+
+some things in my queue:
+
+- make PhatAudiostream a real stream. (just use a fixed buffersize and
+  make a timeout callback that ensures that in the circular buffer there
+  is the material from playhead +/- buffer/2 ...
+
+- second use for PhatAudiostream is a soundfile selector. need to pin
+  down what is needed interface wise for this.
+
+- midi learn and control automation.
+  create a map String -> GtkAdjustment
+  midi or osc source is then translated to a string by the user, and fed
+  into this map. 
+
+  phat_learn_map_feed( PhatLearnMap *map, char *controller_name, gdouble val )
+  val is between 0..1 scaling is done be the map code.
+
+  phat_learn_map_learn( PhatLearnMap *map, GtkAdjustment *adj )
+  Go into learn mode. Next event received is associated with this
+  adjustment.
+
+  the references owned by the learn map should be week refs, so that the
+  application programmer need not think about memory management here.
+
+  mappings should be serializable... perhaps we need more info on how to
+  reobtain the adjustments then.
+
+Did you guys look at aldrin ? it contains a soundfile browser for the
+freesound project. now this really rocks. 
+
+what happened to you guys ? everybody offline ? sad :(
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From loki.davison at gmail.com  Sat Sep 15 03:36:45 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Sat, 15 Sep 2007 10:36:45 +0900
+Subject: [Phat-dev] PhatAudiostream
+In-Reply-To: <20070914110858.GA7400@mobilat>
+References: <20070906143653.GA29694@mobilat>
+	<ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+	<20070907080605.GA7355@mobilat> <20070914110858.GA7400@mobilat>
+Message-ID: <ec9314860709141836g32cbbc84me9f5fcb6bc6f245c@mail.gmail.com>
+
+On 9/14/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> On Fri, Sep 07, 2007 at 10:06:05AM +0200, torbenh at gmx.de wrote:
+> > On Fri, Sep 07, 2007 at 06:54:33AM +0900, Loki Davison wrote:
+> > > On 9/6/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > > >
+> > > > hi guys.
+> > > > my internet connection was down.
+> > > > now i have my own connection which should be much more reliable than
+> my
+> > > > old open WLAN connection.
+> > > >
+> > > > i am online again, and the PhatScrolloscope with the demo player is
+> > > > coming up.
+> > > >
+> > > >
+> > > > --
+> > > > torben Hohn
+> > > > http://galan.sourceforge.net -- The graphical Audio language
+> > > > _______________________________________________
+> > > > Phat-dev mailing list
+> > > > Phat-dev at lists.berlios.de
+> > > > https://lists.berlios.de/mailman/listinfo/phat-dev
+> > > >
+> > >
+> > > I don' t think anyone on the list can complain too much. I've just
+> > > moved to korea and don't even have a computer here yet! Thinking of
+> > > getting the pretty cheap quad core intel. 130 Euro for the chip...
+> >
+> > :) wow. quad cores are coming....
+> > well, at least you know i am here again.
+> >
+> > i wrote PhatScrolloscope which can display a PhatAudiostream.
+> > PhatAudiostream is not a real stream yet (loads whole file into mem)
+> >
+> > but it already uses libsamplerate and libsndfile.
+> > So the main question is:
+> >
+> > Add dependency to samplerate and sndfile ?
+> > refactoring these dependencies out of PhatAudiostream would make it
+> > virtual.
+> >
+> > I would like to commit them, but first want an ok for the depend.
+> > IMO libsndfile and libsamplerate are fulfilled everywhere.
+>
+> hmm... well nobody yelled... i commited.
+> things missing: correct reffing, destruction, in demos/phatscrolloscope
+> check for argc != 2
+>
+> Give phatscrolloscope a sndfile loadable file that fits into mem two
+> times in floats...
+
+Cool, i've got a computer again so can get back into it. I start work
+at 7am and finish at 10 pm though.... with a break in the middle of
+the day. So not much time... ;) I think those deps are fine. What
+happened with phat LV2? Can't see it in SVN.
+
+Loki
+
+
+From torbenh at gmx.de  Sat Sep 15 18:48:21 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Sat, 15 Sep 2007 18:48:21 +0200
+Subject: [Phat-dev] PhatAudiostream
+In-Reply-To: <ec9314860709141836g32cbbc84me9f5fcb6bc6f245c@mail.gmail.com>
+References: <20070906143653.GA29694@mobilat>
+	<ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+	<20070907080605.GA7355@mobilat> <20070914110858.GA7400@mobilat>
+	<ec9314860709141836g32cbbc84me9f5fcb6bc6f245c@mail.gmail.com>
+Message-ID: <20070915164821.GA31375@mobilat>
+
+On Sat, Sep 15, 2007 at 10:36:45AM +0900, Loki Davison wrote:
+> On 9/14/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > On Fri, Sep 07, 2007 at 10:06:05AM +0200, torbenh at gmx.de wrote:
+> > > On Fri, Sep 07, 2007 at 06:54:33AM +0900, Loki Davison wrote:
+> > > > On 9/6/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > > > >
+> > > > > hi guys.
+> > > > > my internet connection was down.
+> > > > > now i have my own connection which should be much more reliable than
+> > my
+> > > > > old open WLAN connection.
+> > > > >
+> > > > > i am online again, and the PhatScrolloscope with the demo player is
+> > > > > coming up.
+> > > > >
+> > > > >
+> > > > > --
+> > > > > torben Hohn
+> > > > > http://galan.sourceforge.net -- The graphical Audio language
+> > > > > _______________________________________________
+> > > > > Phat-dev mailing list
+> > > > > Phat-dev at lists.berlios.de
+> > > > > https://lists.berlios.de/mailman/listinfo/phat-dev
+> > > > >
+> > > >
+> > > > I don' t think anyone on the list can complain too much. I've just
+> > > > moved to korea and don't even have a computer here yet! Thinking of
+> > > > getting the pretty cheap quad core intel. 130 Euro for the chip...
+> > >
+> > > :) wow. quad cores are coming....
+> > > well, at least you know i am here again.
+> > >
+> > > i wrote PhatScrolloscope which can display a PhatAudiostream.
+> > > PhatAudiostream is not a real stream yet (loads whole file into mem)
+> > >
+> > > but it already uses libsamplerate and libsndfile.
+> > > So the main question is:
+> > >
+> > > Add dependency to samplerate and sndfile ?
+> > > refactoring these dependencies out of PhatAudiostream would make it
+> > > virtual.
+> > >
+> > > I would like to commit them, but first want an ok for the depend.
+> > > IMO libsndfile and libsamplerate are fulfilled everywhere.
+> >
+> > hmm... well nobody yelled... i commited.
+> > things missing: correct reffing, destruction, in demos/phatscrolloscope
+> > check for argc != 2
+> >
+> > Give phatscrolloscope a sndfile loadable file that fits into mem two
+> > times in floats...
+> 
+> Cool, i've got a computer again so can get back into it. I start work
+> at 7am and finish at 10 pm though.... with a break in the middle of
+> the day. So not much time... ;) I think those deps are fine. What
+> happened with phat LV2? Can't see it in SVN.
+
+i did not work on it too much... its still generated from .gob etc..
+i commit the directory thats containing it.
+we can later move it where it belongs then...
+
+currently thinking about midi learn functionality....
+
+> 
+> Loki
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From loki.davison at gmail.com  Sun Sep 16 03:00:54 2007
+From: loki.davison at gmail.com (Loki Davison)
+Date: Sun, 16 Sep 2007 10:00:54 +0900
+Subject: [Phat-dev] PhatAudiostream
+In-Reply-To: <20070915164821.GA31375@mobilat>
+References: <20070906143653.GA29694@mobilat>
+	<ec9314860709061454s2e28d6baja70f473848c9119b@mail.gmail.com>
+	<20070907080605.GA7355@mobilat> <20070914110858.GA7400@mobilat>
+	<ec9314860709141836g32cbbc84me9f5fcb6bc6f245c@mail.gmail.com>
+	<20070915164821.GA31375@mobilat>
+Message-ID: <ec9314860709151800v2296707fhbece8402b73d3911@mail.gmail.com>
+
+On 9/16/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> On Sat, Sep 15, 2007 at 10:36:45AM +0900, Loki Davison wrote:
+> > On 9/14/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > > On Fri, Sep 07, 2007 at 10:06:05AM +0200, torbenh at gmx.de wrote:
+> > > > On Fri, Sep 07, 2007 at 06:54:33AM +0900, Loki Davison wrote:
+> > > > > On 9/6/07, torbenh at gmx.de <torbenh at gmx.de> wrote:
+> > > > > >
+> > > > > > hi guys.
+> > > > > > my internet connection was down.
+> > > > > > now i have my own connection which should be much more reliable
+> than
+> > > my
+> > > > > > old open WLAN connection.
+> > > > > >
+> > > > > > i am online again, and the PhatScrolloscope with the demo player
+> is
+> > > > > > coming up.
+> > > > > >
+> > > > > >
+> > > > > > --
+> > > > > > torben Hohn
+> > > > > > http://galan.sourceforge.net -- The graphical Audio language
+> > > > > > _______________________________________________
+> > > > > > Phat-dev mailing list
+> > > > > > Phat-dev at lists.berlios.de
+> > > > > > https://lists.berlios.de/mailman/listinfo/phat-dev
+> > > > > >
+> > > > >
+> > > > > I don' t think anyone on the list can complain too much. I've just
+> > > > > moved to korea and don't even have a computer here yet! Thinking of
+> > > > > getting the pretty cheap quad core intel. 130 Euro for the chip...
+> > > >
+> > > > :) wow. quad cores are coming....
+> > > > well, at least you know i am here again.
+> > > >
+> > > > i wrote PhatScrolloscope which can display a PhatAudiostream.
+> > > > PhatAudiostream is not a real stream yet (loads whole file into mem)
+> > > >
+> > > > but it already uses libsamplerate and libsndfile.
+> > > > So the main question is:
+> > > >
+> > > > Add dependency to samplerate and sndfile ?
+> > > > refactoring these dependencies out of PhatAudiostream would make it
+> > > > virtual.
+> > > >
+> > > > I would like to commit them, but first want an ok for the depend.
+> > > > IMO libsndfile and libsamplerate are fulfilled everywhere.
+> > >
+> > > hmm... well nobody yelled... i commited.
+> > > things missing: correct reffing, destruction, in demos/phatscrolloscope
+> > > check for argc != 2
+> > >
+> > > Give phatscrolloscope a sndfile loadable file that fits into mem two
+> > > times in floats...
+> >
+> > Cool, i've got a computer again so can get back into it. I start work
+> > at 7am and finish at 10 pm though.... with a break in the middle of
+> > the day. So not much time... ;) I think those deps are fine. What
+> > happened with phat LV2? Can't see it in SVN.
+>
+> i did not work on it too much... its still generated from .gob etc..
+> i commit the directory thats containing it.
+> we can later move it where it belongs then...
+>
+> currently thinking about midi learn functionality....
+>
+
+
+It's better to have it in SVN. Less chance of loosing or duplicating
+stuff then. WE can always just remove it if we don't want it.
+
+Loki
+
+
+From nedko at arnaudov.name  Tue Sep 18 14:59:57 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Tue, 18 Sep 2007 15:59:57 +0300
+Subject: [Phat-dev] some thoughts again...
+In-Reply-To: <20070914121639.GA14509@mobilat> (torbenh@gmx.de's message of
+	"Fri, 14 Sep 2007 14:16:39 +0200")
+References: <20070914121639.GA14509@mobilat>
+Message-ID: <87abrkw2lu.fsf@arnaudov.name>
+
+torbenh at gmx.de writes:
+
+> - midi learn and control automation.
+>   create a map String -> GtkAdjustment
+>   midi or osc source is then translated to a string by the user, and fed
+>   into this map. 
+>
+>   phat_learn_map_feed( PhatLearnMap *map, char *controller_name, gdouble val )
+>   val is between 0..1 scaling is done be the map code.
+>
+>   phat_learn_map_learn( PhatLearnMap *map, GtkAdjustment *adj )
+>   Go into learn mode. Next event received is associated with this
+>   adjustment.
+>
+>   the references owned by the learn map should be week refs, so that the
+>   application programmer need not think about memory management here.
+>
+>   mappings should be serializable... perhaps we need more info on how to
+>   reobtain the adjustments then.
+
+How this will interact with phatrange?
+
+> what happened to you guys ? everybody offline ? sad :(
+
+I've been quite busy recently with the 5th International Short Film
+festival in Balchik. 
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070918/c00ce84d/attachment.pgp>
+
+From torbenh at gmx.de  Thu Sep 20 15:29:58 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Thu, 20 Sep 2007 15:29:58 +0200
+Subject: [Phat-dev] some thoughts again...
+In-Reply-To: <87abrkw2lu.fsf@arnaudov.name>
+References: <20070914121639.GA14509@mobilat> <87abrkw2lu.fsf@arnaudov.name>
+Message-ID: <20070920132957.GB31375@mobilat>
+
+On Tue, Sep 18, 2007 at 03:59:57PM +0300, Nedko Arnaudov wrote:
+> torbenh at gmx.de writes:
+> 
+> > - midi learn and control automation.
+> >   create a map String -> GtkAdjustment
+> >   midi or osc source is then translated to a string by the user, and fed
+> >   into this map. 
+> >
+> >   phat_learn_map_feed( PhatLearnMap *map, char *controller_name, gdouble val )
+> >   val is between 0..1 scaling is done be the map code.
+> >
+> >   phat_learn_map_learn( PhatLearnMap *map, GtkAdjustment *adj )
+> >   Go into learn mode. Next event received is associated with this
+> >   adjustment.
+> >
+> >   the references owned by the learn map should be week refs, so that the
+> >   application programmer need not think about memory management here.
+> >
+> >   mappings should be serializable... perhaps we need more info on how to
+> >   reobtain the adjustments then.
+> 
+> How this will interact with phatrange?
+
+I dont see the necessity to have this interact with phatrange yet.
+it just takes a GtkAdjustment...
+
+but perhaps the learning trigger CTRL-MidClick could be handled by
+phatrange. And the reobtainment of the Adjustment on map reload could
+involve some interaction with the phat range.
+
+
+> 
+> > what happened to you guys ? everybody offline ? sad :(
+> 
+> I've been quite busy recently with the 5th International Short Film
+> festival in Balchik. 
+
+k. well i said that and stayed at my girlfriends place for a week :)
+
+
+> 
+> -- 
+> Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+
+
+
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From nedko at arnaudov.name  Fri Sep 21 13:58:17 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Fri, 21 Sep 2007 14:58:17 +0300
+Subject: [Phat-dev] phat-0.4.1 configure issues,
+	phat 0.4.1 part of Gentoo now.
+In-Reply-To: <20070915093014.0ffcc800@localhost> (Samuli Suominen's message
+	of "Sat, 15 Sep 2007 09:30:14 +0300")
+References: <20070915093014.0ffcc800@localhost>
+Message-ID: <87tzpoi61y.fsf@arnaudov.name>
+
+Samuli Suominen <drac at gentoo.org> writes:
+
+> Phat was easy to version bump in Gentoo, since you're making use of
+> autotools pretty good but just wanted to request that you stop using
+> pre-setupped CFLAGS like -O3. Users or package maintainers of
+> distribution will do this for themselfs. It may also potentially break
+> with some of GCC versions.
+>
+> Another thing I noticed is -Werror, please don't release tarballs with
+> -Werror, it's fine when using pre-release but may break building in
+> source distributions due to libgnomecanvas/gtk+-2/gcc/whatever else
+> phat is using indirectly.
+>
+> Other than stripping -O3 and -Werror from your configure it was easy to
+> add, thanks!
+
+I completely agree with Samuli. In my own projects I'm using -Werror for
+-dev/-pre/-rc tarballs and in SVN but not for release tarballs. I can
+port the thing to PHAT if others agree.
+
+Samuli, please notice that there is a mailing list phat-dev at lists.berlios.de
+
+-- 
+Nedko Arnaudov
+
+
+
+From torbenh at gmx.de  Wed Sep 26 04:29:43 2007
+From: torbenh at gmx.de (torbenh at gmx.de)
+Date: Wed, 26 Sep 2007 04:29:43 +0200
+Subject: [Phat-dev] phat-0.4.1 configure issues,
+	phat 0.4.1 part of Gentoo now.
+In-Reply-To: <87tzpoi61y.fsf@arnaudov.name>
+References: <20070915093014.0ffcc800@localhost> <87tzpoi61y.fsf@arnaudov.name>
+Message-ID: <20070926022943.GB17061@mobilat>
+
+On Fri, Sep 21, 2007 at 02:58:17PM +0300, Nedko Arnaudov wrote:
+> Samuli Suominen <drac at gentoo.org> writes:
+> 
+> > Phat was easy to version bump in Gentoo, since you're making use of
+> > autotools pretty good but just wanted to request that you stop using
+> > pre-setupped CFLAGS like -O3. Users or package maintainers of
+> > distribution will do this for themselfs. It may also potentially break
+> > with some of GCC versions.
+> >
+> > Another thing I noticed is -Werror, please don't release tarballs with
+> > -Werror, it's fine when using pre-release but may break building in
+> > source distributions due to libgnomecanvas/gtk+-2/gcc/whatever else
+> > phat is using indirectly.
+> >
+> > Other than stripping -O3 and -Werror from your configure it was easy to
+> > add, thanks!
+> 
+> I completely agree with Samuli. In my own projects I'm using -Werror for
+> -dev/-pre/-rc tarballs and in SVN but not for release tarballs. I can
+> port the thing to PHAT if others agree.
+> 
+> Samuli, please notice that there is a mailing list phat-dev at lists.berlios.de
+
+i agree also. i noticed, that -Werror is quite nice though.
+but we could provide it to ./configure ourselves.
+
+nedko, how is your thing working ?
+Samuli, i am devloping on gentoo, so its llikely to work smoothly ;)
+
+
+> 
+> -- 
+> Nedko Arnaudov
+> 
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+
+-- 
+torben Hohn
+http://galan.sourceforge.net -- The graphical Audio language
+
+
+From nedko at arnaudov.name  Thu Sep 27 10:33:48 2007
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Thu, 27 Sep 2007 11:33:48 +0300
+Subject: [Phat-dev] phat-0.4.1 configure issues,
+ phat 0.4.1 part of Gentoo now.
+In-Reply-To: <20070926022943.GB17061@mobilat> (torbenh@gmx.de's message of
+	"Wed, 26 Sep 2007 04:29:43 +0200")
+References: <20070915093014.0ffcc800@localhost> <87tzpoi61y.fsf@arnaudov.name>
+	<20070926022943.GB17061@mobilat>
+Message-ID: <87k5qcfqxf.fsf@arnaudov.name>
+
+torbenh at gmx.de writes:
+
+> On Fri, Sep 21, 2007 at 02:58:17PM +0300, Nedko Arnaudov wrote:
+>> Samuli Suominen <drac at gentoo.org> writes:
+>> 
+>> > Phat was easy to version bump in Gentoo, since you're making use of
+>> > autotools pretty good but just wanted to request that you stop using
+>> > pre-setupped CFLAGS like -O3. Users or package maintainers of
+>> > distribution will do this for themselfs. It may also potentially break
+>> > with some of GCC versions.
+>> >
+>> > Another thing I noticed is -Werror, please don't release tarballs with
+>> > -Werror, it's fine when using pre-release but may break building in
+>> > source distributions due to libgnomecanvas/gtk+-2/gcc/whatever else
+>> > phat is using indirectly.
+>> >
+>> > Other than stripping -O3 and -Werror from your configure it was easy to
+>> > add, thanks!
+>> 
+>> I completely agree with Samuli. In my own projects I'm using -Werror for
+>> -dev/-pre/-rc tarballs and in SVN but not for release tarballs. I can
+>> port the thing to PHAT if others agree.
+>> 
+>> Samuli, please notice that there is a mailing list phat-dev at lists.berlios.de
+>
+> i agree also. i noticed, that -Werror is quite nice though.
+> but we could provide it to ./configure ourselves.
+>
+> nedko, how is your thing working ?
+> Samuli, i am devloping on gentoo, so its llikely to work smoothly ;)
+
+It checks version for special value that i use for not released code
+(i.e. in svn trunk):
+
+http://svn.gna.org/viewcvs/jackmixer?rev=88&view=rev
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20070927/374803d3/attachment.pgp>
+

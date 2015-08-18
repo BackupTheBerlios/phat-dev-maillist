@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phat knob changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C1184252651.6269.24.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000122.html">
+   <LINK REL="Next"  HREF="000121.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phat knob changes</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C1184252651.6269.24.camel%40majesterium%3E"
+       TITLE="[Phat-dev] phat knob changes">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Thu Jul 12 17:04:11 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000122.html">[Phat-dev] Knob requirements, ardour slider
+</A></li>
+        <LI>Next message: <A HREF="000121.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#119">[ date ]</a>
+              <a href="thread.html#119">[ thread ]</a>
+              <a href="subject.html#119">[ subject ]</a>
+              <a href="author.html#119">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>i've got a bunch of changes to commit to the phat
+knob (nothing major, just some tweaks to make
+glade happy and remove some deprecated bits 
+and bobs)
+ 
+i can commit in one go or do a commit for each
+change. sup to yooz. (obviously i'm only askin
+because i'm lazy but i'll break it up if need be =)
+
+changes as follows:
+
+
+deref rather than destroy external adjustment, 
+  (as might be shared)
+
+replace (scary) verbose type definition with friendly
+  G_DEFINE_TYPE() macro
+
+removed redundant mask and gc variables
+
+use phat_knob_parent_class defined by the above
+ macro instead of explicit &quot;parent_class&quot; definition.
+
+added object get/set_property functions with 
+   interim code until we sort out the general knob
+  class structure.
+
+replaced M_PI definition with glib G_PI
+
+made some style changes that i'll change back
+  if they are unpopular.
+
+replaced C++ reserved keyword &quot;class&quot; with 
+ &quot;klass&quot; (for future mm bindings)
+
+replaced some deprecated gtk functions with
+ their glib counterparts.
+
+fix bug in phat_knob_set_adjustment() where new
+ external adjustment was connected to the 
+ internal adjustment callbacks.
+
+renamed static functions as follows:
+
+ phat_knob_adjustment_value_changed TO
+phat_knob_internal_adjustment_value_changed
+
+ phat_knob_adjustment_changed  TO 
+  phat_knob_internal_adjustment_changed
+
+ and
+
+ phat_knob_external_adjustment_value_changed TO
+phat_knob_adjustment_value_changed
+
+ phat_knob_external_adjustment_changed   TO 
+phat_knob_adjustment_changed
+
+this is because the internal updates are the special
+case. (at least, this helped me to see more 
+clearly what was going on)
+
+
+i may have broken the log code. i've never seen
+that operating as it should though so i'm not
+sure. i'll look into it. 
+some of the grunt work has been offloaded
+to the property system so if you are wondering
+why some var initialisation or other init stuff
+has been removed, it's because the properties 
+do the business now.
+
+pete.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000122.html">[Phat-dev] Knob requirements, ardour slider
+</A></li>
+	<LI>Next message: <A HREF="000121.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#119">[ date ]</a>
+              <a href="thread.html#119">[ thread ]</a>
+              <a href="subject.html#119">[ subject ]</a>
+              <a href="author.html#119">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

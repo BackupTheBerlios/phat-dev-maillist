@@ -1,0 +1,232 @@
+From mobarre at gmail.com  Fri Jan  4 11:38:31 2008
+From: mobarre at gmail.com (Marc-Olivier Barre)
+Date: Fri, 4 Jan 2008 11:38:31 +0100
+Subject: [Phat-dev] configure.ac patch
+Message-ID: <3c808a150801040238v35f55093l329e89640fe88fac@mail.gmail.com>
+
+It seems the configure script munges CFLAGS, this gives unwanted
+results with glib and gcc 4.2.2 here :
+
+ gcc -DHAVE_CONFIG_H -I. -g -O2 -O3 -I/usr/include/gtk-2.0
+-I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo
+-I/usr/include/pango-1.0 -I/usr/include/glib-2.0
+-I/usr/lib/glib-2.0/include -I/usr/include/freetype2
+-I/usr/include/libpng12 -I/usr/include/libgnomecanvas-2.0
+-I/usr/include/pango-1.0 -I/usr/include/freetype2
+-I/usr/include/gail-1.0 -I/usr/include/libart-2.0
+-I/usr/include/gtk-2.0 -I/usr/include/glib-2.0
+-I/usr/lib/glib-2.0/include -I/usr/include/atk-1.0
+-I/usr/lib/gtk-2.0/include -I/usr/include/cairo
+-I/usr/include/libpng12 -Wall -Werror -std=c99 -I..
+-DINSTALL_DIR=\"/usr/local/share\"
+-DSITE_PKGLIB_DIR=\"/usr/local/lib/phat\"
+-DSITE_PKGDATA_DIR=\"/usr/local/share/phat\" -g -O2 -O3
+-I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include
+-I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0
+-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-I/usr/include/freetype2 -I/usr/include/libpng12
+-I/usr/include/libgnomecanvas-2.0 -I/usr/include/pango-1.0
+-I/usr/include/freetype2 -I/usr/include/gail-1.0
+-I/usr/include/libart-2.0 -I/usr/include/gtk-2.0
+-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo
+-I/usr/include/libpng12 -Wall -Werror -MT
+libphat_la-phatmarshallers.lo -MD -MP -MF
+.deps/libphat_la-phatmarshallers.Tpo -c phatmarshallers.c  -fPIC -DPIC
+-o .libs/libphat_la-phatmarshallers.o
+cc1: warnings being treated as errors
+In file included from /usr/include/glib-2.0/glib/gthread.h:32,
+                 from /usr/include/glib-2.0/glib/gasyncqueue.h:30,
+                 from /usr/include/glib-2.0/glib.h:32,
+                 from /usr/include/glib-2.0/gobject/gtype.h:26,
+                 from /usr/include/glib-2.0/gobject/gboxed.h:26,
+                 from /usr/include/glib-2.0/glib-object.h:25,
+                 from phatmarshallers.c:2:
+/usr/include/glib-2.0/glib/gutils.h:316: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:316: warning: to disable this
+warning use -fgnu89-inline or the gnu_inline function attribute
+/usr/include/glib-2.0/glib/gutils.h:330: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:343: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:362: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:370: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:387: warning: C99 inline functions
+are not supported; using GNU89
+/usr/include/glib-2.0/glib/gutils.h:396: warning: C99 inline functions
+are not supported; using GNU89
+In file included from /usr/include/glib-2.0/glib/gasyncqueue.h:30,
+                 from /usr/include/glib-2.0/glib.h:32,
+                 from /usr/include/glib-2.0/gobject/gtype.h:26,
+                 from /usr/include/glib-2.0/gobject/gboxed.h:26,
+                 from /usr/include/glib-2.0/glib-object.h:25,
+                 from phatmarshallers.c:2:
+/usr/include/glib-2.0/glib/gthread.h:334: warning: C99 inline
+functions are not supported; using GNU89
+make[2]: *** [libphat_la-phatmarshallers.lo] Erreur 1
+make[2]: quittant le r?pertoire ? /usr/src/phat/phat/phat ?
+make[1]: *** [all] Erreur 2
+make[1]: quittant le r?pertoire ? /usr/src/phat/phat/phat ?
+make: *** [all-recursive] Erreur 1
+
+Here is my suggestion :
+Index: configure.ac
+===================================================================
+--- configure.ac        (r?vision 117)
++++ configure.ac        (copie de travail)
+@@ -20,10 +20,10 @@
+     [if test x$enable_debug = xyes; then with_debug=yes ; fi])
+
+ if test x$with_debug = xno; then
+-    CFLAGS="-O3"
++    CFLAGS="$CFLAGS -O3"
+     AC_DEFINE(DEBUG, 0, [[whether to display debugging output or not]])
+ else
+-    CFLAGS="-g"
++    CFLAGS="$CFLAGS -g"
+     AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+ fi
+
+What do you think ? Is there a better way ?
+__________________
+Marc-Olivier Barre,
+MarcO'Chapeau.
+
+
+From nedko at arnaudov.name  Fri Jan  4 11:51:31 2008
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Fri, 04 Jan 2008 12:51:31 +0200
+Subject: [Phat-dev] configure.ac patch
+In-Reply-To: <3c808a150801040238v35f55093l329e89640fe88fac@mail.gmail.com>
+	(Marc-Olivier Barre's message of "Fri, 4 Jan 2008 11:38:31 +0100")
+References: <3c808a150801040238v35f55093l329e89640fe88fac@mail.gmail.com>
+Message-ID: <87prwh7tjg.fsf@arnaudov.name>
+
+"Marc-Olivier Barre" <mobarre at gmail.com> writes:
+
+>  if test x$with_debug = xno; then
+> -    CFLAGS="-O3"
+> +    CFLAGS="$CFLAGS -O3"
+>      AC_DEFINE(DEBUG, 0, [[whether to display debugging output or not]])
+
+I think if someone specifies CFLAGS, -O3 should not be appended at all.
+
+>  else
+> -    CFLAGS="-g"
+> +    CFLAGS="$CFLAGS -g"
+>      AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+>  fi
+
+This looks fine to me.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20080104/cf894b85/attachment.pgp>
+
+From mobarre at gmail.com  Fri Jan  4 12:33:02 2008
+From: mobarre at gmail.com (Marc-Olivier Barre)
+Date: Fri, 4 Jan 2008 12:33:02 +0100
+Subject: [Phat-dev] configure.ac patch
+In-Reply-To: <87prwh7tjg.fsf@arnaudov.name>
+References: <3c808a150801040238v35f55093l329e89640fe88fac@mail.gmail.com>
+	<87prwh7tjg.fsf@arnaudov.name>
+Message-ID: <3c808a150801040333i44c1979em7c871605393eabb5@mail.gmail.com>
+
+On Jan 4, 2008 11:51 AM, Nedko Arnaudov <nedko at arnaudov.name> wrote:
+> "Marc-Olivier Barre" <mobarre at gmail.com> writes:
+>
+> >  if test x$with_debug = xno; then
+> > -    CFLAGS="-O3"
+> > +    CFLAGS="$CFLAGS -O3"
+> >      AC_DEFINE(DEBUG, 0, [[whether to display debugging output or not]])
+>
+> I think if someone specifies CFLAGS, -O3 should not be appended at all.
+>
+> >  else
+> > -    CFLAGS="-g"
+> > +    CFLAGS="$CFLAGS -g"
+> >      AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+> >  fi
+>
+> This looks fine to me.
+
+Ok, this should work then :
+
+Index: configure.ac
+===================================================================
+--- configure.ac        (r?vision 117)
++++ configure.ac        (copie de travail)
+@@ -20,10 +20,12 @@
+     [if test x$enable_debug = xyes; then with_debug=yes ; fi])
+
+ if test x$with_debug = xno; then
+-    CFLAGS="-O3"
++    if test -z $CFLAGS; then
++        CFLAGS="-O3"
++    fi
+     AC_DEFINE(DEBUG, 0, [[whether to display debugging output or not]])
+ else
+-    CFLAGS="-g"
++    CFLAGS="$CFLAGS -g"
+     AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+ fi
+
+
+__________________
+Marc-Olivier Barre,
+MarcO'Chapeau.
+
+
+From nedko at arnaudov.name  Fri Jan  4 12:40:56 2008
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Fri, 04 Jan 2008 13:40:56 +0200
+Subject: [Phat-dev] configure.ac patch
+In-Reply-To: <3c808a150801040333i44c1979em7c871605393eabb5@mail.gmail.com>
+	(Marc-Olivier Barre's message of "Fri, 4 Jan 2008 12:33:02 +0100")
+References: <3c808a150801040238v35f55093l329e89640fe88fac@mail.gmail.com>
+	<87prwh7tjg.fsf@arnaudov.name>
+	<3c808a150801040333i44c1979em7c871605393eabb5@mail.gmail.com>
+Message-ID: <87lk757r93.fsf@arnaudov.name>
+
+"Marc-Olivier Barre" <mobarre at gmail.com> writes:
+
+> Index: configure.ac
+> ===================================================================
+> --- configure.ac        (r?vision 117)
+> +++ configure.ac        (copie de travail)
+> @@ -20,10 +20,12 @@
+>      [if test x$enable_debug = xyes; then with_debug=yes ; fi])
+>
+>  if test x$with_debug = xno; then
+> -    CFLAGS="-O3"
+> +    if test -z $CFLAGS; then
+> +        CFLAGS="-O3"
+> +    fi
+>      AC_DEFINE(DEBUG, 0, [[whether to display debugging output or not]])
+>  else
+> -    CFLAGS="-g"
+> +    CFLAGS="$CFLAGS -g"
+>      AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+>  fi
+
+Looks good to me, if it works too, I think we should commit it.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20080104/d8bff5c1/attachment.pgp>
+

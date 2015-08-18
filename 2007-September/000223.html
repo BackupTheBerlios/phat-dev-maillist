@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phat-0.4.1 configure issues,	phat 0.4.1 part of Gentoo now.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat-0.4.1%20configure%20issues%2C%0A%09phat%200.4.1%20part%20of%20Gentoo%20now.&In-Reply-To=%3C87tzpoi61y.fsf%40arnaudov.name%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000222.html">
+   <LINK REL="Next"  HREF="000224.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phat-0.4.1 configure issues,	phat 0.4.1 part of Gentoo now.</H1>
+    <B>Nedko Arnaudov</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat-0.4.1%20configure%20issues%2C%0A%09phat%200.4.1%20part%20of%20Gentoo%20now.&In-Reply-To=%3C87tzpoi61y.fsf%40arnaudov.name%3E"
+       TITLE="[Phat-dev] phat-0.4.1 configure issues,	phat 0.4.1 part of Gentoo now.">nedko at arnaudov.name
+       </A><BR>
+    <I>Fri Sep 21 13:58:17 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000222.html">[Phat-dev] some thoughts again...
+</A></li>
+        <LI>Next message: <A HREF="000224.html">[Phat-dev] phat-0.4.1 configure issues,	phat 0.4.1 part of Gentoo now.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#223">[ date ]</a>
+              <a href="thread.html#223">[ thread ]</a>
+              <a href="subject.html#223">[ subject ]</a>
+              <a href="author.html#223">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Samuli Suominen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">drac at gentoo.org</A>&gt; writes:
+
+&gt;<i> Phat was easy to version bump in Gentoo, since you're making use of
+</I>&gt;<i> autotools pretty good but just wanted to request that you stop using
+</I>&gt;<i> pre-setupped CFLAGS like -O3. Users or package maintainers of
+</I>&gt;<i> distribution will do this for themselfs. It may also potentially break
+</I>&gt;<i> with some of GCC versions.
+</I>&gt;<i>
+</I>&gt;<i> Another thing I noticed is -Werror, please don't release tarballs with
+</I>&gt;<i> -Werror, it's fine when using pre-release but may break building in
+</I>&gt;<i> source distributions due to libgnomecanvas/gtk+-2/gcc/whatever else
+</I>&gt;<i> phat is using indirectly.
+</I>&gt;<i>
+</I>&gt;<i> Other than stripping -O3 and -Werror from your configure it was easy to
+</I>&gt;<i> add, thanks!
+</I>
+I completely agree with Samuli. In my own projects I'm using -Werror for
+-dev/-pre/-rc tarballs and in SVN but not for release tarballs. I can
+port the thing to PHAT if others agree.
+
+Samuli, please notice that there is a mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">phat-dev at lists.berlios.de</A>
+
+-- 
+Nedko Arnaudov
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000222.html">[Phat-dev] some thoughts again...
+</A></li>
+	<LI>Next message: <A HREF="000224.html">[Phat-dev] phat-0.4.1 configure issues,	phat 0.4.1 part of Gentoo now.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#223">[ date ]</a>
+              <a href="thread.html#223">[ thread ]</a>
+              <a href="subject.html#223">[ subject ]</a>
+              <a href="author.html#223">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

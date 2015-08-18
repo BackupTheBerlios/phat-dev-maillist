@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] cairo fan slider and what the hell are we	doing	about themeing?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20cairo%20fan%20slider%20and%20what%20the%20hell%20are%20we%0A%09doing%09about%20themeing%3F&In-Reply-To=%3C1185503221.17933.25.camel%40one%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000188.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] cairo fan slider and what the hell are we	doing	about themeing?</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20cairo%20fan%20slider%20and%20what%20the%20hell%20are%20we%0A%09doing%09about%20themeing%3F&In-Reply-To=%3C1185503221.17933.25.camel%40one%3E"
+       TITLE="[Phat-dev] cairo fan slider and what the hell are we	doing	about themeing?">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Fri Jul 27 04:27:00 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000188.html">[Phat-dev] cairo fan slider and what the hell are we doing	about themeing?
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#189">[ date ]</a>
+              <a href="thread.html#189">[ thread ]</a>
+              <a href="subject.html#189">[ subject ]</a>
+              <a href="author.html#189">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2007-07-27 at 10:22 +1000, Loki Davison wrote:
+&gt;<i> On 7/27/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; On Fri, 2007-07-27 at 00:16 +1000, Loki Davison wrote:
+</I>&gt;<i> &gt; &gt; thought we might need a more obvious subject line that Pete's post.
+</I>&gt;<i> &gt; &gt; What are we doing about themes? I've changed the drawing code in the
+</I>&gt;<i> &gt; &gt; fan slider to cairo now and tried to implement Thorsten's new look but
+</I>&gt;<i> &gt; &gt; it's not themed sensitive at all at the moment. Anyone know about
+</I>&gt;<i> &gt; &gt; themes and cairo? Is there a way to get gdkgc or styles as cairo
+</I>&gt;<i> &gt; &gt; context stuff? I'm not sure about what we should do with the
+</I>&gt;<i> &gt; &gt; plugin/switch expose handler stuff but I guess working cairo theme
+</I>&gt;<i> &gt; &gt; support might be a first step.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; it's pretty easy to use gtk style colours:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; gdk_cairo_set_source_color (cr,
+</I>&gt;<i> &gt; &amp;widget-&gt;style-&gt;light[GTK_STATE_NORMAL]);
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; but making nice looking stuff that works well on all themes with
+</I>&gt;<i> &gt; only the colours found in the theme isn't so easy.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; in particular, the themes normally do the drawing (in many cases)
+</I>&gt;<i> &gt; and so impart their own look on what is drawn. we bypass that
+</I>&gt;<i> &gt; with cairo and i'm not sure if an alternative exists yet.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; still, colours we can do, no problem.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; pete.
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> Yeah, as i said, gtkgc and styles. So should we be sensitive to line
+</I>&gt;<i> width etc? Or just ignore some of that?
+</I>
+didn't know before, still don't now. anyone else?
+
+are the line width, line style et al ever used in 
+practise when drawing widgets?
+
+the thing is, even if we intercept them, we can't
+replicate the actual theme drawing methods which
+are not exposed in any uniform way (if at all).
+not to mention the funky hacks that many themes employ.
+
+my hunch is that it's a waste of time. if anyone
+knows differently then i'll happily print out and
+eat my hunch. 
+
+one thing to consider though, much of the
+distinctiveness of any given theme comes from
+the line styles and depth cues (highlights
+and shadows) this begs the question, why do we
+need to use cairo for straight edges anyway?
+why not just defer to the gdk funcs that
+hook the theme engines in those cases?
+
+i'm not aware of any themes that do anything
+special with the arc or arbitrary lines anyway
+so by using cairo in only those instances
+where there are tangible benefits to doing so,
+we probably don't lose anything.
+
+rambling on.. what we could do is add theme
+properties to the widgets, respect those in
+the drawing code then at least themers
+can leverage some degree control over the
+appearance of phat stuff. albeit belatedly.
+
+whether they would add contingencies for non
+standard widgets is another matter.
+
+cheeorz
+pete
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000188.html">[Phat-dev] cairo fan slider and what the hell are we doing	about themeing?
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#189">[ date ]</a>
+              <a href="thread.html#189">[ thread ]</a>
+              <a href="subject.html#189">[ subject ]</a>
+              <a href="author.html#189">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

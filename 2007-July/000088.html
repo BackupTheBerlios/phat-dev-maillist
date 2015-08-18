@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] knob-keyboard functionality
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20knob-keyboard%20functionality&In-Reply-To=%3C20070710121818.GE23950%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000081.html">
+   <LINK REL="Next"  HREF="000068.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] knob-keyboard functionality</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20knob-keyboard%20functionality&In-Reply-To=%3C20070710121818.GE23950%40mobilat%3E"
+       TITLE="[Phat-dev] knob-keyboard functionality">torbenh at gmx.de
+       </A><BR>
+    <I>Tue Jul 10 14:18:18 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000081.html">[Phat-dev] knob-keyboard functionality
+</A></li>
+        <LI>Next message: <A HREF="000068.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Jul 10, 2007 at 11:14:00AM +0200, Marc-Olivier Barre wrote:
+&gt;<i> On 7/9/07, Eric Dantan Rzewnicki &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">eric at zhevny.com</A>&gt; wrote:
+</I>&gt;<i> &gt; On Mon, Jun 25, 2007 at 10:50:38AM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; &gt; On Mon, 2007-06-25 at 01:52 -0500, Mark Rivera wrote:
+</I>&gt;<i> &gt; &gt; &gt; Speaking of knobs, it'd be cool if after you clicked on a knob (i.e., it
+</I>&gt;<i> &gt; &gt; &gt; had focus), it would be possible to use the arrow keys on the keyboard
+</I>&gt;<i> &gt; &gt; &gt; to adjust the value. Up and Right would mean ++, and Down and Left would
+</I>&gt;<i> &gt; &gt; &gt; mean --. Shift+arrow could mean some developer-specified value like +=10
+</I>&gt;<i> &gt; &gt; &gt; or -=10. This would be great for end-users who don't want to fine-tune
+</I>&gt;<i> &gt; &gt; &gt; knob values using the mouse, or in situations where the end-user is
+</I>&gt;<i> &gt; &gt; &gt; setting up a synth patch or something by tabbing through all the knobs.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; yeah, good idea.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; we are hoping to provide some sort of customisable mapping between
+</I>&gt;<i> &gt; &gt; control methods and input events. if we provide sane defaults then
+</I>&gt;<i> &gt; &gt; there should be a measure of consistency as most developers or users
+</I>&gt;<i> &gt; &gt; wouldn't need to change them, but at the same time, they have
+</I>&gt;<i> &gt; &gt; flexibility
+</I>&gt;<i> &gt; &gt; to do so if they really want.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; it occurs to me that i don't think we outline or otherwise highlight the
+</I>&gt;<i> &gt; &gt; active knob though. i'll have to check that.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi, just letting my presence here be known. And chiming in on this just
+</I>&gt;<i> &gt; to say I want specimen to be controllable from the keyboard as much as
+</I>&gt;<i> &gt; possible as I personally hate mice, too. I haven't really thought
+</I>&gt;<i> &gt; through any specific ideas about keyboard mapping, yet. So, nothing more
+</I>&gt;<i> &gt; constructive to add than a vague sort of votes++ for the general
+</I>&gt;<i> &gt; concept.
+</I>&gt;<i> 
+</I>&gt;<i> Why not be able to map keyboard keys like most apps do for midi
+</I>&gt;<i> controllers ? some Ctrl-RightMouseButton on the control, then touch or
+</I>&gt;<i> move what ever you like on the keyboard or the midi controller to
+</I>&gt;<i> assign it. This would work...
+</I>&gt;<i> 
+</I>&gt;<i> But the question is, is this meant to be developed in Phat or in the
+</I>&gt;<i> application using it ?
+</I>
+i think this SHOULD be a feature of phat.
+but getting jack-midi and alsa-seq data into phat is the problem here.
+
+i am not sure how we should deal with this.
+
+note that from jack-midi the midi data is seen in RT thread. And needs
+to be communicated to the outside.
+
+i will have a go on writing an RT compatible GtkAdjustment.
+(ie. polls a float for changes)
+this thing can then be connected to a plugin output or input.
+
+
+
+&gt;<i> __________________
+</I>&gt;<i> Marc-Olivier Barre.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000081.html">[Phat-dev] knob-keyboard functionality
+</A></li>
+	<LI>Next message: <A HREF="000068.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

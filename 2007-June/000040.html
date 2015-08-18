@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Initial thoughts on phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C20070627174902.GD20874%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000038.html">
+   <LINK REL="Next"  HREF="000041.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Initial thoughts on phat</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C20070627174902.GD20874%40mobilat%3E"
+       TITLE="[Phat-dev] Initial thoughts on phat">torbenh at gmx.de
+       </A><BR>
+    <I>Wed Jun 27 19:49:02 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000038.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+        <LI>Next message: <A HREF="000041.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Jun 27, 2007 at 06:00:45PM +0100, pete shorthose wrote:
+&gt;<i> On Wed, 2007-06-27 at 06:28 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote: 
+</I>&gt;<i> &gt; On Tue, Jun 26, 2007 at 09:17:57PM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; &gt; On Mon, 2007-06-25 at 12:04 +0100, Damon Chaplin wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; &gt;  o Ideas for new widgets (from a quick look at Reason) -
+</I>&gt;<i> &gt; &gt; &gt;     o Small buttons for things like [M] [S] [&gt;] [SELECT]
+</I>&gt;<i> &gt; &gt; &gt;       - toggle buttons or radio buttons.
+</I>&gt;<i> &gt; &gt; &gt;     o LED toggle buttons
+</I>&gt;<i> &gt; &gt; &gt;     o Level meters
+</I>&gt;<i> &gt; &gt; &gt;     o 2-way/3-way/n-way switches (horizontal or vertical)
+</I>&gt;<i> &gt; &gt; &gt;     o Pitch bend/modulation wheel 
+</I>&gt;<i> &gt; &gt; &gt;     o Maybe prettier spinbutton widgets that look like LCD displays.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; there's some overlap there but yeah, most if not all of that is in line
+</I>&gt;<i> &gt; &gt; for possible implementation. I say possible because we need to
+</I>&gt;<i> &gt; &gt; agree on implementation details and then have the time to implement
+</I>&gt;<i> &gt; &gt; them. neither are guaranteed.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; to me these all look like derivatives from a GtkKnob.
+</I>&gt;<i> &gt; just some differnet ode for the behaviour. and different gfx.
+</I>&gt;<i> 
+</I>&gt;<i> they are all widgets that could use an animation at least.
+</I>&gt;<i> 
+</I>&gt;<i> the thing is though, in most cases we want a native and a pixmap version
+</I>&gt;<i> of widgets. this changes the optimal inheritance path imho.
+</I>
+interfaces :) uhoh... no interfaces in gob :(
+
+&gt;<i> 
+</I>&gt;<i> &gt; &gt; &gt; I think a reasonable goal for Phat would be to reproduce an interface
+</I>&gt;<i> &gt; &gt; &gt; like Reason. It wouldn't have to be pixel-perfect, but should have all
+</I>&gt;<i> &gt; &gt; &gt; the same elements in the same positions and look as nice.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; personally, i want it for fully pixmapped interfaces, which is roughly
+</I>&gt;<i> &gt; &gt; what you are describing i think. aside from generic defaults, phat isn't
+</I>&gt;<i> &gt; &gt; likely to ship with anything approaching skins though. you'll have to
+</I>&gt;<i> &gt; &gt; procure the gfx and use them with phat. i can envisage a convenience
+</I>&gt;<i> &gt; &gt; library and applications that wrap phat to provide say, a gui builder,
+</I>&gt;<i> &gt; &gt; xml markup based interfaces, maybe some kind of skin handling and
+</I>&gt;<i> &gt; &gt; bindings to things like osc, lv2 or dssi etc, but thats much more high
+</I>&gt;<i> &gt; &gt; level.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; i am currently trying to break this stuff down to NOT being highlevel.
+</I>&gt;<i> &gt; (or rather being implemented already)
+</I>&gt;<i> 
+</I>&gt;<i> this needs a dedicated thread really. just what is the scope of phat.
+</I>
+yup.
+
+
+&gt;<i> 
+</I>&gt;<i> &gt; gui-builder and xml markup should be done using (lib)glade.
+</I>&gt;<i> &gt; by encapsulating everything into gobject properties, most stuff should
+</I>&gt;<i> &gt; be accessible from glade.
+</I>&gt;<i> 
+</I>&gt;<i> i'd already done this for the erstwhile liblaw and loki gave me the go ahead
+</I>&gt;<i> to add glade 3 support to phat now that i've ditched liblaw to work on phat. 
+</I>&gt;<i> i'm not as convinced as you seem to be that this is the optimum way to
+</I>&gt;<i> construct pixmapped interfaces but people will have the option to do so.
+</I>&gt;<i> i like glade and would cheerfully be proven wrong. 
+</I>
+well... we need a Container (derived from GtkLayout) with some glade support. 
+
+
+&gt;<i> 
+</I>&gt;<i> &gt; i am making (slow) progress on this. I started porting the GtkKnob from
+</I>&gt;<i> &gt; gAlan to gob. (it already compiles) need a test harness, to see whether
+</I>&gt;<i> &gt; the port works.
+</I>&gt;<i> 
+</I>&gt;<i> i used glade 3 for this. the knob widget doesn't really need support code
+</I>&gt;<i> (or not much of it) so it was just a matter of writing a catalog file and dropping
+</I>&gt;<i> the lib with the knob in it into the glade 3 modules dir.  
+</I>
+could you point me to that code please ?
+or merely the Makefile ;)
+
+thats why i want the animation_filename to be a property...
+
+
+&gt;<i> it's not galan specific though.
+</I>
+thats why i discuss this stuff here. 
+i would like to have the GUI specific code isolated from gAlan and in a
+shared code base. 
+
+i also belive that its possible to make the gAlan controlpanel a
+Container. 
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> pete
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000038.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+	<LI>Next message: <A HREF="000041.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

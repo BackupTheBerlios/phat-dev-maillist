@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phatrange and range widgets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phatrange%20and%20range%20widgets&In-Reply-To=%3C1187247159.17595.248.camel%40one%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000200.html">
+   <LINK REL="Next"  HREF="000207.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phatrange and range widgets</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phatrange%20and%20range%20widgets&In-Reply-To=%3C1187247159.17595.248.camel%40one%3E"
+       TITLE="[Phat-dev] phatrange and range widgets">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Thu Aug 16 08:52:39 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000200.html">[Phat-dev] phatrange and range widgets
+</A></li>
+        <LI>Next message: <A HREF="000207.html">[Phat-dev] phatrange and range widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2007-08-05 at 14:42 +0300, Nedko Arnaudov wrote: 
+
+&gt;<i> i've commited some work on phatrange and phatknob. in particular i
+</I>&gt;<i> changed code in phatknob that directly used adjustment with code that
+</I>&gt;<i> deals with abstracted &quot;adjustment&quot; with 0..1 range. I'd be glad if
+</I>&gt;<i> someone reviews my changes before i make more, just to ensure i'm not
+</I>&gt;<i> out of touch.
+</I>
+it makes sense to me. the widgets should only interact with the
+mapper or it's derived values. some widgets may need to 
+access the real value for display purposes but i don't see that
+being a problem. 
+
+&gt;<i> i have major problem with lacking ui user use cases and specification
+</I>&gt;<i> how things (should) work.
+</I>
+
+
+&gt;<i> Some code i saw in phatknob is obviously
+</I>&gt;<i> broken, 
+</I>
+which parts?
+
+&gt;<i> some is commented out and i cannot fix things without knowledge
+</I>&gt;<i> how it should work. 
+</I>
+can't help if we don't know which parts. the list is
+the best way to resolve these issues.
+
+&gt;<i> i know this is work in progress but we should at
+</I>&gt;<i> least document what are our goals. i think we should put this info in
+</I>&gt;<i> the wiki associated with phat project.
+</I>
+this doesn't really work with our current modus operandi. 
+
+you can't document something until you have decided 
+what form it will take. if you need the goals before you
+write the code then you have to plan in advance. the 
+problem is, we haven't been doing that. 
+instead, what we do is closer to rapid prototyping. we
+propose solutions to problems as they arise, implement
+them, check the implementation for suitability and go
+from there.
+
+this piecemeal approach my appear chaotic and inelegant but
+it best suits the limited and intermittent resources we 
+have at our disposal.
+
+it allows us to move phat forward in short jumps and 
+starts rather than an inexorable and orchestrated advance.
+anything that demands an extended commitment is bound 
+to fail because phat is an ancillary project that competes
+for time with primary projects, not to mention all that
+tedious real life stuff.
+
+&gt;<i>  i talked with thorwil about knobs
+</I>&gt;<i> in particular and i saw his try for this in his blog too and he said
+</I>&gt;<i> we have serious discrepancies about knobs ui user use. we should
+</I>&gt;<i> document them and take a plan to handle them. 
+</I>
+i think this is already resolved (in as much as it can be)
+the configurable input mapping should allow people to choose 
+their preferred method. this is a deal breaker for me so 
+if it's not resolved then we have problems. if you have 
+more to add then we should run it past loki again.
+
+&gt;<i> as for developer use of
+</I>&gt;<i> widgets we lack documentation too and this is serious obstacle when
+</I>&gt;<i> changing code (we dont want to strip existing phat-iazed projects,
+</I>&gt;<i> right?). we should have use cases (developer point of view) and list of
+</I>&gt;<i> projects using phat so they can be checked for compatibility issues
+</I>&gt;<i> until project gets stable and coherent enough for other/new projects to
+</I>&gt;<i> stay in line with.
+</I>&gt;<i> 
+</I>&gt;<i> So let start the list, and move it to wiki later:
+</I>&gt;<i>  * zynjacku (through python bindings)
+</I>&gt;<i>  * specimen
+</I>&gt;<i>  * khagan (through python bindings)
+</I>&gt;<i>  * jack_mixer (through python bindings)
+</I>&gt;<i>  * demo programs budnled with phat
+</I>
+we pretty much decided to ignore this issue for now.
+
+as legacies go, we don't have one. the only client
+application that is not owned by a phat developer is
+specimen. to complete the roster, i offered to keep
+specimen in sync with changes to phat.
+
+i've been working under the assumption that we can do
+what the hell we like up until the next release. 
+at that point, the new features stand a good chance
+of attracting new users and building a genuinely
+unmanageable legacy.
+
+it's one of them there windows of opportunity.
+
+i don't envisage any changes that will damage the viability of
+phat as a solution for any of it's client applications.
+a knob will still be a knob, a slider a slider etc. it will
+just be a case of updating the client applications to
+suit any changes.
+
+
+&gt;<i> I've made some analysis of developer use cases and come to some
+</I>&gt;<i> specification:
+</I>&gt;<i>  * simplest use, no gtkadjustments, through accessing widget methods
+</I>&gt;<i>    signals directly. i.e. knob_get_value(), connect to knob
+</I>&gt;<i>    value-changed signal.
+</I>&gt;<i>  * gtkadjustments for more advanced use with two subcases:
+</I>&gt;<i>   * supply existing external gtkadjustment
+</I>&gt;<i>   * expose our internal gtkadjustment for use somewhere else
+</I>
+if you have the time and motivation to draw up use cases
+then all the better.
+
+&gt;<i> In past I fixed some bugs that were some features not working in all use
+</I>&gt;<i> cases. I beleive defining them will improve our code base in future and
+</I>&gt;<i> will help testing too.
+</I>
+no complaints :)
+
+&gt;<i> Now how this interacts with phatrange? In my vision so far direct access
+</I>&gt;<i> methods should be implemented as proxy code to phatrange and not
+</I>&gt;<i> directly interacting with widget code and thus it may be possible to use
+</I>&gt;<i> some hairy macro to define them in all widgets. we need this because
+</I>&gt;<i> gobject model does not support method inheritance, or i am wrong?
+</I>
+i'm not sure. we can chain up to access virtual parent
+functions?. (cast the object to it's parent type)
+
+&gt;<i> All gtkadjustment-less methods are implemented in phatrange by operating
+</I>&gt;<i> on gtkadjustment referenced in it.
+</I>&gt;<i> 
+</I>&gt;<i> I'm still thinking about what is best way for interoperation between
+</I>&gt;<i> gtkadjustment and mapper object. in particular, mapper, at least one i
+</I>&gt;<i> have currently (monothonic linear spline), has valid range and is
+</I>&gt;<i> somewhat incompatible with change of it, caused by external
+</I>&gt;<i> gtkadjustment. Do you think we need to support external gtkadjustments
+</I>&gt;<i> when we have mapper? I'd say no. Logarithm also has input restritions
+</I>&gt;<i> too, thus rendering -50..0 gtkadjustment unusable. At least directly,
+</I>&gt;<i> but i think mapper should operate on real range not artificial one, like
+</I>&gt;<i> (0..1).
+</I>
+are there any cases where we cannot detect and translate 
+problematic ranges? if there are or the detection and 
+translation is too expensive then we are a bit screwed.
+
+&gt;<i> After more inspection of phatknob and those concept discrepancies we
+</I>&gt;<i> have, i now beleive we should come with configuration system in next
+</I>&gt;<i> release. I propose (and have motivation to work on) class code
+</I>&gt;<i> interacting with gconf. In particular I want to start with radial/linear
+</I>&gt;<i> knob behaviour, always with left mouse button.
+</I>
+this should be configurable. it's the only way we can accommodate 
+different user and developer preferences. (IOW, it's the only
+way we can prevent me and thorsten from killing each other :P )
+
+i'd like to see targets (linear control, absolute control, menu popup
+etc) be mappable to input combinations (buttons 1 - 5, and modifiers)
+
+&gt;<i> More configuration
+</I>&gt;<i> candidates are welcome. Lets collect them in this thread, I'll put them
+</I>&gt;<i> on wiki once we have plan.
+</I>
+cool.
+
+
+sorry for the late reply. bit busy atm and every time i tried to 
+reply, i ended up writing war and peace.
+gotta work on my terseness
+:<i>/
+</I>
+cheers,
+pete.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000200.html">[Phat-dev] phatrange and range widgets
+</A></li>
+	<LI>Next message: <A HREF="000207.html">[Phat-dev] phatrange and range widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

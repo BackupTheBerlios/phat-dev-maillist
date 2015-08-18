@@ -1,0 +1,349 @@
+From loki.davison at gmail.com  Tue Apr  1 03:57:40 2008
+From: loki.davison at gmail.com (Loki Davison)
+Date: Tue, 1 Apr 2008 09:57:40 +0800
+Subject: [Phat-dev] phat release requirements
+Message-ID: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+
+Hi all,
+I'm back home in Australia and have net access at last! So still a bit
+busy as a got back yesterday but wondering what people think needs to
+be done before a release? 8 months is a long time without your own net
+connection...
+
+Loki
+
+
+From marco at marcochapeau.org  Tue Apr  1 10:48:12 2008
+From: marco at marcochapeau.org (Marc-Olivier Barre)
+Date: Tue, 1 Apr 2008 10:48:12 +0200
+Subject: [Phat-dev] phat release requirements
+In-Reply-To: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+References: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+Message-ID: <3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+
+On Tue, Apr 1, 2008 at 3:57 AM, Loki Davison <loki.davison at gmail.com> wrote:
+> Hi all,
+>  I'm back home in Australia and have net access at last! So still a bit
+>  busy as a got back yesterday but wondering what people think needs to
+>  be done before a release? 8 months is a long time without your own net
+>  connection...
+
+Good to see you're back :-)
+
+It's been a while since I gave a shot at phat. I would like to use it
+for an HDSP mixer project in python using glade. Is it planned to have
+a near stable support for those 2 in the next release (I remember
+latest SVN had a few issues with glade) ?
+
+1 issue I remember too is detection of the render/compositing
+extensions needed apparently by the fansliders. People who don't have
+those extensions running would be bothered. I guess it should be
+runtime detection, and examples might be found  in xfwm's sources
+(XFCE window manager), since they also detect whether compositing is
+here or not.
+
+Cheers,
+__________________
+Marc-Olivier Barre,
+MarcO'Chapeau.
+
+
+From wdev at foltman.com  Tue Apr  1 11:09:35 2008
+From: wdev at foltman.com (Krzysztof Foltman)
+Date: Tue, 01 Apr 2008 10:09:35 +0100
+Subject: [Phat-dev] phat release requirements
+In-Reply-To: <3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+References: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+	<3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+Message-ID: <47F1FBCF.3060908@foltman.com>
+
+Marc-Olivier Barre wrote:
+
+> 1 issue I remember too is detection of the render/compositing
+> extensions needed apparently by the fansliders.
+
+I would point out the "unstable" operation of fansliders in general - I 
+guess it's related to warping the mouse pointer (but I haven't looked at 
+the code so I'm most likely wrong). The values of fansliders 
+jump/oscillate like crazy, which is extremely annoying.
+
+Krzysztof
+
+
+
+From marco at marcochapeau.org  Tue Apr  1 13:52:21 2008
+From: marco at marcochapeau.org (Marc-Olivier Barre)
+Date: Tue, 1 Apr 2008 13:52:21 +0200
+Subject: [Phat-dev] phat release requirements
+In-Reply-To: <47F1FBCF.3060908@foltman.com>
+References: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+	<3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+	<47F1FBCF.3060908@foltman.com>
+Message-ID: <3c808a150804010452v5ace9f99qa534454fb9625bb@mail.gmail.com>
+
+On Tue, Apr 1, 2008 at 11:09 AM, Krzysztof Foltman <wdev at foltman.com> wrote:
+> Marc-Olivier Barre wrote:
+>
+>  > 1 issue I remember too is detection of the render/compositing
+>  > extensions needed apparently by the fansliders.
+>
+>  I would point out the "unstable" operation of fansliders in general - I
+>  guess it's related to warping the mouse pointer (but I haven't looked at
+>  the code so I'm most likely wrong). The values of fansliders
+>  jump/oscillate like crazy, which is extremely annoying.
+
+Yes, I had forgotten this issue. That certainly is a blocker.
+__________________
+Marc-Olivier Barre,
+MarcO'Chapeau.
+
+
+From loki.davison at gmail.com  Wed Apr  2 04:23:36 2008
+From: loki.davison at gmail.com (Loki Davison)
+Date: Wed, 2 Apr 2008 12:23:36 +1000
+Subject: [Phat-dev] phat release requirements
+In-Reply-To: <3c808a150804010452v5ace9f99qa534454fb9625bb@mail.gmail.com>
+References: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+	<3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+	<47F1FBCF.3060908@foltman.com>
+	<3c808a150804010452v5ace9f99qa534454fb9625bb@mail.gmail.com>
+Message-ID: <ec9314860804011923v1484e912hbe240f06f90083f7@mail.gmail.com>
+
+On 4/1/08, Marc-Olivier Barre <marco at marcochapeau.org> wrote:
+> On Tue, Apr 1, 2008 at 11:09 AM, Krzysztof Foltman <wdev at foltman.com> wrote:
+> > Marc-Olivier Barre wrote:
+> >
+> > > 1 issue I remember too is detection of the render/compositing
+> > > extensions needed apparently by the fansliders.
+> >
+> > I would point out the "unstable" operation of fansliders in general - I
+> > guess it's related to warping the mouse pointer (but I haven't looked at
+> > the code so I'm most likely wrong). The values of fansliders
+> > jump/oscillate like crazy, which is extremely annoying.
+>
+> Yes, I had forgotten this issue. That certainly is a blocker.
+> __________________
+> Marc-Olivier Barre,
+> MarcO'Chapeau.
+> _______________________________________________
+> Phat-dev mailing list
+> Phat-dev at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/phat-dev
+>
+
+
+I'll get on to fixing the fansliders sometime today or tomorrow. Are
+all the other widgets okay for release? Pete (Paugh)? Nedko?
+
+Loki
+
+
+From nedko at arnaudov.name  Wed Apr  2 08:32:01 2008
+From: nedko at arnaudov.name (Nedko Arnaudov)
+Date: Wed, 02 Apr 2008 09:32:01 +0300
+Subject: [Phat-dev] phat release requirements
+In-Reply-To: <ec9314860804011923v1484e912hbe240f06f90083f7@mail.gmail.com>
+	(Loki Davison's message of "Wed, 2 Apr 2008 12:23:36 +1000")
+References: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+	<3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+	<47F1FBCF.3060908@foltman.com>
+	<3c808a150804010452v5ace9f99qa534454fb9625bb@mail.gmail.com>
+	<ec9314860804011923v1484e912hbe240f06f90083f7@mail.gmail.com>
+Message-ID: <87abkclqce.fsf@arnaudov.name>
+
+"Loki Davison" <loki.davison at gmail.com> writes:
+
+> On 4/1/08, Marc-Olivier Barre <marco at marcochapeau.org> wrote:
+>> On Tue, Apr 1, 2008 at 11:09 AM, Krzysztof Foltman <wdev at foltman.com> wrote:
+>> > Marc-Olivier Barre wrote:
+>> >
+>> > > 1 issue I remember too is detection of the render/compositing
+>> > > extensions needed apparently by the fansliders.
+>> >
+>> > I would point out the "unstable" operation of fansliders in general - I
+>> > guess it's related to warping the mouse pointer (but I haven't looked at
+>> > the code so I'm most likely wrong). The values of fansliders
+>> > jump/oscillate like crazy, which is extremely annoying.
+>>
+>> Yes, I had forgotten this issue. That certainly is a blocker.
+>
+>
+> I'll get on to fixing the fansliders sometime today or tomorrow. Are
+> all the other widgets okay for release? Pete (Paugh)? Nedko?
+
+I only use fansliders ATM. I havent really tested other widets. I can
+confirm the oscilating fansliders. It happens here too, with latest
+release (0.4.1). I'm pretty sure that some time ago (in some previous
+release) it was not happening. IMHO, the abscence of detection of
+render/compositing extension is really a blocker. I have not been using
+svn phat because of it, since new code for fansliders was commited.
+
+-- 
+Nedko Arnaudov <GnuPG KeyID: DE1716B0>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/phat-dev/attachments/20080402/8703e55f/attachment.pgp>
+
+From marco at marcochapeau.org  Wed Apr  2 11:16:51 2008
+From: marco at marcochapeau.org (Marc-Olivier Barre)
+Date: Wed, 2 Apr 2008 11:16:51 +0200
+Subject: [Phat-dev] phat release requirements
+In-Reply-To: <87abkclqce.fsf@arnaudov.name>
+References: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+	<3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+	<47F1FBCF.3060908@foltman.com>
+	<3c808a150804010452v5ace9f99qa534454fb9625bb@mail.gmail.com>
+	<ec9314860804011923v1484e912hbe240f06f90083f7@mail.gmail.com>
+	<87abkclqce.fsf@arnaudov.name>
+Message-ID: <3c808a150804020216x7888a19cm677adb907f79db42@mail.gmail.com>
+
+On Wed, Apr 2, 2008 at 8:32 AM, Nedko Arnaudov <nedko at arnaudov.name> wrote:
+> "Loki Davison" <loki.davison at gmail.com> writes:
+> > I'll get on to fixing the fansliders sometime today or tomorrow. Are
+>  > all the other widgets okay for release? Pete (Paugh)? Nedko?
+>
+>  I only use fansliders ATM. I havent really tested other widets. I can
+>  confirm the oscilating fansliders. It happens here too, with latest
+>  release (0.4.1). I'm pretty sure that some time ago (in some previous
+>  release) it was not happening. IMHO, the abscence of detection of
+>  render/compositing extension is really a blocker. I have not been using
+>  svn phat because of it, since new code for fansliders was commited.
+
+Good morning,
+
+Interesting to note also that with compositing enabled and working, I
+have the same flickering of the fansliders. One possible way to go
+would be to make a release with the compositing code rolled back (i.e
+use the previous working code), and include in the release the glade
+stuff. Another possibility would be to have a compositing branch to
+figure it out until it just works.
+
+My 2 cents ;-)
+__________________
+Marc-Olivier Barre,
+MarcO'Chapeau.
+
+
+From zenadsl6252 at zen.co.uk  Wed Apr  2 23:20:14 2008
+From: zenadsl6252 at zen.co.uk (pete shorthose)
+Date: Wed, 2 Apr 2008 22:20:14 +0100
+Subject: [Phat-dev] phat release requirements
+In-Reply-To: <3c808a150804020216x7888a19cm677adb907f79db42@mail.gmail.com>
+References: <ec9314860803311857n39cfe2d0sd2f8d5292bfd6c9c@mail.gmail.com>
+	<3c808a150804010148v2cf853fch464e8e71fde9f568@mail.gmail.com>
+	<47F1FBCF.3060908@foltman.com>
+	<3c808a150804010452v5ace9f99qa534454fb9625bb@mail.gmail.com>
+	<ec9314860804011923v1484e912hbe240f06f90083f7@mail.gmail.com>
+	<87abkclqce.fsf@arnaudov.name>
+	<3c808a150804020216x7888a19cm677adb907f79db42@mail.gmail.com>
+Message-ID: <20080402222014.5280c1f6.zenadsl6252@zen.co.uk>
+
+On Wed, 2 Apr 2008 11:16:51 +0200
+"Marc-Olivier Barre" <marco at marcochapeau.org> wrote:
+
+> On Wed, Apr 2, 2008 at 8:32 AM, Nedko Arnaudov <nedko at arnaudov.name> wrote:
+> > "Loki Davison" <loki.davison at gmail.com> writes:
+> > > I'll get on to fixing the fansliders sometime today or tomorrow. Are
+> >  > all the other widgets okay for release? Pete (Paugh)? Nedko?
+> >
+> >  I only use fansliders ATM. I havent really tested other widets. I can
+> >  confirm the oscilating fansliders. It happens here too, with latest
+> >  release (0.4.1). I'm pretty sure that some time ago (in some previous
+> >  release) it was not happening. IMHO, the abscence of detection of
+> >  render/compositing extension is really a blocker. I have not been using
+> >  svn phat because of it, since new code for fansliders was commited.
+> 
+> Good morning,
+> 
+> Interesting to note also that with compositing enabled and working, I
+> have the same flickering of the fansliders. One possible way to go
+> would be to make a release with the compositing code rolled back (i.e
+> use the previous working code), and include in the release the glade
+> stuff. Another possibility would be to have a compositing branch to
+> figure it out until it just works.
+> 
+> My 2 cents ;-)
+
+i checked out glade 3.4.3 (now in it's second stable
+cycle) and the phat glade plugin builds against that.
+some of the widgets crash in the editor when used and the icons
+need updating to reflect the new dir scheme.
+in fact, i updated the icons last night only to 
+have my laptop melt before i could find my
+password and check in the changes. which was just great.
+
+anyway, the glade stuff won't take much work to
+bring it up to speed. the bugs triggered by
+usage in the glade editor are likely widget
+bugs anyway.
+
+i can't quite remember what state we left phatrange
+in so i'd have to look at that. everyone drifted
+away at some point so we don't have nedko's 
+value mapper yet either, although that's not a showstopper.
+
+as usual, i'm not convinced that a release now is
+worth much, especially if we have to remove or disable work in
+progress in order to have a project sane enough for
+public consumption. still, i'm not really into
+the release early release often paradigm. so, if you
+do want to release, sup to ye and i won't object.
+
+as for composite rendering, remember that even when the
+prerequisites are met, performance can still
+be awful. indeed, this is the case with both my recently
+deceased laptop and my main system. no clue why
+this would be unless composite benefits from
+some accelerated hardware features that are not
+present in slightly older cards.
+
+so, in addition to compile time detection (if any is 
+needed, i've not looked at the code yet) we could
+check for an environmental variable (say PHAT_USE_COMPOSITE)
+and enable that code path in lieu of full run time detection
+and some kind of phat settings system.
+gnome did something similar in the early days of Xft
+(AA text).
+
+that way, early adopters can still benefit from or at 
+least help bug fix the accelerated widget stuff, but
+us proles with our steam driven abacuses won't
+be adversely affected =)
+
+i should warn you though, and this may be true of
+some of the other developers, when progress on phat
+tailed off, i moved on to other things and the project
+that was the genesis of my involvement in phat has been
+mothballed. i'm still interested in phat but i
+haven't got much time to spend on it :/
+
+so anyway, looks like we need to:
+
+fix fan slider control instability
+
+update glade plugin for glade 3.4.*
+
+finish or remove/revert phatrange and it's usage.
+
+identify and fix other widget bugs (may be glade
+ related but i doubt it)
+
+add compile time composite detection and env var toggle.
+run time detection would be nice too but it should defer
+to the env var for now imho.
+
+
+i would also add:
+
+decide on the best package layout scheme. 
+
+i'll start a new thread about that though.
+
+cheers,
+pete.
+
+

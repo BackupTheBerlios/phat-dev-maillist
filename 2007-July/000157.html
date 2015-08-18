@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] PhatRangeKnob
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRangeKnob&In-Reply-To=%3C1184590121.7522.10.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000149.html">
+   <LINK REL="Next"  HREF="000161.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] PhatRangeKnob</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRangeKnob&In-Reply-To=%3C1184590121.7522.10.camel%40majesterium%3E"
+       TITLE="[Phat-dev] PhatRangeKnob">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Mon Jul 16 14:48:41 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000149.html">[Phat-dev] PhatRangeKnob
+</A></li>
+        <LI>Next message: <A HREF="000161.html">[Phat-dev] PhatRangeKnob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 2007-07-14 at 15:26 +0100, pete shorthose wrote:
+&gt;<i> On Sat, 2007-07-14 at 16:26 +0300, Nedko Arnaudov wrote:
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> writes:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; however there were some problems, i chose to not tackle yet...
+</I>&gt;<i> &gt; &gt; namely the private adjustment and log-mode
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; this needs some discussion... and i am too tired to make correct
+</I>&gt;<i> &gt; &gt; decisions now. 
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; i dont really like the idea of having a private adjustment. Although
+</I>&gt;<i> &gt; &gt; this seems quite elegant for logmode...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I also dislike private adjustments. As for logarithmic mode, I think we
+</I>&gt;<i> &gt; should have something more flexible. In particular I think it is only
+</I>&gt;<i> &gt; useful for ranges starting from 0. I remember wanting to use it for
+</I>&gt;<i> &gt; balance widgets (-1..1) in jack_mixer and after inspection of code I
+</I>&gt;<i> &gt; gave up to make quick fix for that.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; What you think about having separate object attachable to our
+</I>&gt;<i> &gt; knob/slider/meter widgets that maps values? This will separate mapping
+</I>&gt;<i> &gt; implementation from visualization.
+</I>&gt;<i> 
+</I>&gt;<i> either an adjustment or something like it does seem to be necessary.
+</I>&gt;<i> i hadn't thought of it like this before. every time i tried to avoid
+</I>&gt;<i> using
+</I>&gt;<i> a second adjustment, i found that i practically had to replicate it to
+</I>&gt;<i> do the job anyway so i too postponed dealing with it.
+</I>&gt;<i> 
+</I>&gt;<i> but if we actively extend /change it to cover more use cases
+</I>&gt;<i> and remove any unnecessary elements then it suddenly becomes
+</I>&gt;<i> worthwhile.
+</I>&gt;<i> 
+</I>&gt;<i> the question is, does this make deriving from GtkRange less
+</I>&gt;<i> useful? the range handles the adjustment stuff now.
+</I>
+i think there's a case for a PhatRange here. not only can we strip
+out the stuff in GtkRange that we don't need, but we can also
+put in the mapping object handling in at the base so all
+derived objects get it for free. basically, we maintain editorial
+control over all the significant widgets in phat.
+
+pete
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000149.html">[Phat-dev] PhatRangeKnob
+</A></li>
+	<LI>Next message: <A HREF="000161.html">[Phat-dev] PhatRangeKnob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

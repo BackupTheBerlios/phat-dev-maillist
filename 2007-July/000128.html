@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phat knob changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C20070712172915.GF23036%40mobilat%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000123.html">
+   <LINK REL="Next"  HREF="000129.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phat knob changes</H1>
+    <B>torbenh at gmx.de</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C20070712172915.GF23036%40mobilat%3E"
+       TITLE="[Phat-dev] phat knob changes">torbenh at gmx.de
+       </A><BR>
+    <I>Thu Jul 12 19:29:15 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000123.html">[Phat-dev] phat knob changes
+</A></li>
+        <LI>Next message: <A HREF="000129.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Jul 13, 2007 at 01:26:09AM +1000, Loki Davison wrote:
+&gt;<i> On 7/13/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; looks like i didn't break the log code.
+</I>&gt;<i> &gt; which is nice.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; loki, in case i wasn't clear, i'm not going to
+</I>&gt;<i> &gt; commit until i hear from you whether you
+</I>&gt;<i> &gt; are ok with the bulk commit.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; either way, knobs will work properly in glade
+</I>&gt;<i> &gt; as soon as it's committed :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; pete.
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> Go for it. I'll need to fix the new slider to be in line with this as
+</I>&gt;<i> i based the gtk class stuff off the knob!! lol, thought it was the
+</I>&gt;<i> most recent/least dodgy.
+</I>
+nice work pete.
+i will try to derive the knob from GtkRange, as soon as you commit.
+then the code for the adjustment handling would also fade away.
+
+however for the PhatKnob and PhatFanSliders we need to provide backwards compatibility.
+but all other new widgets could be derived from GtkRange and we would
+have a common base class.
+
+it would also be nice to have the widget window removed from the knob
+and use the parents window. i would go for this...
+
+
+&gt;<i> 
+</I>&gt;<i> Loki
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Phat-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">Phat-dev at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">https://lists.berlios.de/mailman/listinfo/phat-dev</A>
+</I>
+-- 
+torben Hohn
+<A HREF="http://galan.sourceforge.net">http://galan.sourceforge.net</A> -- The graphical Audio language
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000123.html">[Phat-dev] phat knob changes
+</A></li>
+	<LI>Next message: <A HREF="000129.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phat class hierarchy
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20class%20hierarchy&In-Reply-To=%3C1185379915.13676.26.camel%40one%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000184.html">
+   <LINK REL="Next"  HREF="000202.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phat class hierarchy</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20class%20hierarchy&In-Reply-To=%3C1185379915.13676.26.camel%40one%3E"
+       TITLE="[Phat-dev] phat class hierarchy">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Wed Jul 25 18:11:55 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000184.html">[Phat-dev] irc channel
+</A></li>
+        <LI>Next message: <A HREF="000202.html">[Phat-dev] phat class hierarchy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#185">[ date ]</a>
+              <a href="thread.html#185">[ thread ]</a>
+              <a href="subject.html#185">[ subject ]</a>
+              <a href="author.html#185">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>i'm still not sure of the best way to layout all the
+phat widgets so i'll outline a few ideas and
+then you can all pull them apart or make other suggestions.
+
+we have, in some cases, many different widget presentations
+within a specific type.
+
+eg for sliders, we have the following possibilities:
+
+pixmap belt slider
+pixmap generic slider
+pixmap fan slider
+native belt slider
+native generic slider
+native belt slider
+
+we could simply move common code into
+a parent class and then have smaller classes,
+each in their own file to describe the specifics.
+
+or, we could incorporate some or all aspects into
+one or two widgets, with properties to select which is
+desired and inline switch statements would determine
+which chunk of code is called.
+
+another possibility to add some flexibility would be
+to define an interface that draws that actual widget,
+add a plugin or callback initialiser and
+let the widget rely on the supplied interface 
+implementation to draw itself.
+(we would write and ship the defaults but this
+allows application supplied widget designs for
+both pixmap and native widgets. even hybrid
+widgets would be possible too.)
+
+there are benefits and problems with each approach
+which should be obvious so i won't detail them.
+
+can anyone identify any show stopping problems
+with any of the above options? are there any
+better ways of reconciling the different options
+into a sane api?
+
+
+
+pete.
+ 
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000184.html">[Phat-dev] irc channel
+</A></li>
+	<LI>Next message: <A HREF="000202.html">[Phat-dev] phat class hierarchy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#185">[ date ]</a>
+              <a href="thread.html#185">[ thread ]</a>
+              <a href="subject.html#185">[ subject ]</a>
+              <a href="author.html#185">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] PhatRange is in svn (well, it is now)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRange%20is%20in%20svn%20%28well%2C%20it%20is%20now%29&In-Reply-To=%3C3c808a150707220403h50fe5ac4tca403594c68f9912%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000165.html">
+   <LINK REL="Next"  HREF="000167.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] PhatRange is in svn (well, it is now)</H1>
+    <B>Marc-Olivier Barre</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRange%20is%20in%20svn%20%28well%2C%20it%20is%20now%29&In-Reply-To=%3C3c808a150707220403h50fe5ac4tca403594c68f9912%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] PhatRange is in svn (well, it is now)">mobarre at gmail.com
+       </A><BR>
+    <I>Sun Jul 22 13:03:47 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000165.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+        <LI>Next message: <A HREF="000167.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#166">[ date ]</a>
+              <a href="thread.html#166">[ thread ]</a>
+              <a href="subject.html#166">[ subject ]</a>
+              <a href="author.html#166">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 7/21/07, pete &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+&gt;<i> On Tue, 2007-07-17 at 21:02 +0100, pete wrote:
+</I>&gt;<i> &gt; the basic port to phat of GtkRange is in.
+</I>&gt;<i>
+</I>&gt;<i> sorry fellas, i could have sworn that i committed
+</I>&gt;<i> it before but apparently not. anyway, it's there now.
+</I>&gt;<i>
+</I>&gt;<i> feel free to point and laugh.
+</I>&gt;<i>
+</I>
+seems I'm having some kind of trouble here... not sure what happens
+though. sounds like a missing file.
+
+ gcc -DHAVE_CONFIG_H -I. -I. -I. -O3 -I/usr/include/gtk-2.0
+-I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo
+-I/usr/include/pango-1.0 -I/usr/include/glib-2.0
+-I/usr/lib/glib-2.0/include -I/usr/include/freetype2
+-I/usr/include/libpng12 -I/usr/include/libgnomecanvas-2.0
+-I/usr/include/libart-2.0 -I/usr/include/pango-1.0
+-I/usr/include/freetype2 -I/usr/include/gtk-2.0
+-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo
+-I/usr/include/libpng12 -Wall -Werror -std=c99 -I..
+-DINSTALL_DIR=\&quot;/usr/share\&quot; -DSITE_PKGLIB_DIR=\&quot;/usr/lib/phat\&quot;
+-DSITE_PKGDATA_DIR=\&quot;/usr/share/phat\&quot; -O3 -I/usr/include/gtk-2.0
+-I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo
+-I/usr/include/pango-1.0 -I/usr/include/glib-2.0
+-I/usr/lib/glib-2.0/include -I/usr/include/freetype2
+-I/usr/include/libpng12 -I/usr/include/libgnomecanvas-2.0
+-I/usr/include/libart-2.0 -I/usr/include/pango-1.0
+-I/usr/include/freetype2 -I/usr/include/gtk-2.0
+-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include
+-I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo
+-I/usr/include/libpng12 -Wall -Werror -MT libphat_la-phatrange.lo -MD
+-MP -MF .deps/libphat_la-phatrange.Tpo -c phatrange.c  -fPIC -DPIC -o
+.libs/libphat_la-phatrange.o
+phatrange.c:55:29: error: phatmarshallers.h: No such file or directory
+phatrange.c: In function 'phat_range_class_init':
+phatrange.c:331: error: 'phat_closure_marshal_BOOLEAN__ENUM_DOUBLE'
+undeclared (first use in this function)
+phatrange.c:331: error: (Each undeclared identifier is reported only once
+phatrange.c:331: error: for each function it appears in.)
+make[2]: *** [libphat_la-phatrange.lo] Error 1
+make[2]: Leaving directory `/media/data/src/svn/phat/phat/phat'
+make[1]: *** [all] Error 2
+make[1]: Leaving directory `/media/data/src/svn/phat/phat/phat'
+make: *** [all-recursive] Error 1
+__________________
+Marc-Olivier Barre.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000165.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+	<LI>Next message: <A HREF="000167.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#166">[ date ]</a>
+              <a href="thread.html#166">[ thread ]</a>
+              <a href="subject.html#166">[ subject ]</a>
+              <a href="author.html#166">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phat knob changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C1184285382.18935.37.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000132.html">
+   <LINK REL="Next"  HREF="000137.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phat knob changes</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phat%20knob%20changes&In-Reply-To=%3C1184285382.18935.37.camel%40majesterium%3E"
+       TITLE="[Phat-dev] phat knob changes">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Fri Jul 13 02:09:42 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000132.html">[Phat-dev] phat knob changes
+</A></li>
+        <LI>Next message: <A HREF="000137.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#134">[ date ]</a>
+              <a href="thread.html#134">[ thread ]</a>
+              <a href="subject.html#134">[ subject ]</a>
+              <a href="author.html#134">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2007-07-13 at 01:26 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+&gt;<i> On Thu, Jul 12, 2007 at 09:56:53PM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; On Thu, 2007-07-12 at 19:29 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+</I>&gt;<i> &gt; &gt; On Fri, Jul 13, 2007 at 01:26:09AM +1000, Loki Davison wrote:
+</I>&gt;<i> &gt; &gt; &gt; On 7/13/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; looks like i didn't break the log code.
+</I>&gt;<i> &gt; &gt; &gt; &gt; which is nice.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; loki, in case i wasn't clear, i'm not going to
+</I>&gt;<i> &gt; &gt; &gt; &gt; commit until i hear from you whether you
+</I>&gt;<i> &gt; &gt; &gt; &gt; are ok with the bulk commit.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; either way, knobs will work properly in glade
+</I>&gt;<i> &gt; &gt; &gt; &gt; as soon as it's committed :)
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; pete.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Go for it. I'll need to fix the new slider to be in line with this as
+</I>&gt;<i> &gt; &gt; &gt; i based the gtk class stuff off the knob!! lol, thought it was the
+</I>&gt;<i> &gt; &gt; &gt; most recent/least dodgy.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; nice work pete.
+</I>&gt;<i> &gt; &gt; i will try to derive the knob from GtkRange, as soon as you commit.
+</I>&gt;<i> &gt; &gt; then the code for the adjustment handling would also fade away.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; good idea. there's still some superfluous junk in there but you
+</I>&gt;<i> &gt; can't have everything and i think it's a better bet than GtkWidget on
+</I>&gt;<i> &gt; balance.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; however for the PhatKnob and PhatFanSliders we need to provide backwards compatibility.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; we discussed this recently and the consensus seemed to be that 
+</I>&gt;<i> &gt; it'd be better to rip up the API and bump the library version.
+</I>&gt;<i> &gt; loki is the only known user of PhatKnob and i'll happily update anyone's
+</I>&gt;<i> &gt; code to suit a changed PhatFanSlider. (probably only specimen?)
+</I>&gt;<i> &gt; normally this kind of thing is a big taboo but you'll rarely get 
+</I>&gt;<i> &gt; a better set of mitigating circumstances than these.
+</I>&gt;<i> 
+</I>&gt;<i> i dont seem to catch you guys on irc... are you on #lad ?
+</I>&gt;<i> or is there a #phat channel ?
+</I>
+no #phat channel or significant #lad discussion. you are in the right
+place,
+the discussion started here:
+
+<A HREF="https://lists.berlios.de/pipermail/phat-dev/2007-June/000004.html">https://lists.berlios.de/pipermail/phat-dev/2007-June/000004.html</A>
+
+i'd be happy to idle in a #phat channel but we risk privatising the
+debate.
+
+&gt;<i> &gt; &gt; it would also be nice to have the widget window removed from the knob
+</I>&gt;<i> &gt; &gt; and use the parents window. i would go for this...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; what are the benefits / drawbacks of doing so?
+</I>&gt;<i> &gt; i assume we still need a window (event box?) for mouse updates, tooltips
+</I>&gt;<i> &gt; and the like
+</I>&gt;<i> &gt; and tricks like backing store would no longer be applicable..
+</I>&gt;<i> 
+</I>&gt;<i> but not on every single widget.
+</I>&gt;<i> i removed the window from my tech-knob, and now the transparency is
+</I>&gt;<i> working nicely.
+</I>&gt;<i> i think there is a problem with different windows.
+</I>&gt;<i> i will check... 
+</I>
+ok. i implemented a static gui for controlling the unreleased 
+amsynth dssi plugin a while ago. i scrapped the gui in the
+end but i did find that i had to manually grab and set the background
+of the knobs. not nice. (i think i sent you a patch at the time
+but you were pretty busy) if we can get automatic
+transparency (ie: that the designated background is
+reflected in transparent frame areas), then i'd be very happy, but
+if it limited the circumstances in which i could use the knob,
+not so much with the happiness,
+
+&gt;<i> i just started to use pycairo to render some lemur style knobs.
+</I>&gt;<i> thinking about how to incorporate this into a knob.
+</I>&gt;<i> but i will use the step of going through a pixmap and using the pixmap
+</I>&gt;<i> knobs for this first...
+</I>
+i have a functional cairo knob waiting to be cleaned up
+and imported but it's derived from a common knob base class.
+see the above archived list thread for more on that.
+
+it looks a bit shitty but that's the problem, the code is static.
+<A HREF="http://www.zenadsl6252.zen.co.uk/cairo-knob-glade.png">http://www.zenadsl6252.zen.co.uk/cairo-knob-glade.png</A>
+
+we discussed the possibility of creating a plugin/callback
+system with an API so that people can use the common 
+knob API but effectively supply their own expose function.
+
+it seems the best way to introduce some visual flexibility in
+lieu of a mark up language and interpreter for dynamic 
+cairo graphics. whether people would use it or not, i dunno.
+
+the same applies to the other native widgets.
+
+&gt;<i> any ideas where to commit this code ?
+</I>&gt;<i> its just a small python script which outputs a bunch of pngs.
+</I>
+not sure.  how about a /misc/devname/ convention
+for storing pertinent code that isn't part of phat?
+
+eg /misc/torben/ ?
+
+loki is the decider so i guess do it quick before he says no.
+
+:<i>P
+</I>
+(there's always svn revert)
+
+pete.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000132.html">[Phat-dev] phat knob changes
+</A></li>
+	<LI>Next message: <A HREF="000137.html">[Phat-dev] phat knob changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#134">[ date ]</a>
+              <a href="thread.html#134">[ thread ]</a>
+              <a href="subject.html#134">[ subject ]</a>
+              <a href="author.html#134">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

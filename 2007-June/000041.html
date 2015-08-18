@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Initial thoughts on phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C1182970858.12015.83.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000040.html">
+   <LINK REL="Next"  HREF="000042.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Initial thoughts on phat</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C1182970858.12015.83.camel%40majesterium%3E"
+       TITLE="[Phat-dev] Initial thoughts on phat">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Wed Jun 27 21:00:58 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000040.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+        <LI>Next message: <A HREF="000042.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 2007-06-27 at 19:49 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote:
+&gt;<i> On Wed, Jun 27, 2007 at 06:00:45PM +0100, pete shorthose wrote:
+</I>&gt;<i> &gt; On Wed, 2007-06-27 at 06:28 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">torbenh at gmx.de</A> wrote: 
+</I>
+&gt;<i> &gt; &gt; gui-builder and xml markup should be done using (lib)glade.
+</I>&gt;<i> &gt; &gt; by encapsulating everything into gobject properties, most stuff should
+</I>&gt;<i> &gt; &gt; be accessible from glade.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; i'd already done this for the erstwhile liblaw and loki gave me the go ahead
+</I>&gt;<i> &gt; to add glade 3 support to phat now that i've ditched liblaw to work on phat. 
+</I>&gt;<i> &gt; i'm not as convinced as you seem to be that this is the optimum way to
+</I>&gt;<i> &gt; construct pixmapped interfaces but people will have the option to do so.
+</I>&gt;<i> &gt; i like glade and would cheerfully be proven wrong. 
+</I>&gt;<i> 
+</I>&gt;<i> well... we need a Container (derived from GtkLayout) with some glade support. 
+</I>
+i think i need to sit down and work out if what i need is the same as
+what
+&quot;we&quot; need. i'll shut up about it until then. :)
+
+&gt;<i> &gt; &gt; i am making (slow) progress on this. I started porting the GtkKnob from
+</I>&gt;<i> &gt; &gt; gAlan to gob. (it already compiles) need a test harness, to see whether
+</I>&gt;<i> &gt; &gt; the port works.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; i used glade 3 for this. the knob widget doesn't really need support code
+</I>&gt;<i> &gt; (or not much of it) so it was just a matter of writing a catalog file and dropping
+</I>&gt;<i> &gt; the lib with the knob in it into the glade 3 modules dir.  
+</I>&gt;<i> 
+</I>&gt;<i> could you point me to that code please ?
+</I>&gt;<i> or merely the Makefile ;)
+</I>
+
+this was my law.xml catalog featuring the vector knob alone:
+
+(cut from here)
+
+&lt;glade-catalog name=&quot;law&quot; library=&quot;law&quot;&gt;
+
+  &lt;glade-widget-classes&gt;
+
+    &lt;glade-widget-class name=&quot;LawKnobVector&quot;
+generic-name=&quot;lawknobvector&quot;title=&quot;vectorknob&quot;/&gt;
+
+  &lt;/glade-widget-classes&gt;
+  &lt;glade-widget-group name=&quot;law-widgets&quot; title=&quot;Law widgets&quot;&gt;
+    
+    &lt;glade-widget-class-ref name=&quot;LawKnobVector&quot;/&gt;
+
+  &lt;/glade-widget-group&gt;
+&lt;/glade-catalog&gt;
+
+(end)
+
+
+law.xml was copied to $prefix/share/glade3/catalogs/
+
+the widget icon filename is derived from &quot;generic-name&quot; so i copied
+existing window.png to lawknobvector.png in both 16x16/ and 22x22/
+subdirs of $prefix/share/glade3/pixmaps/
+(because i was too lazy to make my own icon at the time.)
+
+the library is only searched for in the module dir (subject to change in
+future)
+and the so name is derived from &quot;library&quot; above. so i renamed the lib
+liblaw.so
+and copied it into the $prefix/lib/glade3/modules/
+
+run glade3.. and it will EXPLODE!!! ..or not, hopefully :)
+
+this: <A HREF="http://glade.gnome.org/docs/index.html">http://glade.gnome.org/docs/index.html</A> and google helped.
+also the guys in #glade3 on irc.gimp.net proved to be very friendly and 
+helpful when i had questions about minimal requirements for the module
+too.
+
+it should be noted that i won't be copying or linking the phat so
+directly in
+this way. i just did that for testing because it works and requires no
+changes to the lib what so ever. 
+at some point it will be necessary to add support code and this will go
+into the phat-glade so, be linked to phat and itself copied into the
+glade modules dir
+instead. this keeps them totally separate.
+
+&gt;<i> thats why i want the animation_filename to be a property...
+</I>
+yeah, the above example is a native knob with no animation. still, we
+aim
+to provide a standard animation object, an animation store where
+animations are loaded then referenced by string name and defaults
+that can be referenced by string and are auto loaded on demand. 
+in this way you could either have a default animation string or specify
+a file name and the property handler would select it accordingly. 
+
+if we forbid G_DIR_SEPARATOR and &quot;.&quot; from appearing in string names
+then the same functions can resolve whether an animation object name
+or filename is supplied and act accordingly.
+
+
+pete. 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000040.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+	<LI>Next message: <A HREF="000042.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] basic glade support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20basic%20glade%20support&In-Reply-To=%3Cec9314860707010117j6dd791d5l1b02533bbb930efc%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000049.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] basic glade support</H1>
+    <B>Loki Davison</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20basic%20glade%20support&In-Reply-To=%3Cec9314860707010117j6dd791d5l1b02533bbb930efc%40mail.gmail.com%3E"
+       TITLE="[Phat-dev] basic glade support">loki.davison at gmail.com
+       </A><BR>
+    <I>Sun Jul  1 10:17:39 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000049.html">[Phat-dev] basic glade support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#47">[ date ]</a>
+              <a href="thread.html#47">[ thread ]</a>
+              <a href="subject.html#47">[ subject ]</a>
+              <a href="author.html#47">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 7/1/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+&gt;<i> i've implemented skeleton glade support. the catalog
+</I>&gt;<i> covers all the existing widgets, icons are in place and
+</I>&gt;<i> installed but they are all copies of the gtkwindow
+</I>&gt;<i> pixmap. (this will make it easy to fix them, just grab
+</I>&gt;<i> one, edit it and commit the changes)
+</I>&gt;<i>
+</I>&gt;<i> &quot;./configure --enable-glade-plugin&quot; will build it and it's
+</I>&gt;<i> disabled by default.
+</I>&gt;<i>
+</I>&gt;<i> i've setup a support code module
+</I>&gt;<i> (phat/glade-plugin/glade-phat.{c,h}) that is built,
+</I>&gt;<i> installed and works to a degree, but literally has nothing
+</I>&gt;<i> in it yet. it just serves to hook in the phat lib for glade
+</I>&gt;<i> until we add some glade support code for any widgets
+</I>&gt;<i> that require it.
+</I>&gt;<i>
+</I>&gt;<i> the build options may need tweaking along the way
+</I>&gt;<i> but otherwise, adding support code should be as simple
+</I>&gt;<i> as editing that module. (see the glade 3 source and api
+</I>&gt;<i> docs for examples)
+</I>&gt;<i>
+</I>&gt;<i> as expected, not all phat widgets work or work properly
+</I>&gt;<i> with glade yet and i / we will have to bring them inline
+</I>&gt;<i> with glade's expectations.
+</I>&gt;<i>
+</I>&gt;<i> i'm doing this first rather than importing the cairo knob
+</I>&gt;<i> for two reasons. firstly, we'd do well to start from
+</I>&gt;<i> widgets that work properly in glade and secondly, because
+</I>&gt;<i> we now have 3 quite different pixmap knobs
+</I>&gt;<i> (phat's, mine and torben's) and a cairo knob that
+</I>&gt;<i> requires a base class that breaks both the phat knob
+</I>&gt;<i> and torben's knob.
+</I>&gt;<i>
+</I>&gt;<i> so we need to decide what to put in and then all work from
+</I>&gt;<i> there.
+</I>&gt;<i>
+</I>&gt;<i> in particular this means deciding on whether to use
+</I>&gt;<i> an abstract knob class and derive the vector
+</I>&gt;<i> and pixmap knobs from that, or have the vector knob
+</I>&gt;<i> as the bass class and derive the pixmap knob from that..
+</I>&gt;<i> etc etc to infinity and beyond.
+</I>&gt;<i>
+</I>&gt;<i> loki, unless you have any objections, i'll check in the
+</I>&gt;<i> changes to trunk. a patch is attached if you want to look
+</I>&gt;<i> over it first. (no pixmaps (binaries))
+</I>&gt;<i>
+</I>&gt;<i> cheers,
+</I>&gt;<i> pete.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+Looks good, minor spelling mistake in  the xml file for the keyboard.
+Other than that it's good. Feel free to commit to trunk. What the
+issues you mention with not all widgets working with glade? Not
+providing stuff as properties?
+
+Loki
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000049.html">[Phat-dev] basic glade support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#47">[ date ]</a>
+              <a href="thread.html#47">[ thread ]</a>
+              <a href="subject.html#47">[ subject ]</a>
+              <a href="author.html#47">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

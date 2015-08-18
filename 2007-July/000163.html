@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] PhatRange is in svn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRange%20is%20in%20svn&In-Reply-To=%3C1184702569.5850.33.camel%40one%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000160.html">
+   <LINK REL="Next"  HREF="000165.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] PhatRange is in svn</H1>
+    <B>pete</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20PhatRange%20is%20in%20svn&In-Reply-To=%3C1184702569.5850.33.camel%40one%3E"
+       TITLE="[Phat-dev] PhatRange is in svn">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Tue Jul 17 22:02:49 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000160.html">[Phat-dev] 3 layer idea RIP
+</A></li>
+        <LI>Next message: <A HREF="000165.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#163">[ date ]</a>
+              <a href="thread.html#163">[ thread ]</a>
+              <a href="subject.html#163">[ subject ]</a>
+              <a href="author.html#163">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>the basic port to phat of GtkRange is in.
+it builds without errors here but i've not tested
+it in use. (kinda tricky with an abstract type :)
+
+
+i put some notes in the top of the c file which are as follows:
+
+--
+i've implemented the intl marcos as simple pass throughs. (P_ and I_)
+this is because we don't use intl at the moment. although we probably
+should now that property information is visible in glade. if we add
+intl at a later date, we only need to delete the macro definitions
+below and it should work
+i replaced GTK_PARAM_READWRITE and GTK_PARAM_READABLE with G_*
+but they aren't equivalent. the G*_STATIC_* variants included in
+the GTK_* definitions in gtkprivate.h require gobject &gt;= 2.8 so
+we'd need to check for that to use them. which is probably what i'll do
+
+the &quot;change_value&quot; signal registration is commented out as it requires
+custom marshallers. we may not need it anyway but this serves as a
+reminder to either add glib-genmarshal etc to the build system order
+remove that signal.
+
+we need to sort out the credits above too. 
+--
+
+i'd not noticed the &quot;change_value&quot; signal before. it's interesting
+because
+it provids a way to implement the mapping object on top of GtkRange.
+(the signal is emitted before the adj value is changed and you can
+interject with your own value and halt further processing by returning 
+TRUE) 
+still, it's probably a good idea to go ahead with PhatRange anyway.
+
+in particular, we don't really need all the scrollbar stuff that is
+littered throughout GtkRange. 
+
+pete.
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000160.html">[Phat-dev] 3 layer idea RIP
+</A></li>
+	<LI>Next message: <A HREF="000165.html">[Phat-dev] PhatRange is in svn (well, it is now)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#163">[ date ]</a>
+              <a href="thread.html#163">[ thread ]</a>
+              <a href="subject.html#163">[ subject ]</a>
+              <a href="author.html#163">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

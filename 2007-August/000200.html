@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] phatrange and range widgets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phatrange%20and%20range%20widgets&In-Reply-To=%3C87fy2yqkau.fsf%40arnaudov.name%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000197.html">
+   <LINK REL="Next"  HREF="000206.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] phatrange and range widgets</H1>
+    <B>Nedko Arnaudov</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20phatrange%20and%20range%20widgets&In-Reply-To=%3C87fy2yqkau.fsf%40arnaudov.name%3E"
+       TITLE="[Phat-dev] phatrange and range widgets">nedko at arnaudov.name
+       </A><BR>
+    <I>Sun Aug  5 13:42:49 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000197.html">[Phat-dev] phatrange and range widgets
+</A></li>
+        <LI>Next message: <A HREF="000206.html">[Phat-dev] phatrange and range widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>pete &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; writes:
+
+&gt;&gt;<i> &gt; input handling (scrolling, keys etc)
+</I>&gt;&gt;<i> &gt; 	this needs some careful thought. we
+</I>&gt;&gt;<i> &gt; 	either need to leverage gtk features
+</I>&gt;&gt;<i> &gt; 	to store input configurations or come
+</I>&gt;&gt;<i> &gt; 	up with our own config system. 
+</I>&gt;&gt;<i> &gt; 	i don't imagine this will go back in
+</I>&gt;&gt;<i> &gt; the range widget directly either.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> IMHO phat config system would be good thing.
+</I>&gt;&gt;<i> But I'd postpone this for release following
+</I>&gt;&gt;<i> next one. Loki?
+</I>&gt;<i>
+</I>&gt;<i> yeah, we lose nothing by doing so as those
+</I>&gt;<i> widgets that already have extended input support,
+</I>&gt;<i> do so in their own classes.
+</I>
+&gt;&gt;<i> &gt; so, phatrange now contains little more than
+</I>&gt;&gt;<i> &gt; the following:
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; adjustment handling
+</I>&gt;&gt;<i> &gt; a placeholder for the value mapper
+</I>&gt;&gt;<i> &gt; some cases to deal with using the parent
+</I>&gt;&gt;<i> &gt; window for drawing and a dedicated event
+</I>&gt;&gt;<i> &gt; window.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> I'll check the code in my first time
+</I>&gt;&gt;<i> window :) ... and try to do something about
+</I>&gt;&gt;<i> these mapper objects
+</I>&gt;<i>
+</I>&gt;<i> feel free to change phatrange to suit. i just
+</I>&gt;<i> threw the placeholder in whilst i was there.
+</I>&gt;<i>  
+</I>&gt;&gt;<i> &gt; unless anyone has any objections, i'll start
+</I>&gt;&gt;<i> &gt; moving all range widgets over to phatrange.
+</I>&gt;&gt;<i> &gt; this will involve removing log mode until the
+</I>&gt;&gt;<i> &gt; mapper is finished.
+</I>
+
+i've commited some work on phatrange and phatknob. in particular i
+changed code in phatknob that directly used adjustment with code that
+deals with abstracted &quot;adjustment&quot; with 0..1 range. I'd be glad if
+someone reviews my changes before i make more, just to ensure i'm not
+out of touch.
+
+i have major problem with lacking ui user use cases and specification
+how things (should) work. Some code i saw in phatknob is obviously
+broken, some is commented out and i cannot fix things without knowledge
+how it should work. i know this is work in progress but we should at
+least document what are our goals. i think we should put this info in
+the wiki associated with phat project. i talked with thorwil about knobs
+in particular and i saw his try for this in his blog too and he said
+we have serious discrepancies about knobs ui user use. we should
+document them and take a plan to handle them. as for developer use of
+widgets we lack documentation too and this is serious obstacle when
+changing code (we dont want to strip existing phat-iazed projects,
+right?). we should have use cases (developer point of view) and list of
+projects using phat so they can be checked for compatibility issues
+until project gets stable and coherent enough for other/new projects to
+stay in line with.
+
+So let start the list, and move it to wiki later:
+ * zynjacku (through python bindings)
+ * specimen
+ * khagan (through python bindings)
+ * jack_mixer (through python bindings)
+ * demo programs budnled with phat
+
+I've made some analysis of developer use cases and come to some
+specification:
+ * simplest use, no gtkadjustments, through accessing widget methods
+   signals directly. i.e. knob_get_value(), connect to knob
+   value-changed signal.
+ * gtkadjustments for more advanced use with two subcases:
+  * supply existing external gtkadjustment
+  * expose our internal gtkadjustment for use somewhere else
+
+In past I fixed some bugs that were some features not working in all use
+cases. I beleive defining them will improve our code base in future and
+will help testing too.
+
+Now how this interacts with phatrange? In my vision so far direct access
+methods should be implemented as proxy code to phatrange and not
+directly interacting with widget code and thus it may be possible to use
+some hairy macro to define them in all widgets. we need this because
+gobject model does not support method inheritance, or i am wrong?
+
+All gtkadjustment-less methods are implemented in phatrange by operating
+on gtkadjustment referenced in it.
+
+I'm still thinking about what is best way for interoperation between
+gtkadjustment and mapper object. in particular, mapper, at least one i
+have currently (monothonic linear spline), has valid range and is
+somewhat incompatible with change of it, caused by external
+gtkadjustment. Do you think we need to support external gtkadjustments
+when we have mapper? I'd say no. Logarithm also has input restritions
+too, thus rendering -50..0 gtkadjustment unusable. At least directly,
+but i think mapper should operate on real range not artificial one, like
+(0..1).
+
+After more inspection of phatknob and those concept discrepancies we
+have, i now beleive we should come with configuration system in next
+release. I propose (and have motivation to work on) class code
+interacting with gconf. In particular I want to start with radial/linear
+knob behaviour, always with left mouse button. More configuration
+candidates are welcome. Lets collect them in this thread, I'll put them
+on wiki once we have plan.
+
+-- 
+Nedko Arnaudov &lt;GnuPG KeyID: DE1716B0&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 188 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/phat-dev/attachments/20070805/3b2f6380/attachment.pgp">https://lists.berlios.de/pipermail/phat-dev/attachments/20070805/3b2f6380/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000197.html">[Phat-dev] phatrange and range widgets
+</A></li>
+	<LI>Next message: <A HREF="000206.html">[Phat-dev] phatrange and range widgets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

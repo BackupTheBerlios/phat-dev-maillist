@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] basic glade support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20basic%20glade%20support&In-Reply-To=%3C1183229205.6069.55.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000045.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] basic glade support</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20basic%20glade%20support&In-Reply-To=%3C1183229205.6069.55.camel%40majesterium%3E"
+       TITLE="[Phat-dev] basic glade support">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Sat Jun 30 20:46:45 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000045.html">[Phat-dev] Knob requirements
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>i've implemented skeleton glade support. the catalog
+covers all the existing widgets, icons are in place and
+installed but they are all copies of the gtkwindow
+pixmap. (this will make it easy to fix them, just grab
+one, edit it and commit the changes) 
+
+&quot;./configure --enable-glade-plugin&quot; will build it and it's
+disabled by default.
+
+i've setup a support code module 
+(phat/glade-plugin/glade-phat.{c,h}) that is built,
+installed and works to a degree, but literally has nothing
+in it yet. it just serves to hook in the phat lib for glade
+until we add some glade support code for any widgets
+that require it.
+
+the build options may need tweaking along the way 
+but otherwise, adding support code should be as simple
+as editing that module. (see the glade 3 source and api
+docs for examples)
+
+as expected, not all phat widgets work or work properly
+with glade yet and i / we will have to bring them inline
+with glade's expectations. 
+
+i'm doing this first rather than importing the cairo knob
+for two reasons. firstly, we'd do well to start from
+widgets that work properly in glade and secondly, because
+we now have 3 quite different pixmap knobs
+(phat's, mine and torben's) and a cairo knob that
+requires a base class that breaks both the phat knob
+and torben's knob. 
+
+so we need to decide what to put in and then all work from
+there. 
+
+in particular this means deciding on whether to use
+an abstract knob class and derive the vector
+and pixmap knobs from that, or have the vector knob
+as the bass class and derive the pixmap knob from that..
+etc etc to infinity and beyond.
+
+loki, unless you have any objections, i'll check in the
+changes to trunk. a patch is attached if you want to look
+over it first. (no pixmaps (binaries))
+
+cheers,
+pete.
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: phat-glade-001.diff
+Type: text/x-patch
+Size: 12234 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/phat-dev/attachments/20070630/ef988bf1/attachment.bin">https://lists.berlios.de/pipermail/phat-dev/attachments/20070630/ef988bf1/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000045.html">[Phat-dev] Knob requirements
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>

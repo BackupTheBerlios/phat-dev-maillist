@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Phat-dev] Initial thoughts on phat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phat-dev/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C1184163176.13358.41.camel%40majesterium%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000113.html">
+   <LINK REL="Next"  HREF="000109.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Phat-dev] Initial thoughts on phat</H1>
+    <B>pete shorthose</B> 
+    <A HREF="mailto:phat-dev%40lists.berlios.de?Subject=Re%3A%20%5BPhat-dev%5D%20Initial%20thoughts%20on%20phat&In-Reply-To=%3C1184163176.13358.41.camel%40majesterium%3E"
+       TITLE="[Phat-dev] Initial thoughts on phat">zenadsl6252 at zen.co.uk
+       </A><BR>
+    <I>Wed Jul 11 16:12:56 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000113.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+        <LI>Next message: <A HREF="000109.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 2007-07-11 at 15:25 +0200, Marc-Olivier Barre wrote:
+&gt;<i> On 7/11/07, pete shorthose &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/phat-dev">zenadsl6252 at zen.co.uk</A>&gt; wrote:
+</I>&gt;<i> &gt; On Wed, 2007-07-11 at 12:27 +0200, Thorsten Wilms wrote:
+</I>&gt;<i> &gt; &gt; On Wed, Jul 11, 2007 at 01:12:01PM +0300, Nedko Arnaudov wrote:
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; IMHO we should give alternatives (for UI interaction point of view) to
+</I>&gt;<i> &gt; &gt; &gt; developer but we should try to make API coherent. Also as Pete mentioned
+</I>&gt;<i> &gt; &gt; &gt; in earlier mail, having global settings framework where user has the
+</I>&gt;<i> &gt; &gt; &gt; power to control what widgets to use is very good approach.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; i'd be happy to have this right down the line but it may be impractical
+</I>&gt;<i> &gt; in some cases. consider that you prefer sliders to knobs, the layout
+</I>&gt;<i> &gt; would change enormously. mandating this for all applicable widgets
+</I>&gt;<i> &gt; will lead to some pretty severe design constraints being
+</I>&gt;<i> &gt; placed on client applications.
+</I>&gt;<i> 
+</I>&gt;<i> IMHO, switching from a &quot;plain slider&quot; to a &quot;bitmap slider&quot; should be a
+</I>&gt;<i> Phat feature, whereas switching from a slider to a knob happens
+</I>&gt;<i> outside of Phat. 
+</I>
+ok. this requires default graphics though, it also requires a uniform 
+interface for the slider as a whole. (expecting client applications
+to monitor the type of slider in use and switch interfaces to adapt
+is not a good idea imo) this leads to one of two possibilities.
+
+1. a limited set of common options
+2. an unlimited option set with redundant options in some cases. 
+(you can't set a slider animation or pixmap on a native slider or set
+the
+number of ticks on an animated knob)
+
+another problem is that say i design a nice pixmap interface to look
+like my favourite piece of dodgy 80's hardware. if i can't override
+the global defaults and a user switched to native knob types, my
+interface
+suddenly looks like ass. i guess this is fixed by providing just such an
+override. of course that override is then open to abuse. (where abuse
+means what ever to whoever)
+
+really, i think that the pixmap / native dichotomy is pretty well
+entrenched.
+trying to reconcile the differences in one system is possible but might
+require such tortuous contingencies as to be more trouble than it's
+worth.
+
+i'd prefer that you can switch between control &quot;presentations&quot; or have 
+presentations represented by options to a common base. eg slider
+is the base and have optional input methods to control it and optional
+extensions like the fan or a popup of some sort. or for another example
+the knob is the base but you can switch between the knob and the 
+notknob (thorwils creation, if you're not familiar) presentation.
+
+this is a much easier proposition. still, if people are in favour of
+a broader set of interchangeable options (including pixmap/native)
+then i'll go with that, albeit reluctantly.
+
+&gt;<i> Now on the part about giving reasonable default to widgets... I guess
+</I>&gt;<i> it will be impossible to make everyone happy. But as long as a change
+</I>&gt;<i> _is_ possible, I don't see the problem.
+</I>
+pedantically speaking, change is possible anyway. &quot;use the source luke&quot;
+but that's not really a viable option for most. so i agree with you
+provided that change is both possible and practical.
+
+i also think that we should listen to feedback and periodically
+consider the how the defaults have been received with a mind
+to best serving the needs of devs and users.
+
+
+pete.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000113.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+	<LI>Next message: <A HREF="000109.html">[Phat-dev] Initial thoughts on phat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phat-dev">More information about the Phat-dev
+mailing list</a><br>
+</body></html>
